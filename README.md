@@ -54,4 +54,4 @@ The latest stylesheet adds a midnight emerald/champagne theme, improves hero tex
 
 
 ## Homepage hero carousel
-The homepage keeps the original Fortune hero as its first slide and uses the supplied Navratri EMI-consolidation design as its second slide. Slides switch continuously every five seconds; the Navratri card animation runs while that slide is visible and restarts when it returns. EMI amounts and savings in the animated card are illustrative only; actual lender terms, eligibility and approval vary.
+The homepage keeps the original Fortune hero as its first slide and uses the supplied Navratri EMI-consolidation design as its second slide. The main hero stays visible for five seconds, and the Navratri offer stays visible for ten seconds before the carousel loops. The offer card animation runs while that slide is visible and restarts when it returns; its mobile layout spaces the loan cards around the central EMI card. EMI amounts and savings in the animated card are illustrative only; actual lender terms, eligibility and approval vary.

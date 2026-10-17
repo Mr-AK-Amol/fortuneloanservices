@@ -220,6 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeSlideIndex = heroSlides.findIndex(slide => slide.classList.contains("is-active"));
     let navratriTimers = [];
     let navratriFrame = null;
+    let heroRotationTimer = null;
 
     if (activeSlideIndex < 0) activeSlideIndex = 0;
 
@@ -345,6 +346,14 @@ document.addEventListener("DOMContentLoaded", () => {
       amount.textContent = formatINR(existingTotal);
     }
 
+    const scheduleHeroRotation = () => {
+      window.clearTimeout(heroRotationTimer);
+      const dwellTime = activeSlideIndex === 1 ? 10000 : 5000;
+      heroRotationTimer = window.setTimeout(() => {
+        showSlide(activeSlideIndex + 1);
+      }, dwellTime);
+    };
+
     const showSlide = index => {
       if (!heroSlides.length) return;
       if (activeSlideIndex === 1 && index % heroSlides.length !== 1) {
@@ -365,6 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (activeSlideIndex === 1 && navratriHero) {
         startNavratriAnimation();
       }
+      scheduleHeroRotation();
     };
 
     heroDots.forEach(dot => {
@@ -372,7 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showSlide(Number(dot.dataset.heroGo));
       });
     });
-    window.setInterval(() => showSlide(activeSlideIndex + 1), 5000);
+    scheduleHeroRotation();
   }
 
   // Particle field

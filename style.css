@@ -2174,21 +2174,21 @@ h1 span{
   .navratri-hero .loan-type{font-size:10px}
 }
 @media(max-width:900px){
-  .navratri-hero{min-height:960px}
+  .navratri-hero{min-height:1020px}
   .navratri-hero .left-copy{width:100%;padding:112px 7% 0}
   .navratri-hero .eyebrow{font-size:clamp(37px,8vw,64px)}
   .navratri-hero h1{margin:12px 0 25px;font-size:clamp(48px,9.8vw,80px)}
   .navratri-hero .ribbon{width:min(100%,520px);font-size:clamp(14px,3.2vw,22px)}
   .navratri-hero .cta{width:min(100%,520px);min-height:74px;margin-top:24px;font-size:clamp(16px,3.7vw,24px)}
-  .navratri-hero .art{top:445px;right:0;width:100%;height:490px;min-height:490px}
+  .navratri-hero .art{position:relative;top:auto;right:auto;width:100%;height:520px;min-height:520px;margin:24px auto 70px}
   .navratri-hero .mandala{width:min(90%,500px)}
   .navratri-hero .center-card{top:42%;width:clamp(250px,35vw,330px);min-height:190px}
   .navratri-hero .loan-card{width:clamp(210px,32vw,280px);min-height:57px}
-  .navratri-hero .card-1{left:6%;top:8%}
-  .navratri-hero .card-2{right:6%;top:7%}
-  .navratri-hero .card-3{left:0;top:45%}
-  .navratri-hero .card-4{right:0;top:44%}
-  .navratri-hero .card-5{left:36%;top:79%}
+  .navratri-hero .loan-card.card-1{left:6%;top:2%}
+  .navratri-hero .loan-card.card-2{right:6%;top:2%}
+  .navratri-hero .loan-card.card-3{left:0;top:65%}
+  .navratri-hero .loan-card.card-4{right:0;top:65%}
+  .navratri-hero .loan-card.card-5{left:36%;top:84%}
   .navratri-hero .diya-left{left:24%}
   .navratri-hero .diya-right{right:24%}
   .navratri-hero .terms{right:6%;bottom:3%;left:6%;max-width:none;text-align:center}
@@ -2199,16 +2199,16 @@ h1 span{
   .navratri-hero .loan-card.to-background.card-5{transform:translate(0,-75px) scale(.16)!important}
 }
 @media(max-width:520px){
-  .navratri-hero{min-height:940px}
+  .navratri-hero{min-height:1140px}
   .navratri-hero .left-copy{padding:102px 6% 0}
   .navratri-hero .eyebrow{font-size:39px;letter-spacing:-1px}
   .navratri-hero h1{margin:12px 0 22px;font-size:48px;line-height:1.02}
   .navratri-hero .ribbon{min-height:46px;padding:8px 16px;font-size:13px}
   .navratri-hero .cta{min-height:64px;margin-top:22px;padding:8px 9px 8px 19px;font-size:15px;gap:8px}
   .navratri-hero .cta-arrow{width:46px;height:46px}
-  .navratri-hero .art{top:430px;height:430px;min-height:430px}
+  .navratri-hero .art{height:590px;min-height:590px;margin-top:24px}
   .navratri-hero .mandala{width:98%;border-width:2px}
-  .navratri-hero .center-card{top:42%;width:49%;min-width:0;min-height:174px;padding:13px;border-radius:18px}
+  .navratri-hero .center-card{top:40%;width:49%;min-width:0;min-height:174px;padding:13px;border-radius:18px}
   .navratri-hero .center-label{margin-bottom:8px;font-size:10px}
   .navratri-hero .amount{font-size:clamp(22px,6.6vw,32px);letter-spacing:-1px}
   .navratri-hero .per{font-size:10px}
@@ -2223,11 +2223,11 @@ h1 span{
   .navratri-hero .bank{font-size:9px}
   .navratri-hero .loan-amount{font-size:12px}
   .navratri-hero .loan-type{font-size:8px}
-  .navratri-hero .card-1{left:0;top:10%}
-  .navratri-hero .card-2{right:0;top:1%}
-  .navratri-hero .card-3{left:0;top:46%}
-  .navratri-hero .card-4{right:0;top:46%}
-  .navratri-hero .card-5{left:26%;top:79%;width:48%}
+  .navratri-hero .loan-card.card-1{left:0;top:0}
+  .navratri-hero .loan-card.card-2{right:0;top:0}
+  .navratri-hero .loan-card.card-3{left:0;top:68%}
+  .navratri-hero .loan-card.card-4{right:0;top:68%}
+  .navratri-hero .loan-card.card-5{left:26%;top:84%;width:48%}
   .navratri-hero .garland{width:25px}
   .navratri-hero .garland.left{left:.5%}
   .navratri-hero .garland.right{right:.5%}
