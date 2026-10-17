@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EMI Calculator | Fortune Loan Services</title><meta name="description" content="Use the Fortune Loan Services EMI calculator to estimate monthly EMI, total interest and repayment.">
+<link rel="icon" href="assets/fortune-logo.png"><link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+</head><body><div class="progress-bar" id="progressBar"></div>
+<header class="site-header scrolled" id="header">
+ <div class="container navbar">
+  <a class="brand" href="index.html"><img src="assets/fortune-logo.png" alt="Fortune Loan Services"></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="nav-links" id="navLinks">
+   <a href="index.html">Home</a><a href="about-us.html">About</a><a href="index.html#loans">Loan Solutions</a><a href="index.html#partners">Partners</a>
+   <a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Apply Now</a>
+  </nav>
+ </div>
+</header>
+<main><section class="page-hero"><div class="container"><span class="section-kicker">FORTUNE LOAN SERVICES</span><h1>Calculate Your Loan EMI</h1><p>Use the Fortune Loan Services EMI calculator to estimate monthly EMI, total interest and repayment.</p></div></section><section class="content-section"><div class="container"><div class="section-title center"><span class="section-kicker">FINANCIAL TOOL</span><h2>EMI <span>Calculator</span></h2><p>Calculate an indicative monthly EMI, total interest and repayment. Actual lender terms may differ.</p></div>
+<div class="calc-wrap" style="margin-top:40px"><div class="form-card"><div class="form-field"><label>Loan Amount (₹)</label><input id="loanAmount" type="number" min="1000" value="800000"></div><div class="form-field" style="margin-top:15px"><label>Interest Rate (% p.a.)</label><input id="interestRate" type="number" min="0" step="0.01" value="9.5"></div><div class="form-field" style="margin-top:15px"><label>Loan Tenure (Years)</label><input id="loanYears" type="number" min="1" max="40" value="5"></div><button class="btn btn-primary" style="margin-top:20px;width:100%;justify-content:center" id="calcBtn">Calculate EMI</button></div>
+<div class="calc-result"><span class="section-kicker">ESTIMATE</span><h3>Monthly EMI</h3><div class="big" id="emiValue">₹16,801</div><div class="calc-stat"><span>Principal Amount</span><strong id="principalValue">₹8,00,000</strong></div><div class="calc-stat"><span>Total Interest</span><strong id="interestValue">₹2,08,089</strong></div><div class="calc-stat"><span>Total Repayment</span><strong id="repaymentValue">₹10,08,089</strong></div></div></div>
+<div class="notice-box" style="max-width:920px;margin:25px auto 0">This calculator is for illustration only. Interest rate, tenure, eligibility, processing charges and final repayment schedule are determined by the respective lender.</div>
+</div></section></main><footer class="footer professional-footer" id="site-footer">
+  <div class="container footer-main">
+    <div class="footer-brand-column">
+      <a class="footer-logo-link" href="index.html" aria-label="Fortune Loan Services home">
+        <img alt="Fortune Loan Services" src="assets/fortune-logo.png"/>
+      </a>
+      <p class="footer-tagline">Your Trusted Loan Partner</p>
+      <p class="footer-intro">Guidance to help individuals, professionals and businesses explore suitable lending options through banks and NBFCs.</p>
+      <div class="footer-cta-row">
+        <a class="footer-button footer-button-primary" href="contact.html">Talk to Our Team <span aria-hidden="true">↗</span></a>
+        <a class="footer-button footer-button-outline" href="emi-calculator.html">EMI Calculator</a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h3>Explore</h3>
+      <a href="index.html#about">About Fortune</a>
+      <a href="index.html#loans">Loan Solutions</a>
+      <a href="index.html#partners">Partner Network</a>
+      <a href="index.html#process">How It Works</a>
+      <a href="join-us.html">Join Our Network</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <a href="contact.html">Contact Us</a>
+      <a href="emi-calculator.html">EMI Calculator</a>
+      <a href="terms-of-services.html">Terms of Service</a>
+      <a href="contact.html#contact-form">Send an Enquiry</a>
+      <a href="index.html#loans">Explore Loan Options</a>
+    </div>
+
+    <div class="footer-column footer-contact-column">
+      <h3>Get in Touch</h3>
+      <a class="footer-contact-link" href="tel:+919028346900"><span class="footer-contact-icon" aria-hidden="true">☎</span><span><small>Call our team</small><strong>+91 90283 46900</strong></span></a>
+      <a class="footer-contact-link" href="mailto:business@fortuneloan.services"><span class="footer-contact-icon" aria-hidden="true">✉</span><span><small>Email us</small><strong>business@fortuneloan.services</strong></span></a>
+    </div>
+    <div class="footer-social-links" aria-label="Follow us on social media">
+      <a class="footer-button footer-button-social" href="https://www.instagram.com/official.fortuneloanservices/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Follow Fortune Loan Services on Instagram">Instagram <span aria-hidden="true">↗</span></a>
+      <a class="footer-button footer-button-social" href="https://www.facebook.com/profile.php?id=61591488407283" target="_blank" rel="noopener noreferrer" aria-label="Follow Fortune Loan Services on Facebook">Facebook <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <div class="container footer-addresses">
+    <div class="footer-address-card">
+      <div class="footer-address-heading"><span class="footer-address-icon" aria-hidden="true">⌖</span><div><span class="footer-eyebrow">HEAD OFFICE</span><h3>Vadodara, Gujarat</h3></div></div>
+      <p>Incuspaze, 3rd Floor, 1965, Gorwa, Alembic City, Alembic Road, Vadodara, Gujarat – 390003.</p>
+      <a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Incuspaze%2C%203rd%20Floor%2C%201965%2C%20Gorwa%2C%20Alembic%20City%2C%20Alembic%20Road%2C%20Vadodara%2C%20Gujarat%20390003" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="footer-address-card">
+      <div class="footer-address-heading"><span class="footer-address-icon" aria-hidden="true">⌖</span><div><span class="footer-eyebrow">REGISTERED OFFICE</span><h3>Baner, Pune</h3></div></div>
+      <p>WorkFlo by OYO – Office No. 702, Icon Tower, Baner Road, Opposite KFC, Baner, Pune, Maharashtra – 411045.</p>
+      <a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=WorkFlo%20by%20OYO%2C%20Office%20No.%20702%2C%20Icon%20Tower%2C%20Baner%20Road%2C%20Opposite%20KFC%2C%20Baner%2C%20Pune%2C%20Maharashtra%20411045" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <div class="container footer-disclaimer">
+    <strong>Important information</strong>
+    <p>Fortune Loan Services facilitates loan assistance and connects applicants with potential lending options. Loan approval, interest rates, fees, eligibility and disbursement are determined by the respective lender and depend on its policies and the applicant’s profile. Partner logos and names are for informational purposes and do not imply guaranteed approval or endorsement.</p>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© <span id="year"></span> Fortune Loan Services. All rights reserved.</span>
+      <div class="footer-legal-links"><a href="terms-of-services.html">Terms of Service</a><a href="contact.html">Contact</a><a href="index.html#home">Back to Home ↑</a></div>
+    </div>
+  </div>
+</footer><script src="script.js"></script><script>
+function calculateEMI(){const P=Number(document.getElementById("loanAmount").value)||0,r=(Number(document.getElementById("interestRate").value)||0)/1200,n=(Number(document.getElementById("loanYears").value)||0)*12;let emi=r?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):(n?P/n:0);const total=emi*n,interest=total-P;const f=x=>"₹"+Math.round(x).toLocaleString("en-IN");emiValue.textContent=f(emi);principalValue.textContent=f(P);interestValue.textContent=f(interest);repaymentValue.textContent=f(total)}
+document.getElementById("calcBtn").addEventListener("click",calculateEMI);calculateEMI();
+</script></body></html>

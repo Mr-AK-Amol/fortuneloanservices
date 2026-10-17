@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#071d49" name="theme-color"/>
+<meta content="Fortune Loan Services — financial advisory and loan facilitation for individuals and businesses across India." name="description"/>
+<title>Fortune Loan Services | Trusted Financial Partner</title>
+<link href="assets/fortune-logo.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Loan Inquiry Popup: intentionally opens on every page load/refresh -->
+<div aria-hidden="true" class="inquiry-modal" id="inquiryModal">
+<div class="inquiry-overlay" data-close-inquiry=""></div>
+<div aria-labelledby="inquiryTitle" aria-modal="true" class="inquiry-box" role="dialog">
+<button aria-label="Close inquiry form" class="inquiry-close" id="inquiryClose" type="button">×</button>
+<div class="inquiry-accent"></div>
+<div class="inquiry-logo-wrap">
+<img alt="Fortune Loan Services" src="assets/fortune-logo.png"/>
+</div>
+<div class="inquiry-heading">
+<div class="section-kicker">QUICK LOAN INQUIRY</div>
+<h2 id="inquiryTitle">Let's discuss your <span>loan requirement.</span></h2>
+<p>Share your details and we'll open WhatsApp with your inquiry message ready to send.</p>
+</div>
+<form id="inquiryForm" novalidate="">
+<div class="form-grid">
+<label class="form-field">
+<span>Full Name <b>*</b></span>
+<input autocomplete="name" id="inqName" name="name" placeholder="Enter your name" required="" type="text"/>
+<small class="field-error" id="nameError"></small>
+</label>
+<label class="form-field">
+<span>Contact Number <b>*</b></span>
+<input autocomplete="tel" id="inqContact" name="contact" placeholder="Enter contact number" required="" type="tel" inputmode="numeric" maxlength="10"/>
+<small class="field-error" id="contactError"></small>
+</label>
+<label class="form-field">
+<span>City <b>*</b></span>
+<input autocomplete="address-level2" id="inqCity" name="city" placeholder="Your city" required="" type="text"/>
+<small class="field-error" id="cityError"></small>
+</label>
+<label class="form-field">
+<span>Required Amount <b>*</b></span>
+<input id="inqAmount" inputmode="numeric" min="1" name="loanAmount" placeholder="e.g. 1000000" required="" step="1" type="number"/>
+<small class="field-error" id="amountError"></small>
+</label>
+<label class="form-field">
+<span>Income Source <b>*</b></span>
+<select id="inqIncomeSource" name="incomeSource" required>
+<option value="">Select income source</option>
+<option value="Business Owner">Business Owner</option>
+<option value="Salaried Person">Salaried Person</option>
+</select>
+<small class="field-error" id="incomeSourceError"></small>
+</label>
+</div>
+<button class="inquiry-submit" type="submit">
+<span>Send Inquiry on WhatsApp</span><strong>↗</strong>
+</button>
+<p class="form-note">Your WhatsApp app/web will open with the inquiry details pre-filled. You choose whether to send it.</p>
+</form>
+</div>
+</div>
+<div class="preloader" id="preloader">
+<div class="loader-ring"></div>
+<img alt="Fortune Loan Services" src="assets/fortune-logo.png"/>
+</div>
+<div class="progress-bar" id="progressBar"></div>
+<header class="site-header" id="header">
+<nav class="navbar container">
+<a aria-label="Fortune Loan Services home" class="brand brand-logo" href="#home"><img src="assets/fortune-logo.png" alt="Fortune Loan Services logo"></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="about-us.html">About</a><a href="#loans">Loan Solutions</a><a href="#partners">Partners</a><a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a href="contact.html">Contact</a><a class="nav-cta" href="#contact">Apply Now</a></div>
+</nav>
+</header>
+<main>
+<section aria-label="Featured offers" aria-roledescription="carousel" class="hero" id="home">
+<div class="hero-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="hero-bank-streams" id="heroBankStreams" aria-hidden="true"></div>
+<div class="hero-particles" id="particles"></div>
+<div class="hero-slides" id="heroSlides" aria-live="off">
+<div class="hero-slide is-active" data-hero-slide role="group" aria-roledescription="slide" aria-label="1 of 2: Main hero" aria-hidden="false">
+<div class="container hero-content">
+<div class="hero-copy reveal">
+<div class="eyebrow"><span class="pulse-dot"></span> CLEAR GUIDANCE  |  SMARTER CHOICES</div>
+<h1>Smarter Funding.<br/><span>Stronger Futures.</span></h1>
+<p class="hero-text">Compare loan possibilities with clear guidance and a process built around your goals. We help individuals, professionals and businesses compare suitable lending routes and take the next step with confidence.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#contact">Find Your Loan Option <span>↗</span></a>
+<a class="btn btn-ghost" href="#process">Our Process <span>▶</span></a>
+</div>
+<div class="trust-row">
+<div><strong>500+</strong><span>Banking &amp; NBFC<br/>Partners*</span></div>
+<div><strong>Pan India</strong><span>Loan Assistance<br/>Network*</span></div>
+<div><strong>End-to-End</strong><span>Application<br/>Support</span></div>
+</div>
+<small class="disclaimer">*Partner availability and eligibility vary by product, lender and applicant profile.</small>
+</div>
+<div class="hero-visual reveal delay-2" aria-label="Fortune loan assistance overview">
+<div class="visual-orbit orbit-one"></div>
+<div class="visual-orbit orbit-two"></div>
+<div class="visual-orbit orbit-three"></div>
+<div class="visual-core">
+  <div class="core-topline"><span class="core-live-dot"></span> YOUR FINANCING JOURNEY</div>
+  <div class="core-title">Make your next<br/><span>move count.</span></div>
+  <p class="core-copy">A simple, guided approach from enquiry to application.</p>
+  <div class="core-divider"></div>
+  <div class="core-steps">
+    <div><span class="step-number">01</span><span><b>Discover</b><small>Your goals</small></span><i>↗</i></div>
+    <div><span class="step-number">02</span><span><b>Compare</b><small>Possible routes</small></span><i>↗</i></div>
+    <div><span class="step-number">03</span><span><b>Take the next step</b><small>Guided assistance</small></span><i>↗</i></div>
+  </div>
+  <div class="core-foot"><span>PERSONAL • BUSINESS • HOME</span><span class="core-arrow">↗</span></div>
+</div>
+<div class="visual-float float-a"><span class="float-check">✓</span><span><b>Guidance first</b><small>Support for your needs</small></span></div>
+<div class="visual-float float-b"><span class="float-spark">✦</span><span><b>More possibilities</b><small>Compare lending options</small></span></div>
+</div>
+</div>
+</div>
+<div class="hero-slide" data-hero-slide role="group" aria-roledescription="slide" aria-label="2 of 2: Dussehra offer" aria-hidden="true" inert>
+<div class="container hero-content dussehra-content">
+<article class="dussehra-offer-card">
+<div class="hero-copy dussehra-copy">
+<div class="eyebrow dussehra-eyebrow"><span class="pulse-dot"></span> DUSSEHRA FESTIVE OFFER</div>
+<h1>This Dussehra,<br/><span>celebrate a brighter beginning.</span></h1>
+<p class="hero-text">Make your next big move with guidance to explore current festive loan offers from participating lenders—matched to your goals and eligibility.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#contact">Check Your Loan Options <span>↗</span></a>
+<a class="btn btn-ghost" href="#loans">Explore Loan Types <span>↗</span></a>
+</div>
+<small class="disclaimer">*Festive offers, rates and eligibility depend on current lender terms and approval.</small>
+</div>
+<div aria-hidden="true" class="dussehra-art">
+<div class="dussehra-orbit"></div>
+<div class="dussehra-spark dussehra-spark-one">✦</div>
+<div class="dussehra-spark dussehra-spark-two">✧</div>
+<span class="dussehra-seal">FESTIVE<br/>SPECIAL</span>
+<span class="dussehra-art-kicker">A FESTIVAL OF NEW BEGINNINGS</span>
+<span class="dussehra-lamp">🪔</span>
+<span class="dussehra-art-title">Light up your<br/><b>next big step.</b></span>
+<span class="dussehra-art-rule"></span>
+<span class="dussehra-art-footer">PERSONAL <i>•</i> HOME <i>•</i> BUSINESS</span>
+</div>
+</article>
+</div>
+</div>
+<div aria-label="Hero slide controls" class="hero-carousel-controls" role="group">
+<button aria-label="Show main hero" aria-pressed="true" class="hero-carousel-dot is-active" data-hero-go="0" type="button"></button>
+<button aria-label="Show Dussehra offer" aria-pressed="false" class="hero-carousel-dot" data-hero-go="1" type="button"></button>
+</div>
+<div class="hero-bottom-wave"></div>
+</section>
+<section class="stats-strip">
+<div class="container stats-grid">
+<div class="stat reveal"><span class="stat-icon">₹</span><div><strong >60,000+</strong><span>+</span><small>Satisfied Clients Served</small></div></div>
+<div class="stat reveal delay-1"><span class="stat-icon">▦</span><div><strong >₹600 Cr+</strong><span>+</span><small>Total Loans Successfully Disbursed</small></div></div>
+<div class="stat reveal delay-2"><span class="stat-icon">⚡</span><div><strong>48 Hrs</strong><small>Average Credit Approval Turnaround</small></div></div>
+<div class="stat reveal delay-3"><span class="stat-icon">✓</span><div><strong>96%</strong><small>Overall Success &amp; Conversion Rate</small></div></div>
+</div>
+</section>
+<section class="section about" id="about">
+<div class="container split">
+<div class="section-heading reveal">
+<div class="section-kicker">WHY FORTUNE</div>
+<h2>Funding solutions designed around <span>your goals.</span></h2>
+<p>Fortune Loan Services connects applicants with suitable lending options across personal, property, business and specialised finance categories.</p>
+<div class="feature-list">
+<div><span>01</span><b>Profile Discovering</b><p>Discover requirements, documents and eligibility.</p></div>
+<div><span>02</span><b>Suitable Options</b><p>Compare relevant lender and product possibilities.</p></div>
+<div><span>03</span><b>Application Support</b><p>Get assistance through documentation and process steps.</p></div>
+</div>
+</div>
+<div class="director-card reveal delay-2">
+<div class="director-glow"></div>
+<div class="director-avatar">AK</div>
+<div class="director-label">FOUNDER &amp; DIRECTOR</div>
+<h3>Aamin Khan</h3>
+<p>Building a finance assistance network focused on transparent communication, practical guidance and long-term client relationships.</p>
+<a class="text-link" href="#contact">Connect with Fortune <span>↗</span></a>
+</div>
+</div>
+</section>
+
+<section class="section live-strength" id="special-solutions">
+<div class="container">
+<div class="section-title center">
+<span class="section-kicker">SPECIALIZED SUPPORT</span>
+<h2>Solutions for <span>complex profiles</span></h2>
+<p>Structured, policy-based assistance for genuine financial requirements. Final approval remains with the respective lender.</p>
+</div>
+<div class="feature-cards">
+<article class="info-card"><div class="info-icon">CIBIL</div><h3>Genuine Solutions for Poor CIBIL Profiles</h3>
+<p>We may consider low CIBIL scores, EMI bounces, settled/closed accounts and past credit issues where there is a genuine reason and current repayment capacity.</p>
+<ul><li>Low / poor CIBIL score</li><li>EMI bounces or late payments</li><li>Settled or closed loan accounts</li><li>Business or medical setbacks that are now resolved</li></ul>
+</article>
+<article class="info-card"><div class="info-icon">EMI</div><h3>EMI Restructuring &amp; Stress Reduction</h3>
+<p>Guidance on lender-approved restructuring and tenure modification for clients facing high EMI pressure, subject to lender policy and approval.</p>
+<ul><li>Multiple EMI burden</li><li>Reduced income</li><li>Temporary financial setbacks</li><li>Policy-based restructuring options</li></ul>
+</article>
+<article class="info-card"><div class="info-icon">LAP</div><h3>Property-Based Loan Support</h3>
+<p>Property valuation is considered on current market value using independent/authorised valuation processes. Future appreciation is not used for initial sanction.</p>
+<ul><li>Loan Against Property guidance</li><li>Current-value based assessment</li><li>LTV-based structuring</li><li>Top-up and balance-transfer guidance</li></ul>
+</article>
+</div>
+<div class="notice-box"><strong>Important:</strong> We do not support fake documents, inflated valuations, intentional defaults or guaranteed approvals. Loan sanctions, rates, terms and disbursement are decided by the respective Bank/NBFC.</div>
+</div>
+</section>
+<section class="section loans product-section" id="loans">
+<div class="container">
+<div class="section-title center reveal">
+<div class="section-kicker">OUR LOAN PRODUCTS</div>
+<h2>Funding options for <span>your next step.</span></h2>
+<p>Explore personal, property, business and specialist finance categories. Our team can help you understand possible routes based on your profile.</p>
+</div>
+<div class="loan-filter product-filters reveal" role="group" aria-label="Filter loan products">
+<button class="filter active" data-filter="all" type="button">All Products <span>21</span></button>
+<button class="filter" data-filter="individual" type="button">Personal</button>
+<button class="filter" data-filter="business" type="button">Business</button>
+<button class="filter" data-filter="property" type="button">Property</button>
+<button class="filter" data-filter="specialized" type="button">Specialized</button>
+</div>
+<div class="loan-grid product-grid" id="loanGrid">
+<article class="loan-card product-card reveal" data-category="individual"><div class="product-card-top"><div class="loan-icon product-icon">⌂</div><span class="product-type">PERSONAL</span></div><h3>Home Loan</h3><p>Explore financing options for eligible residential property purchase or construction.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Home Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-1" data-category="property"><div class="product-card-top"><div class="loan-icon product-icon">⇄</div><span class="product-type">PROPERTY</span></div><h3>Balance Transfer</h3><p>Review options for transferring an existing home loan, subject to lender policy.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Balance Transfer">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-2" data-category="property"><div class="product-card-top"><div class="loan-icon product-icon">＋</div><span class="product-type">PROPERTY</span></div><h3>Top-Up Home Loan</h3><p>Explore additional funding options linked to an eligible existing home loan.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Top-Up Home Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-3" data-category="property"><div class="product-card-top"><div class="loan-icon product-icon">▤</div><span class="product-type">PROPERTY</span></div><h3>Mortgage Loan</h3><p>Consider property-backed finance based on valuation, eligibility and lender terms.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Mortgage Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal" data-category="individual"><div class="product-card-top"><div class="loan-icon product-icon">₹</div><span class="product-type">PERSONAL</span></div><h3>Salaried Personal Loan</h3><p>Compare personal funding options based on income, credit profile and lender criteria.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Salaried Personal Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-1" data-category="business"><div class="product-card-top"><div class="loan-icon product-icon">↗</div><span class="product-type">BUSINESS</span></div><h3>Unsecured Business Loan</h3><p>Explore business funding options that may not require property collateral.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Unsecured Business Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-2" data-category="business"><div class="product-card-top"><div class="loan-icon product-icon">◫</div><span class="product-type">BUSINESS</span></div><h3>Working Capital Loan</h3><p>Support day-to-day business cash-flow and operating requirements.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Working Capital Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-3" data-category="business"><div class="product-card-top"><div class="loan-icon product-icon">▦</div><span class="product-type">BUSINESS</span></div><h3>MSME Loan</h3><p>Explore finance options for eligible micro, small and medium enterprises.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about MSME Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal" data-category="individual"><div class="product-card-top"><div class="loan-icon product-icon">▣</div><span class="product-type">PERSONAL</span></div><h3>Vehicle &amp; Car Loan</h3><p>Review funding options for eligible new or used personal vehicles.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Vehicle &amp; Car Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-1" data-category="business"><div class="product-card-top"><div class="loan-icon product-icon">▰</div><span class="product-type">BUSINESS</span></div><h3>Commercial Vehicle Loan</h3><p>Explore financing for eligible commercial vehicles and business mobility.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Commercial Vehicle Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-2" data-category="business"><div class="product-card-top"><div class="loan-icon product-icon">⌁</div><span class="product-type">BUSINESS</span></div><h3>Project Finance</h3><p>Discuss funding structures for eligible business and infrastructure projects.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Project Finance">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-3" data-category="property"><div class="product-card-top"><div class="loan-icon product-icon">⌂</div><span class="product-type">PROPERTY</span></div><h3>Industrial Property Loan</h3><p>Explore finance options for eligible industrial or commercial property needs.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Industrial Property Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal" data-category="property"><div class="product-card-top"><div class="loan-icon product-icon">▥</div><span class="product-type">PROPERTY</span></div><h3>Loan Against Property</h3><p>Review secured funding options against eligible residential or commercial property.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Loan Against Property">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-1" data-category="business"><div class="product-card-top"><div class="loan-icon product-icon">⚙</div><span class="product-type">BUSINESS</span></div><h3>Machinery Loan</h3><p>Explore finance for eligible machinery purchases, upgrades or expansion.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Machinery Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-2" data-category="business"><div class="product-card-top"><div class="loan-icon product-icon">⛭</div><span class="product-type">BUSINESS</span></div><h3>Equipment Finance</h3><p>Compare funding possibilities for business and professional equipment.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Equipment Finance">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-3" data-category="business"><div class="product-card-top"><div class="loan-icon product-icon">✦</div><span class="product-type">BUSINESS</span></div><h3>Startup Loan</h3><p>Review potential funding routes for eligible early-stage business requirements.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Startup Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-2" data-category="specialized"><div class="product-card-top"><div class="loan-icon product-icon">✚</div><span class="product-type">SPECIALIZED</span></div><h3>Doctor Loan</h3><p>Explore finance options tailored to eligible medical practitioners.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Doctor Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-3" data-category="specialized"><div class="product-card-top"><div class="loan-icon product-icon">▤</div><span class="product-type">SPECIALIZED</span></div><h3>Professional Loan</h3><p>Compare lending options for eligible self-employed and qualified professionals.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Professional Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal" data-category="property"><div class="product-card-top"><div class="loan-icon product-icon">⌂</div><span class="product-type">PROPERTY</span></div><h3>Construction Loan</h3><p>Explore funding options for eligible construction and property development needs.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Construction Loan">Explore options <span aria-hidden="true">↗</span></a></article><article class="loan-card product-card reveal delay-1" data-category="business"><div class="product-card-top"><div class="loan-icon product-icon">◈</div><span class="product-type">BUSINESS</span></div><h3>Equity Funding</h3><p>Discuss potential funding routes and suitability for your business profile.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Equity Funding">Explore options <span aria-hidden="true">↗</span></a></article>
+<article class="loan-card product-card reveal delay-2" data-category="individual"><div class="product-card-top"><div class="loan-icon product-icon">▤</div><span class="product-type">PERSONAL</span></div><h3>Education Loan</h3><p>Explore funding options for eligible higher education and related study expenses.</p><div class="product-meta"><div><span>ELIGIBILITY</span><strong>Profile based</strong></div><div><span>TERMS</span><strong>Lender assessed</strong></div></div><a class="product-card-link" href="#contact" aria-label="Enquire about Education Loan">Explore options <span aria-hidden="true">↗</span></a></article>
+ </div>
+ <div class="product-more-toggle-wrap">
+ <button class="btn btn-primary" id="moreProductsToggle" type="button" aria-expanded="false" aria-controls="moreProducts">Know More</button>
+ </div>
+ <section class="more-products" id="moreProducts" aria-label="More loan options" hidden>
+ <div class="more-products-group">
+ <h3>Loans for business types</h3>
+ <ul>
+ <li>Loan for Sole Proprietorship</li>
+ <li>Loan for Partnership Firm</li>
+ <li>Loan for Limited Liability Partnership (LLP)</li>
+ <li>Loan for One Person Company (OPC)</li>
+ <li>Loan for Private Limited Company</li>
+ <li>Loan for Public Limited Company</li>
+ <li>Loan for Section 8 Company</li>
+ <li>Loan for Nidhi Company</li>
+ <li>Loan for Producer Company</li>
+ <li>Loan for Government Company</li>
+ <li>Loan for Foreign Company</li>
+ <li>Loan for Holding Company</li>
+ <li>Loan for Subsidiary Company</li>
+ <li>Loan for Associate Company</li>
+ <li>Loan for Joint Venture (JV)</li>
+ <li>Loan for Co-operative Society</li>
+ <li>Loan for Society</li>
+ <li>Loan for Trust</li>
+ </ul>
+ </div>
+ <div class="more-products-group">
+ <h3>More loan solutions</h3>
+ <ul>
+ <li>Working Capital Loan</li>
+ <li>MSME Working Capital Loan</li>
+ <li>Machinery Loan</li>
+ <li>Debt Consolidation Loan</li>
+ <li>Cash Credit / OD Facility Loan</li>
+ <li>Loan Against Property</li>
+ <li>Home Loan Top-Up</li>
+ <li>Home Loan Balance Transfer</li>
+ <li>Personal Loan for Salaried</li>
+ <li>Car Loan</li>
+ <li>Agriculture Equipment Loan</li>
+ <li>Doctor / Professional Loan</li>
+ <li>Loan for Construction Company</li>
+ <li>Loan for Builders &amp; Developers</li>
+ <li>Project Finance</li>
+ <li>Loan for Manufacturers</li>
+ <li>New &amp; Re-sale Home Loan</li>
+ <li>Unsecured Business Loan</li>
+ <li>Loan for Women</li>
+ <li>Equity Funding</li>
+ </ul>
+ </div>
+ </section>
+ <div class="product-disclaimer">Product availability, eligibility, interest rates, fees and final approval depend on the respective lender and applicant profile.</div>
+</div>
+</section>
+
+<section class="section faq-live">
+<div class="container">
+<div class="section-title center"><span class="section-kicker">FAQ</span><h2>Frequently asked <span>questions</span></h2></div>
+<div class="faq-grid">
+<details><summary>Does Fortune Loan Services provide loans directly?</summary><p>No. Fortune Loan Services acts as a financial advisor and facilitator. Final approval and disbursement are handled by the respective Bank or NBFC.</p></details>
+<details><summary>Are services available across India?</summary><p>Yes. The live website states Pan-India coverage across all States and Union Territories, subject to product and lender availability.</p></details>
+<details><summary>How is eligibility assessed?</summary><p>Profiles may be assessed using CIBIL/credit history, income, employment or business profile, liabilities, documents and lender-specific criteria.</p></details>
+<details><summary>What documents are commonly required?</summary><p>PAN, Aadhaar/address proof, income proof such as salary slips or ITR, bank statements and employment/business details are commonly requested, depending on the case.</p></details>
+<details><summary>Are interest rates decided by Fortune Loan Services?</summary><p>No. Interest rates, tenure and final loan terms are determined by the respective lender under its internal credit policy.</p></details>
+<details><summary>How are documents shared with lenders?</summary><p>The live site states that documents are internally analysed first and shared only with selected lenders after analysis and with the client's consent.</p></details>
+</div>
+</div>
+</section>
+<section class="section partner-section" id="partners">
+<div class="container">
+<div class="section-title center reveal">
+<div class="section-kicker">PARTNER NETWORK</div>
+<h2>Compare our wide <span>financial ecosystem.</span></h2>
+<p>Examples of institutions and finance companies commonly represented across the network. Availability depends on the applicant and product.</p>
+</div>
+<div class="partner-tabs reveal">
+<button class="partner-tab active" data-partner="banks">Public Sector Banks <b>(12)</b></button>
+<button class="partner-tab" data-partner="private">Private Sector Banks <b>(20)</b></button>
+<button class="partner-tab" data-partner="sfb">Small Finance Banks <b>(11)</b></button>
+<button class="partner-tab" data-partner="nbfcs">NBFCs <b>(54)</b></button>
+</div>
+<div class="partner-panel active" id="banks">
+<div class="partner-logo-grid"><div class="partner-logo-card" data-domain="sbi.co.in" data-name="State Bank of India">
+<div class="logo-image-wrap">
+<img alt="State Bank of India logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/sbi.svg"/>
+<span class="logo-fallback">SBO</span>
+</div>
+<span>State Bank of India</span>
+</div>
+<div class="partner-logo-card" data-domain="bankofbaroda.in" data-name="Bank of Baroda">
+<div class="logo-image-wrap">
+<img alt="Bank of Baroda logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/bob.svg"/>
+<span class="logo-fallback">BOB</span>
+</div>
+<span>Bank of Baroda</span>
+</div>
+<div class="partner-logo-card" data-domain="pnbindia.in" data-name="Punjab National Bank">
+<div class="logo-image-wrap">
+<img alt="Punjab National Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/pnb.svg"/>
+<span class="logo-fallback">PNB</span>
+</div>
+<span>Punjab National Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="canarabank.com" data-name="Canara Bank">
+<div class="logo-image-wrap">
+<img alt="Canara Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/canara.svg"/>
+<span class="logo-fallback">CB</span>
+</div>
+<span>Canara Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="unionbankofindia.co.in" data-name="Union Bank of India">
+<div class="logo-image-wrap">
+<img alt="Union Bank of India logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/ubi.svg"/>
+<span class="logo-fallback">UBO</span>
+</div>
+<span>Union Bank of India</span>
+</div>
+<div class="partner-logo-card" data-domain="bankofindia.co.in" data-name="Bank of India">
+<div class="logo-image-wrap">
+<img alt="Bank of India logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/boi.svg"/>
+<span class="logo-fallback">BOI</span>
+</div>
+<span>Bank of India</span>
+</div>
+<div class="partner-logo-card" data-domain="indianbank.in" data-name="Indian Bank">
+<div class="logo-image-wrap">
+<img alt="Indian Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/indian.svg"/>
+<span class="logo-fallback">IB</span>
+</div>
+<span>Indian Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="centralbankofindia.co.in" data-name="Central Bank of India">
+<div class="logo-image-wrap">
+<img alt="Central Bank of India logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/cbi.svg"/>
+<span class="logo-fallback">CBO</span>
+</div>
+<span>Central Bank of India</span>
+</div>
+<div class="partner-logo-card" data-domain="iob.in" data-name="Indian Overseas Bank">
+<div class="logo-image-wrap">
+<img alt="Indian Overseas Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/iob.svg"/>
+<span class="logo-fallback">IOB</span>
+</div>
+<span>Indian Overseas Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="bankofmaharashtra.in" data-name="Bank of Maharashtra">
+<div class="logo-image-wrap">
+<img alt="Bank of Maharashtra logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/bom.svg"/>
+<span class="logo-fallback">BOM</span>
+</div>
+<span>Bank of Maharashtra</span>
+</div>
+<div class="partner-logo-card" data-domain="ucobank.com" data-name="UCO Bank">
+<div class="logo-image-wrap">
+<img alt="UCO Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/uco.svg"/>
+<span class="logo-fallback">UB</span>
+</div>
+<span>UCO Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="punjabandsindbank.co.in" data-name="Punjab &amp; Sind Bank">
+<div class="logo-image-wrap">
+<img alt="Punjab &amp; Sind Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/psb.svg"/>
+<span class="logo-fallback">PSB</span>
+</div>
+<span>Punjab &amp; Sind Bank</span>
+</div></div>
+</div>
+<div class="partner-panel" id="private">
+<div class="partner-logo-grid"><div class="partner-logo-card" data-domain="hdfcbank.com" data-name="HDFC Bank">
+<div class="logo-image-wrap">
+<img alt="HDFC Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/hdfc.svg"/>
+<span class="logo-fallback">HB</span>
+</div>
+<span>HDFC Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="icicibank.com" data-name="ICICI Bank">
+<div class="logo-image-wrap">
+<img alt="ICICI Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/icici.svg"/>
+<span class="logo-fallback">IB</span>
+</div>
+<span>ICICI Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="axisbank.com" data-name="Axis Bank">
+<div class="logo-image-wrap">
+<img alt="Axis Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/axis.svg"/>
+<span class="logo-fallback">AB</span>
+</div>
+<span>Axis Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="kotak.com" data-name="Kotak Mahindra Bank">
+<div class="logo-image-wrap">
+<img alt="Kotak Mahindra Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/kotak.svg"/>
+<span class="logo-fallback">KMB</span>
+</div>
+<span>Kotak Mahindra Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="indusind.com" data-name="IndusInd Bank">
+<div class="logo-image-wrap">
+<img alt="IndusInd Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/indus.svg"/>
+<span class="logo-fallback">IB</span>
+</div>
+<span>IndusInd Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="idfcfirstbank.com" data-name="IDFC FIRST Bank">
+<div class="logo-image-wrap">
+<img alt="IDFC FIRST Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/idfc.svg"/>
+<span class="logo-fallback">IFB</span>
+</div>
+<span>IDFC FIRST Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="yesbank.in" data-name="Yes Bank">
+<div class="logo-image-wrap">
+<img alt="Yes Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=yesbank.in&amp;sz=512"/>
+<span class="logo-fallback">YB</span>
+</div>
+<span>Yes Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="federalbank.co.in" data-name="Federal Bank">
+<div class="logo-image-wrap">
+<img alt="Federal Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/federal.svg"/>
+<span class="logo-fallback">FB</span>
+</div>
+<span>Federal Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="rblbank.com" data-name="RBL Bank">
+<div class="logo-image-wrap">
+<img alt="RBL Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/rbl.svg"/>
+<span class="logo-fallback">RB</span>
+</div>
+<span>RBL Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="bandhanbank.com" data-name="Bandhan Bank">
+<div class="logo-image-wrap">
+<img alt="Bandhan Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/bandhan.svg"/>
+<span class="logo-fallback">BB</span>
+</div>
+<span>Bandhan Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="idbibank.in" data-name="IDBI Bank">
+<div class="logo-image-wrap">
+<img alt="IDBI Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/idbi.svg"/>
+<span class="logo-fallback">IB</span>
+</div>
+<span>IDBI Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="southindianbank.com" data-name="South Indian Bank">
+<div class="logo-image-wrap">
+<img alt="South Indian Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/sib.svg"/>
+<span class="logo-fallback">SIB</span>
+</div>
+<span>South Indian Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="jkb.bank.in" data-name="Jammu &amp; Kashmir Bank">
+<div class="logo-image-wrap">
+<img alt="Jammu &amp; Kashmir Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/jnk.svg"/>
+<span class="logo-fallback">JKB</span>
+</div>
+<span>Jammu &amp; Kashmir Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="karnatakabank.com" data-name="Karnataka Bank">
+<div class="logo-image-wrap">
+<img alt="Karnataka Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/karnataka.svg"/>
+<span class="logo-fallback">KB</span>
+</div>
+<span>Karnataka Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="kvb.co.in" data-name="Karur Vysya Bank">
+<div class="logo-image-wrap">
+<img alt="Karur Vysya Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/kvb.svg"/>
+<span class="logo-fallback">KVB</span>
+</div>
+<span>Karur Vysya Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="cityunionbank.com" data-name="City Union Bank">
+<div class="logo-image-wrap">
+<img alt="City Union Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/cub.svg"/>
+<span class="logo-fallback">CUB</span>
+</div>
+<span>City Union Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="dcbbank.com" data-name="DCB Bank">
+<div class="logo-image-wrap">
+<img alt="DCB Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/dcb.svg"/>
+<span class="logo-fallback">DB</span>
+</div>
+<span>DCB Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="csb.co.in" data-name="CSB Bank">
+<div class="logo-image-wrap">
+<img alt="CSB Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/csb.svg"/>
+<span class="logo-fallback">CB</span>
+</div>
+<span>CSB Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="tmbnet.in" data-name="Tamilnad Mercantile Bank">
+<div class="logo-image-wrap">
+<img alt="Tamilnad Mercantile Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/tmb.svg"/>
+<span class="logo-fallback">TMB</span>
+</div>
+<span>Tamilnad Mercantile Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="dhanbank.com" data-name="Dhanlaxmi Bank">
+<div class="logo-image-wrap">
+<img alt="Dhanlaxmi Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/dhanlaxmi.svg"/>
+<span class="logo-fallback">DB</span>
+</div>
+<span>Dhanlaxmi Bank</span>
+</div></div>
+</div>
+<div class="partner-panel" id="sfb">
+<div class="partner-logo-grid"><div class="partner-logo-card" data-domain="aubank.in" data-name="AU Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="AU Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/ausfb.svg"/>
+<span class="logo-fallback">ASF</span>
+</div>
+<span>AU Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="equitasbank.com" data-name="Equitas Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="Equitas Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=equitasbank.com&amp;sz=512"/>
+<span class="logo-fallback">ESF</span>
+</div>
+<span>Equitas Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="ujjivansfb.in" data-name="Ujjivan Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="Ujjivan Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/ujjivan.svg"/>
+<span class="logo-fallback">USF</span>
+</div>
+<span>Ujjivan Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="jana.bank.in" data-name="Jana Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="Jana Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=jana.bank.in&amp;sz=512"/>
+<span class="logo-fallback">JSF</span>
+</div>
+<span>Jana Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="suryoday.bank.in" data-name="Suryoday Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="Suryoday Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=suryoday.bank.in&amp;sz=512"/>
+<span class="logo-fallback">SSF</span>
+</div>
+<span>Suryoday Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="utkarsh.bank" data-name="Utkarsh Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="Utkarsh Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=utkarsh.bank&amp;sz=512"/>
+<span class="logo-fallback">USF</span>
+</div>
+<span>Utkarsh Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="esaf.bank.in" data-name="ESAF Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="ESAF Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://cdn.jsdelivr.net/gh/auraveni/global-bank-logos@main/assets/bank/indian-bank/esaf.svg"/>
+<span class="logo-fallback">ESF</span>
+</div>
+<span>ESAF Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="capital.bank.in" data-name="Capital Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="Capital Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=capital.bank.in&amp;sz=512"/>
+<span class="logo-fallback">CSF</span>
+</div>
+<span>Capital Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="shivalik.bank.in" data-name="Shivalik Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="Shivalik Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=shivalik.bank.in&amp;sz=512"/>
+<span class="logo-fallback">SSF</span>
+</div>
+<span>Shivalik Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="theunitybank.com" data-name="Unity Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="Unity Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=theunitybank.com&amp;sz=512"/>
+<span class="logo-fallback">USF</span>
+</div>
+<span>Unity Small Finance Bank</span>
+</div>
+<div class="partner-logo-card" data-domain="slice.bank.in" data-name="slice Small Finance Bank">
+<div class="logo-image-wrap">
+<img alt="slice Small Finance Bank logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=slice.bank.in&amp;sz=512"/>
+<span class="logo-fallback">SSF</span>
+</div>
+<span>slice Small Finance Bank</span>
+</div></div>
+</div>
+<div class="partner-panel" id="nbfcs">
+<div class="partner-logo-grid"><div class="partner-logo-card" data-domain="bajajfinserv.in" data-name="Bajaj Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Bajaj Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=bajajfinserv.in&amp;sz=512"/>
+<span class="logo-fallback">BFL</span>
+</div>
+<span>Bajaj Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="tatacapital.com" data-name="Tata Capital Financial Services Ltd.">
+<div class="logo-image-wrap">
+<img alt="Tata Capital Financial Services Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=tatacapital.com&amp;sz=512"/>
+<span class="logo-fallback">TCF</span>
+</div>
+<span>Tata Capital Financial Services Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="adityabirlacapital.com" data-name="Aditya Birla Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Aditya Birla Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=adityabirlacapital.com&amp;sz=512"/>
+<span class="logo-fallback">ABF</span>
+</div>
+<span>Aditya Birla Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="ltfinance.com" data-name="L&amp;T Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="L&amp;T Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=ltfinance.com&amp;sz=512"/>
+<span class="logo-fallback">LTF</span>
+</div>
+<span>L&amp;T Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="mahindrafinance.com" data-name="Mahindra &amp; Mahindra Financial Services Ltd.">
+<div class="logo-image-wrap">
+<img alt="Mahindra &amp; Mahindra Financial Services Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=mahindrafinance.com&amp;sz=512"/>
+<span class="logo-fallback">MMF</span>
+</div>
+<span>Mahindra &amp; Mahindra Financial Services Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="cholamandalam.com" data-name="Cholamandalam Investment and Finance Company Ltd.">
+<div class="logo-image-wrap">
+<img alt="Cholamandalam Investment and Finance Company Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=cholamandalam.com&amp;sz=512"/>
+<span class="logo-fallback">CIA</span>
+</div>
+<span>Cholamandalam Investment and Finance Company Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="shriramfinance.in" data-name="Shriram Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Shriram Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=shriramfinance.in&amp;sz=512"/>
+<span class="logo-fallback">SFL</span>
+</div>
+<span>Shriram Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="hdbfs.com" data-name="HDB Financial Services Ltd.">
+<div class="logo-image-wrap">
+<img alt="HDB Financial Services Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=hdbfs.com&amp;sz=512"/>
+<span class="logo-fallback">HFS</span>
+</div>
+<span>HDB Financial Services Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="herofincorp.com" data-name="Hero FinCorp Ltd.">
+<div class="logo-image-wrap">
+<img alt="Hero FinCorp Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=herofincorp.com&amp;sz=512"/>
+<span class="logo-fallback">HFL</span>
+</div>
+<span>Hero FinCorp Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="poonawallafincorp.com" data-name="Poonawalla Fincorp Ltd.">
+<div class="logo-image-wrap">
+<img alt="Poonawalla Fincorp Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=poonawallafincorp.com&amp;sz=512"/>
+<span class="logo-fallback">PFL</span>
+</div>
+<span>Poonawalla Fincorp Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="iifl.com" data-name="IIFL Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="IIFL Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=iifl.com&amp;sz=512"/>
+<span class="logo-fallback">IFL</span>
+</div>
+<span>IIFL Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="muthootfinance.com" data-name="Muthoot Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Muthoot Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=muthootfinance.com&amp;sz=512"/>
+<span class="logo-fallback">MFL</span>
+</div>
+<span>Muthoot Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="manappuram.com" data-name="Manappuram Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Manappuram Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=manappuram.com&amp;sz=512"/>
+<span class="logo-fallback">MFL</span>
+</div>
+<span>Manappuram Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="hindujaleylandfinance.com" data-name="Hinduja Leyland Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Hinduja Leyland Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=hindujaleylandfinance.com&amp;sz=512"/>
+<span class="logo-fallback">HLF</span>
+</div>
+<span>Hinduja Leyland Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="tvscredit.com" data-name="TVS Credit Services Ltd.">
+<div class="logo-image-wrap">
+<img alt="TVS Credit Services Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=tvscredit.com&amp;sz=512"/>
+<span class="logo-fallback">TCS</span>
+</div>
+<span>TVS Credit Services Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="tatamotorsfinance.com" data-name="Tata Motors Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Tata Motors Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=tatamotorsfinance.com&amp;sz=512"/>
+<span class="logo-fallback">TMF</span>
+</div>
+<span>Tata Motors Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="primeloans.kotak.com" data-name="Kotak Mahindra Prime Ltd.">
+<div class="logo-image-wrap">
+<img alt="Kotak Mahindra Prime Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=primeloans.kotak.com&amp;sz=512"/>
+<span class="logo-fallback">KMP</span>
+</div>
+<span>Kotak Mahindra Prime Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="sbfc.com" data-name="SBFC Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="SBFC Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=sbfc.com&amp;sz=512"/>
+<span class="logo-fallback">SFL</span>
+</div>
+<span>SBFC Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="lendingkart.com" data-name="Lendingkart Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Lendingkart Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=lendingkart.com&amp;sz=512"/>
+<span class="logo-fallback">LFL</span>
+</div>
+<span>Lendingkart Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="avanse.com" data-name="Avanse Financial Services Ltd.">
+<div class="logo-image-wrap">
+<img alt="Avanse Financial Services Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=avanse.com&amp;sz=512"/>
+<span class="logo-fallback">AFS</span>
+</div>
+<span>Avanse Financial Services Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="incred.com" data-name="InCred Financial Services Ltd.">
+<div class="logo-image-wrap">
+<img alt="InCred Financial Services Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=incred.com&amp;sz=512"/>
+<span class="logo-fallback">IFS</span>
+</div>
+<span>InCred Financial Services Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="incredprime.com" data-name="InCred Prime Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="InCred Prime Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=incredprime.com&amp;sz=512"/>
+<span class="logo-fallback">IPF</span>
+</div>
+<span>InCred Prime Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="clix.capital" data-name="Clix Capital Services Pvt. Ltd.">
+<div class="logo-image-wrap">
+<img alt="Clix Capital Services Pvt. Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=clix.capital&amp;sz=512"/>
+<span class="logo-fallback">CCS</span>
+</div>
+<span>Clix Capital Services Pvt. Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="navi.com" data-name="Navi Finserv Ltd.">
+<div class="logo-image-wrap">
+<img alt="Navi Finserv Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=navi.com&amp;sz=512"/>
+<span class="logo-fallback">NFL</span>
+</div>
+<span>Navi Finserv Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="ugrocapital.com" data-name="UGRO Capital Ltd.">
+<div class="logo-image-wrap">
+<img alt="UGRO Capital Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=ugrocapital.com&amp;sz=512"/>
+<span class="logo-fallback">UCL</span>
+</div>
+<span>UGRO Capital Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="fivestarfinance.in" data-name="Five-Star Business Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Five-Star Business Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=fivestarfinance.in&amp;sz=512"/>
+<span class="logo-fallback">FSB</span>
+</div>
+<span>Five-Star Business Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="mas.co.in" data-name="MAS Financial Services Ltd.">
+<div class="logo-image-wrap">
+<img alt="MAS Financial Services Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=mas.co.in&amp;sz=512"/>
+<span class="logo-fallback">MFS</span>
+</div>
+<span>MAS Financial Services Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="capriglobal.in" data-name="Capri Global Capital Ltd.">
+<div class="logo-image-wrap">
+<img alt="Capri Global Capital Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=capriglobal.in&amp;sz=512"/>
+<span class="logo-fallback">CGC</span>
+</div>
+<span>Capri Global Capital Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="indostarcapital.com" data-name="IndoStar Capital Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="IndoStar Capital Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=indostarcapital.com&amp;sz=512"/>
+<span class="logo-fallback">ICF</span>
+</div>
+<span>IndoStar Capital Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="smfgindiacredit.com" data-name="SMFG India Credit Company Ltd.">
+<div class="logo-image-wrap">
+<img alt="SMFG India Credit Company Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=smfgindiacredit.com&amp;sz=512"/>
+<span class="logo-fallback">SIC</span>
+</div>
+<span>SMFG India Credit Company Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="northernarc.com" data-name="Northern Arc Capital Ltd.">
+<div class="logo-image-wrap">
+<img alt="Northern Arc Capital Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=northernarc.com&amp;sz=512"/>
+<span class="logo-fallback">NAC</span>
+</div>
+<span>Northern Arc Capital Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="vivriticapital.com" data-name="Vivriti Capital Ltd.">
+<div class="logo-image-wrap">
+<img alt="Vivriti Capital Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=vivriticapital.com&amp;sz=512"/>
+<span class="logo-fallback">VCL</span>
+</div>
+<span>Vivriti Capital Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="ayefin.com" data-name="Aye Finance Pvt. Ltd.">
+<div class="logo-image-wrap">
+<img alt="Aye Finance Pvt. Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=ayefin.com&amp;sz=512"/>
+<span class="logo-fallback">AFP</span>
+</div>
+<span>Aye Finance Pvt. Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="kinaracapital.com" data-name="Kinara Capital Pvt. Ltd.">
+<div class="logo-image-wrap">
+<img alt="Kinara Capital Pvt. Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=kinaracapital.com&amp;sz=512"/>
+<span class="logo-fallback">KCP</span>
+</div>
+<span>Kinara Capital Pvt. Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="neogrowth.in" data-name="NeoGrowth Credit Pvt. Ltd.">
+<div class="logo-image-wrap">
+<img alt="NeoGrowth Credit Pvt. Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=neogrowth.in&amp;sz=512"/>
+<span class="logo-fallback">NCP</span>
+</div>
+<span>NeoGrowth Credit Pvt. Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="veritasfin.in" data-name="Veritas Finance Pvt. Ltd.">
+<div class="logo-image-wrap">
+<img alt="Veritas Finance Pvt. Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=veritasfin.in&amp;sz=512"/>
+<span class="logo-fallback">VFP</span>
+</div>
+<span>Veritas Finance Pvt. Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="armanindia.com" data-name="Arman Financial Services Ltd.">
+<div class="logo-image-wrap">
+<img alt="Arman Financial Services Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=armanindia.com&amp;sz=512"/>
+<span class="logo-fallback">AFS</span>
+</div>
+<span>Arman Financial Services Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="efl.co.in" data-name="Electronica Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Electronica Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=efl.co.in&amp;sz=512"/>
+<span class="logo-fallback">EFL</span>
+</div>
+<span>Electronica Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="eskayfinance.com" data-name="Ess Kay Fincorp Ltd.">
+<div class="logo-image-wrap">
+<img alt="Ess Kay Fincorp Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=eskayfinance.com&amp;sz=512"/>
+<span class="logo-fallback">EKF</span>
+</div>
+<span>Ess Kay Fincorp Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="namrafinance.com" data-name="Namra Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Namra Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=namrafinance.com&amp;sz=512"/>
+<span class="logo-fallback">NFL</span>
+</div>
+<span>Namra Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="svatantra.com" data-name="Svatantra Micro Housing Finance Corporation Ltd.">
+<div class="logo-image-wrap">
+<img alt="Svatantra Micro Housing Finance Corporation Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=svatantra.com&amp;sz=512"/>
+<span class="logo-fallback">SMH</span>
+</div>
+<span>Svatantra Micro Housing Finance Corporation Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="ikffinance.com" data-name="IKF Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="IKF Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=ikffinance.com&amp;sz=512"/>
+<span class="logo-fallback">IFL</span>
+</div>
+<span>IKF Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="indelmoney.com" data-name="Indel Money Ltd.">
+<div class="logo-image-wrap">
+<img alt="Indel Money Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=indelmoney.com&amp;sz=512"/>
+<span class="logo-fallback">IML</span>
+</div>
+<span>Indel Money Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="johndeerefinancial.com" data-name="John Deere Financial India Pvt. Ltd.">
+<div class="logo-image-wrap">
+<img alt="John Deere Financial India Pvt. Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=johndeerefinancial.com&amp;sz=512"/>
+<span class="logo-fallback">JDF</span>
+</div>
+<span>John Deere Financial India Pvt. Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="hfs.in" data-name="Hiranandani Financial Services Pvt. Ltd.">
+<div class="logo-image-wrap">
+<img alt="Hiranandani Financial Services Pvt. Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=hfs.in&amp;sz=512"/>
+<span class="logo-fallback">HFS</span>
+</div>
+<span>Hiranandani Financial Services Pvt. Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="iffcokisanfinance.com" data-name="IFFCO Kisan Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="IFFCO Kisan Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=iffcokisanfinance.com&amp;sz=512"/>
+<span class="logo-fallback">IKF</span>
+</div>
+<span>IFFCO Kisan Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="indiainfradebt.com" data-name="India Infradebt Ltd.">
+<div class="logo-image-wrap">
+<img alt="India Infradebt Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=indiainfradebt.com&amp;sz=512"/>
+<span class="logo-fallback">IIL</span>
+</div>
+<span>India Infradebt Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="sammaanfinserve.com" data-name="Indiabulls Commercial Credit Ltd.">
+<div class="logo-image-wrap">
+<img alt="Indiabulls Commercial Credit Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=sammaanfinserve.com&amp;sz=512"/>
+<span class="logo-fallback">ICC</span>
+</div>
+<span>Indiabulls Commercial Credit Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="rathifinance.com" data-name="Anand Rathi Global Finance Ltd.">
+<div class="logo-image-wrap">
+<img alt="Anand Rathi Global Finance Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=rathifinance.com&amp;sz=512"/>
+<span class="logo-fallback">ARG</span>
+</div>
+<span>Anand Rathi Global Finance Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="ananyafinance.com" data-name="Ananya Finance for Inclusive Growth Pvt. Ltd.">
+<div class="logo-image-wrap">
+<img alt="Ananya Finance for Inclusive Growth Pvt. Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=ananyafinance.com&amp;sz=512"/>
+<span class="logo-fallback">AFF</span>
+</div>
+<span>Ananya Finance for Inclusive Growth Pvt. Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="bajajautocredit.com" data-name="Bajaj Auto Credit Ltd.">
+<div class="logo-image-wrap">
+<img alt="Bajaj Auto Credit Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=bajajautocredit.com&amp;sz=512"/>
+<span class="logo-fallback">BAC</span>
+</div>
+<span>Bajaj Auto Credit Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="amritmalwacapital.com" data-name="Amrit Malwa Capital Ltd.">
+<div class="logo-image-wrap">
+<img alt="Amrit Malwa Capital Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=amritmalwacapital.com&amp;sz=512"/>
+<span class="logo-fallback">AMC</span>
+</div>
+<span>Amrit Malwa Capital Ltd.</span>
+</div>
+<div class="partner-logo-card" data-domain="godrejcapital.com" data-name="Godrej Capital">
+<div class="logo-image-wrap">
+<img alt="Godrej Capital logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=godrejcapital.com&amp;sz=512"/>
+<span class="logo-fallback">GC</span>
+</div>
+<span>Godrej Capital</span>
+</div>
+<div class="partner-logo-card" data-domain="ratnaafin.co.in" data-name="Ratnaafin Capital Pvt. Ltd.">
+<div class="logo-image-wrap">
+<img alt="Ratnaafin Capital Pvt. Ltd. logo" decoding="async" loading="lazy" onerror="if(!this.dataset.alt){this.dataset.alt='1';this.src='https://icons.duckduckgo.com/ip3/'+this.closest('.partner-logo-card').dataset.domain+'.ico';}else{this.style.display='none';this.nextElementSibling.style.display='grid';}" referrerpolicy="no-referrer" src="https://www.google.com/s2/favicons?domain=ratnaafin.co.in&amp;sz=512"/>
+<span class="logo-fallback">RCP</span>
+</div>
+<span>Ratnaafin Capital Pvt. Ltd.</span>
+</div></div>
+</div>
+<div class="partner-count-strip">
+<strong>97</strong>
+<span>banking &amp; NBFC logo tiles displayed in the partner directory</span>
+</div>
+<p class="partner-note">Partner names/logos are shown for informational purposes. Displaying a logo does not by itself indicate approval, endorsement, exclusivity or a current commercial partnership. Lender availability depends on product and applicant eligibility.</p>
+</div>
+</section>
+<section class="section process" id="process">
+<div class="container">
+<div class="section-title center reveal">
+<div class="section-kicker">SIMPLE PROCESS</div>
+<h2>From requirement to <span>application.</span></h2>
+</div>
+<div class="process-line">
+<div class="process-step reveal"><span>01</span><div class="process-icon">⌕</div><h3>Share Requirement</h3><p>Tell us your loan purpose and basic profile.</p></div>
+<div class="process-step reveal delay-1"><span>02</span><div class="process-icon">✓</div><h3>Profile Review</h3><p>Review eligibility factors and documentation needs.</p></div>
+<div class="process-step reveal delay-2"><span>03</span><div class="process-icon">⇄</div><h3>Compare Options</h3><p>Identify suitable lender and product possibilities.</p></div>
+<div class="process-step reveal delay-3"><span>04</span><div class="process-icon">↗</div><h3>Application Support</h3><p>Assistance through the next steps of the process.</p></div>
+</div>
+</div>
+</section>
+<section class="cta-section" id="contact">
+<div class="cta-glow"></div>
+<div class="container cta-inner reveal">
+<div>
+<div class="section-kicker">LET'S TALK FINANCE</div>
+<h2>Have a requirement?<br/><span>Let's discuss it.</span></h2>
+<p>Connect with Fortune Loan Services for loan-assistance and product guidance.</p>
+</div>
+<div class="contact-card">
+<div class="contact-item"><span>☎</span><div><small>PHONE</small><a href="tel:+919028346900">+91 9028346900</a></div></div>
+<div class="contact-item"><span>✉</span><div><small>EMAIL</small><a href="mailto:business@fortuneloan.services">business@fortuneloan.services</a></div></div>
+<div class="contact-item"><span>◎</span><div><small>WEBSITE</small><a href="https://www.fortuneloan.services" rel="noopener" target="_blank">www.fortuneloan.services</a></div></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer professional-footer" id="site-footer">
+  <div class="container footer-main">
+    <div class="footer-brand-column">
+      <a class="footer-logo-link" href="index.html" aria-label="Fortune Loan Services home">
+        <img alt="Fortune Loan Services" src="assets/fortune-logo.png"/>
+      </a>
+      <p class="footer-tagline">Your Trusted Loan Partner</p>
+      <p class="footer-intro">Guidance to help individuals, professionals and businesses explore suitable lending options through banks and NBFCs.</p>
+      <div class="footer-cta-row">
+        <a class="footer-button footer-button-primary" href="contact.html">Talk to Our Team <span aria-hidden="true">↗</span></a>
+        <a class="footer-button footer-button-outline" href="emi-calculator.html">EMI Calculator</a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h3>Explore</h3>
+      <a href="index.html#about">About Fortune</a>
+      <a href="index.html#loans">Loan Solutions</a>
+      <a href="index.html#partners">Partner Network</a>
+      <a href="index.html#process">How It Works</a>
+      <a href="join-us.html">Join Our Network</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <a href="contact.html">Contact Us</a>
+      <a href="emi-calculator.html">EMI Calculator</a>
+      <a href="terms-of-services.html">Terms of Service</a>
+      <a href="contact.html#contact-form">Send an Enquiry</a>
+      <a href="index.html#loans">Explore Loan Options</a>
+    </div>
+
+    <div class="footer-column footer-contact-column">
+      <h3>Get in Touch</h3>
+      <a class="footer-contact-link" href="tel:+919028346900"><span class="footer-contact-icon" aria-hidden="true">☎</span><span><small>Call our team</small><strong>+91 90283 46900</strong></span></a>
+      <a class="footer-contact-link" href="mailto:business@fortuneloan.services"><span class="footer-contact-icon" aria-hidden="true">✉</span><span><small>Email us</small><strong>business@fortuneloan.services</strong></span></a>
+    </div>
+    <div class="footer-social-links" aria-label="Follow us on social media">
+      <a class="footer-button footer-button-social" href="https://www.instagram.com/official.fortuneloanservices/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Follow Fortune Loan Services on Instagram">Instagram <span aria-hidden="true">↗</span></a>
+      <a class="footer-button footer-button-social" href="https://www.facebook.com/profile.php?id=61591488407283" target="_blank" rel="noopener noreferrer" aria-label="Follow Fortune Loan Services on Facebook">Facebook <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <div class="container footer-addresses">
+    <div class="footer-address-card">
+      <div class="footer-address-heading"><span class="footer-address-icon" aria-hidden="true">⌖</span><div><span class="footer-eyebrow">HEAD OFFICE</span><h3>Vadodara, Gujarat</h3></div></div>
+      <p>Incuspaze, 3rd Floor, 1965, Gorwa, Alembic City, Alembic Road, Vadodara, Gujarat – 390003.</p>
+      <a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Incuspaze%2C%203rd%20Floor%2C%201965%2C%20Gorwa%2C%20Alembic%20City%2C%20Alembic%20Road%2C%20Vadodara%2C%20Gujarat%20390003" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="footer-address-card">
+      <div class="footer-address-heading"><span class="footer-address-icon" aria-hidden="true">⌖</span><div><span class="footer-eyebrow">REGISTERED OFFICE</span><h3>Baner, Pune</h3></div></div>
+      <p>WorkFlo by OYO – Office No. 702, Icon Tower, Baner Road, Opposite KFC, Baner, Pune, Maharashtra – 411045.</p>
+      <a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=WorkFlo%20by%20OYO%2C%20Office%20No.%20702%2C%20Icon%20Tower%2C%20Baner%20Road%2C%20Opposite%20KFC%2C%20Baner%2C%20Pune%2C%20Maharashtra%20411045" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+
+  <div class="container footer-disclaimer">
+    <strong>Important information</strong>
+    <p>Fortune Loan Services facilitates loan assistance and connects applicants with potential lending options. Loan approval, interest rates, fees, eligibility and disbursement are determined by the respective lender and depend on its policies and the applicant’s profile. Partner logos and names are for informational purposes and do not imply guaranteed approval or endorsement.</p>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© <span id="year"></span> Fortune Loan Services. All rights reserved.</span>
+      <div class="footer-legal-links"><a href="terms-of-services.html">Terms of Service</a><a href="contact.html">Contact</a><a href="index.html#home">Back to Home ↑</a></div>
+    </div>
+  </div>
+</footer>
+<button aria-label="Back to top" class="back-top" id="backTop">↑</button>
+<script src="script.js"></script>
+</body>
+</html>
