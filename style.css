@@ -2262,3 +2262,128 @@ h1 span{
   .navratri-hero,.navratri-hero::before,.navratri-hero::after,.navratri-hero *,
   .navratri-hero *::before,.navratri-hero *::after{animation:none!important;transition:none!important}
 }
+
+/* Keep the EMI summary centered and arrange compact lender cards on the circle. */
+@media(max-width:900px){
+  .navratri-hero .art{--orbit-radius:calc(min(50vw,250px) - clamp(62px,17vw,78px));}
+  .navratri-hero .mandala{width:min(100%,500px)}
+  .navratri-hero .center-card{
+    top:50%;width:clamp(100px,29vw,130px);min-width:0;min-height:0;
+    padding:5px;border-radius:17px;
+  }
+  .navratri-hero .center-card.single-emi{width:clamp(96px,27vw,122px);min-height:0}
+  .navratri-hero .center-label{margin-bottom:2px;font-size:clamp(7px,1vw,9px)}
+  .navratri-hero .center-card.single-emi .center-label{font-size:clamp(7px,1vw,9px)}
+  .navratri-hero .amount{font-size:clamp(15px,3.8vw,25px);letter-spacing:-.6px}
+  .navratri-hero .per{font-size:clamp(7px,1.4vw,10px)}
+  .navratri-hero .emi-row{gap:4px;margin-top:2px;font-size:clamp(7px,1.3vw,10px)}
+  .navratri-hero .emi-pill{padding:3px 5px}
+  .navratri-hero .saving-note{min-height:0;margin-top:2px;font-size:clamp(6px,.9vw,8px);line-height:1.15}
+  .navratri-hero .bars{gap:2px;margin-top:4px}
+  .navratri-hero .bars span{height:4px}
+  .navratri-hero .loan-card{
+    left:50%;right:auto;top:50%;width:clamp(82px,26vw,120px);
+    min-height:0;padding:5px 6px;gap:0;border-radius:10px;
+    transform:translate(-50%,-50%);
+  }
+  .navratri-hero .loan-icon,.navratri-hero .loan-divider{display:none}
+  .navratri-hero .loan-text{width:100%;text-align:center;line-height:1.08}
+  .navratri-hero .bank{font-size:clamp(7px,1vw,9px);line-height:1.08;white-space:normal}
+  .navratri-hero .loan-amount{font-size:clamp(9px,1.35vw,11px);line-height:1.12}
+  .navratri-hero .loan-type{margin-top:1px;font-size:clamp(7px,.95vw,8px);line-height:1.08;white-space:normal}
+  .navratri-hero .loan-card.card-1{
+    left:50%;top:calc(50% - var(--orbit-radius));
+    width:clamp(82px,26vw,120px);
+  }
+  .navratri-hero .loan-card.card-2{
+    left:calc(50% + min(47.55vw,237.75px) - clamp(58.96px,16.17vw,74.18px));
+    top:calc(50% - min(15.45vw,77.25px) + clamp(19.16px,5.25vw,24.1px));
+  }
+  .navratri-hero .loan-card.card-3{
+    left:calc(50% + min(29.4vw,147px) - clamp(36.46px,10vw,45.86px));
+    top:calc(50% + min(40.45vw,202.25px) - clamp(50.16px,13.77vw,63.1px));
+  }
+  .navratri-hero .loan-card.card-4{
+    left:calc(50% - min(29.4vw,147px) + clamp(36.46px,10vw,45.86px));
+    top:calc(50% + min(40.45vw,202.25px) - clamp(50.16px,13.77vw,63.1px));
+  }
+  .navratri-hero .loan-card.card-5{
+    left:calc(50% - min(47.55vw,237.75px) + clamp(58.96px,16.17vw,74.18px));
+    top:calc(50% - min(15.45vw,77.25px) + clamp(19.16px,5.25vw,24.1px));
+  }
+  .navratri-hero .loan-card.to-background,
+  .navratri-hero .loan-card.to-background.card-1,
+  .navratri-hero .loan-card.to-background.card-2,
+  .navratri-hero .loan-card.to-background.card-3,
+  .navratri-hero .loan-card.to-background.card-4,
+  .navratri-hero .loan-card.to-background.card-5{
+    transform:translate(-50%,-50%) scale(.14)!important;
+  }
+  .navratri-hero .loan-card.from-background{
+    animation:navratriCardRevealInPlace .95s cubic-bezier(.16,1,.3,1) both!important;
+  }
+  .navratri-hero .terms{right:6%;bottom:3%;left:6%;max-width:none;text-align:center}
+}
+@media(min-width:901px){
+  .navratri-hero .art{--orbit-radius:calc(min(24.2vw,380px) - clamp(92px,9vw,154px))}
+  .navratri-hero .mandala,.navratri-hero .center-halo,.navratri-hero .center-card{top:50%}
+  .navratri-hero .center-card{
+    width:clamp(130px,18vw,210px);min-width:0;min-height:0;
+    padding:8px;border-radius:18px;
+  }
+  .navratri-hero .center-card.single-emi{width:clamp(125px,17vw,195px);min-height:0}
+  .navratri-hero .center-label{margin-bottom:4px;font-size:clamp(8px,.7vw,11px)}
+  .navratri-hero .center-card.single-emi .center-label{font-size:clamp(8px,.7vw,11px)}
+  .navratri-hero .amount{font-size:clamp(18px,2vw,30px);letter-spacing:-.8px}
+  .navratri-hero .per{font-size:clamp(9px,.85vw,13px)}
+  .navratri-hero .emi-row{gap:5px;margin-top:4px;font-size:clamp(8px,.85vw,12px)}
+  .navratri-hero .emi-pill{padding:4px 7px}
+  .navratri-hero .saving-note{min-height:0;margin-top:3px;font-size:clamp(7px,.6vw,10px);line-height:1.1}
+  .navratri-hero .bars{gap:3px;margin-top:5px}
+  .navratri-hero .bars span{height:5px}
+  .navratri-hero .loan-card{
+    left:50%;right:auto;top:50%;width:clamp(150px,15vw,220px);
+    min-height:0;padding:7px 9px;gap:0;border-radius:14px;
+    transform:translate(-50%,-50%);
+  }
+  .navratri-hero .loan-icon,.navratri-hero .loan-divider{display:none}
+  .navratri-hero .loan-text{width:100%;text-align:center;line-height:1.1}
+  .navratri-hero .bank{font-size:clamp(10px,1vw,14px);line-height:1.1;white-space:normal}
+  .navratri-hero .loan-amount{font-size:clamp(12px,1.4vw,18px);line-height:1.14}
+  .navratri-hero .loan-type{margin-top:2px;font-size:clamp(9px,.9vw,12px);line-height:1.1;white-space:normal}
+  .navratri-hero .loan-card.card-1{
+    left:50%;top:calc(50% - var(--orbit-radius));width:clamp(150px,15vw,220px)
+  }
+  .navratri-hero .loan-card.card-2{
+    left:calc(50% + min(19.36vw,304px) - clamp(73.6px,7.2vw,123.2px));
+    top:calc(50% - min(14.52vw,228px) + clamp(55.2px,5.4vw,92.4px));
+  }
+  .navratri-hero .loan-card.card-3{
+    left:calc(50% + min(19.36vw,304px) - clamp(73.6px,7.2vw,123.2px));
+    top:calc(50% + min(15.49vw,243.2px) - clamp(58.88px,5.76vw,98.56px));
+  }
+  .navratri-hero .loan-card.card-4{
+    left:calc(50% - min(19.36vw,304px) + clamp(73.6px,7.2vw,123.2px));
+    top:calc(50% + min(15.49vw,243.2px) - clamp(58.88px,5.76vw,98.56px));
+  }
+  .navratri-hero .loan-card.card-5{
+    left:calc(50% - min(19.36vw,304px) + clamp(73.6px,7.2vw,123.2px));
+    top:calc(50% - min(14.52vw,228px) + clamp(55.2px,5.4vw,92.4px));
+  }
+  .navratri-hero .loan-card.to-background,
+  .navratri-hero .loan-card.to-background.card-1,
+  .navratri-hero .loan-card.to-background.card-2,
+  .navratri-hero .loan-card.to-background.card-3,
+  .navratri-hero .loan-card.to-background.card-4,
+  .navratri-hero .loan-card.to-background.card-5{
+    transform:translate(-50%,-50%) scale(.14)!important;
+  }
+  .navratri-hero .loan-card.from-background{
+    animation:navratriCardRevealInPlace .95s cubic-bezier(.16,1,.3,1) both!important;
+  }
+}
+@keyframes navratriCardRevealInPlace{
+  0%{opacity:0;filter:blur(8px) brightness(1.4);transform:translate(-50%,-50%) scale(.14)}
+  70%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) scale(1.035)}
+  100%{opacity:1;filter:blur(0);transform:translate(-50%,-50%) scale(1)}
+}
