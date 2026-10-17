@@ -1,5 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contact Us | Fortune Loan Services</title><meta name="description" content="Contact Fortune Loan Services for professional loan advisory, structured lending and EMI restructuring support.">
+<link rel="canonical" href="https://fortuneloanservices-r7s5.vercel.app/contact.html"><meta property="og:type" content="website"><meta property="og:title" content="Contact Us | Fortune Loan Services"><meta property="og:description" content="Contact Fortune Loan Services for loan advisory and EMI restructuring support."><meta property="og:url" content="https://fortuneloanservices-r7s5.vercel.app/contact.html"><meta property="og:image" content="https://fortuneloanservices-r7s5.vercel.app/assets/fortune-logo.png">
 <link rel="icon" href="assets/fortune-logo.png"><link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
@@ -7,7 +8,7 @@
 <header class="site-header scrolled" id="header">
  <div class="container navbar">
   <a class="brand" href="index.html"><img src="assets/fortune-logo.png" alt="Fortune Loan Services"></a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav-links" id="navLinks">
    <a href="index.html">Home</a><a href="about-us.html">About</a><a href="index.html#loans">Loan Solutions</a><a href="index.html#partners">Partners</a>
    <a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Apply Now</a>
@@ -24,14 +25,14 @@
 </div>
 <div class="form-card"><h2>Send Us a Message</h2><p style="color:#6d7b90;font-size:12px;margin:8px 0 20px">Fill in your details and the form will open WhatsApp with your enquiry.</p>
 <form id="contactForm"><div class="form-grid">
-<div class="form-field"><label>First Name *</label><input required id="cfFirst" placeholder="John"></div>
-<div class="form-field"><label>Last Name *</label><input required id="cfLast" placeholder="Doe"></div>
-<div class="form-field"><label>Email *</label><input required type="email" id="cfEmail" placeholder="you@example.com"></div>
-<div class="form-field"><label>Mobile Number *</label><input required id="cfMobile" inputmode="numeric" placeholder="0000000000"></div>
-<div class="form-field full"><label>Subject *</label><input required id="cfSubject" placeholder="How can we help you?"></div>
-<div class="form-field full"><label>Message *</label><textarea required id="cfMessage" placeholder="Tell us about your requirement"></textarea></div>
+<div class="form-field"><label for="cfFirst">First Name *</label><input required id="cfFirst" name="firstName" autocomplete="given-name" placeholder="John"></div>
+<div class="form-field"><label for="cfLast">Last Name *</label><input required id="cfLast" name="lastName" autocomplete="family-name" placeholder="Doe"></div>
+<div class="form-field"><label for="cfEmail">Email *</label><input required type="email" id="cfEmail" name="email" autocomplete="email" placeholder="you@example.com"></div>
+<div class="form-field"><label for="cfMobile">Mobile Number *</label><input required id="cfMobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="0000000000"></div>
+<div class="form-field full"><label for="cfSubject">Subject *</label><input required id="cfSubject" name="subject" placeholder="How can we help you?"></div>
+<div class="form-field full"><label for="cfMessage">Message *</label><textarea required id="cfMessage" name="message" placeholder="Tell us about your requirement"></textarea></div>
 <div class="form-field full"><button class="btn btn-primary" type="submit">Send Enquiry ↗</button></div>
-</div></form></div></div></section></main><footer class="footer professional-footer" id="site-footer">
+</div></form><p class="form-note">Submitting opens WhatsApp with your details pre-filled; nothing is sent until you choose to send the message.</p><p id="contactFormStatus" class="form-note" role="status" aria-live="polite"></p></div></div></section></main><footer class="footer professional-footer" id="site-footer">
   <div class="container footer-main">
     <div class="footer-brand-column">
       <a class="footer-logo-link" href="index.html" aria-label="Fortune Loan Services home">
@@ -59,7 +60,7 @@
       <a href="contact.html">Contact Us</a>
       <a href="emi-calculator.html">EMI Calculator</a>
       <a href="terms-of-services.html">Terms of Service</a>
-      <a href="contact.html#contact-form">Send an Enquiry</a>
+      <a href="contact.html#contactForm">Send an Enquiry</a>
       <a href="index.html#loans">Explore Loan Options</a>
     </div>
 
@@ -98,4 +99,4 @@
       <div class="footer-legal-links"><a href="terms-of-services.html">Terms of Service</a><a href="contact.html">Contact</a><a href="index.html#home">Back to Home ↑</a></div>
     </div>
   </div>
-</footer><script src="script.js"></script><script>document.getElementById("contactForm").addEventListener("submit",function(e){e.preventDefault();const m=`*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${cfFirst.value} ${cfLast.value}\nEmail: ${cfEmail.value}\nMobile: ${cfMobile.value}\nSubject: ${cfSubject.value}\nMessage: ${cfMessage.value}`;window.open("https://wa.me/919028346900?text="+encodeURIComponent(m),"_blank","noopener,noreferrer")})</script></body></html>
+</footer><script src="script.js"></script></body></html>

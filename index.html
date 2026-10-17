@@ -7,6 +7,12 @@
 <meta content="#071d49" name="theme-color"/>
 <meta content="Fortune Loan Services — financial advisory and loan facilitation for individuals and businesses across India." name="description"/>
 <title>Fortune Loan Services | Trusted Financial Partner</title>
+<link rel="canonical" href="https://fortuneloanservices-r7s5.vercel.app/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Fortune Loan Services | Trusted Financial Partner"/>
+<meta property="og:description" content="Financial advisory and loan facilitation for individuals and businesses across India."/>
+<meta property="og:url" content="https://fortuneloanservices-r7s5.vercel.app/"/>
+<meta property="og:image" content="https://fortuneloanservices-r7s5.vercel.app/assets/fortune-logo.png"/>
 <link href="assets/fortune-logo.png" rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -32,27 +38,27 @@
 <div class="form-grid">
 <label class="form-field">
 <span>Full Name <b>*</b></span>
-<input autocomplete="name" id="inqName" name="name" placeholder="Enter your name" required="" type="text"/>
+<input autocomplete="name" id="inqName" name="name" placeholder="Enter your name" required="" type="text" aria-describedby="nameError"/>
 <small class="field-error" id="nameError"></small>
 </label>
 <label class="form-field">
 <span>Contact Number <b>*</b></span>
-<input autocomplete="tel" id="inqContact" name="contact" placeholder="Enter contact number" required="" type="tel" inputmode="numeric" maxlength="10"/>
+<input autocomplete="tel" id="inqContact" name="contact" placeholder="Enter contact number" required="" type="tel" inputmode="numeric" maxlength="10" aria-describedby="contactError"/>
 <small class="field-error" id="contactError"></small>
 </label>
 <label class="form-field">
 <span>City <b>*</b></span>
-<input autocomplete="address-level2" id="inqCity" name="city" placeholder="Your city" required="" type="text"/>
+<input autocomplete="address-level2" id="inqCity" name="city" placeholder="Your city" required="" type="text" aria-describedby="cityError"/>
 <small class="field-error" id="cityError"></small>
 </label>
 <label class="form-field">
 <span>Required Amount <b>*</b></span>
-<input id="inqAmount" inputmode="numeric" min="1" name="loanAmount" placeholder="e.g. 1000000" required="" step="1" type="number"/>
+<input id="inqAmount" inputmode="numeric" min="1" name="loanAmount" placeholder="e.g. 1000000" required="" step="1" type="number" aria-describedby="amountError"/>
 <small class="field-error" id="amountError"></small>
 </label>
 <label class="form-field">
 <span>Income Source <b>*</b></span>
-<select id="inqIncomeSource" name="incomeSource" required>
+<select id="inqIncomeSource" name="incomeSource" required aria-describedby="incomeSourceError">
 <option value="">Select income source</option>
 <option value="Business Owner">Business Owner</option>
 <option value="Salaried Person">Salaried Person</option>
@@ -63,7 +69,8 @@
 <button class="inquiry-submit" type="submit">
 <span>Send Inquiry on WhatsApp</span><strong>↗</strong>
 </button>
-<p class="form-note">Your WhatsApp app/web will open with the inquiry details pre-filled. You choose whether to send it.</p>
+<p class="form-note">WhatsApp will open with your inquiry details pre-filled. Review the message and choose whether to send it.</p>
+<p class="form-note" id="inquiryStatus" role="status" aria-live="polite"></p>
 </form>
 </div>
 </div>
@@ -189,8 +196,8 @@
 </section>
 <section class="stats-strip">
 <div class="container stats-grid">
-<div class="stat reveal"><span class="stat-icon">₹</span><div><strong >60,000+</strong><span>+</span><small>Satisfied Clients Served</small></div></div>
-<div class="stat reveal delay-1"><span class="stat-icon">▦</span><div><strong >₹600 Cr+</strong><span>+</span><small>Total Loans Successfully Disbursed</small></div></div>
+<div class="stat reveal"><span class="stat-icon">✓</span><div><strong>60,000+</strong><small>Satisfied Clients Served</small></div></div>
+<div class="stat reveal delay-1"><span class="stat-icon">₹</span><div><strong>₹600 Cr+</strong><small>Total Loans Successfully Disbursed</small></div></div>
 <div class="stat reveal delay-2"><span class="stat-icon">⚡</span><div><strong>48 Hrs</strong><small>Average Credit Approval Turnaround</small></div></div>
 <div class="stat reveal delay-3"><span class="stat-icon">✓</span><div><strong>96%</strong><small>Overall Success &amp; Conversion Rate</small></div></div>
 </div>
@@ -1095,7 +1102,7 @@
       <a href="contact.html">Contact Us</a>
       <a href="emi-calculator.html">EMI Calculator</a>
       <a href="terms-of-services.html">Terms of Service</a>
-      <a href="contact.html#contact-form">Send an Enquiry</a>
+      <a href="contact.html#contactForm">Send an Enquiry</a>
       <a href="index.html#loans">Explore Loan Options</a>
     </div>
 

@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
 
-  setTimeout(() => {
-    preloader.style.opacity = "0";
-    preloader.style.pointerEvents = "none";
-    setTimeout(() => preloader.remove(), 650);
-  }, 700);
+  if (preloader) {
+    setTimeout(() => {
+      preloader.style.opacity = "0";
+      preloader.style.pointerEvents = "none";
+      setTimeout(() => preloader.remove(), 650);
+    }, 700);
+  }
 
   // Mobile navigation
   if(menuToggle && navLinks){
@@ -21,7 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggle.querySelectorAll("span")[1].style.opacity = open ? "0" : "1";
     menuToggle.querySelectorAll("span")[2].style.transform = open ? "translateY(-7px) rotate(-45deg)" : "";
   });
-  navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+  navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.querySelectorAll("span")[0].style.transform = "";
+    menuToggle.querySelectorAll("span")[1].style.opacity = "1";
+    menuToggle.querySelectorAll("span")[2].style.transform = "";
+  }));
   }
 
   // Scroll UI
@@ -91,26 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
       moreProductsToggle.textContent = expanded ? "Show Less" : "Know More";
     });
   }
-
-  // High-quality online partner-logo loader.
-  // Primary logos use scalable SVG references where available; failed references
-  // fall back to a 256px Google-hosted favicon and finally the initials tile.
-  document.querySelectorAll(".partner-logo-card").forEach(card => {
-    const img = card.querySelector(".logo-image-wrap img");
-    const fallback = card.querySelector(".logo-fallback");
-    const domain = card.dataset.domain;
-    if (!img || !domain) return;
-    let triedFallback = false;
-    img.addEventListener("error", () => {
-      if (!triedFallback) {
-        triedFallback = true;
-        img.src = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=256`;
-        return;
-      }
-      img.style.display = "none";
-      if (fallback) fallback.style.display = "grid";
-    });
-  });
 
   // Animated partner directory: exactly two horizontal rows per active category.
   // Existing partner cards are split across two tracks, then duplicated for seamless looping.
@@ -348,6 +336,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const scheduleHeroRotation = () => {
       window.clearTimeout(heroRotationTimer);
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const dwellTime = activeSlideIndex === 1 ? 10000 : 5000;
       heroRotationTimer = window.setTimeout(() => {
         showSlide(activeSlideIndex + 1);
@@ -387,26 +376,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Particle field
   const particleWrap = document.getElementById("particles");
-  for(let i=0;i<42;i++){
-    const p = document.createElement("span");
-    p.className = "particle";
-    p.style.left = Math.random()*100 + "%";
-    p.style.top = (45 + Math.random()*55) + "%";
-    p.style.animationDuration = (7 + Math.random()*10) + "s";
-    p.style.animationDelay = (-Math.random()*10) + "s";
-    particleWrap.appendChild(p);
+  if (particleWrap) {
+    for(let i=0;i<42;i++){
+      const p = document.createElement("span");
+      p.className = "particle";
+      p.style.left = Math.random()*100 + "%";
+      p.style.top = (45 + Math.random()*55) + "%";
+      p.style.animationDuration = (7 + Math.random()*10) + "s";
+      p.style.animationDelay = (-Math.random()*10) + "s";
+      particleWrap.appendChild(p);
+    }
   }
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
 
   // Loan inquiry popup: open on every page load/refresh.
   const inquiryModal = document.getElementById("inquiryModal");
   const inquiryForm = document.getElementById("inquiryForm");
   const inquiryClose = document.getElementById("inquiryClose");
   const inquiryOverlay = document.querySelector("[data-close-inquiry]");
+  const whatsappNumber = "919028346900";
+  const openWhatsApp = (message, status) => {
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const popup = window.open(url, "_blank");
+    if (popup) {
+      popup.opener = null;
+      status.textContent = "WhatsApp opened with your message ready. Review it and choose whether to send.";
+      return true;
+    }
+    status.replaceChildren(
+      document.createTextNode("Your browser blocked the WhatsApp window. "),
+      Object.assign(document.createElement("a"), {
+        href: url,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        textContent: "Open your prepared message"
+      })
+    );
+    return false;
+  };
 
   if(inquiryModal && inquiryForm && inquiryClose && inquiryOverlay){
+  let previousFocus = null;
+  const focusableSelector = "a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex='-1'])";
   const openInquiry = () => {
+    previousFocus = document.activeElement;
     inquiryModal.classList.add("show");
     inquiryModal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
@@ -417,6 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inquiryModal.classList.remove("show");
     inquiryModal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
+    if (previousFocus instanceof HTMLElement) previousFocus.focus();
   };
 
   // A tiny delay makes the popup feel intentional after the page starts loading.
@@ -425,7 +441,28 @@ document.addEventListener("DOMContentLoaded", () => {
   inquiryClose.addEventListener("click", closeInquiry);
   inquiryOverlay.addEventListener("click", closeInquiry);
   document.addEventListener("keydown", (e) => {
-    if(e.key === "Escape" && inquiryModal.classList.contains("show")) closeInquiry();
+    if (!inquiryModal.classList.contains("show")) return;
+    if (e.key === "Escape") {
+      closeInquiry();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const focusable = Array.from(inquiryModal.querySelectorAll(focusableSelector))
+      .filter(element => element.getClientRects().length);
+    if (!focusable.length) {
+      e.preventDefault();
+      inquiryModal.querySelector(".inquiry-box")?.focus();
+      return;
+    }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
 
   inquiryForm.addEventListener("submit", (e) => {
@@ -447,20 +484,23 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     Object.values(errors).forEach(el => el.textContent = "");
-    Object.values(fields).forEach(el => el.style.borderColor = "");
+    Object.values(fields).forEach(el => {
+      el.style.borderColor = "";
+      el.removeAttribute("aria-invalid");
+    });
 
     let valid = true;
-    if(!fields.name.value.trim()){ errors.name.textContent = "Please enter your name."; valid = false; }
+    if(!fields.name.value.trim()){ errors.name.textContent = "Please enter your name."; valid = false; fields.name.setAttribute("aria-invalid", "true"); }
     const contact = fields.contact.value.replace(/\D/g, "");
     if(!/^[6-9]\d{9}$/.test(contact)){
-      errors.contact.textContent = "Please enter a valid 10-digit contact number."; valid = false;
+      errors.contact.textContent = "Please enter a valid 10-digit contact number."; valid = false; fields.contact.setAttribute("aria-invalid", "true");
     }
-    if(!fields.city.value.trim()){ errors.city.textContent = "Please enter your city."; valid = false; }
+    if(!fields.city.value.trim()){ errors.city.textContent = "Please enter your city."; valid = false; fields.city.setAttribute("aria-invalid", "true"); }
     if(!fields.amount.value || Number(fields.amount.value) <= 0){
-      errors.amount.textContent = "Please enter a valid required amount."; valid = false;
+      errors.amount.textContent = "Please enter a valid required amount."; valid = false; fields.amount.setAttribute("aria-invalid", "true");
     }
     if(!fields.incomeSource.value){
-      errors.incomeSource.textContent = "Please select your income source."; valid = false;
+      errors.incomeSource.textContent = "Please select your income source."; valid = false; fields.incomeSource.setAttribute("aria-invalid", "true");
     }
     if(!valid) return;
 
@@ -477,13 +517,79 @@ Income Source: ${fields.incomeSource.value}
 Website Inquiry
 Please contact this lead regarding suitable loan options.`;
 
-    // WhatsApp destination: Fortune Loan Services contact number.
-    const whatsappNumber = "919028346900";
-    const waUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
-
-    window.open(waUrl, "_blank", "noopener,noreferrer");
-    closeInquiry();
+    const status = document.getElementById("inquiryStatus");
+    if (openWhatsApp(message, status)) closeInquiry();
   });
+  }
+
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    const mobile = document.getElementById("cfMobile");
+    const status = document.getElementById("contactFormStatus");
+    contactForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const digits = mobile.value.replace(/\D/g, "");
+      mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
+      if (!contactForm.reportValidity()) return;
+      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nSubject: ${document.getElementById("cfSubject").value.trim()}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
+      openWhatsApp(message, status);
+    });
+    mobile.addEventListener("input", () => mobile.setCustomValidity(""));
+  }
+
+  const partnerForm = document.getElementById("partnerForm");
+  if (partnerForm) {
+    const mobile = document.getElementById("pfMobile");
+    const pincode = document.getElementById("pfPin");
+    const status = document.getElementById("partnerFormStatus");
+    partnerForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const digits = mobile.value.replace(/\D/g, "");
+      mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
+      pincode.setCustomValidity(/^\d{6}$/.test(pincode.value.trim()) ? "" : "Enter a valid 6-digit pincode.");
+      if (!partnerForm.reportValidity()) return;
+      const message = `*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\nName: ${document.getElementById("pfName").value.trim()}\nMobile: ${digits}\nEmail: ${document.getElementById("pfEmail").value.trim()}\nState: ${document.getElementById("pfState").value.trim()}\nCity: ${document.getElementById("pfCity").value.trim()}\nPincode: ${pincode.value.trim()}\nPreferred Loan: ${document.getElementById("pfLoan").value.trim()}\nProfessional Experience: ${document.getElementById("pfExp").value.trim() || "Not provided"}`;
+      openWhatsApp(message, status);
+    });
+    mobile.addEventListener("input", () => mobile.setCustomValidity(""));
+    pincode.addEventListener("input", () => pincode.setCustomValidity(""));
+  }
+
+  const calculatorButton = document.getElementById("calcBtn");
+  const calculatorResults = {
+    emi: document.getElementById("emiValue"),
+    principal: document.getElementById("principalValue"),
+    interest: document.getElementById("interestValue"),
+    repayment: document.getElementById("repaymentValue")
+  };
+  const calculatorError = document.getElementById("calculatorError");
+  if (calculatorButton && Object.values(calculatorResults).every(Boolean) && calculatorError) {
+    const amountInput = document.getElementById("loanAmount");
+    const rateInput = document.getElementById("interestRate");
+    const yearsInput = document.getElementById("loanYears");
+    const currency = value => "₹" + Math.round(value).toLocaleString("en-IN");
+    const calculateEmi = () => {
+      calculatorError.textContent = "";
+      if (![amountInput, rateInput, yearsInput].every(input => input && input.reportValidity())) return;
+      const principal = Number(amountInput.value);
+      const monthlyRate = Number(rateInput.value) / 1200;
+      const months = Number(yearsInput.value) * 12;
+      const factor = Math.pow(1 + monthlyRate, months);
+      const emi = monthlyRate === 0
+        ? principal / months
+        : principal * monthlyRate * factor / (factor - 1);
+      if (!Number.isFinite(emi)) {
+        calculatorError.textContent = "Unable to calculate with these values. Check the amount, rate and tenure.";
+        return;
+      }
+      const repayment = emi * months;
+      calculatorResults.emi.textContent = currency(emi);
+      calculatorResults.principal.textContent = currency(principal);
+      calculatorResults.interest.textContent = currency(repayment - principal);
+      calculatorResults.repayment.textContent = currency(repayment);
+    };
+    calculatorButton.addEventListener("click", calculateEmi);
+    calculateEmi();
   }
 
 });
