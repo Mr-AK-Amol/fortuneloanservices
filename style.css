@@ -1665,21 +1665,23 @@ h1 span{
   height:100%;
   color:#fff;
   background:
-    radial-gradient(ellipse at 73% 42%,rgba(255,183,51,.62) 0,rgba(232,74,18,.58) 24%,transparent 54%),
-    radial-gradient(ellipse at 20% 46%,rgba(116,13,18,.74),transparent 60%),
-    linear-gradient(112deg,#4d080b 0%,#9f1710 43%,#e64b12 74%,#7b1011 100%);
-  background-size:150% 150%;
-  animation:navratriFestivalGlow 24s ease-in-out infinite alternate;
+    radial-gradient(ellipse at 76% 40%,rgba(255,191,74,.5) 0,rgba(232,74,18,.42) 25%,transparent 56%),
+    radial-gradient(ellipse at 23% 48%,rgba(116,13,18,.8),transparent 58%),
+    linear-gradient(112deg,#36080d 0%,#761018 37%,#bd3219 70%,#541014 100%);
+  background-size:145% 145%;
+  box-shadow:inset 0 0 100px rgba(36,4,12,.32),inset 0 0 0 1px rgba(255,231,168,.2);
+  animation:navratriFestivalGlow 30s ease-in-out infinite alternate;
 }
 .navratri-hero::before{
   position:absolute;
   z-index:-2;
   inset:0;
   background-image:
-    repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.12) 3px 4px),
-    repeating-linear-gradient(90deg,transparent 0 3px,rgba(0,0,0,.13) 3px 4px);
+    radial-gradient(ellipse at 50% 48%,transparent 25%,rgba(30,4,12,.3) 100%),
+    repeating-linear-gradient(0deg,transparent 0 4px,rgba(255,255,255,.07) 4px 5px),
+    repeating-linear-gradient(90deg,transparent 0 4px,rgba(0,0,0,.08) 4px 5px);
   content:"";
-  opacity:.17;
+  opacity:.36;
 }
 .navratri-hero::after{
   position:absolute;
@@ -1697,19 +1699,20 @@ h1 span{
   position:relative;
   z-index:5;
   width:52%;
+  box-sizing:border-box;
   padding:clamp(138px,10vw,164px) 0 100px 7.9%;
 }
 .navratri-hero .eyebrow{
   display:block;
   margin:0;
-  color:#ffe08a!important;
+  color:#ffe7a2!important;
   font-family:"Bodoni MT","Didot","Times New Roman",serif;
-  font-size:clamp(36px,4.7vw,82px);
+  font-size:clamp(32px,3.9vw,64px);
   font-style:italic;
   font-weight:500;
   line-height:1.02;
   letter-spacing:-2px;
-  text-shadow:0 0 26px rgba(255,184,55,.25);
+  text-shadow:0 2px 2px rgba(48,7,14,.32),0 0 30px rgba(255,197,77,.34);
   white-space:nowrap;
 }
 .navratri-hero h1{
@@ -1717,11 +1720,11 @@ h1 span{
   margin:18px 0 32px;
   color:#fffaf1!important;
   font-family:"Plus Jakarta Sans",Inter,sans-serif;
-  font-size:clamp(46px,5.4vw,82px);
+  font-size:clamp(44px,4.7vw,70px);
   font-weight:900;
   line-height:.99;
   letter-spacing:-.055em;
-  text-shadow:0 5px 28px rgba(60,0,0,.25);
+  text-shadow:0 3px 2px rgba(60,0,0,.24),0 12px 34px rgba(48,0,0,.34);
 }
 .navratri-hero .ribbon{
   position:relative;
@@ -1731,9 +1734,9 @@ h1 span{
   width:min(100%,565px);
   min-height:clamp(48px,3.7vw,72px);
   padding:10px 24px;
-  color:#14263e;
-  background:linear-gradient(110deg,#fff0ae,#ffbd32 52%,#ffe58a);
-  box-shadow:0 7px 24px rgba(255,176,33,.25);
+  color:#281c31;
+  background:linear-gradient(110deg,#fff4c9 0%,#ffd66d 48%,#fff0b5 100%);
+  box-shadow:0 2px 0 rgba(255,255,255,.55) inset,0 8px 24px rgba(58,8,10,.22),0 0 24px rgba(255,190,60,.2);
   clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%);
   font-size:clamp(16px,1.45vw,26px);
   font-weight:800;
@@ -1743,6 +1746,7 @@ h1 span{
   position:relative;
   z-index:0;
   display:flex;
+  box-sizing:border-box;
   align-items:center;
   justify-content:space-between;
   gap:20px;
@@ -1752,8 +1756,9 @@ h1 span{
   padding:12px 14px 12px 32px;
   overflow:hidden;
   border-radius:100px;
-  background:#fff;
-  box-shadow:0 7px 0 rgba(255,255,255,.12),0 0 28px rgba(255,172,38,.23);
+  border:1px solid rgba(255,255,255,.78);
+  background:linear-gradient(110deg,#fff 0%,#fffdf8 58%,#fff3d7 100%);
+  box-shadow:0 2px 0 rgba(255,255,255,.8) inset,0 12px 32px rgba(49,5,15,.25),0 0 30px rgba(255,194,69,.24);
   color:#1c1934;
   font-size:clamp(17px,1.65vw,29px);
   font-weight:800;
@@ -1769,7 +1774,7 @@ h1 span{
   content:"";
   animation:navratriCtaShine 4s ease-in-out infinite;
 }
-.navratri-hero .cta:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 12px 25px rgba(255,191,35,.28)}
+.navratri-hero .cta:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 3px 0 rgba(255,255,255,.8) inset,0 18px 34px rgba(49,5,15,.3),0 0 34px rgba(255,191,35,.38)}
 .navratri-hero .cta-arrow{
   display:grid;
   place-items:center;
@@ -1777,8 +1782,8 @@ h1 span{
   height:clamp(48px,3.7vw,72px);
   flex:none;
   border-radius:50%;
-  background:linear-gradient(135deg,#ffe78a,#f59e0b);
-  box-shadow:0 0 0 0 rgba(255,190,35,.45);
+  background:linear-gradient(145deg,#fff1a7 0%,#ffc43f 55%,#e88b16 100%);
+  box-shadow:0 2px 4px rgba(98,42,0,.25),0 0 0 5px rgba(255,190,35,.12);
   color:#671014;
   font-size:clamp(24px,2vw,38px);
   animation:navratriArrowNudge 1.7s ease-in-out infinite;
@@ -1802,9 +1807,9 @@ h1 span{
   width:min(88%,760px);
   aspect-ratio:1;
   transform:translate(-50%,-50%);
-  border:4px dotted rgba(255,205,94,.72);
+  border:3px dotted rgba(255,223,147,.64);
   border-radius:50%;
-  filter:drop-shadow(0 0 16px rgba(255,158,32,.3));
+  filter:drop-shadow(0 0 20px rgba(255,185,66,.38));
   opacity:.95;
   animation:navratriMandalaBreath 7s ease-in-out infinite;
 }
@@ -1837,14 +1842,15 @@ h1 span{
   width:44%;
   aspect-ratio:1;
   transform:translate(-50%,-50%);
-  border:2px solid rgba(255,201,73,.88);
+  border:2px solid rgba(255,224,153,.78);
   border-radius:50%;
-  box-shadow:0 0 28px rgba(255,151,30,.48),inset 0 0 28px rgba(255,220,112,.24);
+  box-shadow:0 0 38px rgba(255,166,47,.42),inset 0 0 34px rgba(255,220,138,.2);
   animation:navratriHaloPulse 6.5s ease-in-out infinite;
 }
 .navratri-hero .center-card{
   position:absolute;
   z-index:12;
+  box-sizing:border-box;
   top:39%;
   left:50%;
   width:37%;
@@ -1854,9 +1860,10 @@ h1 span{
   padding:clamp(20px,1.55vw,31px);
   transform:translate(-50%,-50%);
   transform-style:preserve-3d;
+  border:1px solid rgba(255,255,255,.9);
   border-radius:30px;
-  background:#fff;
-  box-shadow:0 12px 0 rgba(255,255,255,.22),0 20px 36px rgba(92,22,0,.25),0 0 34px rgba(255,221,102,.28);
+  background:linear-gradient(145deg,#fff 0%,#fffdf8 57%,#fff5df 100%);
+  box-shadow:0 2px 0 rgba(255,255,255,.86) inset,0 20px 42px rgba(56,4,14,.3),0 0 40px rgba(255,220,130,.32);
   color:#1c1934;
   animation:navratriCenterFloat 4s ease-in-out infinite;
   transition:box-shadow .9s ease,filter .9s ease,transform .9s cubic-bezier(.22,1,.36,1);
@@ -1929,17 +1936,18 @@ h1 span{
   position:absolute;
   z-index:8;
   display:flex;
+  box-sizing:border-box;
   align-items:center;
-  gap:12px;
-  width:clamp(220px,18.4vw,330px);
-  min-height:clamp(58px,4.1vw,76px);
-  padding:10px 14px;
+  gap:14px;
+  width:clamp(235px,19vw,350px);
+  min-height:clamp(66px,4.5vw,82px);
+  padding:12px 16px;
   overflow:hidden;
   transform-style:preserve-3d;
-  border:1px solid rgba(255,255,255,.55);
+  border:1px solid rgba(255,255,255,.82);
   border-radius:19px;
-  background:#fff;
-  box-shadow:0 7px 15px rgba(75,0,0,.13);
+  background:linear-gradient(115deg,#fff 0%,#fffdf8 62%,#fff4de 100%);
+  box-shadow:0 2px 0 rgba(255,255,255,.85) inset,0 12px 26px rgba(59,4,13,.2),0 0 0 1px rgba(255,211,126,.12);
   color:#17152b;
   backface-visibility:hidden;
   animation:navratriCardHover 3.5s ease-in-out infinite;
@@ -1975,12 +1983,12 @@ h1 span{
 .navratri-hero .loan-card.card-3{left:-2%;top:47%;animation-delay:-.7s}
 .navratri-hero .loan-card.card-4{right:-2%;top:46%;animation-delay:-1.8s}
 .navratri-hero .loan-card.card-5{left:34%;top:80%;animation-delay:-1.4s}
-.navratri-hero .loan-icon{display:flex;align-items:center;justify-content:center;width:27%;min-width:46px;font-size:clamp(20px,1.7vw,31px);filter:drop-shadow(0 0 5px rgba(255,195,50,.16))}
-.navratri-hero .loan-divider{width:1px;height:43px;flex:none;background:#e9e5e5}
+.navratri-hero .loan-icon{display:flex;align-items:center;justify-content:center;width:27%;min-width:48px;font-size:clamp(22px,1.9vw,34px);filter:drop-shadow(0 0 5px rgba(255,195,50,.16))}
+.navratri-hero .loan-divider{width:1px;height:48px;flex:none;background:#e9e5e5}
 .navratri-hero .loan-text{min-width:0;line-height:1.16}
-.navratri-hero .bank{font-size:clamp(12px,.95vw,17px);font-weight:800;white-space:nowrap}
-.navratri-hero .loan-amount{font-size:clamp(16px,1.2vw,22px);font-weight:900;white-space:nowrap}
-.navratri-hero .loan-type{margin-top:3px;color:#e03232;font-size:clamp(11px,.82vw,15px);white-space:nowrap}
+.navratri-hero .bank{font-size:clamp(13px,1.05vw,18px);font-weight:800;white-space:nowrap}
+.navratri-hero .loan-amount{font-size:clamp(18px,1.35vw,24px);font-weight:900;white-space:nowrap}
+.navratri-hero .loan-type{margin-top:3px;color:#e03232;font-size:clamp(12px,.9vw,16px);white-space:nowrap}
 .navratri-hero .card-1{--exit-rotate:-8deg}
 .navratri-hero .card-2{--exit-rotate:8deg}
 .navratri-hero .card-3{--exit-rotate:-6deg}
@@ -2161,25 +2169,25 @@ h1 span{
 @media(max-width:1100px) and (min-width:901px){
   .navratri-hero{min-height:790px}
   .navratri-hero .left-copy{width:49%;padding-left:5.5%;padding-top:140px}
-  .navratri-hero .eyebrow{font-size:clamp(42px,4.2vw,58px)}
-  .navratri-hero h1{font-size:clamp(50px,5.2vw,68px);margin:14px 0 28px}
+  .navratri-hero .eyebrow{font-size:clamp(36px,3.8vw,50px)}
+  .navratri-hero h1{font-size:clamp(46px,4.5vw,60px);margin:14px 0 28px}
   .navratri-hero .ribbon{min-height:54px;padding:8px 18px;font-size:clamp(15px,1.55vw,19px)}
   .navratri-hero .cta{min-height:72px;padding-left:24px;font-size:clamp(17px,1.65vw,21px)}
   .navratri-hero .art{width:56%}
   .navratri-hero .center-card{top:40%;width:260px;min-height:190px;padding:18px}
-  .navratri-hero .loan-card{width:clamp(185px,20vw,230px);min-height:56px;padding:8px;gap:7px}
-  .navratri-hero .loan-icon{min-width:35px}
-  .navratri-hero .bank{font-size:11px}
-  .navratri-hero .loan-amount{font-size:15px}
-  .navratri-hero .loan-type{font-size:10px}
+  .navratri-hero .loan-card{width:clamp(200px,21vw,245px);min-height:62px;padding:9px 10px;gap:9px}
+  .navratri-hero .loan-icon{min-width:38px}
+  .navratri-hero .bank{font-size:13px}
+  .navratri-hero .loan-amount{font-size:17px}
+  .navratri-hero .loan-type{font-size:11px}
 }
 @media(max-width:900px){
   .navratri-hero{min-height:1020px}
   .navratri-hero .left-copy{width:100%;padding:112px 7% 0}
-  .navratri-hero .eyebrow{font-size:clamp(37px,8vw,64px)}
-  .navratri-hero h1{margin:12px 0 25px;font-size:clamp(48px,9.8vw,80px)}
-  .navratri-hero .ribbon{width:min(100%,520px);font-size:clamp(14px,3.2vw,22px)}
-  .navratri-hero .cta{width:min(100%,520px);min-height:74px;margin-top:24px;font-size:clamp(16px,3.7vw,24px)}
+  .navratri-hero .eyebrow{font-size:clamp(34px,7vw,56px)}
+  .navratri-hero h1{margin:12px 0 25px;font-size:clamp(42px,8.5vw,68px)}
+  .navratri-hero .ribbon{width:min(100%,520px);font-size:clamp(14px,3vw,20px)}
+  .navratri-hero .cta{width:min(100%,520px);min-height:74px;margin-top:24px;font-size:clamp(16px,3.4vw,22px)}
   .navratri-hero .art{position:relative;top:auto;right:auto;width:100%;height:520px;min-height:520px;margin:24px auto 70px}
   .navratri-hero .mandala{width:min(90%,500px)}
   .navratri-hero .center-card{top:42%;width:clamp(250px,35vw,330px);min-height:190px}
@@ -2200,34 +2208,34 @@ h1 span{
 }
 @media(max-width:520px){
   .navratri-hero{min-height:1140px}
-  .navratri-hero .left-copy{padding:102px 6% 0}
-  .navratri-hero .eyebrow{font-size:39px;letter-spacing:-1px}
-  .navratri-hero h1{margin:12px 0 22px;font-size:48px;line-height:1.02}
+  .navratri-hero .left-copy{padding:102px 6% 0;text-align:center}
+  .navratri-hero .eyebrow{font-size:clamp(30px,8vw,36px);letter-spacing:-1px}
+  .navratri-hero h1{margin:12px 0 22px;font-size:clamp(38px,9.5vw,43px);line-height:1.04}
   .navratri-hero .ribbon{min-height:46px;padding:8px 16px;font-size:13px}
-  .navratri-hero .cta{min-height:64px;margin-top:22px;padding:8px 9px 8px 19px;font-size:15px;gap:8px}
+  .navratri-hero .cta{min-height:64px;margin:22px auto 0;padding:8px 9px 8px 19px;font-size:15px;gap:8px;text-align:left}
   .navratri-hero .cta-arrow{width:46px;height:46px}
-  .navratri-hero .art{height:590px;min-height:590px;margin-top:24px}
+  .navratri-hero .art{height:620px;min-height:620px;margin-top:24px}
   .navratri-hero .mandala{width:98%;border-width:2px}
-  .navratri-hero .center-card{top:40%;width:49%;min-width:0;min-height:174px;padding:13px;border-radius:18px}
+  .navratri-hero .center-card{top:34%;width:82%;min-width:0;min-height:184px;padding:16px;border-radius:20px}
   .navratri-hero .center-label{margin-bottom:8px;font-size:10px}
-  .navratri-hero .amount{font-size:clamp(22px,6.6vw,32px);letter-spacing:-1px}
-  .navratri-hero .per{font-size:10px}
-  .navratri-hero .emi-row{gap:5px;margin-top:10px;font-size:10px}
-  .navratri-hero .emi-pill{padding:5px 7px}
-  .navratri-hero .saving-note{font-size:8px}
+  .navratri-hero .amount{font-size:clamp(25px,7vw,34px);letter-spacing:-1px}
+  .navratri-hero .per{font-size:11px}
+  .navratri-hero .emi-row{gap:7px;margin-top:11px;font-size:11px}
+  .navratri-hero .emi-pill{padding:6px 9px}
+  .navratri-hero .saving-note{font-size:9px}
   .navratri-hero .bars{gap:3px;margin-top:13px}
   .navratri-hero .bars span{height:7px}
-  .navratri-hero .loan-card{width:48%;min-height:49px;padding:6px;border-radius:12px;gap:5px}
-  .navratri-hero .loan-icon{width:22%;min-width:23px;font-size:17px}
-  .navratri-hero .loan-divider{height:29px}
-  .navratri-hero .bank{font-size:9px}
-  .navratri-hero .loan-amount{font-size:12px}
-  .navratri-hero .loan-type{font-size:8px}
+  .navratri-hero .loan-card{width:49%;min-height:68px;padding:8px 9px;border-radius:14px;gap:7px}
+  .navratri-hero .loan-icon{width:20%;min-width:25px;font-size:19px}
+  .navratri-hero .loan-divider{height:38px}
+  .navratri-hero .bank{font-size:11px}
+  .navratri-hero .loan-amount{font-size:15px}
+  .navratri-hero .loan-type{font-size:10px}
   .navratri-hero .loan-card.card-1{left:0;top:0}
   .navratri-hero .loan-card.card-2{right:0;top:0}
-  .navratri-hero .loan-card.card-3{left:0;top:68%}
-  .navratri-hero .loan-card.card-4{right:0;top:68%}
-  .navratri-hero .loan-card.card-5{left:26%;top:84%;width:48%}
+  .navratri-hero .loan-card.card-3{left:0;top:69%}
+  .navratri-hero .loan-card.card-4{right:0;top:69%}
+  .navratri-hero .loan-card.card-5{left:25.5%;top:85%;width:49%}
   .navratri-hero .garland{width:25px}
   .navratri-hero .garland.left{left:.5%}
   .navratri-hero .garland.right{right:.5%}
