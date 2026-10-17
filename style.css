@@ -1656,213 +1656,599 @@ h1 span{
   outline:2px solid #ffbf26;
   outline-offset:4px;
 }
-.dussehra-content{
+.navratri-hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  width:100%;
+  min-height:790px;
+  height:100%;
+  color:#fff;
+  background:
+    radial-gradient(ellipse at 73% 42%,rgba(255,183,51,.62) 0,rgba(232,74,18,.58) 24%,transparent 54%),
+    radial-gradient(ellipse at 20% 46%,rgba(116,13,18,.74),transparent 60%),
+    linear-gradient(112deg,#4d080b 0%,#9f1710 43%,#e64b12 74%,#7b1011 100%);
+  background-size:150% 150%;
+  animation:navratriFestivalGlow 24s ease-in-out infinite alternate;
+}
+.navratri-hero::before{
+  position:absolute;
+  z-index:-2;
+  inset:0;
+  background-image:
+    repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.12) 3px 4px),
+    repeating-linear-gradient(90deg,transparent 0 3px,rgba(0,0,0,.13) 3px 4px);
+  content:"";
+  opacity:.17;
+}
+.navratri-hero::after{
+  position:absolute;
+  z-index:-1;
+  right:0;
+  bottom:0;
+  left:0;
+  height:8px;
+  background:linear-gradient(90deg,#7f1015,#ffb323,#e34215,#7f1015);
+  box-shadow:0 -3px 24px rgba(255,170,35,.35);
+  content:"";
+  animation:navratriBottomGlow 5s ease-in-out infinite alternate;
+}
+.navratri-hero .left-copy{
+  position:relative;
+  z-index:5;
+  width:52%;
+  padding:clamp(138px,10vw,164px) 0 100px 7.9%;
+}
+.navratri-hero .eyebrow{
+  display:block;
+  margin:0;
+  color:#ffe08a!important;
+  font-family:"Bodoni MT","Didot","Times New Roman",serif;
+  font-size:clamp(36px,4.7vw,82px);
+  font-style:italic;
+  font-weight:500;
+  line-height:1.02;
+  letter-spacing:-2px;
+  text-shadow:0 0 26px rgba(255,184,55,.25);
+  white-space:nowrap;
+}
+.navratri-hero h1{
+  max-width:800px;
+  margin:18px 0 32px;
+  color:#fffaf1!important;
+  font-family:"Plus Jakarta Sans",Inter,sans-serif;
+  font-size:clamp(46px,5.4vw,82px);
+  font-weight:900;
+  line-height:.99;
+  letter-spacing:-.055em;
+  text-shadow:0 5px 28px rgba(60,0,0,.25);
+}
+.navratri-hero .ribbon{
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
+  width:min(100%,565px);
+  min-height:clamp(48px,3.7vw,72px);
+  padding:10px 24px;
+  color:#14263e;
+  background:linear-gradient(110deg,#fff0ae,#ffbd32 52%,#ffe58a);
+  box-shadow:0 7px 24px rgba(255,176,33,.25);
+  clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%);
+  font-size:clamp(16px,1.45vw,26px);
+  font-weight:800;
+  text-align:center;
 }
-.dussehra-offer-card{
+.navratri-hero .cta{
   position:relative;
-  display:grid;
-  grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);
+  z-index:0;
+  display:flex;
   align-items:center;
-  width:100%;
-  min-height:570px;
-  padding:clamp(34px,5vw,70px);
+  justify-content:space-between;
+  gap:20px;
+  width:min(100%,575px);
+  min-height:clamp(72px,5.2vw,102px);
+  margin-top:clamp(28px,2.2vw,44px);
+  padding:12px 14px 12px 32px;
   overflow:hidden;
-  border:1px solid rgba(255,255,255,.72);
-  border-radius:32px;
-  background:
-    radial-gradient(ellipse at 88% 15%,rgba(255,191,38,.28),transparent 34%),
-    radial-gradient(ellipse at 7% 100%,rgba(255,122,0,.12),transparent 37%),
-    linear-gradient(130deg,#fffdf8,#fff2dc 100%);
-  box-shadow:0 32px 90px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.9);
+  border-radius:100px;
+  background:#fff;
+  box-shadow:0 7px 0 rgba(255,255,255,.12),0 0 28px rgba(255,172,38,.23);
+  color:#1c1934;
+  font-size:clamp(17px,1.65vw,29px);
+  font-weight:800;
+  text-decoration:none;
+  transition:transform .25s ease,box-shadow .25s ease;
 }
-.dussehra-offer-card::before{
+.navratri-hero .cta::before{
   position:absolute;
-  inset:13px;
-  border:1px solid rgba(217,138,74,.2);
-  border-radius:22px;
+  z-index:-1;
+  inset:0;
+  transform:translateX(-120%);
+  background:linear-gradient(110deg,transparent 25%,rgba(255,218,101,.48) 48%,transparent 70%);
   content:"";
-  pointer-events:none;
+  animation:navratriCtaShine 4s ease-in-out infinite;
 }
-.dussehra-offer-card::after{
-  position:absolute;
-  top:0;
-  left:7%;
-  width:86%;
-  height:4px;
-  border-radius:0 0 4px 4px;
-  background:linear-gradient(90deg,#ed2d22,#ff7a00,#ffbf26,#0755a4);
-  content:"";
-}
-.dussehra-copy{
-  position:relative;
-  z-index:2;
-  max-width:640px;
-  padding:0;
-  color:#061d49;
-}
-.dussehra-copy .eyebrow{
-  border-color:rgba(255,122,0,.24)!important;
-  background:rgba(255,122,0,.08)!important;
-  color:#8e4300!important;
-}
-.dussehra-copy .pulse-dot{background:#ff7a00!important;box-shadow:0 0 0 6px rgba(255,122,0,.12)!important}
-.dussehra-copy h1{color:#061d49}
-.dussehra-copy h1 span{
-  background:linear-gradient(100deg,#ff7a00 0%,#ed2d22 58%,#0755a4 100%)!important;
-  -webkit-background-clip:text!important;
-  background-clip:text!important;
-  color:transparent!important;
-}
-.dussehra-copy .hero-text{color:#40536e!important}
-.dussehra-copy .btn-ghost{
-  border-color:rgba(6,29,73,.2)!important;
-  background:rgba(6,29,73,.035)!important;
-  color:#061d49!important;
-}
-.dussehra-copy .disclaimer{
-  display:block;
-  max-width:590px;
-  margin-top:19px;
-  color:#68778b;
-  font-size:11px;
-  line-height:1.6;
-}
-.dussehra-art{
-  position:relative;
+.navratri-hero .cta:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 12px 25px rgba(255,191,35,.28)}
+.navratri-hero .cta-arrow{
   display:grid;
   place-items:center;
-  min-height:420px;
-  isolation:isolate;
-}
-.dussehra-art::before{
-  position:absolute;
-  z-index:-1;
-  width:min(360px,88%);
-  aspect-ratio:1;
-  border:1px solid rgba(217,138,74,.22);
+  width:clamp(48px,3.7vw,72px);
+  height:clamp(48px,3.7vw,72px);
+  flex:none;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(255,191,38,.36),rgba(255,122,0,.12) 50%,transparent 72%);
-  box-shadow:0 0 70px rgba(255,191,38,.17);
-  content:" ";
+  background:linear-gradient(135deg,#ffe78a,#f59e0b);
+  box-shadow:0 0 0 0 rgba(255,190,35,.45);
+  color:#671014;
+  font-size:clamp(24px,2vw,38px);
+  animation:navratriArrowNudge 1.7s ease-in-out infinite;
 }
-.dussehra-art::after{
+.navratri-hero .art{
   position:absolute;
-  z-index:-1;
-  width:min(300px,73%);
+  z-index:1;
+  top:0;
+  right:0;
+  width:55%;
+  height:100%;
+  min-height:520px;
+  isolation:isolate;
+  perspective:1100px;
+  transform-style:preserve-3d;
+}
+.navratri-hero .mandala{
+  position:absolute;
+  top:49%;
+  left:50%;
+  width:min(88%,760px);
   aspect-ratio:1;
-  border:1px dashed rgba(217,138,74,.36);
+  transform:translate(-50%,-50%);
+  border:4px dotted rgba(255,205,94,.72);
+  border-radius:50%;
+  filter:drop-shadow(0 0 16px rgba(255,158,32,.3));
+  opacity:.95;
+  animation:navratriMandalaBreath 7s ease-in-out infinite;
+}
+.navratri-hero .mandala::before,.navratri-hero .mandala::after{
+  position:absolute;
+  inset:5%;
+  border:2px solid rgba(255,224,128,.7);
   border-radius:50%;
   content:"";
-  transform:rotate(-18deg);
 }
-.dussehra-orbit{
+.navratri-hero .mandala::before{animation:navratriSpinSlow 48s linear infinite}
+.navratri-hero .mandala::after{
+  inset:17%;
+  border-width:3px;
+  box-shadow:0 0 24px rgba(255,173,40,.26),inset 0 0 24px rgba(255,229,139,.15);
+  animation:navratriSpinReverse 36s linear infinite;
+}
+.navratri-hero .petals{
   position:absolute;
-  width:min(245px,60%);
+  inset:7%;
+  border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,transparent 0 8deg,rgba(255,211,104,.8) 8.2deg 8.55deg,transparent 8.8deg 15deg);
+  mask:radial-gradient(circle,transparent 0 27%,#000 28% 73%,transparent 74%);
+  animation:navratriSpinSlow 70s linear infinite;
+}
+.navratri-hero .center-halo{
+  position:absolute;
+  top:49%;
+  left:50%;
+  width:44%;
   aspect-ratio:1;
-  border:1px solid rgba(217,138,74,.22);
+  transform:translate(-50%,-50%);
+  border:2px solid rgba(255,201,73,.88);
   border-radius:50%;
+  box-shadow:0 0 28px rgba(255,151,30,.48),inset 0 0 28px rgba(255,220,112,.24);
+  animation:navratriHaloPulse 6.5s ease-in-out infinite;
 }
-.dussehra-seal{
+.navratri-hero .center-card{
   position:absolute;
-  top:8%;
-  right:4%;
-  display:grid;
-  width:84px;
-  height:84px;
-  place-content:center;
-  border:3px solid rgba(255,255,255,.82);
-  border-radius:50%;
-  background:linear-gradient(145deg,#ffbf26,#ff7a00);
-  box-shadow:0 10px 28px rgba(137,75,16,.2);
-  color:#17233b;
-  font-size:10px;
+  z-index:12;
+  top:39%;
+  left:50%;
+  width:37%;
+  min-width:255px;
+  max-width:380px;
+  min-height:235px;
+  padding:clamp(20px,1.55vw,31px);
+  transform:translate(-50%,-50%);
+  transform-style:preserve-3d;
+  border-radius:30px;
+  background:#fff;
+  box-shadow:0 12px 0 rgba(255,255,255,.22),0 20px 36px rgba(92,22,0,.25),0 0 34px rgba(255,221,102,.28);
+  color:#1c1934;
+  animation:navratriCenterFloat 4s ease-in-out infinite;
+  transition:box-shadow .9s ease,filter .9s ease,transform .9s cubic-bezier(.22,1,.36,1);
+}
+.navratri-hero .center-card::after{
+  position:absolute;
+  inset:-2px;
+  padding:2px;
+  border-radius:inherit;
+  background:linear-gradient(115deg,transparent 10%,rgba(255,211,83,.9) 28%,transparent 44%,transparent 60%,rgba(255,255,255,.7) 74%,transparent 90%);
+  background-size:220% 100%;
+  content:"";
+  pointer-events:none;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  animation:navratriShineBorder 4.5s linear infinite;
+}
+.navratri-hero .center-card.single-emi{
+  transform:translate(-50%,-50%) scale(1.025);
+  box-shadow:0 14px 0 rgba(255,255,255,.15),0 22px 42px rgba(62,0,0,.3),0 0 42px rgba(255,177,43,.48);
+}
+.navratri-hero .center-label{margin-bottom:12px;color:#7c788e;font-size:clamp(12px,.9vw,18px);font-weight:750}
+.navratri-hero .center-card.single-emi .center-label{color:#b91c1c}
+.navratri-hero .amount-line{display:flex;align-items:baseline;gap:6px;perspective:700px;white-space:nowrap}
+.navratri-hero .amount{
+  display:inline-block;
+  font-size:clamp(28px,2.65vw,46px);
   font-weight:900;
+  font-variant-numeric:tabular-nums;
+  line-height:1.05;
+  letter-spacing:-1.8px;
+  white-space:nowrap;
+  will-change:transform,opacity,filter;
+  transition:opacity .24s ease,filter .24s ease,transform .24s ease;
+}
+.navratri-hero .amount-roll-out,.navratri-hero .amount-fade-out{opacity:.25;filter:blur(3px);transform:translateY(-5px)}
+.navratri-hero .amount-roll-in{animation:navratriAmountRollIn .8s cubic-bezier(.2,.75,.25,1) both}
+.navratri-hero .per{color:#8d899b;font-size:clamp(13px,1.05vw,20px);font-weight:600}
+.navratri-hero .emi-row{display:flex;align-items:center;gap:10px;margin-top:14px;color:#89859a;font-size:clamp(12px,.9vw,17px);font-weight:700}
+.navratri-hero .emi-pill{padding:6px 12px;border-radius:30px;background:#fff0f0;color:#e23838}
+.navratri-hero .saving-note{
+  min-height:17px;
+  margin-top:8px;
+  color:#2f8b4e;
+  font-size:clamp(9px,.72vw,13px);
+  font-weight:800;
   line-height:1.35;
-  letter-spacing:.08em;
-  transform:rotate(9deg);
+  opacity:0;
+  transform:translateY(5px);
+  transition:opacity .5s ease,transform .5s ease;
 }
-.dussehra-art-kicker{
+.navratri-hero .center-card.single-emi .saving-note{opacity:1;transform:translateY(0)}
+.navratri-hero .center-card.amount-settled .amount{text-shadow:0 0 18px rgba(255,190,45,.26)}
+.navratri-hero .bars{display:flex;gap:4px;margin-top:20px}
+.navratri-hero .bars span{position:relative;height:8px;flex:1;overflow:hidden;border-radius:10px;background:#ed393b;animation:navratriBarPulse 1.8s ease-in-out infinite}
+.navratri-hero .bars span:nth-child(2){background:#f05254;animation-delay:.12s}
+.navratri-hero .bars span:nth-child(3){background:#f36d70;animation-delay:.24s}
+.navratri-hero .bars span:nth-child(4){background:#f58a8b;animation-delay:.36s}
+.navratri-hero .bars span:nth-child(5){background:#f7a0a0;animation-delay:.48s}
+.navratri-hero .bars span::after{
   position:absolute;
-  top:17%;
-  left:5%;
-  width:70%;
-  color:#8a4c17;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:.2em;
+  inset:0;
+  transform:translateX(-120%);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);
+  content:"";
+  animation:navratriBarSweep 2.3s ease-in-out infinite;
+}
+.navratri-hero .loan-card{
+  position:absolute;
+  z-index:8;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:clamp(220px,18.4vw,330px);
+  min-height:clamp(58px,4.1vw,76px);
+  padding:10px 14px;
+  overflow:hidden;
+  transform-style:preserve-3d;
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:19px;
+  background:#fff;
+  box-shadow:0 7px 15px rgba(75,0,0,.13);
+  color:#17152b;
+  backface-visibility:hidden;
+  animation:navratriCardHover 3.5s ease-in-out infinite;
+  transition:opacity .85s ease-in-out,transform .95s cubic-bezier(.22,1,.36,1),filter .85s ease;
+  will-change:transform,opacity,filter;
+}
+.navratri-hero .loan-card::before{
+  position:absolute;
+  top:-40%;
+  left:-75%;
+  width:42%;
+  height:180%;
+  transform:rotate(20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,201,75,.72),rgba(255,119,25,.55),transparent);
+  content:"";
+  pointer-events:none;
+  animation:navratriCardShimmer 5.8s ease-in-out infinite;
+}
+.navratri-hero .loan-card.to-background{z-index:2!important;opacity:0!important;filter:blur(8px) brightness(1.4) saturate(.7)!important;pointer-events:none}
+.navratri-hero .loan-card.to-background.card-1{transform:translate(105px,85px) scale(.22) rotateY(22deg) rotateZ(-8deg)!important}
+.navratri-hero .loan-card.to-background.card-2{transform:translate(-105px,90px) scale(.22) rotateY(-22deg) rotateZ(8deg)!important}
+.navratri-hero .loan-card.to-background.card-3{transform:translate(150px,-8px) scale(.22) rotateY(20deg) rotateZ(-6deg)!important}
+.navratri-hero .loan-card.to-background.card-4{transform:translate(-150px,-8px) scale(.22) rotateY(-20deg) rotateZ(6deg)!important}
+.navratri-hero .loan-card.to-background.card-5{transform:translate(0,-110px) scale(.22) rotateX(22deg)!important}
+.navratri-hero .loan-card.from-background{
+  z-index:14!important;
+  opacity:1!important;
+  filter:blur(0) brightness(1.05)!important;
+  animation:navratriQuickFrontReveal .95s cubic-bezier(.16,1,.3,1) both!important;
+}
+.navratri-hero .loan-card.card-1{left:0;top:12%;animation-delay:-.2s}
+.navratri-hero .loan-card.card-2{right:0;top:10%;animation-delay:-1.1s}
+.navratri-hero .loan-card.card-3{left:-2%;top:47%;animation-delay:-.7s}
+.navratri-hero .loan-card.card-4{right:-2%;top:46%;animation-delay:-1.8s}
+.navratri-hero .loan-card.card-5{left:34%;top:80%;animation-delay:-1.4s}
+.navratri-hero .loan-icon{display:flex;align-items:center;justify-content:center;width:27%;min-width:46px;font-size:clamp(20px,1.7vw,31px);filter:drop-shadow(0 0 5px rgba(255,195,50,.16))}
+.navratri-hero .loan-divider{width:1px;height:43px;flex:none;background:#e9e5e5}
+.navratri-hero .loan-text{min-width:0;line-height:1.16}
+.navratri-hero .bank{font-size:clamp(12px,.95vw,17px);font-weight:800;white-space:nowrap}
+.navratri-hero .loan-amount{font-size:clamp(16px,1.2vw,22px);font-weight:900;white-space:nowrap}
+.navratri-hero .loan-type{margin-top:3px;color:#e03232;font-size:clamp(11px,.82vw,15px);white-space:nowrap}
+.navratri-hero .card-1{--exit-rotate:-8deg}
+.navratri-hero .card-2{--exit-rotate:8deg}
+.navratri-hero .card-3{--exit-rotate:-6deg}
+.navratri-hero .card-4{--exit-rotate:7deg}
+.navratri-hero .card-5{--exit-rotate:3deg}
+.navratri-hero .loan-card.card-1{animation-delay:-.2s}
+.navratri-hero .loan-card.card-2{animation-delay:-1.1s}
+.navratri-hero .loan-card.card-3{animation-delay:-.7s}
+.navratri-hero .loan-card.card-4{animation-delay:-1.8s}
+.navratri-hero .loan-card.card-5{animation-delay:-1.4s}
+.navratri-hero .diya{
+  position:absolute;
+  z-index:3;
+  bottom:6.2%;
+  width:76px;
+  height:36px;
+  border-bottom:5px dotted #fff1a0;
+  border-radius:0 0 50% 50%;
+  background:linear-gradient(#fff0a8,#d76b0c);
+  box-shadow:0 0 22px rgba(255,174,37,.82);
+  animation:navratriDiyaGlow 2s ease-in-out infinite alternate;
+}
+.navratri-hero .diya::before{
+  position:absolute;
+  top:-26px;
+  left:50%;
+  width:15px;
+  height:32px;
+  transform:translateX(-50%);
+  background:radial-gradient(ellipse at 50% 75%,#fff8b2 0 12%,#ffce37 40%,#ff7d15 66%,transparent 70%);
+  content:"";
+  filter:drop-shadow(0 0 10px #ffbd35);
+  animation:navratriFlameFlicker .65s ease-in-out infinite alternate;
+}
+.navratri-hero .diya-left{left:38%}
+.navratri-hero .diya-right{right:32%}
+.navratri-hero .kalash{
+  position:absolute;
+  z-index:3;
+  bottom:7%;
+  left:50%;
+  width:104px;
+  height:93px;
+  transform:translateX(-50%);
+  border:3px solid rgba(255,224,133,.9);
+  border-radius:28% 28% 42% 42%;
+  background:linear-gradient(90deg,#8a3907,#ffe19a 35%,#d58a20 70%,#713008);
+  box-shadow:0 0 18px rgba(255,183,36,.4);
+  animation:navratriKalashShine 3s ease-in-out infinite;
+}
+.navratri-hero .kalash::before{
+  position:absolute;
+  top:-13px;
+  left:17px;
+  width:65px;
+  height:23px;
+  border:3px solid #f6c24b;
+  border-radius:50%;
+  background:#d58b27;
+  content:"";
+}
+.navratri-hero .kalash::after{
+  position:absolute;
+  top:28px;
+  right:0;
+  left:0;
+  color:#b5221b;
+  content:"✿";
+  font-size:28px;
   text-align:center;
 }
-.dussehra-lamp{
-  margin-top:-18px;
-  font-size:clamp(94px,11vw,142px);
-  line-height:1;
-  filter:drop-shadow(0 14px 20px rgba(163,79,12,.2));
-}
-.dussehra-art-title{
+.navratri-hero .leaf{
   position:absolute;
-  bottom:18%;
-  color:#102b4d;
-  font-family:"Plus Jakarta Sans",Inter,sans-serif;
-  font-size:18px;
+  z-index:2;
+  bottom:17%;
+  left:50%;
+  width:25px;
+  height:58px;
+  transform-origin:bottom center;
+  border-radius:100% 0 100% 0;
+  background:linear-gradient(90deg,#166534,#65a30d 55%,#15803d);
+  animation:navratriLeafSway 3s ease-in-out infinite alternate;
+}
+.navratri-hero .leaf.l1{transform:translateX(-34px) rotate(-48deg)}
+.navratri-hero .leaf.l2{transform:translateX(-10px) rotate(-15deg);animation-delay:-.8s}
+.navratri-hero .leaf.l3{transform:translateX(12px) rotate(20deg);animation-delay:-1.2s}
+.navratri-hero .leaf.l4{transform:translateX(28px) rotate(45deg);animation-delay:-.4s}
+.navratri-hero .garland{
+  position:absolute;
+  z-index:6;
+  top:0;
+  bottom:45%;
+  display:flex;
+  width:42px;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+}
+.navratri-hero .garland.left{left:1.1%}
+.navratri-hero .garland.right{right:1.1%}
+.navratri-hero .flower{
+  width:clamp(25px,2vw,39px);
+  height:clamp(25px,2vw,39px);
+  border:2px solid #ffe17a;
+  border-radius:50%;
+  background:radial-gradient(circle at 31% 24%,rgba(255,255,210,.98) 0 5%,transparent 17%),repeating-radial-gradient(circle at 50% 50%,#fff2a6 0 2px,#ffc52e 3px 5px,#e9820b 6px 8px);
+  box-shadow:0 0 5px rgba(255,224,100,.7);
+  animation:navratriFlowerGlow 2.8s ease-in-out infinite alternate;
+}
+.navratri-hero .flower:nth-child(2n){animation-delay:-1.2s}
+.navratri-hero .leaf-pair{position:relative;width:28px;height:18px;margin-top:-3px}
+.navratri-hero .leaf-pair::before,.navratri-hero .leaf-pair::after{
+  position:absolute;
+  top:0;
+  width:15px;
+  height:10px;
+  border-radius:100% 0 100% 0;
+  background:#4d9e35;
+  content:"";
+}
+.navratri-hero .leaf-pair::before{left:0;transform:rotate(25deg)}
+.navratri-hero .leaf-pair::after{right:0;transform:scaleX(-1) rotate(25deg)}
+.navratri-hero .spark{
+  position:absolute;
+  color:#ffe69a;
+  font-size:27px;
+  text-shadow:0 0 12px rgba(255,204,83,.95),0 0 22px rgba(255,120,20,.65);
+  animation:navratriTwinkle 2.1s ease-in-out infinite,navratriSparkDrift 5s ease-in-out infinite;
+}
+.navratri-hero .spark.s1{top:1%;left:7%}
+.navratri-hero .spark.s2{top:79%;left:3%;animation-delay:.4s,1s}
+.navratri-hero .spark.s3{top:30%;right:11%;animation-delay:.8s,1.6s}
+.navratri-hero .spark.s4{top:66%;left:46%;animation-delay:1.2s,2.2s}
+.navratri-hero .terms{
+  position:absolute;
+  z-index:7;
+  right:3%;
+  bottom:3%;
+  max-width:72%;
+  color:#fff3cd;
+  font-size:clamp(9px,.68vw,12px);
   font-weight:700;
-  line-height:1.3;
-  text-align:center;
+  line-height:1.4;
+  text-align:right;
+  animation:navratriTermsGlow 3.5s ease-in-out infinite;
 }
-.dussehra-art-title b{color:#bd4b00}
-.dussehra-art-rule{
-  position:absolute;
-  bottom:12%;
-  width:62px;
-  height:2px;
-  border-radius:2px;
-  background:linear-gradient(90deg,#ff7a00,#ffcf62);
+.navratri-hero .loan-card.to-background.card-1{transform:translate(110px,105px) scale(.18) rotate(-13deg)!important}
+.navratri-hero .loan-card.to-background.card-2{transform:translate(-105px,120px) scale(.18) rotate(13deg)!important}
+.navratri-hero .loan-card.to-background.card-3{transform:translate(170px,-5px) scale(.18) rotate(-10deg)!important}
+.navratri-hero .loan-card.to-background.card-4{transform:translate(-165px,-8px) scale(.18) rotate(10deg)!important}
+.navratri-hero .loan-card.to-background.card-5{transform:translate(0,-140px) scale(.18) rotate(5deg)!important}
+.navratri-hero .loan-card.from-background{animation:navratriSpreadOut .95s cubic-bezier(.16,1,.3,1) both!important}
+@keyframes navratriFestivalGlow{0%{background-position:0% 45%;filter:saturate(1.02) brightness(.96)}100%{background-position:100% 55%;filter:saturate(1.15) brightness(1.04)}}
+@keyframes navratriBottomGlow{0%{box-shadow:0 -4px 18px rgba(255,130,20,.12)}100%{box-shadow:0 -4px 28px rgba(255,174,37,.5)}}
+@keyframes navratriMandalaBreath{0%,100%{filter:drop-shadow(0 0 0 rgba(255,218,105,0));transform:translate(-50%,-50%) scale(.985)}50%{filter:drop-shadow(0 0 13px rgba(255,218,105,.38));transform:translate(-50%,-50%) scale(1.015)}}
+@keyframes navratriSpinSlow{to{rotate:360deg}}
+@keyframes navratriSpinReverse{to{rotate:-360deg}}
+@keyframes navratriHaloPulse{0%,100%{box-shadow:0 0 14px rgba(255,227,115,.4),inset 0 0 20px rgba(255,233,148,.18);scale:.97}50%{box-shadow:0 0 35px rgba(255,227,115,.95),inset 0 0 35px rgba(255,233,148,.4);scale:1.04}}
+@keyframes navratriCenterFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes navratriShineBorder{0%{background-position:150% 0}100%{background-position:-70% 0}}
+@keyframes navratriCardHover{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes navratriCardShimmer{0%,65%{left:-75%;opacity:0}72%{opacity:1}92%,100%{left:145%;opacity:0}}
+@keyframes navratriAmountRollIn{0%{opacity:.25;filter:blur(3px);transform:translateY(10px) rotateX(-12deg) scale(.985)}65%{opacity:1;filter:blur(0);transform:translateY(-1px) rotateX(2deg) scale(1.008)}100%{opacity:1;filter:blur(0);transform:translateY(0) rotateX(0) scale(1)}}
+@keyframes navratriBarPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25)}}
+@keyframes navratriBarSweep{0%,45%{transform:translateX(-120%)}75%,100%{transform:translateX(120%)}}
+@keyframes navratriCtaShine{0%,55%{transform:translateX(-120%)}80%,100%{transform:translateX(120%)}}
+@keyframes navratriArrowNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+@keyframes navratriSparkDrift{0%,100%{translate:0 0}50%{translate:8px -10px}}
+@keyframes navratriTwinkle{0%,100%{opacity:.5;scale:.8;rotate:0deg}50%{opacity:1;scale:1.15;rotate:18deg}}
+@keyframes navratriDiyaGlow{0%{box-shadow:0 0 10px rgba(255,191,53,.45)}100%{box-shadow:0 0 26px rgba(255,191,53,.95)}}
+@keyframes navratriFlameFlicker{0%{scale:.9 1;rotate:-5deg}100%{scale:1.1 .9;rotate:6deg}}
+@keyframes navratriKalashShine{0%,100%{filter:drop-shadow(0 0 2px rgba(255,210,64,.25))}50%{filter:drop-shadow(0 0 13px rgba(255,210,64,.65))}}
+@keyframes navratriLeafSway{0%{rotate:-5deg}100%{rotate:6deg}}
+@keyframes navratriFlowerGlow{0%{filter:brightness(.95) drop-shadow(0 0 0 rgba(255,218,70,0))}100%{filter:brightness(1.18) drop-shadow(0 0 7px rgba(255,218,70,.65))}}
+@keyframes navratriTermsGlow{0%,100%{text-shadow:0 0 0 transparent}50%{text-shadow:0 0 8px rgba(255,221,130,.75)}}
+@keyframes navratriQuickFrontReveal{0%{opacity:0;filter:blur(8px) brightness(1.5);transform:translate(0,0) scale(.22) rotateY(18deg)}65%{opacity:1;filter:blur(0);transform:translate(0,-5px) scale(1.035) rotateY(-2deg)}100%{opacity:1;filter:blur(0);transform:translate(0,0) scale(1) rotateY(0)}}
+@keyframes navratriSpreadOut{0%{opacity:0;filter:blur(10px) brightness(1.5);transform:translate(0,0) scale(.18) rotate(0)}42%{opacity:.75;filter:blur(3px) brightness(1.15)}75%{opacity:1;filter:blur(0);transform:translate(0,0) scale(1.035) rotate(0)}100%{opacity:1;filter:blur(0);transform:translate(0,0) scale(1) rotate(0)}}
+@media(max-width:1100px) and (min-width:901px){
+  .navratri-hero{min-height:790px}
+  .navratri-hero .left-copy{width:49%;padding-left:5.5%;padding-top:140px}
+  .navratri-hero .eyebrow{font-size:clamp(42px,4.2vw,58px)}
+  .navratri-hero h1{font-size:clamp(50px,5.2vw,68px);margin:14px 0 28px}
+  .navratri-hero .ribbon{min-height:54px;padding:8px 18px;font-size:clamp(15px,1.55vw,19px)}
+  .navratri-hero .cta{min-height:72px;padding-left:24px;font-size:clamp(17px,1.65vw,21px)}
+  .navratri-hero .art{width:56%}
+  .navratri-hero .center-card{top:40%;width:260px;min-height:190px;padding:18px}
+  .navratri-hero .loan-card{width:clamp(185px,20vw,230px);min-height:56px;padding:8px;gap:7px}
+  .navratri-hero .loan-icon{min-width:35px}
+  .navratri-hero .bank{font-size:11px}
+  .navratri-hero .loan-amount{font-size:15px}
+  .navratri-hero .loan-type{font-size:10px}
 }
-.dussehra-art-footer{
-  position:absolute;
-  bottom:5%;
-  color:#425873;
-  font-size:9px;
-  font-weight:900;
-  letter-spacing:.14em;
+@media(max-width:900px){
+  .navratri-hero{min-height:960px}
+  .navratri-hero .left-copy{width:100%;padding:112px 7% 0}
+  .navratri-hero .eyebrow{font-size:clamp(37px,8vw,64px)}
+  .navratri-hero h1{margin:12px 0 25px;font-size:clamp(48px,9.8vw,80px)}
+  .navratri-hero .ribbon{width:min(100%,520px);font-size:clamp(14px,3.2vw,22px)}
+  .navratri-hero .cta{width:min(100%,520px);min-height:74px;margin-top:24px;font-size:clamp(16px,3.7vw,24px)}
+  .navratri-hero .art{top:445px;right:0;width:100%;height:490px;min-height:490px}
+  .navratri-hero .mandala{width:min(90%,500px)}
+  .navratri-hero .center-card{top:42%;width:clamp(250px,35vw,330px);min-height:190px}
+  .navratri-hero .loan-card{width:clamp(210px,32vw,280px);min-height:57px}
+  .navratri-hero .card-1{left:6%;top:8%}
+  .navratri-hero .card-2{right:6%;top:7%}
+  .navratri-hero .card-3{left:0;top:45%}
+  .navratri-hero .card-4{right:0;top:44%}
+  .navratri-hero .card-5{left:36%;top:79%}
+  .navratri-hero .diya-left{left:24%}
+  .navratri-hero .diya-right{right:24%}
+  .navratri-hero .terms{right:6%;bottom:3%;left:6%;max-width:none;text-align:center}
+  .navratri-hero .loan-card.to-background.card-1{transform:translate(75px,60px) scale(.18) rotate(-12deg)!important}
+  .navratri-hero .loan-card.to-background.card-2{transform:translate(-75px,60px) scale(.18) rotate(12deg)!important}
+  .navratri-hero .loan-card.to-background.card-3{transform:translate(95px,-5px) scale(.18) rotate(-8deg)!important}
+  .navratri-hero .loan-card.to-background.card-4{transform:translate(-95px,-5px) scale(.18) rotate(8deg)!important}
+  .navratri-hero .loan-card.to-background.card-5{transform:translate(0,-75px) scale(.16)!important}
 }
-.dussehra-art-footer i{padding:0 4px;color:#ffbf26;font-style:normal}
-.dussehra-spark{
-  position:absolute;
-  color:#e29531;
-  text-shadow:0 0 18px rgba(255,191,38,.35);
-}
-.dussehra-spark-one{top:24%;left:10%;font-size:26px}
-.dussehra-spark-two{right:10%;bottom:23%;font-size:34px}
-@media(max-width:1000px){
-  .dussehra-offer-card{grid-template-columns:minmax(0,1.05fr) minmax(260px,.85fr);padding:40px}
-  .dussehra-art{min-height:370px}
-}
-@media(max-width:760px){
-  .hero-slides{min-height:0}
-  .dussehra-content{padding:94px 14px 105px!important}
-  .dussehra-offer-card{grid-template-columns:1fr;gap:4px;min-height:0;padding:32px 27px;border-radius:24px}
-  .dussehra-offer-card::before{inset:9px;border-radius:17px}
-  .dussehra-art{grid-row:1;min-height:260px}
-  .dussehra-art::before{width:min(240px,70%)}
-  .dussehra-art::after{width:min(202px,58%)}
-  .dussehra-orbit{width:min(166px,49%)}
-  .dussehra-seal{top:3%;right:8%;width:66px;height:66px;font-size:8px}
-  .dussehra-art-kicker{top:9%;left:3%;width:72%;font-size:7px;letter-spacing:.13em}
-  .dussehra-lamp{margin-top:0;font-size:86px}
-  .dussehra-art-title{bottom:18%;font-size:15px}
-  .dussehra-art-rule{bottom:11%;width:48px}
-  .dussehra-art-footer{bottom:1%;font-size:7px}
-  .dussehra-spark-one{top:23%;left:12%}
-  .dussehra-spark-two{right:11%;bottom:21%}
-  .dussehra-copy h1{font-size:clamp(34px,8.4vw,48px);letter-spacing:-1.6px}
-  .dussehra-copy .hero-text{font-size:14px;line-height:1.7;margin:15px 0}
-  .dussehra-copy .hero-actions{gap:9px}
-  .dussehra-copy .btn{padding:12px 14px;font-size:12px}
-  .dussehra-copy .disclaimer{margin-top:14px;font-size:10px}
+@media(max-width:520px){
+  .navratri-hero{min-height:940px}
+  .navratri-hero .left-copy{padding:102px 6% 0}
+  .navratri-hero .eyebrow{font-size:39px;letter-spacing:-1px}
+  .navratri-hero h1{margin:12px 0 22px;font-size:48px;line-height:1.02}
+  .navratri-hero .ribbon{min-height:46px;padding:8px 16px;font-size:13px}
+  .navratri-hero .cta{min-height:64px;margin-top:22px;padding:8px 9px 8px 19px;font-size:15px;gap:8px}
+  .navratri-hero .cta-arrow{width:46px;height:46px}
+  .navratri-hero .art{top:430px;height:430px;min-height:430px}
+  .navratri-hero .mandala{width:98%;border-width:2px}
+  .navratri-hero .center-card{top:42%;width:49%;min-width:0;min-height:174px;padding:13px;border-radius:18px}
+  .navratri-hero .center-label{margin-bottom:8px;font-size:10px}
+  .navratri-hero .amount{font-size:clamp(22px,6.6vw,32px);letter-spacing:-1px}
+  .navratri-hero .per{font-size:10px}
+  .navratri-hero .emi-row{gap:5px;margin-top:10px;font-size:10px}
+  .navratri-hero .emi-pill{padding:5px 7px}
+  .navratri-hero .saving-note{font-size:8px}
+  .navratri-hero .bars{gap:3px;margin-top:13px}
+  .navratri-hero .bars span{height:7px}
+  .navratri-hero .loan-card{width:48%;min-height:49px;padding:6px;border-radius:12px;gap:5px}
+  .navratri-hero .loan-icon{width:22%;min-width:23px;font-size:17px}
+  .navratri-hero .loan-divider{height:29px}
+  .navratri-hero .bank{font-size:9px}
+  .navratri-hero .loan-amount{font-size:12px}
+  .navratri-hero .loan-type{font-size:8px}
+  .navratri-hero .card-1{left:0;top:10%}
+  .navratri-hero .card-2{right:0;top:1%}
+  .navratri-hero .card-3{left:0;top:46%}
+  .navratri-hero .card-4{right:0;top:46%}
+  .navratri-hero .card-5{left:26%;top:79%;width:48%}
+  .navratri-hero .garland{width:25px}
+  .navratri-hero .garland.left{left:.5%}
+  .navratri-hero .garland.right{right:.5%}
+  .navratri-hero .flower{width:22px;height:22px}
+  .navratri-hero .diya{bottom:7%;width:47px;height:24px}
+  .navratri-hero .diya::before{top:-20px;width:12px;height:25px}
+  .navratri-hero .diya-left{left:18%}
+  .navratri-hero .diya-right{right:18%}
+  .navratri-hero .kalash{bottom:8%;width:62px;height:58px}
+  .navratri-hero .kalash::after{top:18px;font-size:20px}
+  .navratri-hero .kalash::before{left:10px;width:38px;height:17px}
+  .navratri-hero .leaf{width:18px;height:40px}
+  .navratri-hero .terms{bottom:55px;font-size:8px}
+  .navratri-hero .loan-card.to-background.card-1{transform:translate(35px,38px) scale(.11) rotate(-10deg)!important}
+  .navratri-hero .loan-card.to-background.card-2{transform:translate(-35px,38px) scale(.11) rotate(10deg)!important}
+  .navratri-hero .loan-card.to-background.card-3{transform:translate(40px,-4px) scale(.11) rotate(-8deg)!important}
+  .navratri-hero .loan-card.to-background.card-4{transform:translate(-40px,-4px) scale(.11) rotate(8deg)!important}
+  .navratri-hero .loan-card.to-background.card-5{transform:translate(0,-45px) scale(.11)!important}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-slide,.hero-carousel-dot{transition:none}
+  .navratri-hero,.navratri-hero::before,.navratri-hero::after,.navratri-hero *,
+  .navratri-hero *::before,.navratri-hero *::after{animation:none!important;transition:none!important}
 }

@@ -54,4 +54,4 @@ The latest stylesheet adds a midnight emerald/champagne theme, improves hero tex
 
 
 ## Homepage hero carousel
-The homepage keeps the original hero as its first slide and replaces it with a complete, full-width Dussehra festive-offer card on the second slide. Slides switch continuously every five seconds; slide-selection dots do not pause the automatic rotation. Confirm current lender offer terms, rates and eligibility before publishing specific promotions.
+The homepage keeps the original Fortune hero as its first slide and uses the supplied Navratri EMI-consolidation design as its second slide. Slides switch continuously every five seconds; the Navratri card animation runs while that slide is visible and restarts when it returns. EMI amounts and savings in the animated card are illustrative only; actual lender terms, eligibility and approval vary.

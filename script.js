@@ -214,12 +214,142 @@ document.addEventListener("DOMContentLoaded", () => {
   if (heroCarousel) {
     const heroSlides = Array.from(heroCarousel.querySelectorAll("[data-hero-slide]"));
     const heroDots = Array.from(document.querySelectorAll("[data-hero-go]"));
+    const navratriHero = heroCarousel.querySelector(".navratri-hero");
+    let startNavratriAnimation = () => {};
+    let stopNavratriAnimation = () => {};
     let activeSlideIndex = heroSlides.findIndex(slide => slide.classList.contains("is-active"));
+    let navratriTimers = [];
+    let navratriFrame = null;
 
     if (activeSlideIndex < 0) activeSlideIndex = 0;
 
+    if (navratriHero) {
+      const cards = Array.from(navratriHero.querySelectorAll(".loan-card"));
+      const amount = navratriHero.querySelector("[data-navratri-amount]");
+      const count = navratriHero.querySelector("[data-navratri-count]");
+      const due = navratriHero.querySelector("[data-navratri-due]");
+      const center = navratriHero.querySelector(".center-card");
+      const centerLabel = navratriHero.querySelector(".center-label");
+      const savingNote = navratriHero.querySelector("[data-navratri-saving]");
+      const bars = Array.from(navratriHero.querySelectorAll(".bars span"));
+      const existingTotal = 65600;
+      const singleEmi = 15000;
+
+      const formatINR = value => "₹" + Math.round(value).toLocaleString("en-IN");
+      const scheduleNavratri = (callback, delay) => {
+        const timer = window.setTimeout(callback, delay);
+        navratriTimers.push(timer);
+      };
+      const clearNavratriAnimation = () => {
+        navratriTimers.forEach(window.clearTimeout);
+        navratriTimers = [];
+        if (navratriFrame !== null) {
+          window.cancelAnimationFrame(navratriFrame);
+          navratriFrame = null;
+        }
+      };
+      const setExistingState = () => {
+        center.classList.remove("single-emi", "amount-settled");
+        centerLabel.textContent = "Your EMIs today";
+        count.textContent = "5 EMIs";
+        due.textContent = "5 due dates";
+        savingNote.textContent = "Illustrative comparison only. Actual EMIs vary by lender.";
+        bars.forEach(bar => {
+          bar.style.opacity = "1";
+          bar.style.flex = "1";
+        });
+      };
+      const setSingleState = () => {
+        center.classList.add("single-emi", "amount-settled");
+        centerLabel.textContent = "One simple EMI";
+        count.textContent = "1 EMI";
+        due.textContent = "1 due date";
+        savingNote.textContent = "Illustration only; EMI and savings vary by lender.";
+        bars.forEach((bar, index) => {
+          bar.style.opacity = index === 0 ? "1" : ".22";
+          bar.style.flex = index === 0 ? "1.6" : "1";
+        });
+      };
+      const resetNavratriAnimation = () => {
+        clearNavratriAnimation();
+        cards.forEach(card => {
+          card.classList.remove("to-background", "from-background", "hidden", "depth-front", "depth-back");
+          card.style.transitionDelay = "";
+        });
+        amount.classList.remove("amount-roll-in", "amount-roll-out", "amount-fade-in", "amount-fade-out");
+        amount.textContent = formatINR(existingTotal);
+        setExistingState();
+      };
+      stopNavratriAnimation = resetNavratriAnimation;
+      const smoothCount = (from, to, duration, callback) => {
+        if (navratriFrame !== null) window.cancelAnimationFrame(navratriFrame);
+        amount.classList.remove("amount-roll-in", "amount-roll-out");
+        void amount.offsetWidth;
+        amount.classList.add("amount-roll-out");
+        scheduleNavratri(() => {
+          amount.textContent = formatINR(from);
+          amount.classList.remove("amount-roll-out");
+          amount.classList.add("amount-roll-in");
+          const start = performance.now();
+          const frame = now => {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = progress < .5
+              ? 4 * progress * progress * progress
+              : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+            amount.textContent = formatINR(from + (to - from) * eased);
+            if (progress < 1) {
+              navratriFrame = window.requestAnimationFrame(frame);
+            } else {
+              amount.textContent = formatINR(to);
+              amount.classList.remove("amount-roll-in");
+              navratriFrame = null;
+              callback?.();
+            }
+          };
+          navratriFrame = window.requestAnimationFrame(frame);
+        }, 160);
+      };
+      const moveCardsBehind = () => {
+        cards.forEach((card, index) => {
+          card.classList.remove("from-background", "hidden", "depth-front", "depth-back");
+          card.style.transitionDelay = `${index * 18}ms`;
+          card.classList.add("to-background");
+        });
+      };
+      const bringCardsForward = () => {
+        cards.forEach((card, index) => {
+          card.classList.remove("to-background", "hidden", "depth-back");
+          card.style.transitionDelay = `${index * 12}ms`;
+          card.classList.add("from-background");
+        });
+        scheduleNavratri(() => {
+          cards.forEach(card => {
+            card.classList.remove("from-background");
+            card.style.transitionDelay = "";
+          });
+        }, 950);
+      };
+      startNavratriAnimation = () => {
+        resetNavratriAnimation();
+        scheduleNavratri(moveCardsBehind, 250);
+        scheduleNavratri(() => {
+          setSingleState();
+          smoothCount(existingTotal, singleEmi, 850);
+        }, 1350);
+        scheduleNavratri(() => {
+          smoothCount(singleEmi, existingTotal, 750, setExistingState);
+          bringCardsForward();
+        }, 3550);
+      };
+
+      amount.textContent = formatINR(existingTotal);
+    }
+
     const showSlide = index => {
       if (!heroSlides.length) return;
+      if (activeSlideIndex === 1 && index % heroSlides.length !== 1) {
+        stopNavratriAnimation();
+      }
       activeSlideIndex = (index + heroSlides.length) % heroSlides.length;
       heroSlides.forEach((slide, slideIndex) => {
         const isActive = slideIndex === activeSlideIndex;
@@ -232,6 +362,9 @@ document.addEventListener("DOMContentLoaded", () => {
         dot.classList.toggle("is-active", isActive);
         dot.setAttribute("aria-pressed", String(isActive));
       });
+      if (activeSlideIndex === 1 && navratriHero) {
+        startNavratriAnimation();
+      }
     };
 
     heroDots.forEach(dot => {
