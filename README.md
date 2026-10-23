@@ -62,3 +62,14 @@ The stylesheet uses a midnight-navy, champagne-gold and warm-ivory base palette,
 
 ## Homepage hero carousel
 The homepage keeps the original Fortune hero as its first slide and uses the supplied Navratri EMI-consolidation design as its second slide. The main hero stays visible for five seconds, and the Navratri offer stays visible for ten seconds before the carousel loops. The offer card animation runs while that slide is visible and restarts when it returns; loan cards scale in place and remain inside the circular mandala on mobile, tablet and desktop. Its premium burgundy-and-gold styling uses layered lighting, refined card shadows and a polished CTA. Responsive typography keeps the offer headline balanced, and compact loan and EMI cards form an orbit around the central EMI card with a mobile-friendly arrangement. EMI amounts and savings in the animated card are illustrative only; actual lender terms, eligibility and approval vary.
+
+
+## Targeted website improvements (October 2026)
+- Removed the lower decorative leaf, kalash and diya elements from the Navratri offer art while preserving the main offer animation and cards.
+- Corrected the Home Loan product category to Property. The product filter is scoped to the 21 product cards, updates category counts from the actual product data, highlights the active category, and animates visible cards.
+- Added a viewport-triggered, reduced-motion-aware process timeline animation with horizontal desktop and vertical mobile styling.
+- Upgraded the EMI calculator with amount, annual-rate and tenure sliders synchronized to manual numeric inputs. EMI, total interest and total repayment update on input, including zero-interest calculations.
+- Consolidated the Apply/Contact destination into `contact.html`: the page now prioritizes a loan enquiry form and retains verified contact information and office address. Existing Contact URLs still resolve to this page.
+- Refined the loan partner registration form and added company, partnership type and business-details fields to its WhatsApp enquiry.
+- Form submissions continue to prepare WhatsApp messages; they are not stored by a backend. No backend submission success is claimed. The site currently has no server-side storage/API integration.
+- Verified JavaScript syntax, product card counts (21 total; Personal 3, Business 9, Property 7, Specialized 2), and duplicate IDs in the modified HTML pages. Manual cross-browser interaction tests should still be performed before production deployment.

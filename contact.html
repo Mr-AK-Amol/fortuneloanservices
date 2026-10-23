@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Contact Us | Fortune Loan Services</title><meta name="description" content="Contact Fortune Loan Services for professional loan advisory, structured lending and EMI restructuring support.">
+<title>Apply Now | Fortune Loan Services</title><meta name="description" content="Contact Fortune Loan Services for professional loan advisory, structured lending and EMI restructuring support.">
 <link rel="canonical" href="https://fortuneloanservices-r7s5.vercel.app/contact.html"><meta property="og:type" content="website"><meta property="og:title" content="Contact Us | Fortune Loan Services"><meta property="og:description" content="Contact Fortune Loan Services for loan advisory and EMI restructuring support."><meta property="og:url" content="https://fortuneloanservices-r7s5.vercel.app/contact.html"><meta property="og:image" content="https://fortuneloanservices-r7s5.vercel.app/assets/fortune-logo.png">
 <link rel="icon" href="assets/fortune-logo.png"><link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,28 +11,32 @@
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav-links" id="navLinks">
    <a href="index.html">Home</a><a href="about-us.html">About</a><a href="index.html#loans">Loan Solutions</a><a href="index.html#partners">Partners</a>
-   <a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Apply Now</a>
+   <a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta" href="contact.html#apply-form">Apply Now</a>
   </nav>
  </div>
 </header>
-<main><section class="page-hero"><div class="container"><span class="section-kicker">FORTUNE LOAN SERVICES</span><h1>Get in Touch</h1><p>Contact Fortune Loan Services for professional loan advisory, structured lending and EMI restructuring support.</p></div></section><section class="content-section"><div class="container contact-grid">
-<div class="content-card"><span class="section-kicker">GET IN TOUCH</span><h2>Talk to a Financial Expert</h2>
+<main><section class="page-hero"><div class="container"><span class="section-kicker">FORTUNE LOAN SERVICES</span><h1>Apply Now</h1><p>Share your requirement with Fortune Loan Services and connect with our team for guidance on suitable lending options.</p></div></section><section class="content-section"><div class="container contact-grid" id="application">
+<div class="content-card apply-contact-card"><span class="section-kicker">APPLICATION & CONTACT</span><h2>Apply for a Loan or Contact Our Team</h2>
 <div class="contact-item"><b>Call</b><a href="tel:+919028346900">+91 9028346900</a></div>
 <div class="contact-item"><b>Email</b><a href="mailto:business@fortuneloan.services">business@fortuneloan.services</a></div>
 <div class="contact-item"><b>Corporate & Head Office</b>Incuspaze 3rd Floor, 1965, Gorwa, Alembic City, Alembic Road, Vadodara – 390003 Gujarat, India</div>
-<div class="contact-item"><b>Founder & Director</b>Aamin Khan</div>
+<div class="contact-item"><b>Founder & Director</b>Aamin Khan</div><div class="contact-item"><b>Office Address</b>Incuspaze 3rd Floor, 1965, Gorwa, Alembic City, Alembic Road, Vadodara – 390003 Gujarat, India</div>
 <div class="notice-box">Loan approval depends on lender policy and applicant profile strength. Fortune Loan Services provides assistance and guidance only.</div>
 </div>
-<div class="form-card"><h2>Send Us a Message</h2><p style="color:#6d7b90;font-size:12px;margin:8px 0 20px">Fill in your details and the form will open WhatsApp with your enquiry.</p>
+<div class="form-card apply-premium-card" id="apply-form"><span class="section-kicker">LOAN ENQUIRY</span><h2>Submit Loan Enquiry</h2><p style="color:#6d7b90;font-size:12px;margin:8px 0 20px">Share a few details below. Our team can guide you toward suitable lending options.</p>
 <form id="contactForm"><div class="form-grid">
 <div class="form-field"><label for="cfFirst">First Name *</label><input required id="cfFirst" name="firstName" autocomplete="given-name" placeholder="John"></div>
 <div class="form-field"><label for="cfLast">Last Name *</label><input required id="cfLast" name="lastName" autocomplete="family-name" placeholder="Doe"></div>
 <div class="form-field"><label for="cfEmail">Email *</label><input required type="email" id="cfEmail" name="email" autocomplete="email" placeholder="you@example.com"></div>
 <div class="form-field"><label for="cfMobile">Mobile Number *</label><input required id="cfMobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="0000000000"></div>
-<div class="form-field full"><label for="cfSubject">Subject *</label><input required id="cfSubject" name="subject" placeholder="How can we help you?"></div>
-<div class="form-field full"><label for="cfMessage">Message *</label><textarea required id="cfMessage" name="message" placeholder="Tell us about your requirement"></textarea></div>
-<div class="form-field full"><button class="btn btn-primary" type="submit">Send Enquiry ↗</button></div>
-</div></form><p class="form-note">Submitting opens WhatsApp with your details pre-filled; nothing is sent until you choose to send the message.</p><p id="contactFormStatus" class="form-note" role="status" aria-live="polite"></p></div></div></section></main><footer class="footer professional-footer" id="site-footer">
+<div class="form-field"><label for="cfLoanType">Loan Type *</label><select required id="cfLoanType" name="loanType"><option value="">Select loan type</option><option>Personal Loan</option><option>Business Loan</option><option>Home Loan</option><option>Loan Against Property</option><option>Working Capital</option><option>Professional Loan</option><option>Other</option></select></div>
+<div class="form-field"><label for="cfAmount">Required Loan Amount (₹)</label><input id="cfAmount" name="amount" type="number" min="1000" step="1000" placeholder="e.g. 500000"></div>
+<div class="form-field full"><label for="cfSubject">Employment / Business Type</label><input id="cfSubject" name="subject" placeholder="Salaried, self-employed, business owner, etc."></div>
+
+<div class="form-field full"><label for="cfMessage">Additional Requirements *</label><textarea required id="cfMessage" name="message" placeholder="Briefly describe your loan requirement"></textarea></div>
+<div class="form-field full consent-field"><label class="consent-line" for="cfConsent"><input type="checkbox" id="cfConsent" required> <span>I consent to Fortune Loan Services contacting me about this enquiry and have read the privacy notice.</span></label></div>
+<div class="form-field full"><button class="btn btn-primary" type="submit">Continue with WhatsApp <span aria-hidden="true">↗</span></button></div>
+</div></form><p class="form-note">This static website prepares a WhatsApp message for your review. It does not store your details or submit them to a website backend; nothing is sent until you choose to send the message.</p><p id="contactFormStatus" class="form-note" role="status" aria-live="polite"></p></div></div></section></main><footer class="footer professional-footer" id="site-footer">
   <div class="container footer-main">
     <div class="footer-brand-column">
       <a class="footer-logo-link" href="index.html" aria-label="Fortune Loan Services home">
@@ -96,7 +100,7 @@
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <span>© <span id="year"></span> Fortune Loan Services. All rights reserved.</span>
-      <div class="footer-legal-links"><a href="terms-of-services.html">Terms of Service</a><a href="contact.html">Contact</a><a href="index.html#home">Back to Home ↑</a></div>
+      <div class="footer-legal-links"><a href="terms-of-services.html">Terms of Service</a><a href="contact.html#application">Contact</a><a href="index.html#home">Back to Home ↑</a></div>
     </div>
   </div>
 </footer><script src="script.js"></script></body></html>

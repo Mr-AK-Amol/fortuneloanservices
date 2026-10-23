@@ -74,20 +74,46 @@ document.addEventListener("DOMContentLoaded", () => {
   }, {threshold:.8});
   document.querySelectorAll(".counter").forEach(el => counterObserver.observe(el));
 
-  // Loan category filter
-  const filters = document.querySelectorAll(".filter");
-  const cards = document.querySelectorAll(".loan-card");
-  filters.forEach(btn => {
-    btn.addEventListener("click", () => {
-      filters.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const filter = btn.dataset.filter;
-      cards.forEach(card => {
-        const show = filter === "all" || card.dataset.category === filter;
-        card.style.display = show ? "" : "none";
-      });
-    });
+  // Loan category filter — scope to the product grid (not decorative hero cards).
+  const filters = document.querySelectorAll(".product-filters .filter");
+  const productGrid = document.getElementById("loanGrid");
+  const productCards = productGrid ? Array.from(productGrid.querySelectorAll(".product-card")) : [];
+  const productCounts = {};
+  ["all", "individual", "business", "property", "specialized"].forEach(category => {
+    productCounts[category] = category === "all" ? productCards.length : productCards.filter(card => card.dataset.category === category).length;
+    document.querySelectorAll(`[data-filter-count="${category}"]`).forEach(el => el.textContent = productCounts[category]);
   });
+  const applyProductFilter = category => {
+    if (!productGrid) return;
+    filters.forEach(button => {
+      const active = button.dataset.filter === category;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    productCards.forEach((card, index) => {
+      const visible = category === "all" || card.dataset.category === category;
+      card.hidden = !visible;
+      card.classList.toggle("filter-enter", visible);
+      if (visible) card.style.animationDelay = `${Math.min(index % 4, 3) * 35}ms`;
+    });
+  };
+  filters.forEach(button => button.addEventListener("click", () => applyProductFilter(button.dataset.filter)));
+  if (filters.length) applyProductFilter(document.querySelector(".product-filters .filter.active")?.dataset.filter || "all");
+
+  // Accessible viewport-triggered process timeline.
+  const processSection = document.querySelector("#process");
+  if (processSection) {
+    const activateProcess = () => processSection.classList.add("process-animated");
+    if ("IntersectionObserver" in window) {
+      const processObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          activateProcess();
+          processObserver.disconnect();
+        }
+      }, { threshold: 0.25 });
+      processObserver.observe(processSection);
+    } else activateProcess();
+  }
 
   const moreProductsToggle = document.getElementById("moreProductsToggle");
   const moreProducts = document.getElementById("moreProducts");
@@ -197,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
     makeTrack(lenders.slice(0, 10), 4);
   }
 
-  // Rotate between the main homepage hero and the seasonal offer slide.
+  // Homepage hero carousel (rotation is enabled only when multiple slides exist).
   const heroCarousel = document.getElementById("heroSlides");
   if (heroCarousel) {
     const heroSlides = Array.from(heroCarousel.querySelectorAll("[data-hero-slide]"));
@@ -212,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (activeSlideIndex < 0) activeSlideIndex = 0;
 
-    if (navratriHero) {
+    if (navratriHero && navratriHero.querySelector(".loan-card") && navratriHero.querySelector("[data-navratri-amount]")) {
       const cards = Array.from(navratriHero.querySelectorAll(".loan-card"));
       const amount = navratriHero.querySelector("[data-navratri-amount]");
       const count = navratriHero.querySelector("[data-navratri-count]");
@@ -336,6 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const scheduleHeroRotation = () => {
       window.clearTimeout(heroRotationTimer);
+      if (heroSlides.length < 2) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const dwellTime = activeSlideIndex === 1 ? 10000 : 5000;
       heroRotationTimer = window.setTimeout(() => {
@@ -531,7 +558,7 @@ Please contact this lead regarding suitable loan options.`;
       const digits = mobile.value.replace(/\D/g, "");
       mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
       if (!contactForm.reportValidity()) return;
-      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nSubject: ${document.getElementById("cfSubject").value.trim()}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
+      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
       openWhatsApp(message, status);
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
@@ -548,7 +575,7 @@ Please contact this lead regarding suitable loan options.`;
       mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
       pincode.setCustomValidity(/^\d{6}$/.test(pincode.value.trim()) ? "" : "Enter a valid 6-digit pincode.");
       if (!partnerForm.reportValidity()) return;
-      const message = `*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\nName: ${document.getElementById("pfName").value.trim()}\nMobile: ${digits}\nEmail: ${document.getElementById("pfEmail").value.trim()}\nState: ${document.getElementById("pfState").value.trim()}\nCity: ${document.getElementById("pfCity").value.trim()}\nPincode: ${pincode.value.trim()}\nPreferred Loan: ${document.getElementById("pfLoan").value.trim()}\nProfessional Experience: ${document.getElementById("pfExp").value.trim() || "Not provided"}`;
+      const message = `*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\nName: ${document.getElementById("pfName").value.trim()}\nMobile: ${digits}\nEmail: ${document.getElementById("pfEmail").value.trim()}\nState: ${document.getElementById("pfState").value.trim()}\nCity: ${document.getElementById("pfCity").value.trim()}\nPincode: ${pincode.value.trim()}\nPreferred Loan: ${document.getElementById("pfLoan").value.trim()}\nProfessional Experience: ${document.getElementById("pfExp").value.trim() || "Not provided"}\nCompany: ${document.getElementById("pfCompany")?.value.trim() || "Not provided"}\nPartnership Type: ${document.getElementById("pfType")?.value || "Not specified"}\nBusiness Details: ${document.getElementById("pfMessage")?.value.trim() || "Not provided"}`;
       openWhatsApp(message, status);
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
@@ -567,28 +594,44 @@ Please contact this lead regarding suitable loan options.`;
     const amountInput = document.getElementById("loanAmount");
     const rateInput = document.getElementById("interestRate");
     const yearsInput = document.getElementById("loanYears");
+    const amountRange = document.getElementById("loanAmountRange");
+    const rateRange = document.getElementById("interestRateRange");
+    const yearsRange = document.getElementById("loanYearsRange");
     const currency = value => "₹" + Math.round(value).toLocaleString("en-IN");
+    const syncRange = (range, input) => {
+      if (!range || !input) return;
+      range.value = input.value;
+      const min = Number(range.min), max = Number(range.max), value = Number(range.value);
+      range.style.setProperty("--range-progress", `${max === min ? 0 : (value-min)/(max-min)*100}%`);
+    };
     const calculateEmi = () => {
       calculatorError.textContent = "";
-      if (![amountInput, rateInput, yearsInput].every(input => input && input.reportValidity())) return;
       const principal = Number(amountInput.value);
-      const monthlyRate = Number(rateInput.value) / 1200;
-      const months = Number(yearsInput.value) * 12;
-      const factor = Math.pow(1 + monthlyRate, months);
-      const emi = monthlyRate === 0
-        ? principal / months
-        : principal * monthlyRate * factor / (factor - 1);
-      if (!Number.isFinite(emi)) {
-        calculatorError.textContent = "Unable to calculate with these values. Check the amount, rate and tenure.";
+      const annualRate = Number(rateInput.value);
+      const years = Number(yearsInput.value);
+      if (!Number.isFinite(principal) || principal < 1000 || principal > 100000000 ||
+          !Number.isFinite(annualRate) || annualRate < 0 || annualRate > 36 ||
+          !Number.isFinite(years) || years < 1 || years > 40) {
+        calculatorError.textContent = "Enter a loan amount between ₹1,000 and ₹10,00,00,000, a rate from 0% to 36%, and tenure from 1 to 40 years.";
         return;
       }
+      syncRange(amountRange, amountInput); syncRange(rateRange, rateInput); syncRange(yearsRange, yearsInput);
+      const monthlyRate = annualRate / 1200;
+      const months = Math.round(years * 12);
+      const factor = Math.pow(1 + monthlyRate, months);
+      const emi = monthlyRate === 0 ? principal / months : principal * monthlyRate * factor / (factor - 1);
+      if (!Number.isFinite(emi)) { calculatorError.textContent = "Unable to calculate. Please check the values."; return; }
       const repayment = emi * months;
       calculatorResults.emi.textContent = currency(emi);
       calculatorResults.principal.textContent = currency(principal);
-      calculatorResults.interest.textContent = currency(repayment - principal);
+      calculatorResults.interest.textContent = currency(Math.max(0, repayment - principal));
       calculatorResults.repayment.textContent = currency(repayment);
     };
-    calculatorButton.addEventListener("click", calculateEmi);
+    [[amountRange,amountInput],[rateRange,rateInput],[yearsRange,yearsInput]].forEach(([range,input]) => {
+      if (range && input) range.addEventListener("input", () => { input.value = range.value; calculateEmi(); });
+    });
+    [amountInput,rateInput,yearsInput].forEach(input => input.addEventListener("input", calculateEmi));
+    if (calculatorButton) calculatorButton.addEventListener("click", calculateEmi);
     calculateEmi();
   }
 

@@ -11,18 +11,20 @@
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav-links" id="navLinks">
    <a href="index.html">Home</a><a href="about-us.html">About</a><a href="index.html#loans">Loan Solutions</a><a href="index.html#partners">Partners</a>
-   <a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Apply Now</a>
+   <a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta" href="contact.html#apply-form">Apply Now</a>
   </nav>
  </div>
 </header>
 <main><section class="page-hero"><div class="container"><span class="section-kicker">FORTUNE LOAN SERVICES</span><h1>Become a Loan Partner</h1><p>Join the Fortune Loan Services partner network with access to multiple banks and NBFC partnerships and partner support.</p></div></section><section class="content-section"><div class="container">
 <div class="section-title center"><span class="section-kicker">PARTNER NETWORK</span><h2>Become a <span>Loan Partner</span></h2><p>Start your loan business and earn extra income through the Fortune Loan Services partner network.</p></div>
 <div class="feature-cards"><div class="info-card"><h3>No Investment or Joining Fees</h3><p>Start your loan business without upfront joining cost.</p></div><div class="info-card"><h3>100+ Bank & NBFC Partnerships</h3><p>Access a broad lender network and dedicated partner support.</p></div><div class="info-card"><h3>Fast Payouts</h3><p>Commission payout after successful loan disbursement, subject to the applicable process.</p></div></div>
-<div class="form-card" style="margin-top:35px"><h2>Partner Registration</h2><form id="partnerForm"><div class="form-grid">
+<div class="form-card partner-form-card" style="margin-top:35px"><span class="section-kicker">PARTNER NETWORK</span><h2>Partner Registration</h2><p class="form-note">Tell us about your business so our team can understand your partnership requirement.</p><form id="partnerForm"><div class="form-grid">
 <div class="form-field"><label for="pfName">Full Name *</label><input required id="pfName" name="name" autocomplete="name"></div><div class="form-field"><label for="pfMobile">Mobile Number *</label><input required id="pfMobile" name="mobile" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="10"></div>
-<div class="form-field"><label for="pfEmail">Email *</label><input required type="email" id="pfEmail" name="email" autocomplete="email"></div><div class="form-field"><label for="pfState">State *</label><input required id="pfState" name="state" autocomplete="address-level1"></div>
+<div class="form-field"><label for="pfEmail">Email *</label><input required type="email" id="pfEmail" name="email" autocomplete="email"></div><div class="form-field"><label for="pfCompany">Company / Organization</label><input id="pfCompany" name="company" autocomplete="organization" placeholder="Business or organization name"></div><div class="form-field"><label for="pfState">State *</label><input required id="pfState" name="state" autocomplete="address-level1"></div>
 <div class="form-field"><label for="pfCity">City *</label><input required id="pfCity" name="city" autocomplete="address-level2"></div><div class="form-field"><label for="pfPin">Pincode *</label><input required id="pfPin" name="pincode" inputmode="numeric" autocomplete="postal-code" maxlength="6"></div>
 <div class="form-field"><label for="pfLoan">Preferred Loan *</label><input required id="pfLoan" name="loan" placeholder="Personal Loan, Business Loan, Home Loan"></div><div class="form-field"><label for="pfExp">Professional Experience</label><input id="pfExp" name="experience" placeholder="DSA, Financial Consultant"></div>
+<div class="form-field"><label for="pfType">Partnership Type</label><select id="pfType" name="partnershipType"><option value="">Select partnership type</option><option>DSA / Loan Agent</option><option>Financial Consultant</option><option>Business Referral Partner</option><option>Other</option></select></div>
+<div class="form-field full"><label for="pfMessage">Business Details / Message</label><textarea id="pfMessage" name="message" placeholder="Tell us about your business and partnership goals"></textarea></div>
 <div class="form-field full"><button class="btn btn-primary" type="submit">Register as Loan Partner ↗</button></div>
 </div></form><p class="form-note">Submitting opens WhatsApp with your details pre-filled; nothing is sent until you choose to send the message. For this static website, registration details are not stored.</p><p id="partnerFormStatus" class="form-note" role="status" aria-live="polite"></p></div>
 <div class="content-grid" style="margin-top:35px"><div class="content-card"><h3>Partner Process</h3><ol><li>Submit loan lead</li><li>Processing & bank coordination</li><li>Approval & disbursement by lender</li><li>Commission payout after successful disbursement</li></ol></div><div class="content-card"><h3>Working Model</h3><p>The live site describes part-time and full-time participation, support for experienced DSAs and newcomers, and a simple digital process.</p></div></div>
@@ -35,7 +37,7 @@
       <p class="footer-tagline">Your Trusted Loan Partner</p>
       <p class="footer-intro">Guidance to help individuals, professionals and businesses explore suitable lending options through banks and NBFCs.</p>
       <div class="footer-cta-row">
-        <a class="footer-button footer-button-primary" href="contact.html">Talk to Our Team <span aria-hidden="true">↗</span></a>
+        <a class="footer-button footer-button-primary" href="contact.html#application">Talk to Our Team <span aria-hidden="true">↗</span></a>
         <a class="footer-button footer-button-outline" href="emi-calculator.html">EMI Calculator</a>
       </div>
     </div>
@@ -51,10 +53,10 @@
 
     <div class="footer-column">
       <h3>Quick Links</h3>
-      <a href="contact.html">Contact Us</a>
+      <a href="contact.html#application">Contact Us</a>
       <a href="emi-calculator.html">EMI Calculator</a>
       <a href="terms-of-services.html">Terms of Service</a>
-      <a href="contact.html#contactForm">Send an Enquiry</a>
+      <a href="contact.html#application">Send an Enquiry</a>
       <a href="index.html#loans">Explore Loan Options</a>
     </div>
 
@@ -90,7 +92,7 @@
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <span>© <span id="year"></span> Fortune Loan Services. All rights reserved.</span>
-      <div class="footer-legal-links"><a href="terms-of-services.html">Terms of Service</a><a href="contact.html">Contact</a><a href="index.html#home">Back to Home ↑</a></div>
+      <div class="footer-legal-links"><a href="terms-of-services.html">Terms of Service</a><a href="contact.html#application">Contact</a><a href="index.html#home">Back to Home ↑</a></div>
     </div>
   </div>
 </footer><script src="script.js"></script></body></html>
