@@ -1398,7 +1398,7 @@ h1 span{
 .footer-contact-link small{font-size:9px;color:#7f96b6;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
 .footer-contact-link strong{font-size:11px;color:#f1f6ff;overflow-wrap:anywhere;font-weight:800}
 .footer-contact-link:hover strong{color:#ffbd35}
-.footer-addresses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding-bottom:30px}
+.footer-addresses{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding-bottom:30px}
 .footer-address-card{border:1px solid rgba(174,200,235,.15);border-radius:16px;padding:22px 23px;background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018));box-shadow:0 12px 28px rgba(0,0,0,.08);min-width:0}
 .footer-address-heading{display:flex;align-items:center;gap:12px;margin-bottom:13px}
 .footer-address-icon{width:42px;height:42px;display:grid;place-items:center;flex:0 0 42px;border-radius:13px;background:linear-gradient(140deg,rgba(255,122,0,.2),rgba(255,189,53,.1));color:#ffbd35;font-size:23px}
