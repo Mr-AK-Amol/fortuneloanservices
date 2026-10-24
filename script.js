@@ -529,7 +529,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(!/^\d{10}$/.test(fields.contact.value.trim())){ errors.contact.textContent = "Please enter a valid 10-digit contact number."; valid = false; fields.contact.setAttribute("aria-invalid", "true"); }
     if(!fields.city.value.trim()){ errors.city.textContent = "Please enter your city."; valid = false; fields.city.setAttribute("aria-invalid", "true"); }
     if(!fields.amount.value || Number(fields.amount.value) <= 0){
-      errors.amount.textContent = "Please enter a valid required amount."; valid = false; fields.amount.setAttribute("aria-invalid", "true");
+      errors.amount.textContent = "Please enter a valid required loan amount."; valid = false; fields.amount.setAttribute("aria-invalid", "true");
     }
     if(!fields.incomeSource.value){ errors.incomeSource.textContent = "Please select your income source."; valid = false; fields.incomeSource.setAttribute("aria-invalid", "true"); }
     if(!/^\d{6}$/.test(fields.pin.value.trim())){errors.pin.textContent="Please enter a valid 6-digit PIN code.";valid=false;fields.pin.setAttribute("aria-invalid","true");}
@@ -546,14 +546,11 @@ Contact Number: ${fields.contact.value.trim()}
 City: ${fields.city.value.trim()}
 PIN Code: ${fields.pin.value.trim()}
 Loan Type: ${fields.loanType.value}
-Required Amount: ₹${amount}
+Required Loan Amount: ₹${amount}
 Loan Purpose: ${fields.purpose.value}
 CIBIL Score: ${document.getElementById("inqCibil").value || "Not provided (optional)"}
 Monthly Income Range: ${document.getElementById("inqIncomeRange")?.value || "Not provided (optional)"}
-Income Source: ${fields.incomeSource.value}
-
-Website Inquiry
-Please contact this lead regarding suitable loan options.`;
+Income Source: ${fields.incomeSource.value}`;
 
     const status = document.getElementById("inquiryStatus");
     if (openWhatsApp(message, status)) closeInquiry();
@@ -569,7 +566,7 @@ Please contact this lead regarding suitable loan options.`;
       const digits = mobile.value.replace(/\D/g, "");
       mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
       if (!contactForm.reportValidity()) return;
-      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nCIBIL Score: ${document.getElementById("cfCibil")?.value || "Not provided (optional)"}\nMonthly Income Range: ${document.getElementById("cfIncomeRange")?.value || "Not provided (optional)"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
+      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Loan Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nCIBIL Score: ${document.getElementById("cfCibil")?.value || "Not provided (optional)"}\nMonthly Income Range: ${document.getElementById("cfIncomeRange")?.value || "Not provided (optional)"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
       openWhatsApp(message, status);
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
