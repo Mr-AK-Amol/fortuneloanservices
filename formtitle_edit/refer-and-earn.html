@@ -14,12 +14,12 @@
 <div class="refer-field"><label for="clientEmail">Client Email Address (Optional)</label><input id="clientEmail" type="email" autocomplete="email" placeholder="client@example.com"></div>
 <div class="refer-field"><label for="clientCity">Client City *</label><input id="clientCity" required placeholder="Enter city or town"></div>
 <div class="refer-field"><label for="clientPin">Client PIN Code *</label><input id="clientPin" required inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="6-digit PIN code"></div>
-<div class="refer-field"><label for="loanType">Loan Type *</label><select id="loanType" required><option value="">Select loan type</option><option>Personal Loan</option><option>Business Loan</option><option>Home Loan</option><option>Loan Against Property</option><option>MSME / Working Capital Loan</option><option>Machinery Loan</option><option>Car Loan</option><option>Education Loan</option><option>Doctor / Professional Loan</option><option>Debt Consolidation Loan</option><option>Other</option></select></div>
+<div class="refer-field"><label for="loanType">Loan Type *</label><select id="loanType" required><option value="">Select loan type</option><option>Personal Loan</option><option>Business Loan</option><option>Home Loan</option><option>Loan Against Property</option><option>MSME Loan</option><option>Other Gov. Loan</option><option>Working Capital Loan</option><option>Machinery Loan</option><option>Vehicle / Car Loan</option><option>Education Loan</option><option>Doctor / Professional Loan</option><option>Debt Consolidation Loan</option><option>Other</option></select></div>
 <div class="refer-field"><label for="loanAmount">Required Loan Amount (₹) *</label><select id="loanAmount" required><option value="">Select amount</option><option>Below ₹1,00,000</option><option>₹1,00,000 – ₹5,00,000</option><option>₹5,00,000 – ₹10,00,000</option><option>₹10,00,000 – ₹25,00,000</option><option>₹25,00,000 – ₹50,00,000</option><option>Above ₹50,00,000</option></select></div>
 <div class="refer-field"><label for="loanPurpose">Purpose of Loan *</label><input id="loanPurpose" required placeholder="What is the loan for?"></div>
-<div class="refer-field"><label for="incomeRange">Monthly Income Range (Optional)</label><select id="incomeRange"><option value="">Prefer not to say</option><option>₹10,000 – ₹15,000</option><option>₹15,000 – ₹20,000</option><option>₹20,000 – ₹40,000</option><option>₹40,000 – ₹50,000</option><option>Above ₹50,000</option><option>Above ₹1,00,000</option></select></div>
+<div class="refer-field"><label for="incomeRange">Monthly Income Range (Optional)</label><select id="incomeRange"><option value="">Prefer not to say</option><option>₹10,000 – ₹15,000</option><option>₹15,000 – ₹20,000</option><option>₹20,000 – ₹40,000</option><option>₹40,000 – ₹50,000</option><option>₹50,000 – ₹1,00,000</option><option>Above ₹1 Lakh</option></select></div>
 <div class="refer-field"><label for="cibilScore">CIBIL Score (Optional)</label><select id="cibilScore"><option value="">Not sure / Prefer not to say</option><option>Below 650</option><option>650 – 699</option><option>700 – 749</option><option>750 and above</option></select></div>
-<div class="refer-field"><label for="incomeSource">Income Source *</label><select id="incomeSource" required><option value="">Select income source</option><option>Salaried</option><option>Self-employed / Business</option><option>Professional</option><option>Agriculture</option><option>Other</option></select></div>
+<div class="refer-field"><label for="incomeSource">Income Source *</label><select id="incomeSource" required><option value="">Select income source</option><option>Business Owner / Self Employed</option><option>Salaried</option><option>Professional</option><option>Agriculture</option><option>Other</option></select></div>
 <div class="refer-field full"><label><input id="clientConsent" type="checkbox" required style="width:auto;min-height:auto;margin-right:8px"> I confirm the referred client has given permission to share these details and be contacted about loan options. *</label></div>
 </div>
 <button class="refer-submit" type="submit">Send Referral on WhatsApp ↗</button>
@@ -28,10 +28,33 @@
 document.getElementById('referForm').addEventListener('submit',function(e){
 e.preventDefault();
 const val=id=>document.getElementById(id).value.trim();
-const phone=id=>val(id).replace(/\\D/g,'');
-if(!/^[6-9]\\d{9}$/.test(phone('refMobile'))){alert('Please enter a valid 10-digit referrer mobile number.');return}
-if(!/^[6-9]\\d{9}$/.test(phone('clientMobile'))){alert('Please enter a valid 10-digit client mobile number.');return}
-if(!/^\\d{6}$/.test(val('clientPin'))){alert('Please enter a valid 6-digit PIN code.');return}
-const message=`*FORTUNE LOAN SERVICES — REFERRAL*\\n\\n*Referrer details*\\nName: ${val('refName')}\\nMobile: ${phone('refMobile')}\\n\\n*Referred client's loan details*\\nName: ${val('clientName')}\\nMobile: ${phone('clientMobile')}\\nEmail: ${val('clientEmail')||'Not provided'}\\nCity: ${val('clientCity')}\\nPIN Code: ${val('clientPin')}\\nLoan type: ${val('loanType')}\\nRequired amount: ${val('loanAmount')}\\nLoan purpose: ${val('loanPurpose')}\\nMonthly income: ${val('incomeRange')||'Not provided'}\\nCIBIL score: ${val('cibilScore')||'Not provided'}\\nIncome source: ${val('incomeSource')}\\n\\nClient permission confirmed by referrer.\\nSubmitted via Refer and Earn webpage.`;
+const phone=id=>val(id).replace(/\D/g,'');
+if(!/^[6-9]\d{9}$/.test(phone('refMobile'))){alert('Please enter a valid 10-digit referrer mobile number.');return}
+if(!/^[6-9]\d{9}$/.test(phone('clientMobile'))){alert('Please enter a valid 10-digit client mobile number.');return}
+if(!/^\d{6}$/.test(val('clientPin'))){alert('Please enter a valid 6-digit PIN code.');return}
+const message=[
+  '*FORTUNE LOAN SERVICES*',
+  '*REFERRAL DETAILS*',
+  '',
+  '*REFERRER DETAILS*',
+  'Name: '+val('refName'),
+  'Mobile: '+phone('refMobile'),
+  '',
+  "*REFERRED CLIENT'S LOAN DETAILS*",
+  'Name: '+val('clientName'),
+  'Mobile: '+phone('clientMobile'),
+  'Email: '+(val('clientEmail')||'Not provided'),
+  'City: '+val('clientCity'),
+  'PIN Code: '+val('clientPin'),
+  '',
+  '*LOAN INFORMATION*',
+  'Loan Type: '+val('loanType'),
+  'Required Loan Amount: '+val('loanAmount'),
+  'Loan Purpose: '+val('loanPurpose'),
+  'Monthly Income: '+(val('incomeRange')||'Not provided'),
+  'CIBIL Score: '+(val('cibilScore')||'Not provided'),
+  'Income Source: '+val('incomeSource'),
+  '',
+].join('\n').trim();
 window.open('https://wa.me/919028346900?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
 });</script></body></html>

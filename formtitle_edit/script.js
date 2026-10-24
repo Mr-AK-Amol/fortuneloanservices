@@ -505,6 +505,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fields = {
       name: document.getElementById("inqName"),
       contact: document.getElementById("inqContact"),
+      email: document.getElementById("inqEmail"),
       city: document.getElementById("inqCity"),
       amount: document.getElementById("inqAmount"),
       incomeSource: document.getElementById("inqIncomeSource"),
@@ -513,6 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const errors = {
       name: document.getElementById("nameError"),
       contact: document.getElementById("contactError"),
+      email: document.getElementById("emailError"),
       city: document.getElementById("cityError"),
       amount: document.getElementById("amountError"),
       incomeSource: document.getElementById("incomeSourceError"), pin: document.getElementById("pinError"), loanType: document.getElementById("loanTypeError"), purpose: document.getElementById("purposeError")
@@ -527,9 +529,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let valid = true;
     if(!fields.name.value.trim()){ errors.name.textContent = "Please enter your name."; valid = false; fields.name.setAttribute("aria-invalid", "true"); }
     if(!/^\d{10}$/.test(fields.contact.value.trim())){ errors.contact.textContent = "Please enter a valid 10-digit contact number."; valid = false; fields.contact.setAttribute("aria-invalid", "true"); }
+    const email = fields.email.value.trim();
+    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ errors.email.textContent = "Please enter a valid email address."; valid = false; fields.email.setAttribute("aria-invalid", "true"); }
     if(!fields.city.value.trim()){ errors.city.textContent = "Please enter your city."; valid = false; fields.city.setAttribute("aria-invalid", "true"); }
     if(!fields.amount.value || Number(fields.amount.value) <= 0){
-      errors.amount.textContent = "Please enter a valid required loan amount."; valid = false; fields.amount.setAttribute("aria-invalid", "true");
+      errors.amount.textContent = "Please enter a valid required amount."; valid = false; fields.amount.setAttribute("aria-invalid", "true");
     }
     if(!fields.incomeSource.value){ errors.incomeSource.textContent = "Please select your income source."; valid = false; fields.incomeSource.setAttribute("aria-invalid", "true"); }
     if(!/^\d{6}$/.test(fields.pin.value.trim())){errors.pin.textContent="Please enter a valid 6-digit PIN code.";valid=false;fields.pin.setAttribute("aria-invalid","true");}
@@ -539,18 +543,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const amount = Number(fields.amount.value).toLocaleString("en-IN");
     const message =
-`*FORTUNE LOAN SERVICES - NEW INQUIRY*
+`*FORTUNE LOAN SERVICES*
+*NEW LOAN INQUIRY*
 
+*APPLICANT DETAILS*
 Name: ${fields.name.value.trim()}
-Contact Number: ${fields.contact.value.trim()}
+Mobile: ${fields.contact.value.trim()}
+Email: ${fields.email.value.trim() || "Not provided"}
 City: ${fields.city.value.trim()}
 PIN Code: ${fields.pin.value.trim()}
+
+*LOAN DETAILS*
 Loan Type: ${fields.loanType.value}
 Required Loan Amount: ₹${amount}
 Loan Purpose: ${fields.purpose.value}
-CIBIL Score: ${document.getElementById("inqCibil").value || "Not provided (optional)"}
-Monthly Income Range: ${document.getElementById("inqIncomeRange")?.value || "Not provided (optional)"}
-Income Source: ${fields.incomeSource.value}`;
+Income Source: ${fields.incomeSource.value}
+Monthly Income Range: ${document.getElementById("inqIncomeRange")?.value || "Not provided"}
+CIBIL Score: ${document.getElementById("inqCibil").value || "Not provided"}`;
 
     const status = document.getElementById("inquiryStatus");
     if (openWhatsApp(message, status)) closeInquiry();
