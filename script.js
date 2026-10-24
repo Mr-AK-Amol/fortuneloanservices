@@ -418,7 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
-  // Loan inquiry popup: open on every page load/refresh.
+  // Homepage-only loan inquiry popup: opens compact; expand only when name field is clicked.
   const inquiryModal = document.getElementById("inquiryModal");
   const inquiryForm = document.getElementById("inquiryForm");
   const inquiryClose = document.getElementById("inquiryClose");
@@ -452,7 +452,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inquiryModal.classList.add("show");
     inquiryModal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
-    setTimeout(() => document.getElementById("inqName")?.focus(), 250);
+    // Keep the compact name prompt visible; do not force-focus or expand the form.
   };
 
   const closeInquiry = () => {
@@ -463,7 +463,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // A tiny delay makes the popup feel intentional after the page starts loading.
-  setTimeout(openInquiry, 900);
+  if (window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/")) {
+    setTimeout(openInquiry, 900);
+  }
+  const inquiryBox = inquiryModal.querySelector(".inquiry-box");
+  const nameInput = document.getElementById("inqName");
+  const expandInquiry = () => { inquiryBox?.classList.remove("is-compact"); };
+  nameInput?.addEventListener("focus", expandInquiry);
+  nameInput?.addEventListener("click", expandInquiry);
 
   inquiryClose.addEventListener("click", closeInquiry);
   inquiryOverlay.addEventListener("click", closeInquiry);
@@ -500,14 +507,15 @@ document.addEventListener("DOMContentLoaded", () => {
       contact: document.getElementById("inqContact"),
       city: document.getElementById("inqCity"),
       amount: document.getElementById("inqAmount"),
-      incomeSource: document.getElementById("inqIncomeSource")
+      incomeSource: document.getElementById("inqIncomeSource"),
+      pin: document.getElementById("inqPin"), loanType: document.getElementById("inqLoanType"), purpose: document.getElementById("inqPurpose")
     };
     const errors = {
       name: document.getElementById("nameError"),
       contact: document.getElementById("contactError"),
       city: document.getElementById("cityError"),
       amount: document.getElementById("amountError"),
-      incomeSource: document.getElementById("incomeSourceError")
+      incomeSource: document.getElementById("incomeSourceError"), pin: document.getElementById("pinError"), loanType: document.getElementById("loanTypeError"), purpose: document.getElementById("purposeError")
     };
 
     Object.values(errors).forEach(el => el.textContent = "");
@@ -518,17 +526,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let valid = true;
     if(!fields.name.value.trim()){ errors.name.textContent = "Please enter your name."; valid = false; fields.name.setAttribute("aria-invalid", "true"); }
-    const contact = fields.contact.value.replace(/\D/g, "");
-    if(!/^[6-9]\d{9}$/.test(contact)){
-      errors.contact.textContent = "Please enter a valid 10-digit contact number."; valid = false; fields.contact.setAttribute("aria-invalid", "true");
-    }
+    if(!/^\d{10}$/.test(fields.contact.value.trim())){ errors.contact.textContent = "Please enter a valid 10-digit contact number."; valid = false; fields.contact.setAttribute("aria-invalid", "true"); }
     if(!fields.city.value.trim()){ errors.city.textContent = "Please enter your city."; valid = false; fields.city.setAttribute("aria-invalid", "true"); }
     if(!fields.amount.value || Number(fields.amount.value) <= 0){
       errors.amount.textContent = "Please enter a valid required amount."; valid = false; fields.amount.setAttribute("aria-invalid", "true");
     }
-    if(!fields.incomeSource.value){
-      errors.incomeSource.textContent = "Please select your income source."; valid = false; fields.incomeSource.setAttribute("aria-invalid", "true");
-    }
+    if(!fields.incomeSource.value){ errors.incomeSource.textContent = "Please select your income source."; valid = false; fields.incomeSource.setAttribute("aria-invalid", "true"); }
+    if(!/^\d{6}$/.test(fields.pin.value.trim())){errors.pin.textContent="Please enter a valid 6-digit PIN code.";valid=false;fields.pin.setAttribute("aria-invalid","true");}
+    if(!fields.loanType.value){errors.loanType.textContent="Please select a loan type.";valid=false;fields.loanType.setAttribute("aria-invalid","true");}
+    if(!document.getElementById("inqPurpose").value){errors.purpose.textContent="Please select a loan purpose.";valid=false;fields.purpose.setAttribute("aria-invalid","true");}
     if(!valid) return;
 
     const amount = Number(fields.amount.value).toLocaleString("en-IN");
@@ -536,9 +542,14 @@ document.addEventListener("DOMContentLoaded", () => {
 `*FORTUNE LOAN SERVICES - NEW INQUIRY*
 
 Name: ${fields.name.value.trim()}
-Contact: ${contact}
+Contact Number: ${fields.contact.value.trim()}
 City: ${fields.city.value.trim()}
+PIN Code: ${fields.pin.value.trim()}
+Loan Type: ${fields.loanType.value}
 Required Amount: ₹${amount}
+Loan Purpose: ${fields.purpose.value}
+CIBIL Score: ${document.getElementById("inqCibil").value || "Not provided (optional)"}
+Monthly Income Range: ${document.getElementById("inqIncomeRange")?.value || "Not provided (optional)"}
 Income Source: ${fields.incomeSource.value}
 
 Website Inquiry
@@ -558,7 +569,7 @@ Please contact this lead regarding suitable loan options.`;
       const digits = mobile.value.replace(/\D/g, "");
       mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
       if (!contactForm.reportValidity()) return;
-      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
+      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nCIBIL Score: ${document.getElementById("cfCibil")?.value || "Not provided (optional)"}\nMonthly Income Range: ${document.getElementById("cfIncomeRange")?.value || "Not provided (optional)"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
       openWhatsApp(message, status);
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
@@ -636,3 +647,6 @@ Please contact this lead regarding suitable loan options.`;
   }
 
 });
+
+// Monthly income is selected from optional dropdowns on both enquiry forms.
+[ ["inqIncomeMin","inqIncomeMax","incomeMinLabel","incomeMaxLabel"], ["cfIncomeMin","cfIncomeMax","cfIncomeMinLabel","cfIncomeMaxLabel"] ].forEach(([minId,maxId,minLabel,maxLabel])=>{const min=document.getElementById(minId),max=document.getElementById(maxId),ml=document.getElementById(minLabel),xl=document.getElementById(maxLabel);if(!min||!max||!ml||!xl)return;const fmt=n=>Number(n).toLocaleString("en-IN");const update=(changed)=>{if(Number(min.value)>Number(max.value)){if(changed===min)max.value=min.value;else min.value=max.value;}ml.textContent=fmt(min.value);xl.textContent=fmt(max.value);};min.addEventListener("input",()=>update(min));max.addEventListener("input",()=>update(max));update();});

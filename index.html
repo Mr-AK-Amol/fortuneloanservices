@@ -21,10 +21,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- Loan Inquiry Popup: intentionally opens on every page load/refresh -->
+<!-- Homepage-only compact loan inquiry popup -->
 <div aria-hidden="true" class="inquiry-modal" id="inquiryModal">
 <div class="inquiry-overlay" data-close-inquiry=""></div>
-<div aria-labelledby="inquiryTitle" aria-modal="true" class="inquiry-box" role="dialog">
+<div aria-labelledby="inquiryTitle" aria-modal="true" class="inquiry-box is-compact" role="dialog">
 <button aria-label="Close inquiry form" class="inquiry-close" id="inquiryClose" type="button">×</button>
 <div class="inquiry-accent"></div>
 <div class="inquiry-logo-wrap">
@@ -32,8 +32,7 @@
 </div>
 <div class="inquiry-heading">
 <div class="section-kicker">QUICK LOAN INQUIRY</div>
-<h2 id="inquiryTitle">Let's discuss your <span>loan requirement.</span></h2>
-<p>Share your details and we'll open WhatsApp with your inquiry message ready to send.</p>
+<h2 id="inquiryTitle">Your Loan Journey <span>Starts Here.</span></h2>
 </div>
 <form id="inquiryForm" novalidate="">
 <div class="form-grid">
@@ -42,9 +41,9 @@
 <input autocomplete="name" id="inqName" name="name" placeholder="Enter your name" required="" type="text" aria-describedby="nameError"/>
 <small class="field-error" id="nameError"></small>
 </label>
-<label class="form-field">
+<label class="form-field contact-number-field">
 <span>Contact Number <b>*</b></span>
-<input autocomplete="tel" id="inqContact" name="contact" placeholder="Enter contact number" required="" type="tel" inputmode="numeric" maxlength="10" aria-describedby="contactError"/>
+<input autocomplete="tel" id="inqContact" inputmode="tel" maxlength="10" name="contact" placeholder="Enter contact number" required type="tel" aria-describedby="contactError"/>
 <small class="field-error" id="contactError"></small>
 </label>
 <label class="form-field">
@@ -53,7 +52,17 @@
 <small class="field-error" id="cityError"></small>
 </label>
 <label class="form-field">
-<span>Required Amount <b>*</b></span>
+<span>PIN Code <b>*</b></span>
+<input id="inqPin" name="pincode" inputmode="numeric" maxlength="6" placeholder="6-digit PIN code" required aria-describedby="pinError"/>
+<small class="field-error" id="pinError"></small>
+</label>
+<label class="form-field">
+<span>Loan Type <b>*</b></span>
+<select id="inqLoanType" name="loanType" required><option value="">Select loan type</option><option>Personal Loan</option><option>Business Loan</option><option>Home Loan</option><option>Loan Against Property</option><option>Working Capital / OD / CC</option><option>Professional Loan</option><option>Machinery / Equipment Loan</option><option>Vehicle Loan</option><option>Other</option></select>
+<small class="field-error" id="loanTypeError"></small>
+</label>
+<label class="form-field">
+<span>Required Amount (₹) <b>*</b></span>
 <input id="inqAmount" inputmode="numeric" min="1" name="loanAmount" placeholder="e.g. 1000000" required="" step="1" type="number" aria-describedby="amountError"/>
 <small class="field-error" id="amountError"></small>
 </label>
@@ -66,11 +75,25 @@
 </select>
 <small class="field-error" id="incomeSourceError"></small>
 </label>
+<label class="form-field">
+<span>Loan Purpose <b>*</b></span>
+<select id="inqPurpose" name="loanPurpose" required><option value="">Select loan purpose</option><option>Business Expansion</option><option>Working Capital</option><option>Medical Expenses</option><option>Education</option><option>Home Purchase / Renovation</option><option>Debt Consolidation</option><option>Vehicle Purchase</option><option>Personal Expenses</option><option>Other</option></select>
+<small class="field-error" id="purposeError"></small>
+</label>
+<label class="form-field">
+<span>CIBIL Score (Optional)</span>
+<select id="inqCibil" name="cibil"><option value="">Select if known</option><option>Below 600</option><option>600–649</option><option>650–699</option><option>700–749</option><option>750+</option><option>Not sure</option></select>
+</label>
+<label class="form-field full">
+<span>Monthly Income Range (Optional)</span>
+<select id="inqIncomeRange" name="monthlyIncomeRange"><option value="">Select monthly income range (optional)</option><option>₹10,000 – ₹15,000</option><option>₹15,000 – ₹20,000</option><option>₹20,000 – ₹40,000</option><option>₹40,000 – ₹50,000</option><option>Above ₹50,000</option><option>Above ₹1,00,000</option></select>
+
+</label>
 </div>
 <button class="inquiry-submit" type="submit">
 <span>Send Inquiry on WhatsApp</span><strong>↗</strong>
 </button>
-<p class="form-note">WhatsApp will open with your inquiry details pre-filled. Review the message and choose whether to send it.</p>
+<p class="form-note">Share your details below, and our team will contact you to discuss suitable loan options.</p>
 <p class="form-note" id="inquiryStatus" role="status" aria-live="polite"></p>
 </form>
 </div>
@@ -86,7 +109,7 @@
 <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="menuToggle">
 <span></span><span></span><span></span>
 </button>
-<div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="about-us.html">About</a><a href="#loans">Loan Solutions</a><a href="#partners">Partners</a><a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta" href="contact.html#apply-form">Apply Now</a></div>
+<div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="about-us.html">About</a><a href="#loans">Loan Solutions</a><a href="#partners">Partners</a><a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta refer-cta" href="refer-and-earn.html">Refer and Earn</a><a class="nav-cta" href="contact.html#apply-form">Apply Now</a></div>
 </nav>
 </header>
 <main>
@@ -101,8 +124,9 @@
 <div class="container hero-content">
 <div class="hero-copy reveal">
 <div class="eyebrow"><span class="pulse-dot"></span> CLEAR GUIDANCE  |  SMARTER CHOICES</div>
-<h1>Smarter Funding.<br/><span>Stronger Futures.</span></h1>
-<p class="hero-text">Compare loan possibilities with clear guidance and a process built around your goals. We help individuals, professionals and businesses compare suitable lending routes and take the next step with confidence.</p>
+<h1 class="hero-title-updated">Your Financial Goals,<br/><span>Our Priority.</span></h1>
+<p class="hero-text">Get expert guidance and explore the right loan solutions for your personal and business needs.</p>
+<div class="hero-quick-line">Quick Loan Enquiry <span>Simple Process • Expert Assistance • Multiple Loan Options</span></div>
 <div class="hero-actions">
 <a class="btn btn-primary" href="#contact">Find Your Loan Option <span>↗</span></a>
 <a class="btn btn-ghost" href="#process">Our Process <span>▶</span></a>
