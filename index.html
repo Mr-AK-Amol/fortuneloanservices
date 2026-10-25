@@ -46,7 +46,36 @@
 <label class="form-field"><span>PAN Number <b>*</b></span><input id="inqPan" name="pan" maxlength="10" placeholder="ABCDE1234F" required style="text-transform:uppercase"/></label>
 <label class="form-field"><span>CIBIL Score (Optional)</span><select id="inqCibil" name="cibil"><option value="">Select if known (optional)</option><option>Below 600</option><option>600–649</option><option>650–699</option><option>700–749</option><option>750+</option><option>Not sure</option></select></label>
 <label class="form-field"><span>Required Loan Amount (₹) <b>*</b></span><input id="inqAmount" inputmode="numeric" min="1" name="loanAmount" placeholder="e.g. 1000000" required step="1" type="number"/></label>
-<label class="form-field"><span>Type of Loan <b>*</b></span><select id="inqLoanType" name="loanType" required><option value="">Select type of loan</option><option>Personal Loan</option><option>Business Loan</option><option>MSME / Working Capital Loan</option><option>Loan Against Property</option><option>Home Loan</option><option>Home Loan Balance Transfer</option><option>Machinery / Equipment Loan</option><option>Car Loan</option><option>Education Loan</option><option>Agriculture Loan</option><option>Doctor / Professional Loan</option><option>Debt Consolidation Loan</option><option>Project Finance</option><option>Loan for Women</option><option>Other</option></select></label>
+
+<label class="form-field">
+  <span>Type of Loan <b>*</b></span>
+  <select id="inqLoanType" name="loanType" required>
+    <option value="">Select type of loan</option>
+    <option>🏠 Home Loan</option>
+    <option>🔄 Balance Transfer</option>
+    <option>⬆️ Top-Up Home Loan</option>
+    <option>🏘️ Mortgage Loan</option>
+    <option>👔 Salaried Personal Loan</option>
+    <option>🏢 Unsecured Business Loan</option>
+    <option>📈 Working Capital Loan</option>
+    <option>🏭 MSME Loan</option>
+    <option>🚗 Vehicle &amp; Car Loan</option>
+    <option>🚚 Commercial Vehicle Loan</option>
+    <option>🏗️ Project Finance</option>
+    <option>🏢 Industrial Property Loan</option>
+    <option>🏘️ Loan Against Property</option>
+    <option>⚙️ Machinery Loan</option>
+    <option>🛠️ Equipment Finance</option>
+    <option>🚀 Startup Loan</option>
+    <option>🌾 Agriculture Loan</option>
+    <option>🪙 Gold Loan</option>
+    <option>👨‍⚕️ Doctor Loan</option>
+    <option>💼 Professional Loan</option>
+    <option>🏗️ Construction Loan</option>
+    <option>🤝 Equity Funding</option>
+    <option>💼 CC / OD Loan</option>
+  </select>
+</label>
 <label class="form-field" id="inqLoanTypeOtherWrap" hidden><span>Please Specify Which Loan <b>*</b></span><input id="inqLoanTypeOther" name="loanTypeOther" placeholder="Enter the loan type" data-required-when-visible/></label>
 <label class="form-field"><span>Purpose of Loan <b>*</b></span><select id="inqPurpose" name="loanPurpose" required><option value="">Select loan purpose</option><option>Business Expansion</option><option>Working Capital</option><option>Purchase of Machinery / Equipment</option><option>Stock / Inventory Purchase</option><option>Home Purchase</option><option>Home Renovation</option><option>Loan Against Property</option><option>Debt Consolidation</option><option>Medical Expenses</option><option>Education</option><option>Marriage / Family Function</option><option>Vehicle Purchase</option><option>Agriculture / Farm Requirements</option><option>Professional Requirements</option><option>Personal Expenses</option><option>Other</option></select></label>
 <label class="form-field"><span>Income Source <b>*</b></span><select id="inqIncomeSource" name="incomeSource" required><option value="">Select income source</option><option value="Business Owner / Self Employed">Business Owner / Self Employed</option><option value="Salaried Person">Salaried Person</option></select></label>
