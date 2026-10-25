@@ -11,7 +11,7 @@
   <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav-links" id="navLinks">
    <a href="index.html">Home</a><a href="about-us.html">About</a><a href="index.html#loans">Loan Solutions</a><a href="index.html#partners">Partners</a>
-   <a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta" href="contact.html#apply-form">Apply Now</a>
+   <a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta refer-cta" href="refer-and-earn.html">Refer and Earn</a>
   </nav>
  </div>
 </header>
@@ -84,4 +84,6 @@
 </footer><script src="script.js"></script><script>
 function calculateEMI(){const P=Number(document.getElementById("loanAmount").value)||0,r=(Number(document.getElementById("interestRate").value)||0)/1200,n=(Number(document.getElementById("loanYears").value)||0)*12;let emi=r?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):(n?P/n:0);const total=emi*n,interest=total-P;const f=x=>"₹"+Math.round(x).toLocaleString("en-IN");emiValue.textContent=f(emi);principalValue.textContent=f(P);interestValue.textContent=f(interest);repaymentValue.textContent=f(total)}
 document.getElementById("calcBtn").addEventListener("click",calculateEMI);calculateEMI();
-</script></body></html>
+</script>
+<a class="floating-apply-now" id="floatingApplyNow" href="index.html#open-loan-form"  aria-label="Open loan application form"><span class="floating-apply-icon" aria-hidden="true">↗</span><span>Apply Now</span></a>
+</body></html>

@@ -2597,3 +2597,110 @@ h1 span{
 .refer-grid{column-gap:18px;row-gap:18px}
 .refer-field label{font-size:13px;line-height:1.45;margin-bottom:8px;letter-spacing:.1px}
 .refer-field input,.refer-field select,.refer-field textarea{box-sizing:border-box;min-width:0;width:100%;font-size:14px;line-height:1.4}
+
+
+/* Fortune Loan Services: fixed access to the existing loan inquiry popup */
+.floating-apply-now{
+  position:fixed;right:22px;bottom:22px;z-index:950;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:13px 19px;border-radius:999px;
+  color:#fff!important;font-size:14px;font-weight:800;letter-spacing:.1px;
+  background:linear-gradient(135deg,var(--orange),#ef7b22);
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:0 12px 32px rgba(16,27,51,.28);
+  transition:transform .22s ease,box-shadow .22s ease;
+  animation:fortuneApplyFloat 3.2s ease-in-out infinite;
+}
+.floating-apply-now:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(16,27,51,.34)}
+.floating-apply-icon{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:rgba(255,255,255,.2);font-size:17px}
+@keyframes fortuneApplyFloat{0%,100%{box-shadow:0 12px 32px rgba(16,27,51,.25)}50%{box-shadow:0 15px 38px rgba(200,164,93,.42)}}
+.fortune-value-card h3{line-height:1.2}
+.fortune-value-card .value-card-subtitle{margin:10px 0 20px;line-height:1.6;color:rgba(255,255,255,.82);font-size:13px}
+.fortune-value-list{list-style:none;display:grid;gap:13px;margin:0 0 22px;padding:0;text-align:left}
+.fortune-value-list li{display:flex;align-items:flex-start;gap:10px}
+.fortune-value-list li>span:first-child{display:grid;place-items:center;flex:0 0 22px;height:22px;border-radius:50%;background:rgba(200,164,93,.2);color:var(--orange);font-weight:900}
+.fortune-value-list li>span:last-child{display:grid;gap:3px}
+.fortune-value-list b{font-size:12px;color:#fff}
+.fortune-value-list small{font-size:11px;line-height:1.45;color:rgba(255,255,255,.72)}
+@media(max-width:600px){
+  .floating-apply-now{right:13px;bottom:13px;padding:11px 15px;font-size:13px;gap:8px}
+  .floating-apply-icon{width:23px;height:23px}
+}
+@media(prefers-reduced-motion:reduce){
+  .floating-apply-now{animation:none;transition:none}
+}
+
+/* Conditional sections for the expanded loan application form */
+.conditional-form-section{grid-column:1/-1;border:1px solid #dce5f1;border-radius:15px;padding:18px;background:rgba(242,247,255,.82);margin-top:8px;min-width:0}
+.conditional-form-section[hidden],.form-field[hidden]{display:none!important}
+.conditional-form-section h3{margin:0 0 6px;color:#102044;font-size:15px;font-weight:900}
+.conditional-form-section>p{margin:0 0 16px;color:#6c7b91;font-size:12px;line-height:1.5}
+.conditional-form-section .form-grid{gap:13px}
+.form-field input[aria-invalid="true"],.form-field select[aria-invalid="true"]{border-color:#dc2626!important;box-shadow:0 0 0 3px rgba(220,38,38,.08)}
+@media(max-width:480px){.conditional-form-section{padding:13px}.conditional-form-section .form-grid{gap:8px}}
+
+/* Friendly loan inquiry confirmation shown after WhatsApp opens */
+#inquiryStatus.inquiry-confirmation {
+  display: block;
+  margin: 14px 0 2px;
+  padding: 14px 16px;
+  border: 1px solid rgba(20, 145, 105, .28);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #effdf5, #f0fbff);
+  color: #126849;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.65;
+  text-align: left;
+}
+
+
+/* After WhatsApp opens, replace the form fields with the submission greeting. */
+#inquiryForm.is-submitted > .form-grid,
+#inquiryForm.is-submitted > .inquiry-submit,
+#inquiryForm.is-submitted > .form-note:not(#inquiryStatus) {
+  display: none !important;
+}
+#inquiryForm.is-submitted #inquiryStatus {
+  display: block;
+  margin: 14px 0 2px;
+  padding: 22px 20px;
+  border: 1px solid rgba(20, 145, 105, .3);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #effdf5 0%, #f0fbff 100%);
+  color: #126849;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.8;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(18, 104, 73, .08);
+}
+
+
+/* Thank-you screen and restart-application action */
+#inquiryStatus.inquiry-confirmation { text-align: center; }
+.inquiry-thankyou-icon { width: 54px; height: 54px; margin: 0 auto 12px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:#d8f8e7; color:#087443; font-size:30px; font-weight:800; box-shadow:0 6px 18px rgba(8,116,67,.12); }
+.inquiry-thankyou-title { margin: 4px 0 10px; color:#123d2d; font-size:clamp(19px,3vw,25px); line-height:1.3; }
+.inquiry-thankyou-lead { margin: 0 0 10px; color:#14583d; font-weight:750; }
+.inquiry-thankyou-brand { margin: 16px 0 18px; color:#235744; }
+.inquiry-apply-again { display:flex; width:100%; justify-content:center; align-items:center; gap:12px; cursor:pointer; border:0; font:inherit; }
+.inquiry-apply-again span { font-weight:750; }
+@media (prefers-reduced-motion: reduce) { .inquiry-apply-again { transition:none !important; animation:none !important; } }
+
+
+/* READABILITY FIX: Founder / Trusted Loan Partner benefit list */
+.director-card .fortune-value-list b {
+  color: #061d49 !important;
+  font-weight: 850 !important;
+  opacity: 1 !important;
+}
+.director-card .fortune-value-list small {
+  color: #40536d !important;
+  opacity: 1 !important;
+  font-size: 12px !important;
+  line-height: 1.55 !important;
+}
+.director-card .fortune-value-list li > span:first-child {
+  background: rgba(255, 122, 0, .14) !important;
+  color: #c94e00 !important;
+}

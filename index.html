@@ -36,68 +36,50 @@
 </div>
 <form id="inquiryForm" novalidate="">
 <div class="form-grid">
-<label class="form-field">
-<span>Full Name <b>*</b></span>
-<input autocomplete="name" id="inqName" name="name" placeholder="Enter your name" required="" type="text" aria-describedby="nameError"/>
-<small class="field-error" id="nameError"></small>
-</label>
-<label class="form-field contact-number-field">
-<span>Contact Number <b>*</b></span>
-<input autocomplete="tel" id="inqContact" inputmode="tel" maxlength="10" name="contact" placeholder="Enter contact number" required type="tel" aria-describedby="contactError"/>
-<small class="field-error" id="contactError"></small>
-</label>
-<label class="form-field">
-<span>Email Address <b>*</b></span>
-<input autocomplete="email" id="inqEmail" name="email" placeholder="Enter your email address" type="email" required aria-describedby="emailError"/>
-<small class="field-error" id="emailError"></small>
-</label>
-<label class="form-field">
-<span>City <b>*</b></span>
-<input autocomplete="address-level2" id="inqCity" name="city" placeholder="Your city" required="" type="text" aria-describedby="cityError"/>
-<small class="field-error" id="cityError"></small>
-</label>
-<label class="form-field">
-<span>PIN Code <b>*</b></span>
-<input id="inqPin" name="pincode" inputmode="numeric" maxlength="6" placeholder="6-digit PIN code" required aria-describedby="pinError"/>
-<small class="field-error" id="pinError"></small>
-</label>
-<label class="form-field">
-<span>Loan Type <b>*</b></span>
-<select id="inqLoanType" name="loanType" required><option value="">Select loan type</option><option>Personal Loan</option><option>Business Loan</option><option>Home Loan</option><option>Loan Against Property</option><option>Working Capital / OD / CC</option><option>Professional Loan</option><option>Machinery / Equipment Loan</option><option>Vehicle / Car Loan</option><option>MSME Loan</option><option>Other Gov. Loan</option><option>Other</option></select>
-<small class="field-error" id="loanTypeError"></small>
-</label>
-<label class="form-field">
-<span>Required Loan Amount (₹) <b>*</b></span>
-<input id="inqAmount" inputmode="numeric" min="1" name="loanAmount" placeholder="e.g. 1000000" required="" step="1" type="number" aria-describedby="amountError"/>
-<small class="field-error" id="amountError"></small>
-</label>
-<label class="form-field">
-<span>Income Source <b>*</b></span>
-<select id="inqIncomeSource" name="incomeSource" required aria-describedby="incomeSourceError">
-<option value="">Select income source</option>
-<option value="Business Owner / Self Employed">Business Owner / Self Employed</option>
-<option value="Salaried">Salaried</option>
-</select>
-<small class="field-error" id="incomeSourceError"></small>
-</label>
-<label class="form-field">
-<span>Loan Purpose <b>*</b></span>
-<select id="inqPurpose" name="loanPurpose" required><option value="">Select loan purpose</option><option>Business Expansion</option><option>Working Capital</option><option>Medical Expenses</option><option>Education</option><option>Home Purchase / Renovation</option><option>Debt Consolidation</option><option>Vehicle Purchase</option><option>Personal Expenses</option><option>Other</option></select>
-<small class="field-error" id="purposeError"></small>
-</label>
-<label class="form-field">
-<span>CIBIL Score (Optional)</span>
-<select id="inqCibil" name="cibil"><option value="">Select if known</option><option>Below 600</option><option>600–649</option><option>650–699</option><option>700–749</option><option>750+</option><option>Not sure</option></select>
-</label>
-<label class="form-field full">
-<span>Monthly Income Range (Optional)</span>
-<select id="inqIncomeRange" name="monthlyIncomeRange"><option value="">Select monthly income range (optional)</option><option>₹10,000 – ₹15,000</option><option>₹15,000 – ₹20,000</option><option>₹20,000 – ₹40,000</option><option>₹40,000 – ₹50,000</option><option>₹50,000 – ₹1,00,000</option><option>Above ₹1 Lakh</option></select>
-
-</label>
+<label class="form-field"><span>Full Name <b>*</b></span><input autocomplete="name" id="inqName" name="name" placeholder="Enter your full name" required type="text"/></label>
+<label class="form-field"><span>Contact Number <b>*</b></span><input autocomplete="tel" id="inqContact" inputmode="numeric" maxlength="10" name="contact" placeholder="10-digit mobile number" required type="tel"/></label>
+<label class="form-field"><span>Email Address <b>*</b></span><input autocomplete="email" id="inqEmail" name="email" placeholder="name@example.com" required type="email"/></label>
+<label class="form-field"><span>City <b>*</b></span><input autocomplete="address-level2" id="inqCity" name="city" placeholder="Your city" required type="text"/></label>
+<label class="form-field"><span>PIN Code <b>*</b></span><input autocomplete="postal-code" id="inqPin" name="pincode" inputmode="numeric" maxlength="6" placeholder="6-digit PIN code" required/></label>
+<label class="form-field"><span>State / Union Territory <b>*</b></span><select id="inqState" name="state" required><option value="">Select state / UT</option><option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>Andaman and Nicobar Islands</option><option>Chandigarh</option><option>Dadra and Nagar Haveli and Daman and Diu</option><option>Delhi</option><option>Jammu and Kashmir</option><option>Ladakh</option><option>Lakshadweep</option><option>Puducherry</option></select></label>
+<label class="form-field"><span>Aadhaar Number <b>*</b></span><input id="inqAadhaar" name="aadhaar" inputmode="numeric" maxlength="12" placeholder="12-digit Aadhaar number" required/></label>
+<label class="form-field"><span>PAN Number <b>*</b></span><input id="inqPan" name="pan" maxlength="10" placeholder="ABCDE1234F" required style="text-transform:uppercase"/></label>
+<label class="form-field"><span>CIBIL Score (Optional)</span><select id="inqCibil" name="cibil"><option value="">Select if known (optional)</option><option>Below 600</option><option>600–649</option><option>650–699</option><option>700–749</option><option>750+</option><option>Not sure</option></select></label>
+<label class="form-field"><span>Required Loan Amount (₹) <b>*</b></span><input id="inqAmount" inputmode="numeric" min="1" name="loanAmount" placeholder="e.g. 1000000" required step="1" type="number"/></label>
+<label class="form-field"><span>Purpose of Loan <b>*</b></span><select id="inqPurpose" name="loanPurpose" required><option value="">Select loan purpose</option><option>Business Expansion</option><option>Working Capital</option><option>Purchase of Machinery / Equipment</option><option>Stock / Inventory Purchase</option><option>Home Purchase</option><option>Home Renovation</option><option>Loan Against Property</option><option>Debt Consolidation</option><option>Medical Expenses</option><option>Education</option><option>Marriage / Family Function</option><option>Vehicle Purchase</option><option>Agriculture / Farm Requirements</option><option>Professional Requirements</option><option>Personal Expenses</option><option>Other</option></select></label>
+<label class="form-field"><span>Income Source <b>*</b></span><select id="inqIncomeSource" name="incomeSource" required><option value="">Select income source</option><option value="Business Owner / Self Employed">Business Owner / Self Employed</option><option value="Salaried Person">Salaried Person</option></select></label>
+<section class="conditional-form-section full" id="businessFields" hidden><h3>Business / Self-Employed Details</h3><p>Tell us about your business so we can understand your financing requirements.</p><div class="form-grid">
+<label class="form-field"><span>Business / Company Name <b>*</b></span><input name="businessName" id="inqBusinessName" data-required-when-visible placeholder="Business or company name"/></label>
+<label class="form-field"><span>Nature of Business <b>*</b></span><select name="businessNature" id="inqBusinessNature" data-required-when-visible><option value="">Select nature of business</option><option>Manufacturing</option><option>Trading</option><option>Retail</option><option>Wholesale</option><option>Services</option><option>Other</option></select></label>
+<label class="form-field"><span>Business Constitution <b>*</b></span><select name="businessConstitution" id="inqBusinessConstitution" data-required-when-visible><option value="">Select constitution</option><option>Proprietorship</option><option>Partnership</option><option>LLP</option><option>Private Limited</option><option>Other</option></select></label>
+<label class="form-field"><span>Business Address <b>*</b></span><input name="businessAddress" id="inqBusinessAddress" data-required-when-visible placeholder="Business address"/></label>
+<label class="form-field"><span>Business City <b>*</b></span><input name="businessCity" id="inqBusinessCity" data-required-when-visible placeholder="Business city"/></label>
+<label class="form-field"><span>Business PIN Code <b>*</b></span><input name="businessPin" id="inqBusinessPin" inputmode="numeric" maxlength="6" data-required-when-visible placeholder="6-digit PIN code"/></label>
+<label class="form-field"><span>Business Vintage <b>*</b></span><select name="businessVintage" id="inqBusinessVintage" data-required-when-visible><option value="">Select business vintage</option><option>Less than 1 year</option><option>1–3 years</option><option>3–5 years</option><option>5+ years</option></select></label>
+<label class="form-field"><span>GST Registration <b>*</b></span><select name="gstRegistered" id="inqGstRegistered" data-required-when-visible><option value="">Select</option><option>Yes</option><option>No</option><option>Not Applicable</option></select></label>
+<label class="form-field" id="gstNumberWrap" hidden><span>GST Number <b>*</b></span><input name="gstNumber" id="inqGstNumber" maxlength="15" placeholder="GSTIN" data-required-when-visible/></label>
+<label class="form-field"><span>Udyam / MSME Registration <b>*</b></span><select name="udyamRegistered" id="inqUdyamRegistered" data-required-when-visible><option value="">Select</option><option>Yes</option><option>No</option><option>Not Applicable</option></select></label>
+<label class="form-field" id="udyamNumberWrap" hidden><span>Udyam Number <b>*</b></span><input name="udyamNumber" id="inqUdyamNumber" placeholder="Udyam registration number" data-required-when-visible/></label>
+<label class="form-field"><span>Average Monthly Business Income / Profit (₹) <b>*</b></span><input type="number" min="0" name="businessIncome" id="inqBusinessIncome" data-required-when-visible placeholder="Monthly income / profit"/></label>
+<label class="form-field"><span>Existing Loan? <b>*</b></span><select name="businessExistingLoan" id="inqBusinessExistingLoan" data-required-when-visible><option value="">Select</option><option>Yes</option><option>No</option></select></label>
+<label class="form-field existing-business-loan" hidden><span>Existing Loan Amount (₹) <b>*</b></span><input type="number" min="0" name="businessExistingLoanAmount" id="inqBusinessExistingLoanAmount" data-required-when-visible placeholder="Outstanding loan amount"/></label>
+<label class="form-field existing-business-loan" hidden><span>Existing Monthly EMI (₹) <b>*</b></span><input type="number" min="0" name="businessExistingEmi" id="inqBusinessExistingEmi" data-required-when-visible placeholder="Total monthly EMI"/></label>
+</div></section>
+<section class="conditional-form-section full" id="salariedFields" hidden><h3>Salaried Person Details</h3><p>Tell us about your employment and salary details.</p><div class="form-grid">
+<label class="form-field"><span>Employment Type <b>*</b></span><select name="employmentType" id="inqEmploymentType" data-required-when-visible><option value="">Select employment type</option><option>Private Company</option><option>Government</option><option>Public Sector</option><option>Other</option></select></label>
+<label class="form-field"><span>Company / Employer Name <b>*</b></span><input name="employerName" id="inqEmployerName" data-required-when-visible placeholder="Company or employer name"/></label>
+<label class="form-field"><span>Job Designation <b>*</b></span><input name="jobDesignation" id="inqJobDesignation" data-required-when-visible placeholder="Your designation"/></label>
+<label class="form-field"><span>Work Experience <b>*</b></span><select name="workExperience" id="inqWorkExperience" data-required-when-visible><option value="">Select work experience</option><option>Less than 1 year</option><option>1–3 years</option><option>3–5 years</option><option>5+ years</option></select></label>
+<label class="form-field"><span>Office City <b>*</b></span><input name="officeCity" id="inqOfficeCity" data-required-when-visible placeholder="Office city"/></label>
+<label class="form-field"><span>Monthly In-Hand Salary (₹) <b>*</b></span><input type="number" min="0" name="monthlySalary" id="inqMonthlySalary" data-required-when-visible placeholder="Monthly take-home salary"/></label>
+<label class="form-field"><span>Salary Credit Mode <b>*</b></span><select name="salaryCreditMode" id="inqSalaryCreditMode" data-required-when-visible><option value="">Select salary credit mode</option><option>Bank Transfer</option><option>Cash</option><option>Other</option></select></label>
+<label class="form-field"><span>Salary Account Statement Available? <b>*</b></span><select name="salaryStatementAvailable" id="inqSalaryStatement" data-required-when-visible><option value="">Select</option><option>Yes</option><option>No</option></select></label>
+<label class="form-field"><span>Existing Loan? <b>*</b></span><select name="salaryExistingLoan" id="inqSalaryExistingLoan" data-required-when-visible><option value="">Select</option><option>Yes</option><option>No</option></select></label>
+<label class="form-field existing-salary-loan" hidden><span>Existing Loan Amount (₹) <b>*</b></span><input type="number" min="0" name="salaryExistingLoanAmount" id="inqSalaryExistingLoanAmount" data-required-when-visible placeholder="Outstanding loan amount"/></label>
+<label class="form-field existing-salary-loan" hidden><span>Existing Monthly EMI (₹) <b>*</b></span><input type="number" min="0" name="salaryExistingEmi" id="inqSalaryExistingEmi" data-required-when-visible placeholder="Total monthly EMI"/></label>
+</div></section>
 </div>
-<button class="inquiry-submit" type="submit">
-<span>Get My Loan Options on WhatsApp</span><strong>↗</strong>
-</button>
+<button class="inquiry-submit" type="submit"><span>Send Inquiry on WhatsApp</span><strong>↗</strong></button>
 <p class="form-note">Share your details below, and our team will contact you to discuss suitable loan options.</p>
 <p class="form-note" id="inquiryStatus" role="status" aria-live="polite"></p>
 </form>
@@ -114,7 +96,7 @@
 <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="menuToggle">
 <span></span><span></span><span></span>
 </button>
-<div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="about-us.html">About</a><a href="#loans">Loan Solutions</a><a href="#partners">Partners</a><a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta refer-cta" href="refer-and-earn.html">Refer and Earn</a><a class="nav-cta" href="contact.html#apply-form">Apply Now</a></div>
+<div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="about-us.html">About</a><a href="#loans">Loan Solutions</a><a href="#partners">Partners</a><a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta refer-cta" href="refer-and-earn.html">Refer and Earn</a></div>
 </nav>
 </header>
 <main>
@@ -142,8 +124,9 @@
 <div><strong>End-to-End</strong><span>Application<br/>Support</span></div>
 </div>
 <small class="disclaimer">*Partner availability and eligibility vary by product, lender and applicant profile.</small>
+</n>
+</n>
 </div>
-<br> 
 <div class="hero-visual reveal delay-2" aria-label="Fortune loan assistance overview">
 <div class="visual-orbit orbit-one"></div>
 <div class="visual-orbit orbit-two"></div>
@@ -187,13 +170,20 @@
 <div><span>03</span><b>Application Support</b><p>Get assistance through documentation and process steps.</p></div>
 </div>
 </div>
-<div class="director-card reveal delay-2">
+<div class="director-card fortune-value-card reveal delay-2">
 <div class="director-glow"></div>
-<div class="director-avatar">AK</div>
-<div class="director-label">FOUNDER &amp; DIRECTOR</div>
-<h3>Aamin Khan</h3>
-<p>Building a finance assistance network focused on transparent communication, practical guidance and long-term client relationships.</p>
-<a class="text-link" href="#contact">Connect with Fortune <span>↗</span></a>
+<div class="director-avatar" aria-hidden="true">✦</div>
+<div class="director-label">FINANCIAL GUIDANCE • CUSTOMER FIRST</div>
+<h3>Your Trusted Loan Partner</h3>
+<p class="value-card-subtitle">Smart Financing. Simplified Process. Support You Can Trust.</p>
+<ul class="fortune-value-list">
+<li><span aria-hidden="true">✓</span><span><b>Multiple Loan Solutions</b><small>Explore options for personal and business needs.</small></span></li>
+<li><span aria-hidden="true">✓</span><span><b>Personalised Loan Assistance</b><small>Guidance based on your profile and requirements.</small></span></li>
+<li><span aria-hidden="true">✓</span><span><b>Documentation Support</b><small>Understand the documents needed to apply.</small></span></li>
+<li><span aria-hidden="true">✓</span><span><b>Transparent Guidance</b><small>Understand eligibility, lender terms, rates and charges.</small></span></li>
+<li><span aria-hidden="true">✓</span><span><b>End-to-End Application Support</b><small>Assistance through the process, subject to lender policies.</small></span></li>
+</ul>
+<a class="text-link" href="#open-loan-form" data-open-inquiry>Explore Loan Options <span>↗</span></a>
 </div>
 </div>
 </section>
@@ -1112,5 +1102,7 @@
 </footer>
 <button aria-label="Back to top" class="back-top" id="backTop">↑</button>
 <script src="script.js"></script>
+
+<a class="floating-apply-now" id="floatingApplyNow" href="#open-loan-form" data-open-inquiry aria-label="Open loan application form"><span class="floating-apply-icon" aria-hidden="true">↗</span><span>Apply Now</span></a>
 </body>
 </html>

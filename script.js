@@ -421,6 +421,47 @@ document.addEventListener("DOMContentLoaded", () => {
   // Homepage-only loan inquiry popup: opens compact; expand only when name field is clicked.
   const inquiryModal = document.getElementById("inquiryModal");
   const inquiryForm = document.getElementById("inquiryForm");
+  // Show only the applicant's selected income-source section and relevant conditional fields.
+  const incomeSourceSelect = document.getElementById("inqIncomeSource");
+  const businessFields = document.getElementById("businessFields");
+  const salariedFields = document.getElementById("salariedFields");
+  const setSectionVisibility = (section, visible) => {
+    if (!section) return;
+    section.hidden = !visible;
+    section.querySelectorAll("[data-required-when-visible]").forEach(field => {
+      field.required = visible && !field.closest("[hidden]");
+      if (!field.required) field.removeAttribute("aria-invalid");
+    });
+  };
+  const toggleConditional = (wrap, visible) => {
+    if (!wrap) return;
+    wrap.hidden = !visible;
+    wrap.querySelectorAll("[data-required-when-visible]").forEach(field => {
+      field.required = visible && !field.closest("[hidden]");
+      if (!field.required) field.removeAttribute("aria-invalid");
+    });
+  };
+  const refreshIncomeSections = () => {
+    const source = incomeSourceSelect?.value;
+    setSectionVisibility(businessFields, source === "Business Owner / Self Employed");
+    setSectionVisibility(salariedFields, source === "Salaried Person");
+  };
+  incomeSourceSelect?.addEventListener("change", refreshIncomeSections);
+  document.getElementById("inqGstRegistered")?.addEventListener("change", event => {
+    const yes = event.target.value === "Yes";
+    toggleConditional(document.getElementById("gstNumberWrap"), yes);
+  });
+  document.getElementById("inqUdyamRegistered")?.addEventListener("change", event => {
+    const yes = event.target.value === "Yes";
+    toggleConditional(document.getElementById("udyamNumberWrap"), yes);
+  });
+  document.getElementById("inqBusinessExistingLoan")?.addEventListener("change", event => {
+    document.querySelectorAll(".existing-business-loan").forEach(wrap => toggleConditional(wrap, event.target.value === "Yes"));
+  });
+  document.getElementById("inqSalaryExistingLoan")?.addEventListener("change", event => {
+    document.querySelectorAll(".existing-salary-loan").forEach(wrap => toggleConditional(wrap, event.target.value === "Yes"));
+  });
+  refreshIncomeSections();
   const inquiryClose = document.getElementById("inquiryClose");
   const inquiryOverlay = document.querySelector("[data-close-inquiry]");
   const whatsappNumber = "919028346900";
@@ -462,10 +503,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if (previousFocus instanceof HTMLElement) previousFocus.focus();
   };
 
-  // A tiny delay makes the popup feel intentional after the page starts loading.
-  if (window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/")) {
-    setTimeout(openInquiry, 900);
+  // Keep the existing homepage popup as the single loan application form.
+  // A direct hash link opens it immediately; normal homepage visits retain the original auto-open.
+  const isHomePage = window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/");
+  if (isHomePage) {
+    if (window.location.hash === "#open-loan-form") {
+      setTimeout(openInquiry, 120);
+    } else {
+      setTimeout(openInquiry, 900);
+    }
   }
+  const resetInquiryForNewApplication = () => {
+    if (inquiryForm.classList.contains("is-submitted")) {
+      inquiryForm.classList.remove("is-submitted");
+      inquiryForm.reset();
+      const status = document.getElementById("inquiryStatus");
+      if (status) {
+        status.classList.remove("inquiry-confirmation");
+        status.replaceChildren();
+      }
+      refreshIncomeSections();
+      toggleConditional(document.getElementById("gstNumberWrap"), false);
+      toggleConditional(document.getElementById("udyamNumberWrap"), false);
+      document.querySelectorAll(".existing-business-loan, .existing-salary-loan").forEach(wrap => toggleConditional(wrap, false));
+    }
+  };
+  document.querySelectorAll("[data-open-inquiry]").forEach(trigger => {
+    trigger.addEventListener("click", event => {
+      event.preventDefault();
+      resetInquiryForNewApplication();
+      openInquiry();
+    });
+  });
   const inquiryBox = inquiryModal.querySelector(".inquiry-box");
   const nameInput = document.getElementById("inqName");
   const expandInquiry = () => { inquiryBox?.classList.remove("is-compact"); };
@@ -501,68 +570,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
   inquiryForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    const fields = {
-      name: document.getElementById("inqName"),
-      contact: document.getElementById("inqContact"),
-      email: document.getElementById("inqEmail"),
-      city: document.getElementById("inqCity"),
-      amount: document.getElementById("inqAmount"),
-      incomeSource: document.getElementById("inqIncomeSource"),
-      pin: document.getElementById("inqPin"), loanType: document.getElementById("inqLoanType"), purpose: document.getElementById("inqPurpose")
-    };
-    const errors = {
-      name: document.getElementById("nameError"),
-      contact: document.getElementById("contactError"),
-      email: document.getElementById("emailError"),
-      city: document.getElementById("cityError"),
-      amount: document.getElementById("amountError"),
-      incomeSource: document.getElementById("incomeSourceError"), pin: document.getElementById("pinError"), loanType: document.getElementById("loanTypeError"), purpose: document.getElementById("purposeError")
-    };
-
-    Object.values(errors).forEach(el => el.textContent = "");
-    Object.values(fields).forEach(el => {
-      el.style.borderColor = "";
-      el.removeAttribute("aria-invalid");
-    });
-
-    let valid = true;
-    if(!fields.name.value.trim()){ errors.name.textContent = "Please enter your name."; valid = false; fields.name.setAttribute("aria-invalid", "true"); }
-    if(!/^\d{10}$/.test(fields.contact.value.trim())){ errors.contact.textContent = "Please enter a valid 10-digit contact number."; valid = false; fields.contact.setAttribute("aria-invalid", "true"); }
-    const email = fields.email.value.trim();
-    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ errors.email.textContent = "Please enter a valid email address."; valid = false; fields.email.setAttribute("aria-invalid", "true"); }
-    if(!fields.city.value.trim()){ errors.city.textContent = "Please enter your city."; valid = false; fields.city.setAttribute("aria-invalid", "true"); }
-    if(!fields.amount.value || Number(fields.amount.value) <= 0){
-      errors.amount.textContent = "Please enter a valid required amount."; valid = false; fields.amount.setAttribute("aria-invalid", "true");
-    }
-    if(!fields.incomeSource.value){ errors.incomeSource.textContent = "Please select your income source."; valid = false; fields.incomeSource.setAttribute("aria-invalid", "true"); }
-    if(!/^\d{6}$/.test(fields.pin.value.trim())){errors.pin.textContent="Please enter a valid 6-digit PIN code.";valid=false;fields.pin.setAttribute("aria-invalid","true");}
-    if(!fields.loanType.value){errors.loanType.textContent="Please select a loan type.";valid=false;fields.loanType.setAttribute("aria-invalid","true");}
-    if(!document.getElementById("inqPurpose").value){errors.purpose.textContent="Please select a loan purpose.";valid=false;fields.purpose.setAttribute("aria-invalid","true");}
-    if(!valid) return;
-
-    const amount = Number(fields.amount.value).toLocaleString("en-IN");
-    const message =
-`*FORTUNE LOAN SERVICES*
-*NEW LOAN INQUIRY*
-
-*APPLICANT DETAILS*
-Name: ${fields.name.value.trim()}
-Mobile: ${fields.contact.value.trim()}
-Email: ${fields.email.value.trim() || "Not provided"}
-City: ${fields.city.value.trim()}
-PIN Code: ${fields.pin.value.trim()}
-
-*LOAN DETAILS*
-Loan Type: ${fields.loanType.value}
-Required Loan Amount: ₹${amount}
-Loan Purpose: ${fields.purpose.value}
-Income Source: ${fields.incomeSource.value}
-Monthly Income Range: ${document.getElementById("inqIncomeRange")?.value || "Not provided"}
-CIBIL Score: ${document.getElementById("inqCibil").value || "Not provided"}`;
-
     const status = document.getElementById("inquiryStatus");
-    if (openWhatsApp(message, status)) closeInquiry();
+    status.textContent = "";
+    const activeFields = Array.from(inquiryForm.querySelectorAll("input, select, textarea")).filter(field => !field.closest("[hidden]"));
+    activeFields.forEach(field => field.setCustomValidity(""));
+    let valid = true;
+    activeFields.forEach(field => {
+      field.removeAttribute("aria-invalid");
+      if (!field.checkValidity()) {
+        field.setAttribute("aria-invalid", "true");
+        valid = false;
+      }
+    });
+    const contact = document.getElementById("inqContact");
+    const pin = document.getElementById("inqPin");
+    const aadhaar = document.getElementById("inqAadhaar");
+    const pan = document.getElementById("inqPan");
+    const businessPin = document.getElementById("inqBusinessPin");
+    const setError = (field, message) => {
+      field.setCustomValidity(message);
+      if (message) { field.setAttribute("aria-invalid", "true"); valid = false; }
+    };
+    [contact, pin, aadhaar, pan, businessPin].filter(Boolean).forEach(field => field.setCustomValidity(""));
+    if (!/^\d{10}$/.test(contact.value.trim())) setError(contact, "Enter a valid 10-digit contact number.");
+    if (!/^\d{6}$/.test(pin.value.trim())) setError(pin, "Enter a valid 6-digit PIN code.");
+    if (!/^\d{12}$/.test(aadhaar.value.trim())) setError(aadhaar, "Enter a valid 12-digit Aadhaar number.");
+    if (!/^[A-Za-z]{5}\d{4}[A-Za-z]$/.test(pan.value.trim())) setError(pan, "Enter a valid PAN, for example ABCDE1234F.");
+    if (businessPin && !businessPin.closest("[hidden]") && businessPin.value.trim() && !/^\d{6}$/.test(businessPin.value.trim())) setError(businessPin, "Enter a valid 6-digit business PIN code.");
+    if (!valid) {
+      const firstInvalid = inquiryForm.querySelector('[aria-invalid="true"]:not([hidden])');
+      firstInvalid?.reportValidity();
+      firstInvalid?.focus();
+      return;
+    }
+    const value = id => document.getElementById(id)?.value?.trim() || "Not provided";
+    const formatAmount = id => {
+      const raw = document.getElementById(id)?.value;
+      return raw !== undefined && raw !== "" ? "₹" + Number(raw).toLocaleString("en-IN") : "Not provided";
+    };
+    const lines = [
+      "*FORTUNE LOAN SERVICES - NEW INQUIRY*", "",
+      `Name: ${value("inqName")}`,
+      `Contact Number: ${value("inqContact")}`,
+      `Email: ${value("inqEmail")}`,
+      `City: ${value("inqCity")}`,
+      `PIN Code: ${value("inqPin")}`,
+      `State / UT: ${value("inqState")}`,
+      // Never place full Aadhaar/PAN identifiers in a WhatsApp URL. The applicant can share these securely later if required.
+      `Aadhaar Number: ${value("inqAadhaar")}`,
+      `PAN Number: ${value("inqPan").toUpperCase()}`,
+      `CIBIL Score: ${value("inqCibil")}`,
+      `Required Loan Amount: ${formatAmount("inqAmount")}`,
+      `Purpose of Loan: ${value("inqPurpose")}`,
+      `Income Source: ${value("inqIncomeSource")}`
+    ];
+    if (value("inqIncomeSource") === "Business Owner / Self Employed") {
+      lines.push("", "*BUSINESS / SELF-EMPLOYED DETAILS*",
+        `Business / Company Name: ${value("inqBusinessName")}`,
+        `Nature of Business: ${value("inqBusinessNature")}`,
+        `Business Constitution: ${value("inqBusinessConstitution")}`,
+        `Business Address: ${value("inqBusinessAddress")}`,
+        `Business City: ${value("inqBusinessCity")}`,
+        `Business PIN Code: ${value("inqBusinessPin")}`,
+        `Business Vintage: ${value("inqBusinessVintage")}`,
+        `GST Registration: ${value("inqGstRegistered")}`,
+        `GST Number: ${value("inqGstRegistered") === "Yes" ? value("inqGstNumber") : "Not applicable"}`,
+        `Udyam / MSME Registration: ${value("inqUdyamRegistered")}`,
+        `Udyam Number: ${value("inqUdyamRegistered") === "Yes" ? value("inqUdyamNumber") : "Not applicable"}`,
+        `Average Monthly Business Income / Profit: ${formatAmount("inqBusinessIncome")}`,
+        `Existing Loan: ${value("inqBusinessExistingLoan")}`);
+      if (value("inqBusinessExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqBusinessExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqBusinessExistingEmi")}`);
+    } else if (value("inqIncomeSource") === "Salaried Person") {
+      lines.push("", "*SALARIED PERSON DETAILS*",
+        `Employment Type: ${value("inqEmploymentType")}`,
+        `Company / Employer Name: ${value("inqEmployerName")}`,
+        `Job Designation: ${value("inqJobDesignation")}`,
+        `Work Experience: ${value("inqWorkExperience")}`,
+        `Office City: ${value("inqOfficeCity")}`,
+        `Monthly In-Hand Salary: ${formatAmount("inqMonthlySalary")}`,
+        `Salary Credit Mode: ${value("inqSalaryCreditMode")}`,
+        `Salary Account Statement Available: ${value("inqSalaryStatement")}`,
+        `Existing Loan: ${value("inqSalaryExistingLoan")}`);
+      if (value("inqSalaryExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqSalaryExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqSalaryExistingEmi")}`);
+    }
+
+    const message = lines.join("\n");
+    status.classList.add("inquiry-confirmation");
+    const whatsappOpened = openWhatsApp(message, status);
+    if (whatsappOpened) {
+      // Replace the fields with the requested greeting and an option to start a fresh application.
+      inquiryForm.classList.add("is-submitted");
+      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h3 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h3><p class="inquiry-thankyou-lead">Your Loan Application Has Been Submitted Successfully.</p><p>Our team will review your details and contact you soon to discuss suitable loan options.</p><p class="inquiry-thankyou-brand"><strong>Fortune Loan Services</strong><br>Your Trusted Loan Partner</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "assertive");
+      document.getElementById("inquiryApplyAgain")?.addEventListener("click", () => {
+        resetInquiryForNewApplication();
+        inquiryBox?.classList.remove("is-compact");
+        document.getElementById("inqName")?.focus();
+      });
+    }
   });
   }
 
@@ -575,7 +681,7 @@ CIBIL Score: ${document.getElementById("inqCibil").value || "Not provided"}`;
       const digits = mobile.value.replace(/\D/g, "");
       mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
       if (!contactForm.reportValidity()) return;
-      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Loan Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nCIBIL Score: ${document.getElementById("cfCibil")?.value || "Not provided (optional)"}\nMonthly Income Range: ${document.getElementById("cfIncomeRange")?.value || "Not provided (optional)"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
+      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nCIBIL Score: ${document.getElementById("cfCibil")?.value || "Not provided (optional)"}\nMonthly Income Range: ${document.getElementById("cfIncomeRange")?.value || "Not provided (optional)"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
       openWhatsApp(message, status);
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
