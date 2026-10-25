@@ -447,6 +447,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setSectionVisibility(salariedFields, source === "Salaried Person");
   };
   incomeSourceSelect?.addEventListener("change", refreshIncomeSections);
+  const loanTypeSelect = document.getElementById("inqLoanType");
+  const loanTypeOtherWrap = document.getElementById("inqLoanTypeOtherWrap");
+  loanTypeSelect?.addEventListener("change", event => {
+    toggleConditional(loanTypeOtherWrap, event.target.value === "Other");
+  });
+
   document.getElementById("inqGstRegistered")?.addEventListener("change", event => {
     const yes = event.target.value === "Yes";
     toggleConditional(document.getElementById("gstNumberWrap"), yes);
@@ -523,6 +529,7 @@ document.addEventListener("DOMContentLoaded", () => {
         status.replaceChildren();
       }
       refreshIncomeSections();
+      toggleConditional(loanTypeOtherWrap, false);
       toggleConditional(document.getElementById("gstNumberWrap"), false);
       toggleConditional(document.getElementById("udyamNumberWrap"), false);
       document.querySelectorAll(".existing-business-loan, .existing-salary-loan").forEach(wrap => toggleConditional(wrap, false));
@@ -621,6 +628,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `PAN Number: ${value("inqPan").toUpperCase()}`,
       `CIBIL Score: ${value("inqCibil")}`,
       `Required Loan Amount: ${formatAmount("inqAmount")}`,
+      `Type of Loan: ${value("inqLoanType") === "Other" ? value("inqLoanTypeOther") : value("inqLoanType")}`,
       `Purpose of Loan: ${value("inqPurpose")}`,
       `Income Source: ${value("inqIncomeSource")}`
     ];
