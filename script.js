@@ -461,11 +461,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const yes = event.target.value === "Yes";
     toggleConditional(document.getElementById("udyamNumberWrap"), yes);
   });
+  document.getElementById("inqTradeLicence")?.addEventListener("change", event => {
+    const yes = event.target.value === "Yes";
+    toggleConditional(document.getElementById("tradeLicenceNumberWrap"), yes);
+  });
   document.getElementById("inqBusinessExistingLoan")?.addEventListener("change", event => {
     document.querySelectorAll(".existing-business-loan").forEach(wrap => toggleConditional(wrap, event.target.value === "Yes"));
   });
   document.getElementById("inqSalaryExistingLoan")?.addEventListener("change", event => {
     document.querySelectorAll(".existing-salary-loan").forEach(wrap => toggleConditional(wrap, event.target.value === "Yes"));
+  });
+  document.getElementById("inqSalaryCreditMode")?.addEventListener("change", event => {
+    const bankNameNeeded = ["Bank Transfer", "UPI"].includes(event.target.value);
+    toggleConditional(document.getElementById("salaryCreditedBankWrap"), bankNameNeeded);
   });
   refreshIncomeSections();
   const inquiryClose = document.getElementById("inquiryClose");
@@ -604,6 +612,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!/^\d{12}$/.test(aadhaar.value.trim())) setError(aadhaar, "Enter a valid 12-digit Aadhaar number.");
     if (!/^[A-Za-z]{5}\d{4}[A-Za-z]$/.test(pan.value.trim())) setError(pan, "Enter a valid PAN, for example ABCDE1234F.");
     if (businessPin && !businessPin.closest("[hidden]") && businessPin.value.trim() && !/^\d{6}$/.test(businessPin.value.trim())) setError(businessPin, "Enter a valid 6-digit business PIN code.");
+    const officePin = document.getElementById("inqOfficePin");
+    if (officePin && officePin.value.trim() && !/^\d{6}$/.test(officePin.value.trim())) setError(officePin, "Enter a valid 6-digit office PIN code.");
     if (!valid) {
       const firstInvalid = inquiryForm.querySelector('[aria-invalid="true"]:not([hidden])');
       firstInvalid?.reportValidity();
@@ -615,14 +625,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const raw = document.getElementById(id)?.value;
       return raw !== undefined && raw !== "" ? "₹" + Number(raw).toLocaleString("en-IN") : "Not provided";
     };
+    const stateEmployeeMap = {
+      "Maharashtra": "MUBARAK HUSSAIN", "Gujarat": "MUBARAK HUSSAIN", "Goa": "MUBARAK HUSSAIN", "Rajasthan": "MUBARAK HUSSAIN", "Madhya Pradesh": "MUBARAK HUSSAIN", "Chhattisgarh": "MUBARAK HUSSAIN",
+      "Karnataka": "SAKSHI BHOKARE", "Kerala": "SAKSHI BHOKARE", "Tamil Nadu": "SAKSHI BHOKARE", "Telangana": "SAKSHI BHOKARE", "Andhra Pradesh": "SAKSHI BHOKARE", "Puducherry": "SAKSHI BHOKARE",
+      "Uttar Pradesh": "KAUSHAL MARATHE", "Uttarakhand": "KAUSHAL MARATHE", "Himachal Pradesh": "KAUSHAL MARATHE", "Punjab": "KAUSHAL MARATHE", "Haryana": "KAUSHAL MARATHE",
+      "West Bengal": "DILIP KHANDAGALE", "Odisha": "DILIP KHANDAGALE", "Bihar": "DILIP KHANDAGALE", "Jharkhand": "DILIP KHANDAGALE", "Sikkim": "DILIP KHANDAGALE", "Assam": "DILIP KHANDAGALE",
+      "Arunachal Pradesh": "AMOL KINIKAR", "Nagaland": "AMOL KINIKAR", "Manipur": "AMOL KINIKAR", "Mizoram": "AMOL KINIKAR", "Tripura": "AMOL KINIKAR", "Other": "AMOL KINIKAR"
+    };
+    const assignedEmployee = stateEmployeeMap[value("inqState")] || "AMOL KINIKAR";
     const lines = [
       "*FORTUNE LOAN SERVICES - NEW INQUIRY*", "",
-      `Name: ${value("inqName")}`,
+      `*NAME:* *${value("inqName")}*`,
       `Contact Number: ${value("inqContact")}`,
       `Email: ${value("inqEmail")}`,
       `City: ${value("inqCity")}`,
-      `PIN Code: ${value("inqPin")}`,
+      `Residence PIN Code: ${value("inqPin")}`,
       `State / UT: ${value("inqState")}`,
+      `Assigned Employee: ${assignedEmployee}`,
       // Never place full Aadhaar/PAN identifiers in a WhatsApp URL. The applicant can share these securely later if required.
       `Aadhaar Number: ${value("inqAadhaar")}`,
       `PAN Number: ${value("inqPan").toUpperCase()}`,
@@ -630,7 +649,8 @@ document.addEventListener("DOMContentLoaded", () => {
       `Required Loan Amount: ${formatAmount("inqAmount")}`,
       `Type of Loan: ${value("inqLoanType") === "Other" ? value("inqLoanTypeOther") : value("inqLoanType")}`,
       `Purpose of Loan: ${value("inqPurpose")}`,
-      `Income Source: ${value("inqIncomeSource")}`
+      `Income Source: ${value("inqIncomeSource")}`,
+      `Interested in Referral Program: ${value("inqReferralInterest")}`
     ];
     if (value("inqIncomeSource") === "Business Owner / Self Employed") {
       lines.push("", "*BUSINESS / SELF-EMPLOYED DETAILS*",
@@ -645,6 +665,8 @@ document.addEventListener("DOMContentLoaded", () => {
         `GST Number: ${value("inqGstRegistered") === "Yes" ? value("inqGstNumber") : "Not applicable"}`,
         `Udyam / MSME Registration: ${value("inqUdyamRegistered")}`,
         `Udyam Number: ${value("inqUdyamRegistered") === "Yes" ? value("inqUdyamNumber") : "Not applicable"}`,
+        `Trade Licence: ${value("inqTradeLicence")}`,
+        ...(value("inqTradeLicence") === "Yes" ? [`Trade Licence Number: ${value("inqTradeLicenceNumber")}`] : []),
         `Average Monthly Business Income / Profit: ${formatAmount("inqBusinessIncome")}`,
         `Existing Loan: ${value("inqBusinessExistingLoan")}`);
       if (value("inqBusinessExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqBusinessExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqBusinessExistingEmi")}`);
@@ -655,26 +677,69 @@ document.addEventListener("DOMContentLoaded", () => {
         `Job Designation: ${value("inqJobDesignation")}`,
         `Work Experience: ${value("inqWorkExperience")}`,
         `Office City: ${value("inqOfficeCity")}`,
+        ...(value("inqOfficePin") !== "Not provided" ? [`Office PIN Code: ${value("inqOfficePin")}`] : []),
+        ...(value("inqOfficialEmail") !== "Not provided" ? [`Official Email ID: ${value("inqOfficialEmail")}`] : []),
         `Monthly In-Hand Salary: ${formatAmount("inqMonthlySalary")}`,
         `Salary Credit Mode: ${value("inqSalaryCreditMode")}`,
+        ...(["Bank Transfer", "UPI"].includes(value("inqSalaryCreditMode")) ? [`Salary Account Bank Name: ${value("inqSalaryCreditedBankName")}`] : []),
         `Salary Account Statement Available: ${value("inqSalaryStatement")}`,
         `Existing Loan: ${value("inqSalaryExistingLoan")}`);
       if (value("inqSalaryExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqSalaryExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqSalaryExistingEmi")}`);
     }
-
     const message = lines.join("\n");
     status.classList.add("inquiry-confirmation");
+
+    // Send the same submitted inquiry to FormSubmit as well as preparing WhatsApp.
+    // Only fields in the currently visible form path are emailed, so hidden conditional
+    // fields from the other employment path are not accidentally included.
+    const emailPayload = {
+      _subject: `New Fortune Loan Services Inquiry - ${value("inqName")}`,
+      _template: "table"
+    };
+    activeFields.forEach(field => {
+      if (!field.name || field.disabled || field.closest("[hidden]")) return;
+      emailPayload[field.name] = field.value.trim();
+    });
+    emailPayload.assignedEmployee = assignedEmployee;
+    emailPayload.inquiryMessage = message;
+    const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(emailPayload)
+    }).then(async response => {
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.success === "false" || result.success === false) {
+        throw new Error(result.message || "FormSubmit could not accept the inquiry.");
+      }
+      return result;
+    });
+
     const whatsappOpened = openWhatsApp(message, status);
     if (whatsappOpened) {
-      // Replace the fields with the requested greeting and an option to start a fresh application.
+      // Keep the existing thank-you view; update the email line when FormSubmit responds.
       inquiryForm.classList.add("is-submitted");
-      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h3 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h3><p class="inquiry-thankyou-lead">Your Loan Application Has Been Submitted Successfully.</p><p>Our team will review your details and contact you soon to discuss suitable loan options.</p><p class="inquiry-thankyou-brand"><strong>Fortune Loan Services</strong><br>Your Trusted Loan Partner</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
+      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h3 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h3><p class="inquiry-thankyou-lead">Your inquiry is ready in WhatsApp.</p><p>Our team will review your details and contact you soon to discuss suitable loan options.</p><p id="inquiryEmailStatus" role="status" aria-live="polite">Sending a copy of your inquiry to email…</p><p class="inquiry-thankyou-brand"><strong>Fortune Loan Services</strong><br>Your Trusted Loan Partner</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
       status.setAttribute("role", "status");
       status.setAttribute("aria-live", "assertive");
+      emailDelivery.then(() => {
+        const emailStatus = document.getElementById("inquiryEmailStatus");
+        if (emailStatus) emailStatus.textContent = "Email copy submitted successfully. If this is the first submission, verify loanservicesfortune@gmail.com using the FormSubmit activation email.";
+      }).catch(error => {
+        console.error("FormSubmit email delivery failed:", error);
+        const emailStatus = document.getElementById("inquiryEmailStatus");
+        if (emailStatus) emailStatus.textContent = "Email could not be confirmed. Please check the FormSubmit setup and try again.";
+      });
       document.getElementById("inquiryApplyAgain")?.addEventListener("click", () => {
         resetInquiryForNewApplication();
         inquiryBox?.classList.remove("is-compact");
         document.getElementById("inqName")?.focus();
+      });
+    } else {
+      emailDelivery.then(() => {
+        status.textContent = "Email copy submitted successfully. Your browser blocked WhatsApp; use the link above to open the prepared message.";
+      }).catch(error => {
+        console.error("FormSubmit email delivery failed:", error);
+        status.textContent = "Your browser blocked WhatsApp and the email could not be confirmed. Please check FormSubmit setup and retry.";
       });
     }
   });
