@@ -2704,3 +2704,87 @@ h1 span{
   background: rgba(255, 122, 0, .14) !important;
   color: #c94e00 !important;
 }
+
+
+/* Requested updates: fraud ticker, centered corporate address, smoother process timeline */
+.fraud-alert-ticker{position:relative;z-index:20;overflow:hidden;width:100%;background:#fff1f0;color:#b42318;border-top:1px solid #ffd0cc;border-bottom:1px solid #ffd0cc;padding:10px 0;font-size:12px;font-weight:800;letter-spacing:.025em}
+.fraud-alert-track{display:flex;align-items:center;width:max-content;animation:fraudAlertScroll 38s linear infinite;will-change:transform}
+.fraud-alert-track span{display:block;white-space:nowrap;padding-right:72px}
+.fraud-alert-ticker:hover .fraud-alert-track{animation-play-state:paused}
+@keyframes fraudAlertScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.footer-address-card{text-align:center}
+.footer-address-heading{justify-content:center}
+.footer-address-card p{margin-left:auto;margin-right:auto}
+.footer-map-link{display:inline-flex}
+.process-line::before{transition:transform 3.6s cubic-bezier(.22,.61,.36,1);background-size:200% 100%}
+.process-animated .process-line::before{animation:processLineFlow 5.5s ease-in-out infinite}
+.process-animated .process-step:nth-child(1) .process-icon{animation:processPulse 1.05s .35s ease-in-out both}
+.process-animated .process-step:nth-child(2) .process-icon{animation:processPulse 1.05s 1.15s ease-in-out both}
+.process-animated .process-step:nth-child(3) .process-icon{animation:processPulse 1.05s 1.95s ease-in-out both}
+.process-animated .process-step:nth-child(4) .process-icon{animation:processPulse 1.05s 2.75s ease-in-out both}
+@keyframes processLineFlow{0%,100%{background-position:0% 50%;filter:brightness(1)}50%{background-position:100% 50%;filter:brightness(1.18)}}
+@media(prefers-reduced-motion:reduce){.fraud-alert-track,.process-animated .process-line::before{animation:none!important}.fraud-alert-track{transform:none!important}.process-line::before{transition:none!important}}
+
+/* Keep corporate office heading, icon and address aligned consistently. */
+.footer-address-card{text-align:center}
+.footer-address-heading{justify-content:center;align-items:center;text-align:center}
+.footer-address-heading>div{text-align:center}
+.footer-address-card p{margin-left:auto;margin-right:auto}
+
+
+/* Continuous sequential Simple Process animation: green progress line + one-by-one icon highlights */
+.process-line{position:relative;isolation:isolate}
+.process-line::before{content:"";position:absolute;z-index:0;top:39px;left:10%;right:10%;height:4px;border-radius:99px;background:rgba(120,140,160,.20);transform:none;transition:none}
+.process-line::after{content:"";position:absolute;z-index:0;top:39px;left:10%;width:80%;height:4px;border-radius:99px;background:linear-gradient(90deg,#16a34a,#22c55e,#86efac);transform:scaleX(0);transform-origin:left;animation:processGreenProgress 8s ease-in-out infinite;box-shadow:0 0 10px rgba(34,197,94,.28)}
+.process-step{z-index:1}
+.process-step .process-icon{position:relative;border:0;transition:background-color .45s ease,box-shadow .45s ease,color .45s ease,transform .45s ease}
+.process-animated .process-step:nth-child(1) .process-icon{animation:processStepGlow 8s ease-in-out infinite;animation-delay:0s}
+.process-animated .process-step:nth-child(2) .process-icon{animation:processStepGlow 8s ease-in-out infinite;animation-delay:2s}
+.process-animated .process-step:nth-child(3) .process-icon{animation:processStepGlow 8s ease-in-out infinite;animation-delay:4s}
+.process-animated .process-step:nth-child(4) .process-icon{animation:processStepGlow 8s ease-in-out infinite;animation-delay:6s}
+@keyframes processGreenProgress{0%{transform:scaleX(0);opacity:.85}8%{transform:scaleX(.25);opacity:1}25%{transform:scaleX(.25)}33%{transform:scaleX(.5)}50%{transform:scaleX(.5)}58%{transform:scaleX(.75)}75%{transform:scaleX(.75)}83%,100%{transform:scaleX(1)}}
+@keyframes processStepGlow{0%,5%,25%,100%{background:#fff;color:#25456b;box-shadow:0 0 0 10px rgba(34,197,94,0),0 12px 32px rgba(20,42,70,.08);transform:scale(1)}10%,20%{background:#16a34a;color:#fff;box-shadow:0 0 0 8px rgba(34,197,94,.15),0 0 28px rgba(34,197,94,.34);transform:scale(1.07)}}
+@media(max-width:700px){
+ .process-line{position:relative}
+ .process-line::before{top:25px;bottom:25px;left:27px;right:auto;width:4px;height:auto;transform:none}
+ .process-line::after{top:25px;bottom:auto;left:27px;right:auto;width:4px;height:calc(100% - 50px);transform:scaleY(0);transform-origin:top;animation:processGreenProgressVertical 8s ease-in-out infinite}
+ .process-animated .process-step .process-icon{animation-duration:8s}
+}
+@keyframes processGreenProgressVertical{0%{transform:scaleY(0)}8%{transform:scaleY(.25)}25%{transform:scaleY(.25)}33%{transform:scaleY(.5)}50%{transform:scaleY(.5)}58%{transform:scaleY(.75)}75%{transform:scaleY(.75)}83%,100%{transform:scaleY(1)}}
+@media(prefers-reduced-motion:reduce){.process-line::after,.process-animated .process-step .process-icon{animation:none!important}.process-line::after{transform:scaleX(1);background:#16a34a}}
+
+/* Corporate office card refinement: balanced, premium and responsive */
+.footer-addresses{max-width:1180px;margin:34px auto 0;padding-left:20px;padding-right:20px}
+.footer-address-card{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:220px;padding:34px 30px 30px!important;text-align:center!important;background:linear-gradient(135deg,#102440 0%,#142d4d 55%,#102541 100%);border:1px solid rgba(237,164,43,.38);border-radius:22px;box-shadow:0 18px 45px rgba(4,19,42,.16),inset 0 1px 0 rgba(255,255,255,.06)}
+.footer-address-card::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(circle at 50% 0%,rgba(245,158,11,.12),transparent 48%);pointer-events:none}
+.footer-address-heading{display:flex;align-items:center;justify-content:center;gap:15px;width:100%;margin:0!important;text-align:left!important}
+.footer-address-heading .footer-address-icon{display:flex;align-items:center;justify-content:center;flex:0 0 48px;width:48px;height:48px;border-radius:15px;background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.09);color:#ffb52e;font-size:23px;box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.footer-address-heading>div{display:flex;flex-direction:column;align-items:flex-start;gap:5px;text-align:left!important}
+.footer-address-card .footer-eyebrow{display:block;color:#ffb52e;font-size:11px;font-weight:850;letter-spacing:.14em;line-height:1.35}
+.footer-address-card h3{margin:0;color:#fff;font-size:clamp(20px,2.2vw,25px);font-weight:800;letter-spacing:-.025em;line-height:1.25}
+.footer-address-card p{position:relative;max-width:720px;margin:0 auto!important;padding-top:15px;color:#d0dced;font-size:14px;line-height:1.8;font-weight:450;text-align:center!important}
+.footer-address-card p::before{content:"";position:absolute;top:0;left:50%;width:48px;height:2px;transform:translateX(-50%);border-radius:99px;background:linear-gradient(90deg,#f59e0b,#ffca67)}
+.footer-address-card .footer-map-link{display:inline-flex;align-items:center;justify-content:center;gap:9px;margin-top:0;padding:10px 16px;border:1px solid rgba(255,181,46,.35);border-radius:999px;background:rgba(245,158,11,.09);color:#ffc15a!important;font-size:13px;font-weight:800;text-decoration:none;transition:transform .25s ease,background .25s ease,border-color .25s ease,box-shadow .25s ease}
+.footer-address-card .footer-map-link:hover{transform:translateY(-2px);background:rgba(245,158,11,.17);border-color:rgba(255,181,46,.7);box-shadow:0 8px 20px rgba(0,0,0,.14)}
+@media(max-width:600px){.footer-addresses{margin-top:24px;padding-left:16px;padding-right:16px}.footer-address-card{min-height:0;padding:26px 18px 22px!important;gap:14px;border-radius:18px}.footer-address-heading{gap:12px}.footer-address-heading .footer-address-icon{flex-basis:42px;width:42px;height:42px;border-radius:13px;font-size:20px}.footer-address-card .footer-eyebrow{font-size:10px;letter-spacing:.11em}.footer-address-card h3{font-size:20px}.footer-address-card p{font-size:13px;line-height:1.75;padding-top:13px}.footer-address-card .footer-map-link{padding:9px 14px;font-size:12px}}
+
+
+/* FINAL FIX: clean continuous timeline with animated green ring borders (no solid green fill) */
+.process-line{position:relative;isolation:isolate;overflow:visible}
+.process-line::before{content:"";position:absolute;z-index:0;top:61px;left:10%;right:10%;height:4px;border-radius:999px;background:#e8edf2;opacity:1;transform:none}
+.process-line::after{content:"";position:absolute;z-index:0;top:61px;left:10%;right:10%;width:80%;height:4px;border-radius:999px;background:linear-gradient(90deg,#16a34a,#22c55e,#86efac);transform:scaleX(0);transform-origin:left;animation:processGreenProgress 8s linear infinite;box-shadow:0 0 9px rgba(34,197,94,.3)}
+.process-step{position:relative;z-index:1}
+.process-step .process-icon{box-sizing:border-box;background:#fff!important;color:#25456b!important;border:8px solid #edf4ff!important;box-shadow:0 10px 30px rgba(5,40,90,.09);transform:scale(1);animation:none}
+.process-animated .process-step:nth-child(1) .process-icon{animation:processRingGlow 8s ease-in-out infinite 0s}
+.process-animated .process-step:nth-child(2) .process-icon{animation:processRingGlow 8s ease-in-out infinite 2s}
+.process-animated .process-step:nth-child(3) .process-icon{animation:processRingGlow 8s ease-in-out infinite 4s}
+.process-animated .process-step:nth-child(4) .process-icon{animation:processRingGlow 8s ease-in-out infinite 6s}
+@keyframes processRingGlow{0%,4%,24%,100%{background:#fff;color:#25456b; border-color:#edf4ff;box-shadow:0 10px 30px rgba(5,40,90,.09);transform:scale(1)}9%,19%{background:#fff;color:#25456b;border-color:#16a34a;box-shadow:0 0 0 5px rgba(34,197,94,.12),0 0 24px rgba(34,197,94,.34);transform:scale(1.04)}}
+@keyframes processGreenProgress{0%{transform:scaleX(0);opacity:1}24%{transform:scaleX(.25);opacity:1}25%{transform:scaleX(.25)}49%{transform:scaleX(.5)}50%{transform:scaleX(.5)}74%{transform:scaleX(.75)}75%{transform:scaleX(.75)}99%,100%{transform:scaleX(1)}}
+/* Keep fraud alert clearly visible directly below navigation on every page */
+.fraud-alert-ticker{display:block!important;visibility:visible!important;position:relative!important;z-index:50!important;width:100%;min-height:38px;box-sizing:border-box;overflow:hidden;background:#fff1f0!important;color:#b42318!important;border-top:1px solid #ffd0cc!important;border-bottom:1px solid #ffd0cc!important;padding:10px 0!important;font-size:12px;font-weight:800;line-height:1.5;letter-spacing:.02em}
+.fraud-alert-track{display:flex!important;align-items:center;width:max-content;animation:fraudAlertScroll 38s linear infinite!important;will-change:transform}
+.fraud-alert-track span{display:block;flex:0 0 auto;white-space:nowrap;padding-right:72px}
+.fraud-alert-ticker:hover .fraud-alert-track{animation-play-state:paused!important}
+@media(max-width:700px){.process-line::before{top:25px;bottom:25px;left:27px;right:auto;width:4px;height:auto}.process-line::after{top:25px;bottom:auto;left:27px;right:auto;width:4px;height:calc(100% - 50px);transform:scaleY(0);transform-origin:top;animation:processGreenProgressVertical 8s linear infinite}.process-step .process-icon{animation-duration:8s!important}}
+@media(prefers-reduced-motion:reduce){.fraud-alert-track{animation:none!important;transform:none!important}.process-line::after,.process-step .process-icon{animation:none!important}.process-line::after{transform:scaleX(1);background:#16a34a}.process-step .process-icon{border-color:#16a34a!important}}

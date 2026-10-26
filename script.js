@@ -457,14 +457,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const yes = event.target.value === "Yes";
     toggleConditional(document.getElementById("gstNumberWrap"), yes);
   });
-  document.getElementById("inqUdyamRegistered")?.addEventListener("change", event => {
-    const yes = event.target.value === "Yes";
+  const udyamSelect = document.getElementById("inqUdyamRegistered");
+  const updateUdyamNumber = () => {
+    const yes = udyamSelect?.value === "Yes";
     toggleConditional(document.getElementById("udyamNumberWrap"), yes);
-  });
-  document.getElementById("inqTradeLicence")?.addEventListener("change", event => {
-    const yes = event.target.value === "Yes";
+  };
+  udyamSelect?.addEventListener("change", updateUdyamNumber);
+  updateUdyamNumber();
+  const tradeLicenceSelect = document.getElementById("inqTradeLicence");
+  const updateTradeLicenceNumber = () => {
+    const yes = tradeLicenceSelect?.value === "Yes";
     toggleConditional(document.getElementById("tradeLicenceNumberWrap"), yes);
-  });
+  };
+  tradeLicenceSelect?.addEventListener("change", updateTradeLicenceNumber);
+  updateTradeLicenceNumber();
   document.getElementById("inqBusinessExistingLoan")?.addEventListener("change", event => {
     document.querySelectorAll(".existing-business-loan").forEach(wrap => toggleConditional(wrap, event.target.value === "Yes"));
   });
@@ -540,10 +546,11 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleConditional(loanTypeOtherWrap, false);
       toggleConditional(document.getElementById("gstNumberWrap"), false);
       toggleConditional(document.getElementById("udyamNumberWrap"), false);
+      toggleConditional(document.getElementById("tradeLicenceNumberWrap"), false);
       document.querySelectorAll(".existing-business-loan, .existing-salary-loan").forEach(wrap => toggleConditional(wrap, false));
     }
   };
-  document.querySelectorAll("[data-open-inquiry]").forEach(trigger => {
+  document.querySelectorAll('[data-open-inquiry], a[href="#open-loan-form"]').forEach(trigger => {
     trigger.addEventListener("click", event => {
       event.preventDefault();
       resetInquiryForNewApplication();
@@ -608,6 +615,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     [contact, pin, aadhaar, pan, businessPin].filter(Boolean).forEach(field => field.setCustomValidity(""));
     if (!/^\d{10}$/.test(contact.value.trim())) setError(contact, "Enter a valid 10-digit contact number.");
+    ["inqRef1Contact", "inqRef2Contact"].forEach(id => {
+      const referencePhone = document.getElementById(id);
+      if (referencePhone && !/^\d{10}$/.test(referencePhone.value.trim())) setError(referencePhone, "Enter a valid 10-digit reference contact number.");
+    });
     if (!/^\d{6}$/.test(pin.value.trim())) setError(pin, "Enter a valid 6-digit PIN code.");
     if (!/^\d{12}$/.test(aadhaar.value.trim())) setError(aadhaar, "Enter a valid 12-digit Aadhaar number.");
     if (!/^[A-Za-z]{5}\d{4}[A-Za-z]$/.test(pan.value.trim())) setError(pan, "Enter a valid PAN, for example ABCDE1234F.");
@@ -641,6 +652,12 @@ document.addEventListener("DOMContentLoaded", () => {
       `City: ${value("inqCity")}`,
       `Residence PIN Code: ${value("inqPin")}`,
       `State / UT: ${value("inqState")}`,
+      `Reference 1 Name: ${value("inqRef1Name")}`,
+      `Reference 1 Contact Number: ${value("inqRef1Contact")}`,
+      `Reference 1 Relationship: ${value("inqRef1Relation")}`,
+      `Reference 2 Name: ${value("inqRef2Name")}`,
+      `Reference 2 Contact Number: ${value("inqRef2Contact")}`,
+      `Reference 2 Relationship: ${value("inqRef2Relation")}`,
       `Assigned Employee: ${assignedEmployee}`,
       // Never place full Aadhaar/PAN identifiers in a WhatsApp URL. The applicant can share these securely later if required.
       `Aadhaar Number: ${value("inqAadhaar")}`,
@@ -719,7 +736,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (whatsappOpened) {
       // Keep the existing thank-you view; update the email line when FormSubmit responds.
       inquiryForm.classList.add("is-submitted");
-status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h3 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h3><p class="inquiry-thankyou-lead">Your form has been submitted successfully.</p><p>Our team will review your details and contact you soon to discuss suitable loan options.</p>';      status.setAttribute("role", "status");
+      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h3 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h3><p class="inquiry-thankyou-lead">Your inquiry is ready in WhatsApp.</p><p>Our team will review your details and contact you soon to discuss suitable loan options.</p><p id="inquiryEmailStatus" role="status" aria-live="polite">Sending a copy of your inquiry to email…</p><p class="inquiry-thankyou-brand"><strong>Fortune Loan Services</strong><br>Your Trusted Loan Partner</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
+      status.setAttribute("role", "status");
       status.setAttribute("aria-live", "assertive");
       emailDelivery.then(() => {
         const emailStatus = document.getElementById("inquiryEmailStatus");
