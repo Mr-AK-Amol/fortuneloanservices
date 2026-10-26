@@ -683,6 +683,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `Salary Credit Mode: ${value("inqSalaryCreditMode")}`,
         ...(["Bank Transfer", "UPI"].includes(value("inqSalaryCreditMode")) ? [`Salary Account Bank Name: ${value("inqSalaryCreditedBankName")}`] : []),
         `Salary Account Statement Available: ${value("inqSalaryStatement")}`,
+        `Salary / Payment Slip Available: ${value("inqSalaryPaymentSlipAvailable")}`,
         `Existing Loan: ${value("inqSalaryExistingLoan")}`);
       if (value("inqSalaryExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqSalaryExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqSalaryExistingEmi")}`);
     }
