@@ -789,28 +789,19 @@ document.addEventListener("DOMContentLoaded", () => {
       mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
       pincode.setCustomValidity(/^\d{6}$/.test(pincode.value.trim()) ? "" : "Enter a valid 6-digit pincode.");
       if (!partnerForm.reportValidity()) return;
-      const partnerFields = [
-        ["Full Name", document.getElementById("pfName").value.trim()],
-        ["Mobile Number", digits],
-        ["Email", document.getElementById("pfEmail").value.trim()],
-        ["Company / Organization", document.getElementById("pfCompany").value.trim()],
-        ["State", document.getElementById("pfState").value.trim()],
-        ["City", document.getElementById("pfCity").value.trim()],
-        ["Pincode", pincode.value.trim()],
-        ["Preferred Loan", document.getElementById("pfLoan").value.trim()],
-        ["Professional Experience", document.getElementById("pfExp").value.trim()],
-        ["Partnership Type", document.getElementById("pfType").value],
-        ["Business Details / Message", document.getElementById("pfMessage").value.trim()]
-      ].filter(([, value]) => value !== "");
-      const message = `*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\n${partnerFields.map(([label, value]) => `*${label}:* ${value}`).join("\n")}`;
-      const emailData = Object.fromEntries(partnerFields.map(([label, value]) => [label, value]));
-      emailData._subject = "Fortune Loan Services - Partner Registration";
-      emailData._template = "table";
-      const emailPromise = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
-        method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(emailData)
-      }).then(r => r.json()).then(data => { if (!data.success && data.success !== "true") throw new Error(data.message || "Email could not be submitted"); return true; });
-      const waOpened = openWhatsApp(message, status);
-      emailPromise.then(() => { status.textContent = "Email submission accepted and WhatsApp opened with only the filled fields. In WhatsApp, review and tap Send. If this is the first FormSubmit submission, verify the receiving email first."; }).catch(error => { console.error("Partner registration email error:", error); status.textContent = (waOpened ? "WhatsApp opened; review and tap Send. " : "") + "Email could not be confirmed. Please verify FormSubmit activation and try again."; });
+      const fields = [...partnerForm.querySelectorAll("input, select, textarea")].filter(el => el.name && el.type !== "submit" && el.type !== "button");
+      const entries = fields.map(el => {
+        const label = partnerForm.querySelector(`label[for="${el.id}"]`);
+        return { name: el.name, label: (label?.innerText || el.name).replace(/\s*\*\s*$/, "").trim(), value: el.value.trim() };
+      }).filter(item => item.value);
+      const message = "*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\n" + entries.map(item => `*${item.label}:* ${item.value}`).join("\n");
+      const emailPayload = { _subject: "New Fortune Loan Services - Partner Registration", _template: "table" };
+      entries.forEach(item => { emailPayload[item.label] = item.value; });
+      const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
+        method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(emailPayload)
+      }).then(async response => { const result = await response.json().catch(() => ({})); if (!response.ok || result.success === false || result.success === "false") throw new Error(result.message || "Email submission failed"); return result; });
+      const opened = openWhatsApp(message, status);
+      emailDelivery.then(() => { status.textContent = opened ? "WhatsApp is ready to send. Email submission was also accepted; first-time FormSubmit verification may be required." : "Email submission was accepted. WhatsApp was blocked by your browser; use the WhatsApp link if shown."; }).catch(error => { console.error("Partner registration email failed:", error); status.textContent = opened ? "WhatsApp is ready to send, but email could not be confirmed. Check FormSubmit setup and retry." : "Email could not be confirmed and WhatsApp was blocked. Please retry."; });
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
     pincode.addEventListener("input", () => pincode.setCustomValidity(""));
