@@ -229,6 +229,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroSlides = Array.from(heroCarousel.querySelectorAll("[data-hero-slide]"));
     const heroDots = Array.from(document.querySelectorAll("[data-hero-go]"));
     const navratriHero = heroCarousel.querySelector(".navratri-hero");
+    const cityCards = Array.from(heroCarousel.querySelectorAll(".city-preview-card"));
+    let cityRotationTimer = null;
+    let activeCityIndex = 0;
+    const showCity = index => {
+      if (!cityCards.length) return;
+      // Strict source-order cycle: each of the 18 city cards appears once, then the cycle restarts at city 1.
+      activeCityIndex = ((index % cityCards.length) + cityCards.length) % cityCards.length;
+      cityCards.forEach((card, cardIndex) => {
+        const active = cardIndex === activeCityIndex;
+        card.classList.toggle("is-city-active", active);
+        card.setAttribute("aria-hidden", String(!active));
+        card.style.zIndex = active ? "2" : "0";
+        const image = card.querySelector("img");
+        if (image) {
+          image.loading = "eager";
+          image.decoding = "async";
+          image.onerror = () => {
+            image.style.display = "none";
+            const stage = image.parentElement;
+            if (stage) {
+              stage.style.background = "linear-gradient(135deg,#eef3f9,#dce6f3)";
+              stage.dataset.imageFallback = `${image.alt || "City"} image unavailable`;
+            }
+          };
+        }
+      });
+    };
+    const startCityRotation = () => {
+      window.clearInterval(cityRotationTimer);
+      showCity(0);
+      cityRotationTimer = window.setInterval(() => showCity(activeCityIndex + 1), 3000);
+    };
+    const stopCityRotation = () => {
+      window.clearInterval(cityRotationTimer);
+      cityRotationTimer = null;
+    };
     let startNavratriAnimation = () => {};
     let stopNavratriAnimation = () => {};
     let activeSlideIndex = heroSlides.findIndex(slide => slide.classList.contains("is-active"));
@@ -364,9 +400,9 @@ document.addEventListener("DOMContentLoaded", () => {
       window.clearTimeout(heroRotationTimer);
       if (heroSlides.length < 2) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      // Keep the requested rhythm: main hero 5s, city network 15s, Diwali 5s.
-      const dwellTimes = [5000, 15000, 5000];
-      const dwellTime = dwellTimes[activeSlideIndex] ?? 5000;
+      // Requested rhythm: Hero 1 stays for 10 seconds; Hero 2 city network stays for 54 seconds.
+      const dwellTimes = [10000, 54000];
+      const dwellTime = dwellTimes[activeSlideIndex] ?? 10000;
       heroRotationTimer = window.setTimeout(() => {
         showSlide(activeSlideIndex + 1);
       }, dwellTime);
@@ -378,6 +414,8 @@ document.addEventListener("DOMContentLoaded", () => {
         stopNavratriAnimation();
       }
       activeSlideIndex = (index + heroSlides.length) % heroSlides.length;
+      if (activeSlideIndex === 1 && cityCards.length) startCityRotation();
+      else stopCityRotation();
       heroSlides.forEach((slide, slideIndex) => {
         const isActive = slideIndex === activeSlideIndex;
         slide.classList.toggle("is-active", isActive);
@@ -915,3 +953,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Monthly income is selected from optional dropdowns on both enquiry forms.
 [ ["inqIncomeMin","inqIncomeMax","incomeMinLabel","incomeMaxLabel"], ["cfIncomeMin","cfIncomeMax","cfIncomeMinLabel","cfIncomeMaxLabel"] ].forEach(([minId,maxId,minLabel,maxLabel])=>{const min=document.getElementById(minId),max=document.getElementById(maxId),ml=document.getElementById(minLabel),xl=document.getElementById(maxLabel);if(!min||!max||!ml||!xl)return;const fmt=n=>Number(n).toLocaleString("en-IN");const update=(changed)=>{if(Number(min.value)>Number(max.value)){if(changed===min)max.value=min.value;else min.value=max.value;}ml.textContent=fmt(min.value);xl.textContent=fmt(max.value);};min.addEventListener("input",()=>update(min));max.addEventListener("input",()=>update(max));update();});
+
+
+  // Expert contact popup: the phone CTA opens the device dialer.
+  const expertModal = document.getElementById("expertModal");
+  if (expertModal) {
+    const openExpert = () => { expertModal.classList.add("show"); expertModal.setAttribute("aria-hidden", "false"); document.body.classList.add("expert-modal-open"); };
+    const closeExpert = () => { expertModal.classList.remove("show"); expertModal.setAttribute("aria-hidden", "true"); document.body.classList.remove("expert-modal-open"); };
+    document.querySelectorAll("[data-open-expert]").forEach(button => button.addEventListener("click", openExpert));
+    expertModal.querySelectorAll("[data-close-expert]").forEach(button => button.addEventListener("click", closeExpert));
+    document.addEventListener("keydown", event => { if (event.key === "Escape" && expertModal.classList.contains("show")) closeExpert(); });
+  }
