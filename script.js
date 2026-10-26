@@ -364,7 +364,9 @@ document.addEventListener("DOMContentLoaded", () => {
       window.clearTimeout(heroRotationTimer);
       if (heroSlides.length < 2) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      const dwellTime = 5500;
+      // Keep the requested rhythm: main hero 5s, city network 15s, Diwali 5s.
+      const dwellTimes = [5000, 15000, 5000];
+      const dwellTime = dwellTimes[activeSlideIndex] ?? 5000;
       heroRotationTimer = window.setTimeout(() => {
         showSlide(activeSlideIndex + 1);
       }, dwellTime);
