@@ -22,18 +22,37 @@
 <div class="refer-field"><label for="incomeSource">Income Source *</label><select id="incomeSource" required><option value="">Select income source</option><option>Salaried</option><option>Self-employed / Business</option><option>Professional</option><option>Agriculture</option><option>Other</option></select></div>
 <div class="refer-field full"><label><input id="clientConsent" type="checkbox" required style="width:auto;min-height:auto;margin-right:8px"> I confirm the referred client has given permission to share these details and be contacted about loan options. *</label></div>
 </div>
-<button class="refer-submit" type="submit">Send Referral on WhatsApp ↗</button>
-<p class="refer-note" id="referStatus" role="status" aria-live="polite">Your WhatsApp message will be prepared for review. It is sent only if you choose to send it in WhatsApp. Please do not submit sensitive identity or banking documents here.</p>
+<button class="refer-submit" type="submit">Submit Referral ↗</button>
+<p class="refer-note" id="referStatus" role="status" aria-live="polite">Your filled details will be submitted by email and prepared in WhatsApp. Review and send the WhatsApp message yourself. Please do not submit sensitive identity or banking documents here.</p>
 </form></section></div></main><script>
-document.getElementById('referForm').addEventListener('submit',function(e){
+document.getElementById('referForm').addEventListener('submit',async function(e){
 e.preventDefault();
+const form=this;
+if(!form.reportValidity()) return;
 const val=id=>document.getElementById(id).value.trim();
-const phone=id=>val(id).replace(/\\D/g,'');
-if(!/^[6-9]\\d{9}$/.test(phone('refMobile'))){alert('Please enter a valid 10-digit referrer mobile number.');return}
-if(!/^[6-9]\\d{9}$/.test(phone('clientMobile'))){alert('Please enter a valid 10-digit client mobile number.');return}
-if(!/^\\d{6}$/.test(val('clientPin'))){alert('Please enter a valid 6-digit PIN code.');return}
-const message=`*FORTUNE LOAN SERVICES — REFERRAL*\\n\\n*Referrer details*\\nName: ${val('refName')}\\nMobile: ${phone('refMobile')}\\n\\n*Referred client's loan details*\\nName: ${val('clientName')}\\nMobile: ${phone('clientMobile')}\\nEmail: ${val('clientEmail')||'Not provided'}\\nCity: ${val('clientCity')}\\nPIN Code: ${val('clientPin')}\\nLoan type: ${val('loanType')}\\nRequired amount: ${val('loanAmount')}\\nLoan purpose: ${val('loanPurpose')}\\nMonthly income: ${val('incomeRange')||'Not provided'}\\nCIBIL score: ${val('cibilScore')||'Not provided'}\\nIncome source: ${val('incomeSource')}\\n\\nClient permission confirmed by referrer.\\nSubmitted via Refer and Earn webpage.`;
-window.open('https://wa.me/919028346900?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
+const phone=id=>val(id).replace(/\D/g,'');
+if(!/^[6-9]\d{9}$/.test(phone('refMobile'))){alert('Please enter a valid 10-digit referrer mobile number.');return}
+if(!/^[6-9]\d{9}$/.test(phone('clientMobile'))){alert('Please enter a valid 10-digit client mobile number.');return}
+if(!/^\d{6}$/.test(val('clientPin'))){alert('Please enter a valid 6-digit PIN code.');return}
+const fields=[
+['Referrer Name',val('refName')],['Referrer Contact Number',phone('refMobile')],
+['Referred Client Name',val('clientName')],['Referred Client Contact Number',phone('clientMobile')],
+['Client Email Address',val('clientEmail')],['Client City',val('clientCity')],['Client PIN Code',val('clientPin')],
+['Loan Type',val('loanType')],['Required Loan Amount (₹)',val('loanAmount')],['Purpose of Loan',val('loanPurpose')],
+['Monthly Income Range',val('incomeRange')],['CIBIL Score',val('cibilScore')],['Income Source',val('incomeSource')]
+].filter(([,value])=>value!=='');
+const message=`*FORTUNE LOAN SERVICES — REFERRAL*\n\n${fields.map(([label,value])=>`*${label}:* ${value}`).join('\n')}\n*Client Permission:* Confirmed`;
+const emailData=Object.fromEntries(fields.map(([label,value])=>[label,value]));
+emailData['Client Permission']='Confirmed';
+emailData._subject='Fortune Loan Services - Referral Submission';
+emailData._template='table';
+const status=document.getElementById('referStatus');
+let emailPromise=fetch('https://formsubmit.co/ajax/loanservicesfortune@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(emailData)}).then(r=>r.json()).then(data=>{if(!data.success&&data.success!=='true')throw new Error(data.message||'Email could not be submitted');return true});
+const wa=window.open('https://wa.me/919028346900?text='+encodeURIComponent(message),'_blank');
+if(wa) wa.opener=null;
+status.textContent='WhatsApp opened with the filled details; review and tap Send. Sending email…';
+try{await emailPromise;status.textContent='Email submission accepted. In WhatsApp, review the details and tap Send. If this is the first FormSubmit submission, verify the receiving email first.'}
+catch(error){console.error('Referral email error:',error);status.textContent='WhatsApp message prepared; review and tap Send. Email could not be confirmed—verify FormSubmit activation and retry.'}
 });</script>
 <a class="floating-apply-now" id="floatingApplyNow" href="index.html#open-loan-form"  aria-label="Open loan application form"><span class="floating-apply-icon" aria-hidden="true">↗</span><span>Apply Now</span></a>
 </body></html>
