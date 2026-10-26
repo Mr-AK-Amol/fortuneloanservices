@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.clearTimeout(heroRotationTimer);
       if (heroSlides.length < 2) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      const dwellTime = activeSlideIndex === 1 ? 10000 : 5000;
+      const dwellTime = 5500;
       heroRotationTimer = window.setTimeout(() => {
         showSlide(activeSlideIndex + 1);
       }, dwellTime);
@@ -441,6 +441,42 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!field.required) field.removeAttribute("aria-invalid");
     });
   };
+
+  // Business-category-specific statutory licence fields.
+  const businessNatureSelect = document.getElementById("inqBusinessNature");
+  const drugLicenceSelect = document.getElementById("inqDrugLicence");
+  const fssaiSelect = document.getElementById("inqFssai");
+  const updateBusinessLicences = () => {
+    const nature = businessNatureSelect?.value || "";
+    const drug = /medical|pharmacy|drug|pharmaceutical/i.test(nature);
+    const food = /food/i.test(nature);
+    // Medical / Pharmacy categories require both Drug Licence and FSSAI prompts;
+    // Food Business requires only FSSAI. Each number appears only when its answer is Yes.
+    const showFssai = food || drug;
+    toggleConditional(document.getElementById("inqDrugLicenceWrap"), drug);
+    toggleConditional(document.getElementById("inqDrugLicenceNumberWrap"), drug && drugLicenceSelect?.value === "Yes");
+    toggleConditional(document.getElementById("inqFssaiWrap"), showFssai);
+    toggleConditional(document.getElementById("inqFssaiNumberWrap"), showFssai && fssaiSelect?.value === "Yes");
+    if (!drug) { if (drugLicenceSelect) drugLicenceSelect.value = ""; const n=document.getElementById("inqDrugLicenceNumber"); if(n)n.value=""; }
+    if (!showFssai) { if (fssaiSelect) fssaiSelect.value = ""; const n=document.getElementById("inqFssaiNumber"); if(n)n.value=""; }
+  };
+  businessNatureSelect?.addEventListener("change", updateBusinessLicences);
+  drugLicenceSelect?.addEventListener("change", updateBusinessLicences);
+  fssaiSelect?.addEventListener("change", updateBusinessLicences);
+  updateBusinessLicences();
+  // Add-on credit-history questions appear only when an existing loan is reported.
+  ["inqBusinessExistingLoan", "inqSalaryExistingLoan"].forEach(id => {
+    const sel = document.getElementById(id);
+    const prefix = id === "inqBusinessExistingLoan" ? "inqBusinessExistingEmi" : "inqSalaryExistingEmi";
+    const update = () => {
+      const show = sel?.value === "Yes";
+      toggleConditional(document.getElementById(prefix + "BouncedWrap"), show);
+      const recentWrap = document.getElementById(prefix + "RecentApply")?.closest(".form-field");
+      toggleConditional(recentWrap, show);
+      if (!show) { const a=document.getElementById(prefix+"Bounced"); const b=document.getElementById(prefix+"RecentApply"); if(a)a.value=""; if(b)b.value=""; }
+    };
+    sel?.addEventListener("change", update); update();
+  });
   const refreshIncomeSections = () => {
     const source = incomeSourceSelect?.value;
     setSectionVisibility(businessFields, source === "Business Owner / Self Employed");
@@ -619,6 +655,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const referencePhone = document.getElementById(id);
       if (referencePhone && !/^\d{10}$/.test(referencePhone.value.trim())) setError(referencePhone, "Enter a valid 10-digit reference contact number.");
     });
+    // Reference numbers must be valid and must not duplicate the applicant number or each other.
+    const primaryNumber = contact?.value.trim();
+    const ref1Number = document.getElementById("inqRef1Contact")?.value.trim();
+    const ref2Number = document.getElementById("inqRef2Contact")?.value.trim();
+    if (ref1Number && primaryNumber && ref1Number === primaryNumber) setError(document.getElementById("inqRef1Contact"), "Reference contact number must be different from the applicant contact number.");
+    if (ref2Number && primaryNumber && ref2Number === primaryNumber) setError(document.getElementById("inqRef2Contact"), "Reference contact number must be different from the applicant contact number.");
+    if (ref1Number && ref2Number && ref1Number === ref2Number) setError(document.getElementById("inqRef2Contact"), "Reference 1 and Reference 2 must have different contact numbers.");
+    ["inqRef1Relation", "inqRef2Relation"].forEach(id => {
+      const relation = document.getElementById(id);
+      if (relation && /\b(family|family member|relative|mother|father|brother|sister|wife|husband|son|daughter|uncle|aunt|cousin|parent|sibling)\b/i.test(relation.value.trim())) setError(relation, "Please provide a non-family reference (for example, friend or colleague).");
+    });
     if (!/^\d{6}$/.test(pin.value.trim())) setError(pin, "Enter a valid 6-digit PIN code.");
     if (!/^\d{12}$/.test(aadhaar.value.trim())) setError(aadhaar, "Enter a valid 12-digit Aadhaar number.");
     if (!/^[A-Za-z]{5}\d{4}[A-Za-z]$/.test(pan.value.trim())) setError(pan, "Enter a valid PAN, for example ABCDE1234F.");
@@ -686,7 +733,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ...(value("inqTradeLicence") === "Yes" ? [`Trade Licence Number: ${value("inqTradeLicenceNumber")}`] : []),
         `Average Monthly Business Income / Profit: ${formatAmount("inqBusinessIncome")}`,
         `Existing Loan: ${value("inqBusinessExistingLoan")}`);
-      if (value("inqBusinessExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqBusinessExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqBusinessExistingEmi")}`);
+      if (value("inqBusinessExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqBusinessExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqBusinessExistingEmi")}`, `Any EMI bounced in last 3 months: ${value("inqBusinessExistingEmiBounced")}`, `Recently applied for any loan: ${value("inqBusinessExistingEmiRecentApply")}`);
+      if (/medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`Drug / Pharmacy Licence Available: ${value("inqDrugLicence")}`); if(value("inqDrugLicence")==="Yes") lines.push(`Drug / Pharmacy Licence Number: ${value("inqDrugLicenceNumber")}`); }
+      if (/food|medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`FSSAI Licence Available: ${value("inqFssai")}`); if(value("inqFssai")==="Yes") lines.push(`FSSAI Licence Number: ${value("inqFssaiNumber")}`); }
     } else if (value("inqIncomeSource") === "Salaried Person") {
       lines.push("", "*SALARIED PERSON DETAILS*",
         `Employment Type: ${value("inqEmploymentType")}`,
@@ -702,7 +751,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `Salary Account Statement Available: ${value("inqSalaryStatement")}`,
         `Salary / Payment Slip Available: ${value("inqSalaryPaymentSlipAvailable")}`,
         `Existing Loan: ${value("inqSalaryExistingLoan")}`);
-      if (value("inqSalaryExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqSalaryExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqSalaryExistingEmi")}`);
+      if (value("inqSalaryExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqSalaryExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqSalaryExistingEmi")}`, `Any EMI bounced in last 3 months: ${value("inqSalaryExistingEmiBounced")}`, `Recently applied for any loan: ${value("inqSalaryExistingEmiRecentApply")}`);
     }
     const message = lines.join("\n");
     status.classList.add("inquiry-confirmation");
@@ -736,7 +785,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (whatsappOpened) {
       // Keep the existing thank-you view; update the email line when FormSubmit responds.
       inquiryForm.classList.add("is-submitted");
-      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h3 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h3><p class="inquiry-thankyou-lead">Your inquiry is ready in WhatsApp.</p><p>Our team will review your details and contact you soon to discuss suitable loan options.</p><p id="inquiryEmailStatus" role="status" aria-live="polite">Sending a copy of your inquiry to email…</p><p class="inquiry-thankyou-brand"><strong>Fortune Loan Services</strong><br>Your Trusted Loan Partner</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
+      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Loan Partner!</p><p id="inquiryEmailStatus" role="status" aria-live="polite">Sending a copy of your inquiry to email…</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
       status.setAttribute("role", "status");
       status.setAttribute("aria-live", "assertive");
       emailDelivery.then(() => {

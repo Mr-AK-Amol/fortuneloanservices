@@ -2788,3 +2788,23 @@ h1 span{
 .fraud-alert-ticker:hover .fraud-alert-track{animation-play-state:paused!important}
 @media(max-width:700px){.process-line::before{top:25px;bottom:25px;left:27px;right:auto;width:4px;height:auto}.process-line::after{top:25px;bottom:auto;left:27px;right:auto;width:4px;height:calc(100% - 50px);transform:scaleY(0);transform-origin:top;animation:processGreenProgressVertical 8s linear infinite}.process-step .process-icon{animation-duration:8s!important}}
 @media(prefers-reduced-motion:reduce){.fraud-alert-track{animation:none!important;transform:none!important}.process-line::after,.process-step .process-icon{animation:none!important}.process-line::after{transform:scaleX(1);background:#16a34a}.process-step .process-icon{border-color:#16a34a!important}}
+
+/* Stage 2 city preview and festive Diwali hero slides */
+.city-network-slide{background:#fff!important;color:#102348!important;overflow:hidden;padding:34px 0 26px;}
+.city-hero-inner{width:min(1200px,94%);margin:auto;}
+.city-hero-heading{text-align:center;margin:0 auto 18px;}
+.city-hero-heading>span{font-size:.72rem;font-weight:800;letter-spacing:.18em;color:#bd7b18;}
+.city-hero-heading h2{font-size:clamp(1.7rem,3vw,2.8rem);margin:7px 0;color:#102348;}
+.city-hero-heading h2 em{color:#d68a18;font-style:normal;}
+.city-hero-heading p{margin:0;color:#62708a;}
+.city-card-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;}
+.city-preview-card{min-width:0;border:1px solid #e5eaf2;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 5px 18px #10234812;animation:cityCardFloat 4s ease-in-out infinite;}
+.city-preview-card:nth-child(3n){animation-delay:.4s}.city-preview-card:nth-child(3n+1){animation-delay:.8s}
+.city-preview-card img{display:block;width:100%;height:72px;object-fit:cover;}
+.city-preview-card>div{padding:7px 8px 9px}.city-preview-card h3{font-size:.88rem;line-height:1.15;margin:0 0 3px;color:#11244a}.city-preview-card p{font-size:.67rem;color:#778197;margin:0 0 5px}.city-preview-card span{font-size:.61rem;font-weight:800;color:#bd7b18;letter-spacing:.02em;}
+.city-stage-label{text-align:center;margin-top:13px;color:#bd7b18;font-size:.75rem;font-weight:900;letter-spacing:.15em;}
+@keyframes cityCardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.diwali-hero-slide{overflow:hidden;min-height:460px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:radial-gradient(circle at 50% 25%,#8b1e49 0,#3c104e 45%,#090f35 100%)!important;}
+.diwali-content{position:relative;z-index:2;padding:55px 20px;max-width:800px}.diwali-kicker{font-weight:800;letter-spacing:.16em;color:#ffd77c;font-size:.78rem}.diwali-content h2{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.08;margin:18px 0;color:#fff}.diwali-content h2 em{font-style:normal;background:linear-gradient(90deg,#ffe8a3,#ffad37,#fff0bd);-webkit-background-clip:text;background-clip:text;color:transparent}.diwali-content p{max-width:600px;margin:0 auto 24px;color:#ffe9ef;font-size:1.05rem}.diwali-content .btn-primary{background:linear-gradient(110deg,#f7b733,#ff6b35);border:0;color:#31112b}.diya-row{font-size:1.65rem;margin-top:22px;animation:diyaGlow 2s ease-in-out infinite alternate}.diwali-sparkles{position:absolute;inset:8% 0 auto;font-size:2rem;color:#ffd36b;letter-spacing:1.5rem;opacity:.7;animation:sparkleBlink 2s infinite alternate}.firework{position:absolute;font-size:5rem;color:#ffd36b;text-shadow:0 0 18px #ff7c2b;animation:fireworkBurst 2.4s ease-in-out infinite}.fw-one{left:10%;top:20%}.fw-two{right:12%;top:25%;animation-delay:.7s;color:#ff8cc6}.fw-three{right:23%;bottom:13%;animation-delay:1.2s;color:#9fe9ff}@keyframes sparkleBlink{from{opacity:.25;transform:scale(.9)}to{opacity:1;transform:scale(1.08)}}@keyframes fireworkBurst{0%,100%{opacity:.2;transform:scale(.45) rotate(0)}45%{opacity:1;transform:scale(1.2) rotate(25deg)}}@keyframes diyaGlow{from{filter:drop-shadow(0 0 2px #ffbd52)}to{filter:drop-shadow(0 0 14px #ffbd52)}}
+@media(max-width:900px){.city-card-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.city-preview-card img{height:65px}}
+@media(max-width:560px){.city-network-slide{padding:24px 0}.city-card-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.city-preview-card img{height:55px}.city-preview-card>div{padding:6px}.city-preview-card h3{font-size:.74rem}.city-preview-card p{font-size:.6rem}.city-preview-card span{font-size:.54rem}.diwali-hero-slide{min-height:430px}.firework{font-size:3rem}.diwali-sparkles{font-size:1.2rem;letter-spacing:.5rem}}
