@@ -852,7 +852,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       emailDelivery.then(() => {
-        status.textContent = "Email copy submitted successfully. Your browser blocked WhatsApp; use the link above to open the prepared message.";
+        status.textContent = "Email copy submitted successfully. If this is the first submission, verify loanservicesfortune@gmail.com using the FormSubmit activation email.";
       }).catch(error => {
         console.error("FormSubmit email delivery failed:", error);
         status.textContent = "Your browser blocked WhatsApp and the email could not be confirmed. Please check FormSubmit setup and retry.";
