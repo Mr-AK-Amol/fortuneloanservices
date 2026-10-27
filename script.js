@@ -724,11 +724,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return raw !== undefined && raw !== "" ? "₹" + Number(raw).toLocaleString("en-IN") : "Not provided";
     };
     const stateEmployeeMap = {
-      "Maharashtra": "MUBARAK HUSSAIN", "Gujarat": "MUBARAK HUSSAIN", "Goa": "MUBARAK HUSSAIN", "Rajasthan": "MUBARAK HUSSAIN", "Madhya Pradesh": "MUBARAK HUSSAIN", "Chhattisgarh": "MUBARAK HUSSAIN",
-      "Karnataka": "SAKSHI BHOKARE", "Kerala": "SAKSHI BHOKARE", "Tamil Nadu": "SAKSHI BHOKARE", "Telangana": "SAKSHI BHOKARE", "Andhra Pradesh": "SAKSHI BHOKARE", "Puducherry": "SAKSHI BHOKARE",
+      "Maharashtra": "AMOL KINIKAR", "Gujarat": "AMOL KINIKAR", "Goa": "AMOL KINIKAR", "Rajasthan": "AMOL KINIKAR", "Madhya Pradesh": "AMOL KINIKAR", "Chhattisgarh": "AMOL KINIKAR",
       "Uttar Pradesh": "KAUSHAL MARATHE", "Uttarakhand": "KAUSHAL MARATHE", "Himachal Pradesh": "KAUSHAL MARATHE", "Punjab": "KAUSHAL MARATHE", "Haryana": "KAUSHAL MARATHE",
       "West Bengal": "DILIP KHANDAGALE", "Odisha": "DILIP KHANDAGALE", "Bihar": "DILIP KHANDAGALE", "Jharkhand": "DILIP KHANDAGALE", "Sikkim": "DILIP KHANDAGALE", "Assam": "DILIP KHANDAGALE",
-      "Arunachal Pradesh": "AMOL KINIKAR", "Nagaland": "AMOL KINIKAR", "Manipur": "AMOL KINIKAR", "Mizoram": "AMOL KINIKAR", "Tripura": "AMOL KINIKAR", "Other": "AMOL KINIKAR"
+      "Arunachal Pradesh": "MUBARAK HUSSAIN", "Nagaland": "MUBARAK HUSSAIN", "Manipur": "MUBARAK HUSSAIN", "Mizoram": "MUBARAK HUSSAIN", "Tripura": "MUBARAK HUSSAIN", "Other": "MUBARAK HUSSAIN",
+      "Karnataka": "SAKSHI BHOKARE", "Kerala": "SAKSHI BHOKARE", "Tamil Nadu": "SAKSHI BHOKARE", "Telangana": "SAKSHI BHOKARE", "Andhra Pradesh": "SAKSHI BHOKARE", "Puducherry": "SAKSHI BHOKARE"
     };
     const assignedEmployee = stateEmployeeMap[value("inqState")] || "AMOL KINIKAR";
     const lines = [
@@ -745,7 +745,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `Reference 2 Name: ${value("inqRef2Name")}`,
       `Reference 2 Contact Number: ${value("inqRef2Contact")}`,
       `Reference 2 Relationship: ${value("inqRef2Relation")}`,
-      `Assigned Employee: ${assignedEmployee}`,
+      `Assigned Loan Expert: ${assignedEmployee}`,
       // Never place full Aadhaar/PAN identifiers in a WhatsApp URL. The applicant can share these securely later if required.
       `Aadhaar Number: ${value("inqAadhaar")}`,
       `PAN Number: ${value("inqPan").toUpperCase()}`,
@@ -772,7 +772,8 @@ document.addEventListener("DOMContentLoaded", () => {
         `Trade Licence: ${value("inqTradeLicence")}`,
         ...(value("inqTradeLicence") === "Yes" ? [`Trade Licence Number: ${value("inqTradeLicenceNumber")}`] : []),
         `Average Monthly Business Income / Profit: ${formatAmount("inqBusinessIncome")}`,
-        `Existing Loan: ${value("inqBusinessExistingLoan")}`);
+        `Existing Loan: ${value("inqBusinessExistingLoan")}`,
+        `Bank A/c Type: ${Array.from(inquiryForm.querySelectorAll('input[name="businessBankAccountType"]:checked')).map(input => input.value).join(", ") || "Not selected"}`);
       if (value("inqBusinessExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqBusinessExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqBusinessExistingEmi")}`, `Any EMI bounced in last 3 months: ${value("inqBusinessExistingEmiBounced")}`, `Recently applied for any loan: ${value("inqBusinessExistingEmiRecentApply")}`);
       if (/medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`Drug / Pharmacy Licence Available: ${value("inqDrugLicence")}`); if(value("inqDrugLicence")==="Yes") lines.push(`Drug / Pharmacy Licence Number: ${value("inqDrugLicenceNumber")}`); }
       if (/food|medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`FSSAI Licence Available: ${value("inqFssai")}`); if(value("inqFssai")==="Yes") lines.push(`FSSAI Licence Number: ${value("inqFssaiNumber")}`); }

@@ -26,7 +26,7 @@
 </div>
 <button class="refer-submit" type="submit">Send Referral on WhatsApp ↗</button>
 <p class="refer-note" id="referStatus" role="status" aria-live="polite">Your filled referral details are also submitted to our email. WhatsApp opens with the message prepared; tap Send in WhatsApp. Please do not submit sensitive identity or banking documents here.</p>
-</form></section></div><footer class="refer-contact-footer">© 2026 Fortune Loan Services. All Rights Reserved. | <a href="contact.html">Contact Us</a> | <a href="tel:+919028346900">+91 90283 46900</a> | <a href="mailto:official.aaminkhan@gmail.com">Email Us</a></footer></div></main><script>
+</form></section></div><footer class="refer-contact-footer"><button class="footer-button footer-button-outline" type="button" data-open-expert>Talk with our Loan Expert</button><br>© 2026 Fortune Loan Services. All Rights Reserved. | <a href="contact.html">Contact Us</a> | <a href="tel:+919028346900">+91 90283 46900</a> | <a href="mailto:official.aaminkhan@gmail.com">Email Us</a></footer></div></main><script>
 document.getElementById('referForm').addEventListener('submit', async function(e){
 e.preventDefault();
 const form=this;
@@ -54,5 +54,7 @@ status.textContent='Email submission accepted. WhatsApp is prepared; tap Send in
 }catch(err){console.error('Referral email failed:',err);status.textContent='WhatsApp is prepared; tap Send to send it. Email could not be confirmed—check FormSubmit verification and retry.';}
 });
 </script>
+<div class="expert-modal" id="expertModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="expertModalTitle"><button class="expert-modal-overlay" type="button" data-close-expert aria-label="Close expert popup"></button><div class="expert-modal-card" role="document"><div class="expert-modal-header"><div class="expert-modal-brand"><img src="assets/fortune-logo.png" alt="Fortune Loan Services logo"><strong>Fortune Loan Services</strong></div><button type="button" class="expert-modal-close" data-close-expert aria-label="Close">×</button></div><p class="expert-eyebrow">TALK WITH OUR LOAN EXPERT</p><h2 id="expertModalTitle">Aamin Khan</h2><p class="expert-role">Founder &amp; Director</p><div class="expert-contact-details"><a href="tel:+919028346900">☎ +91 90283 46900</a><a href="mailto:official.aaminkhan@gmail.com">✉ official.aaminkhan@gmail.com</a></div><p class="expert-help">Get guidance on available loan options and the application process.</p></div></div>
+<script src="script.js"></script>
 <a class="floating-apply-now" id="floatingApplyNow" href="index.html#open-loan-form"  aria-label="Open loan application form"><span class="floating-apply-icon" aria-hidden="true">↗</span><span>Apply Now</span></a>
 </body></html>

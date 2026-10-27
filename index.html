@@ -89,11 +89,12 @@
 <label class="form-field full"><span>Would You Like to Join Our Referral Program? <b>*</b></span><select id="inqReferralInterest" name="referralInterest" required=""><option value="">Select Yes or No</option><option>Yes</option><option>No</option></select><small class="form-note" style="color: red;">💸 Earn ₹500 to ₹5,000+ Per Successful Loan Referral! 🎉 Your reward depends on the loan type and successful loan disbursement. T&amp;C Apply. 📌</small></label>
 <section class="conditional-form-section full" hidden="" id="businessFields"><h3>Business / Self-Employed Details</h3><p>Tell us about your business so we can understand your financing requirements.</p><div class="form-grid">
 <label class="form-field"><span>Business / Company Name <b>*</b></span><input data-required-when-visible="" id="inqBusinessName" name="businessName" placeholder="Business or company name"/></label>
-<label class="form-field"><span>Nature of Business <b>*</b></span><select data-required-when-visible="" id="inqBusinessNature" name="businessNature"><option value="">Select nature of business</option><option>Manufacturing</option><option>Trading</option><option>Retail</option><option>Wholesale</option><option>Services</option><option>Medical / Pharmacy</option><option>Drugs / Pharmaceutical</option><option>Food Business</option><option>Other</option></select></label>
-<label class="form-field" hidden id="inqDrugLicenceWrap"><span>Drug / Pharmacy Licence Available? <b>*</b></span><select data-required-when-visible id="inqDrugLicence" name="drugLicence"><option value="">Select</option><option>Yes</option><option>No</option></select></label>
-<label class="form-field" hidden id="inqDrugLicenceNumberWrap"><span>Drug / Pharmacy Licence Number <b>*</b></span><input data-required-when-visible id="inqDrugLicenceNumber" name="drugLicenceNumber" placeholder="Enter drug / pharmacy licence number"/></label>
-<label class="form-field" hidden id="inqFssaiWrap"><span>FSSAI Licence Available? <b>*</b></span><select data-required-when-visible id="inqFssai" name="fssaiLicence"><option value="">Select</option><option>Yes</option><option>No</option></select></label>
-<label class="form-field" hidden id="inqFssaiNumberWrap"><span>FSSAI Licence Number <b>*</b></span><input data-required-when-visible id="inqFssaiNumber" name="fssaiLicenceNumber" placeholder="Enter FSSAI licence number"/></label>
+<label class="form-field"><span>Nature of Business <b>*</b></span><select data-required-when-visible="" id="inqBusinessNature" name="businessNature"><option value="">Select nature of business</option><option>Manufacturing</option><option>Trading</option><option>Retail</option><option>Wholesale</option><option>Services</option><option>Medical / Pharmacy</option><option>Drugs / Pharmaceutical</option><option>Food Business</option><option>Food Manufacturing</option><option>Other</option></select></label>
+
+
+
+
+
 <label class="form-field"><span>Business Constitution <b>*</b></span><select data-required-when-visible="" id="inqBusinessConstitution" name="businessConstitution"><option value="">Select constitution</option><option>Proprietorship</option><option>Partnership</option><option>LLP</option><option>Private Limited</option><option>Other</option></select></label>
 <label class="form-field"><span>Business Address <b>*</b></span><input data-required-when-visible="" id="inqBusinessAddress" name="businessAddress" placeholder="Business address"/></label>
 <label class="form-field"><span>Business City <b>*</b></span><input data-required-when-visible="" id="inqBusinessCity" name="businessCity" placeholder="Business city"/></label>
@@ -101,11 +102,11 @@
 <label class="form-field"><span>Business Vintage <b>*</b></span><select data-required-when-visible="" id="inqBusinessVintage" name="businessVintage"><option value="">Select business vintage</option><option>Less than 1 year</option><option>1–3 years</option><option>3–5 years</option><option>5+ years</option></select></label>
 <label class="form-field"><span>GST Registration <b>*</b></span><select data-required-when-visible="" id="inqGstRegistered" name="gstRegistered"><option value="">Select</option><option>Yes</option><option>No</option><option>Not Applicable</option></select></label>
 <label class="form-field" hidden="" id="gstNumberWrap"><span>GST Number <b>*</b></span><input data-required-when-visible="" id="inqGstNumber" maxlength="15" name="gstNumber" placeholder="GSTIN"/></label>
-<label class="form-field"><span>Udyam / MSME Registration <b>*</b></span><select data-required-when-visible="" id="inqUdyamRegistered" name="udyamRegistered"><option value="">Select</option><option>Yes</option><option>No</option><option>Not Applicable</option></select></label>
+<label class="form-field"><span>Udyam / MSME Registration <b>*</b></span><select data-required-when-visible="" id="inqUdyamRegistered" name="udyamRegistered"><option value="">Select</option><option>Yes</option><option>No</option><option>Not Applicable</option></select></label><label class="form-field" hidden="" id="udyamNumberWrap"><span>Udyam Number <b>*</b></span><input data-required-when-visible="" id="inqUdyamNumber" name="udyamNumber" placeholder="Udyam registration number"/></label>
 <label class="form-field"><span>Trade Licence Available? <b>*</b></span><select data-required-when-visible="" id="inqTradeLicence" name="tradeLicence"><option value="">Select</option><option>Yes</option><option>No</option></select></label>
-<label class="form-field" hidden="" id="udyamNumberWrap"><span>Udyam Number <b>*</b></span><input data-required-when-visible="" id="inqUdyamNumber" name="udyamNumber" placeholder="Udyam registration number"/></label>
-<label class="form-field" hidden="" id="tradeLicenceNumberWrap"><span>Trade Licence Number <b>*</b></span><input data-required-when-visible="" id="inqTradeLicenceNumber" name="tradeLicenceNumber" placeholder="Enter trade licence number"/></label>
-<label class="form-field"><span>Average Monthly Business Income / Profit (₹) <b>*</b></span><input data-required-when-visible="" id="inqBusinessIncome" min="0" name="businessIncome" placeholder="Monthly income / profit" type="number"/></label>
+
+<label class="form-field" hidden="" id="tradeLicenceNumberWrap"><span>Trade Licence Number <b>*</b></span><input data-required-when-visible="" id="inqTradeLicenceNumber" name="tradeLicenceNumber" placeholder="Enter trade licence number"/></label><label class="form-field" hidden id="inqDrugLicenceWrap"><span>Drug / Pharmacy Licence Available? <b>*</b></span><select data-required-when-visible id="inqDrugLicence" name="drugLicence"><option value="">Select</option><option>Yes</option><option>No</option></select></label><label class="form-field" hidden id="inqDrugLicenceNumberWrap"><span>Drug / Pharmacy Licence Number <b>*</b></span><input data-required-when-visible id="inqDrugLicenceNumber" name="drugLicenceNumber" placeholder="Enter drug / pharmacy licence number"/></label><label class="form-field" hidden id="inqFssaiWrap"><span>FSSAI Licence Available? <b>*</b></span><select data-required-when-visible id="inqFssai" name="fssaiLicence"><option value="">Select</option><option>Yes</option><option>No</option></select></label><label class="form-field" hidden id="inqFssaiNumberWrap"><span>FSSAI Licence Number <b>*</b></span><input data-required-when-visible id="inqFssaiNumber" name="fssaiLicenceNumber" placeholder="Enter FSSAI licence number"/></label>
+<label class="form-field"><span>Average Monthly Business Income / Profit (₹) <b>*</b></span><input data-required-when-visible="" id="inqBusinessIncome" min="0" name="businessIncome" placeholder="Monthly income / profit" type="number"/></label><fieldset class="form-field bank-account-types full"><legend>Bank A/c Type <b>*</b> (Select all that apply)</legend><div class="bank-account-options"><label><input type="checkbox" name="businessBankAccountType" value="Current A/c" id="inqBusinessBankCurrent"> Current A/c</label><label><input type="checkbox" name="businessBankAccountType" value="Saving A/c" id="inqBusinessBankSaving"> Saving A/c</label><label><input type="checkbox" name="businessBankAccountType" value="CC" id="inqBusinessBankCC"> CC</label><label><input type="checkbox" name="businessBankAccountType" value="OD" id="inqBusinessBankOD"> OD</label></div></fieldset>
 <label class="form-field"><span>Existing Loan? <b>*</b></span><select data-required-when-visible="" id="inqBusinessExistingLoan" name="businessExistingLoan"><option value="">Select</option><option>Yes</option><option>No</option></select></label>
 <label class="form-field existing-business-loan" hidden=""><span>Existing Loan Amount (₹) <b>*</b></span><input data-required-when-visible="" id="inqBusinessExistingLoanAmount" min="0" name="businessExistingLoanAmount" placeholder="Outstanding loan amount" type="number"/></label>
 <label class="form-field existing-business-loan" hidden=""><span>Existing Monthly EMI (₹) <b>*</b></span><input data-required-when-visible="" id="inqBusinessExistingEmi" min="0" name="businessExistingEmi" placeholder="Total monthly EMI" type="number"/></label>
@@ -1103,6 +1104,7 @@
 <p class="footer-intro">Guidance to help individuals, professionals and businesses explore suitable lending options through banks and NBFCs.</p>
 <div class="footer-cta-row">
 <a class="footer-button footer-button-outline" href="emi-calculator.html">EMI Calculator</a>
+        <button class="footer-button footer-button-outline" type="button" data-open-expert>Talk with our Loan Expert</button>
 </div>
 </div>
 <div class="footer-column">
@@ -1147,13 +1149,12 @@
 <div class="expert-modal" id="expertModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="expertModalTitle">
   <button class="expert-modal-overlay" type="button" data-close-expert aria-label="Close expert popup"></button>
   <div class="expert-modal-card" role="document">
-    <button type="button" class="expert-modal-close" data-close-expert aria-label="Close">×</button>
-    <div class="expert-avatar" aria-hidden="true">AK</div>
-    <p class="expert-eyebrow">TALK TO OUR EXPERT</p>
+    <div class="expert-modal-header"><div class="expert-modal-brand"><img src="assets/fortune-logo.png" alt="Fortune Loan Services logo"><strong>Fortune Loan Services</strong></div><button type="button" class="expert-modal-close" data-close-expert aria-label="Close">×</button></div>
+    <p class="expert-eyebrow">TALK WITH OUR LOAN EXPERT</p>
     <h2 id="expertModalTitle">Aamin Khan</h2>
-    <p class="expert-role">Founder &amp; Director · Fortune Loan Services</p>
+    <p class="expert-role">Founder &amp; Director</p>
+    <div class="expert-contact-details"><a href="tel:+919028346900">☎ +91 90283 46900</a><a href="mailto:official.aaminkhan@gmail.com">✉ official.aaminkhan@gmail.com</a></div>
     <p class="expert-help">Get guidance on available loan options and the application process.</p>
-    <a class="expert-call-button" href="tel:9028346900">☎ Contact Now · 9028346900</a>
   </div>
 </div>
 <button aria-label="Back to top" class="back-top" id="backTop">↑</button>
