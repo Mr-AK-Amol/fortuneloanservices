@@ -2809,11 +2809,9 @@ h1 span{
 @media(max-width:900px){.city-card-grid{width:min(390px,100%);height:250px}.city-preview-card img{height:130px;flex-basis:130px}}
 @media(max-width:560px){.city-network-slide{padding:24px 0}.city-card-grid{width:min(340px,100%);height:235px;margin-top:16px}.city-preview-card img{height:120px;flex-basis:120px}.city-preview-card>div{padding:10px 13px}.city-preview-card h3{font-size:1.05rem}.city-preview-card p{font-size:.76rem}.city-preview-card span{font-size:.67rem}.city-hero-heading p{font-size:.85rem;padding:0 8px}.city-stage-label{font-size:.62rem;letter-spacing:.07em}.diwali-hero-slide{min-height:430px}.firework{font-size:3rem}.diwali-sparkles{font-size:1.2rem;letter-spacing:.5rem}}
 
-/* Enhanced Diwali festive glow and cracker bursts */
-.diwali-hero-slide::before,.diwali-hero-slide::after{content:"";position:absolute;inset:-15%;pointer-events:none;background:radial-gradient(circle at 18% 28%,#ffd76b55 0 2px,transparent 3px),radial-gradient(circle at 78% 20%,#ff6b9d77 0 2px,transparent 3px),radial-gradient(circle at 68% 76%,#78e8ff66 0 2px,transparent 3px),radial-gradient(circle at 30% 72%,#ffe7a555 0 2px,transparent 3px);background-size:95px 95px,125px 125px,110px 110px,145px 145px;animation:diwaliEmbers 7s linear infinite;}
-.diwali-hero-slide::after{opacity:.55;animation-direction:reverse;animation-duration:11s;}
-@keyframes diwaliEmbers{from{transform:translateY(0) rotate(0)}to{transform:translateY(-35px) rotate(12deg)}}
-@media(prefers-reduced-motion:reduce){.city-preview-card,.diwali-hero-slide::before,.diwali-hero-slide::after{animation:none!important}.city-preview-card:first-child{opacity:1;visibility:visible;transform:none}}
+/* Removed extra decorative sparkle dots; keep only the original fireworks animation. */
+.diwali-hero-slide::before,.diwali-hero-slide::after{content:none!important;display:none!important;}
+.hero-bottom-wave{display:none!important;}
 
 
 /* Homepage hero navigation dots */
@@ -3095,3 +3093,48 @@ h1 span{
  .process-step p{grid-column:2;grid-row:3;margin:5px 0 0!important;padding:0!important;font-size:12px!important;line-height:1.5!important;max-width:none!important}
  .process-animated .process-step .process-icon{animation:none!important}
 }
+
+/* Hero 3: isolated Diwali canvas so its original CSS/JS cannot affect the website */
+.hero-slide.diwali-hero-slide {
+  display:flex;
+  align-items:stretch;
+  min-width:0;
+  min-height:790px;
+  padding:0;
+  overflow:hidden;
+  background:#080713;
+  isolation:isolate;
+}
+.diwali-hero-frame {
+  display:block;
+  flex:1 1 auto;
+  width:100%;
+  min-width:0;
+  height:790px;
+  min-height:790px;
+  border:0;
+  background:#080713;
+}
+@media(max-width:760px) {
+  .hero-slide.diwali-hero-slide,
+  .diwali-hero-frame {
+    min-height:700px;
+    height:700px;
+  }
+}
+@media(max-width:420px) {
+  .hero-slide.diwali-hero-slide,
+  .diwali-hero-frame {
+    min-height:650px;
+    height:650px;
+  }
+}
+
+
+/* Hero 3 final cleanup: keep the area behind the Diwali iframe black and remove the extra colored band. */
+#home:has(.diwali-hero-slide.is-active),
+#home:has(.diwali-hero-slide.is-active) .hero-slides,
+#home:has(.diwali-hero-slide.is-active) .diwali-hero-slide {
+  background: #050505 !important;
+}
+#home .hero-bottom-wave { display: none !important; }

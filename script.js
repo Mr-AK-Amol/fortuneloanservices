@@ -400,8 +400,8 @@ document.addEventListener("DOMContentLoaded", () => {
       window.clearTimeout(heroRotationTimer);
       if (heroSlides.length < 2) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      // Requested rhythm: Hero 1 stays for 10 seconds; Hero 2 city network stays for 54 seconds.
-      const dwellTimes = [10000, 54000];
+      // Requested rhythm: Hero 1 = 10 seconds, Hero 2 city network = 54 seconds, Hero 3 Diwali = 6 seconds.
+      const dwellTimes = [10000, 54000, 10000];
       const dwellTime = dwellTimes[activeSlideIndex] ?? 10000;
       heroRotationTimer = window.setTimeout(() => {
         showSlide(activeSlideIndex + 1);
@@ -598,6 +598,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("modal-open");
     if (previousFocus instanceof HTMLElement) previousFocus.focus();
   };
+  // Allow the isolated Diwali hero iframe to open the existing inquiry form.
+  window.addEventListener("message", event => {
+    if (event.origin !== window.location.origin) return;
+    if (event.data && event.data.type === "fortune-diwali-apply") {
+      resetInquiryForNewApplication();
+      openInquiry();
+    }
+  });
 
   // Keep the existing homepage popup as the single loan application form.
   // A direct hash link opens it immediately; normal homepage visits retain the original auto-open.
