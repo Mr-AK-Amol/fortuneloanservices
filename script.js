@@ -748,67 +748,67 @@ document.addEventListener("DOMContentLoaded", () => {
     const assignedEmployee = stateEmployeeMap[value("inqState")] || "AMOL KINIKAR";
     const lines = [
       "*FORTUNE LOAN SERVICES - NEW INQUIRY*", "",
-      `*NAME:* *${value("inqName")}*`,
-      `Date of Birth: ${value("inqDateOfBirth")}`,
-      `Contact Number: ${value("inqContact")}`,
-      `Email: ${value("inqEmail")}`,
-      `City: ${value("inqCity")}`,
-      `Residence PIN Code: ${value("inqPin")}`,
-      `State / UT: ${value("inqState")}`,
-      `Reference 1 Name: ${value("inqRef1Name")}`,
-      `Reference 1 Contact Number: ${value("inqRef1Contact")}`,
-      `Reference 1 Relationship: ${value("inqRef1Relation")}`,
-      `Reference 2 Name: ${value("inqRef2Name")}`,
-      `Reference 2 Contact Number: ${value("inqRef2Contact")}`,
-      `Reference 2 Relationship: ${value("inqRef2Relation")}`,
-      `Assigned Loan Expert: ${assignedEmployee}`,
+      `*NAME:* ${value("inqName")}`,
+      `*Date of Birth:* ${value("inqDateOfBirth")}`,
+      `*Contact Number:* ${value("inqContact")}`,
+      `*Email:* ${value("inqEmail")}`,
+      `*City:* ${value("inqCity")}`,
+      `*Residence PIN Code:* ${value("inqPin")}`,
+      `*State / UT:* ${value("inqState")}`,
+      `*Reference 1 Name:* ${value("inqRef1Name")}`,
+      `*Reference 1 Contact Number:* ${value("inqRef1Contact")}`,
+      `*Reference 1 Relationship:* ${value("inqRef1Relation")}`,
+      `*Reference 2 Name:* ${value("inqRef2Name")}`,
+      `*Reference 2 Contact Number:* ${value("inqRef2Contact")}`,
+      `*Reference 2 Relationship:* ${value("inqRef2Relation")}`,
+      `*Assigned Loan Expert:* ${assignedEmployee}`,
       // Never place full Aadhaar/PAN identifiers in a WhatsApp URL. The applicant can share these securely later if required.
-      `Aadhaar Number: ${value("inqAadhaar")}`,
-      `PAN Number: ${value("inqPan").toUpperCase()}`,
-      `CIBIL Score: ${value("inqCibil")}`,
-      `Required Loan Amount: ${formatAmount("inqAmount")}`,
-      `Type of Loan: ${value("inqLoanType") === "Other" ? value("inqLoanTypeOther") : value("inqLoanType")}`,
-      `Purpose of Loan: ${value("inqPurpose")}`,
-      `Income Source: ${value("inqIncomeSource")}`,
-      `Interested in Referral Program: ${value("inqReferralInterest")}`
+      `*Aadhaar Number:* ${value("inqAadhaar")}`,
+      `*PAN Number:* ${value("inqPan").toUpperCase()}`,
+      `*CIBIL Score:* ${value("inqCibil")}`,
+      `*Required Loan Amount:* ${formatAmount("inqAmount")}`,
+      `*Type of Loan:* ${value("inqLoanType") === "Other" ? value("inqLoanTypeOther") : value("inqLoanType")}`,
+      `*Purpose of Loan:* ${value("inqPurpose")}`,
+      `*Income Source:* ${value("inqIncomeSource")}`,
+      `*Interested in Referral Program:* ${value("inqReferralInterest")}`
     ];
     if (value("inqIncomeSource") === "Business Owner / Self Employed") {
       lines.push("", "*BUSINESS / SELF-EMPLOYED DETAILS*",
-        `Business / Company Name: ${value("inqBusinessName")}`,
-        `Nature of Business: ${value("inqBusinessNature")}`,
-        `Business Constitution: ${value("inqBusinessConstitution")}`,
-        `Business Address: ${value("inqBusinessAddress")}`,
-        `Business City: ${value("inqBusinessCity")}`,
-        `Business PIN Code: ${value("inqBusinessPin")}`,
-        `Business Vintage: ${value("inqBusinessVintage")}`,
-        `GST Registration: ${value("inqGstRegistered")}`,
-        `GST Number: ${value("inqGstRegistered") === "Yes" ? value("inqGstNumber") : "Not applicable"}`,
-        `Udyam / MSME Registration: ${value("inqUdyamRegistered")}`,
-        `Udyam Number: ${value("inqUdyamRegistered") === "Yes" ? value("inqUdyamNumber") : "Not applicable"}`,
-        `Trade Licence: ${value("inqTradeLicence")}`,
-        ...(value("inqTradeLicence") === "Yes" ? [`Trade Licence Number: ${value("inqTradeLicenceNumber")}`] : []),
-        `Average Monthly Business Income / Profit: ${formatAmount("inqBusinessIncome")}`,
-        `Existing Loan: ${value("inqBusinessExistingLoan")}`,
-        `Bank A/c Type: ${Array.from(inquiryForm.querySelectorAll('input[name="businessBankAccountType"]:checked')).map(input => input.value).join(", ") || "Not selected"}`);
-      if (value("inqBusinessExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqBusinessExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqBusinessExistingEmi")}`, `Any EMI bounced in last 3 months: ${value("inqBusinessExistingEmiBounced")}`, `Recently applied for any loan: ${value("inqBusinessExistingEmiRecentApply")}`);
-      if (/medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`Drug / Pharmacy Licence Available: ${value("inqDrugLicence")}`); if(value("inqDrugLicence")==="Yes") lines.push(`Drug / Pharmacy Licence Number: ${value("inqDrugLicenceNumber")}`); }
-      if (/food|medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`FSSAI Licence Available: ${value("inqFssai")}`); if(value("inqFssai")==="Yes") lines.push(`FSSAI Licence Number: ${value("inqFssaiNumber")}`); }
+        `*Business / Company Name:* ${value("inqBusinessName")}`,
+        `*Nature of Business:* ${value("inqBusinessNature")}`,
+        `*Business Constitution:* ${value("inqBusinessConstitution")}`,
+        `*Business Address:* ${value("inqBusinessAddress")}`,
+        `*Business City:* ${value("inqBusinessCity")}`,
+        `*Business PIN Code:* ${value("inqBusinessPin")}`,
+        `*Business Vintage:* ${value("inqBusinessVintage")}`,
+        `*GST Registration:* ${value("inqGstRegistered")}`,
+        `*GST Number:* ${value("inqGstRegistered") === "Yes" ? value("inqGstNumber") : "Not applicable"}`,
+        `*Udyam / MSME Registration:* ${value("inqUdyamRegistered")}`,
+        `*Udyam Number:* ${value("inqUdyamRegistered") === "Yes" ? value("inqUdyamNumber") : "Not applicable"}`,
+        `*Trade Licence:* ${value("inqTradeLicence")}`,
+        ...(value("inqTradeLicence") === "Yes" ? [`*Trade Licence Number:* ${value("inqTradeLicenceNumber")}`] : []),
+        `*Average Monthly Business Income / Profit:* ${formatAmount("inqBusinessIncome")}`,
+        `*Existing Loan:* ${value("inqBusinessExistingLoan")}`,
+        `*Bank A/c Type:* ${Array.from(inquiryForm.querySelectorAll('input[name="businessBankAccountType"]:checked')).map(input => input.value).join(", ") || "Not selected"}`);
+      if (value("inqBusinessExistingLoan") === "Yes") lines.push(`*Existing Loan Amount:* ${formatAmount("inqBusinessExistingLoanAmount")}`, `*Existing Monthly EMI:* ${formatAmount("inqBusinessExistingEmi")}`, `*Any EMI bounced in last 3 months:* ${value("inqBusinessExistingEmiBounced")}`, `*Recently applied for any loan:* ${value("inqBusinessExistingEmiRecentApply")}`);
+      if (/medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`*Drug / Pharmacy Licence Available:* ${value("inqDrugLicence")}`); if(value("inqDrugLicence")==="Yes") lines.push(`*Drug / Pharmacy Licence Number:* ${value("inqDrugLicenceNumber")}`); }
+      if (/food|medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`*FSSAI Licence Available:* ${value("inqFssai")}`); if(value("inqFssai")==="Yes") lines.push(`*FSSAI Licence Number:* ${value("inqFssaiNumber")}`); }
     } else if (value("inqIncomeSource") === "Salaried Person") {
       lines.push("", "*SALARIED PERSON DETAILS*",
-        `Employment Type: ${value("inqEmploymentType")}`,
-        `Company / Employer Name: ${value("inqEmployerName")}`,
-        `Job Designation: ${value("inqJobDesignation")}`,
-        `Work Experience: ${value("inqWorkExperience")}`,
-        `Office City: ${value("inqOfficeCity")}`,
-        ...(value("inqOfficePin") !== "Not provided" ? [`Office PIN Code: ${value("inqOfficePin")}`] : []),
-        ...(value("inqOfficialEmail") !== "Not provided" ? [`Official Email ID: ${value("inqOfficialEmail")}`] : []),
-        `Monthly In-Hand Salary: ${formatAmount("inqMonthlySalary")}`,
-        `Salary Credit Mode: ${value("inqSalaryCreditMode")}`,
-        ...(["Bank Transfer", "UPI"].includes(value("inqSalaryCreditMode")) ? [`Salary Account Bank Name: ${value("inqSalaryCreditedBankName")}`] : []),
-        `Salary Account Statement Available: ${value("inqSalaryStatement")}`,
-        `Salary / Payment Slip Available: ${value("inqSalaryPaymentSlipAvailable")}`,
-        `Existing Loan: ${value("inqSalaryExistingLoan")}`);
-      if (value("inqSalaryExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqSalaryExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqSalaryExistingEmi")}`, `Any EMI bounced in last 3 months: ${value("inqSalaryExistingEmiBounced")}`, `Recently applied for any loan: ${value("inqSalaryExistingEmiRecentApply")}`);
+        `*Employment Type:* ${value("inqEmploymentType")}`,
+        `*Company / Employer Name:* ${value("inqEmployerName")}`,
+        `*Job Designation:* ${value("inqJobDesignation")}`,
+        `*Work Experience:* ${value("inqWorkExperience")}`,
+        `*Office City:* ${value("inqOfficeCity")}`,
+        ...(value("inqOfficePin") !== "Not provided" ? [`*Office PIN Code:* ${value("inqOfficePin")}`] : []),
+        ...(value("inqOfficialEmail") !== "Not provided" ? [`*Official Email ID:* ${value("inqOfficialEmail")}`] : []),
+        `*Monthly In-Hand Salary:* ${formatAmount("inqMonthlySalary")}`,
+        `*Salary Credit Mode:* ${value("inqSalaryCreditMode")}`,
+        ...(["Bank Transfer", "UPI"].includes(value("inqSalaryCreditMode")) ? [`*Salary Account Bank Name:* ${value("inqSalaryCreditedBankName")}`] : []),
+        `*Salary Account Statement Available:* ${value("inqSalaryStatement")}`,
+        `*Salary / Payment Slip Available:* ${value("inqSalaryPaymentSlipAvailable")}`,
+        `*Existing Loan:* ${value("inqSalaryExistingLoan")}`);
+      if (value("inqSalaryExistingLoan") === "Yes") lines.push(`*Existing Loan Amount:* ${formatAmount("inqSalaryExistingLoanAmount")}`, `*Existing Monthly EMI:* ${formatAmount("inqSalaryExistingEmi")}`, `*Any EMI bounced in last 3 months:* ${value("inqSalaryExistingEmiBounced")}`, `*Recently applied for any loan:* ${value("inqSalaryExistingEmiRecentApply")}`);
     }
     const message = lines.join("\n");
     status.classList.add("inquiry-confirmation");
@@ -851,7 +851,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }).catch(error => {
         console.error("FormSubmit email delivery failed:", error);
         const emailStatus = document.getElementById("inquiryEmailStatus");
-        emailStatus?.remove();
+        if (emailStatus) emailStatus.textContent = "Email could not be confirmed. Please check the FormSubmit setup and try again.";
       });
       document.getElementById("inquiryApplyAgain")?.addEventListener("click", () => {
         resetInquiryForNewApplication();
