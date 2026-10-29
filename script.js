@@ -566,20 +566,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const popup = window.open(url, "_blank");
     if (popup) {
       popup.opener = null;
-      if (status) status.textContent = "WhatsApp opened with your message ready. Review it and choose whether to send.";
+      status.textContent = "WhatsApp opened with your message ready. Review it and choose whether to send.";
       return true;
     }
-    if (status) {
-      status.replaceChildren(
-        document.createTextNode("Your browser blocked the WhatsApp window. "),
-        Object.assign(document.createElement("a"), {
-          href: url,
-          target: "_blank",
-          rel: "noopener noreferrer",
-          textContent: "Open your prepared message"
-        })
-      );
-    }
+    status.replaceChildren(
+      document.createTextNode("Your browser blocked the WhatsApp window. "),
+      Object.assign(document.createElement("a"), {
+        href: url,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        textContent: "Open your prepared message"
+      })
+    );
     return false;
   };
 
@@ -872,17 +870,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     const mobile = document.getElementById("cfMobile");
     const status = document.getElementById("contactFormStatus");
-    if (mobile && status) {
-      contactForm.addEventListener("submit", event => {
-        event.preventDefault();
-        const digits = mobile.value.replace(/\D/g, "");
-        mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
-        if (!contactForm.reportValidity()) return;
-        const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nCIBIL Score: ${document.getElementById("cfCibil")?.value || "Not provided (optional)"}\nMonthly Income Range: ${document.getElementById("cfIncomeRange")?.value || "Not provided (optional)"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
-        openWhatsApp(message, status);
-      });
-      mobile.addEventListener("input", () => mobile.setCustomValidity(""));
-    }
+    contactForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const digits = mobile.value.replace(/\D/g, "");
+      mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
+      if (!contactForm.reportValidity()) return;
+      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nCIBIL Score: ${document.getElementById("cfCibil")?.value || "Not provided (optional)"}\nMonthly Income Range: ${document.getElementById("cfIncomeRange")?.value || "Not provided (optional)"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
+      openWhatsApp(message, status);
+    });
+    mobile.addEventListener("input", () => mobile.setCustomValidity(""));
   }
 
   const partnerForm = document.getElementById("partnerForm");
@@ -890,30 +886,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobile = document.getElementById("pfMobile");
     const pincode = document.getElementById("pfPin");
     const status = document.getElementById("partnerFormStatus");
-    if (mobile && pincode && status) {
-      partnerForm.addEventListener("submit", event => {
-        event.preventDefault();
-        const digits = mobile.value.replace(/\D/g, "");
-        mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
-        pincode.setCustomValidity(/^\d{6}$/.test(pincode.value.trim()) ? "" : "Enter a valid 6-digit pincode.");
-        if (!partnerForm.reportValidity()) return;
-        const fields = [...partnerForm.querySelectorAll("input, select, textarea")].filter(el => el.name && el.type !== "submit" && el.type !== "button");
-        const entries = fields.map(el => {
-          const label = partnerForm.querySelector(`label[for="${el.id}"]`);
-          return { name: el.name, label: (label?.innerText || el.name).replace(/\s*\*\s*$/, "").trim(), value: el.value.trim() };
-        }).filter(item => item.value);
-        const message = "*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\n" + entries.map(item => `*${item.label}:* ${item.value}`).join("\n");
-        const emailPayload = { _subject: "New Fortune Loan Services - Partner Registration", _template: "table" };
-        entries.forEach(item => { emailPayload[item.label] = item.value; });
-        const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
-          method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(emailPayload)
-        }).then(async response => { const result = await response.json().catch(() => ({})); if (!response.ok || result.success === false || result.success === "false") throw new Error(result.message || "Email submission failed"); return result; });
-        const opened = openWhatsApp(message, status);
-        emailDelivery.then(() => { status.textContent = opened ? "WhatsApp is ready to send. Email submission was also accepted; first-time FormSubmit verification may be required." : "Email submission was accepted. WhatsApp was blocked by your browser; use the WhatsApp link if shown."; }).catch(error => { console.error("Partner registration email failed:", error); status.textContent = opened ? "WhatsApp is ready to send, but email could not be confirmed. Check FormSubmit setup and retry." : "Email could not be confirmed and WhatsApp was blocked. Please retry."; });
-      });
-      mobile.addEventListener("input", () => mobile.setCustomValidity(""));
-      pincode.addEventListener("input", () => pincode.setCustomValidity(""));
-    }
+    partnerForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const digits = mobile.value.replace(/\D/g, "");
+      mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
+      pincode.setCustomValidity(/^\d{6}$/.test(pincode.value.trim()) ? "" : "Enter a valid 6-digit pincode.");
+      if (!partnerForm.reportValidity()) return;
+      const fields = [...partnerForm.querySelectorAll("input, select, textarea")].filter(el => el.name && el.type !== "submit" && el.type !== "button");
+      const entries = fields.map(el => {
+        const label = partnerForm.querySelector(`label[for="${el.id}"]`);
+        return { name: el.name, label: (label?.innerText || el.name).replace(/\s*\*\s*$/, "").trim(), value: el.value.trim() };
+      }).filter(item => item.value);
+      const message = "*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\n" + entries.map(item => `*${item.label}:* ${item.value}`).join("\n");
+      const emailPayload = { _subject: "New Fortune Loan Services - Partner Registration", _template: "table" };
+      entries.forEach(item => { emailPayload[item.label] = item.value; });
+      const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
+        method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(emailPayload)
+      }).then(async response => { const result = await response.json().catch(() => ({})); if (!response.ok || result.success === false || result.success === "false") throw new Error(result.message || "Email submission failed"); return result; });
+      const opened = openWhatsApp(message, status);
+      emailDelivery.then(() => { status.textContent = opened ? "WhatsApp is ready to send. Email submission was also accepted; first-time FormSubmit verification may be required." : "Email submission was accepted. WhatsApp was blocked by your browser; use the WhatsApp link if shown."; }).catch(error => { console.error("Partner registration email failed:", error); status.textContent = opened ? "WhatsApp is ready to send, but email could not be confirmed. Check FormSubmit setup and retry." : "Email could not be confirmed and WhatsApp was blocked. Please retry."; });
+    });
+    mobile.addEventListener("input", () => mobile.setCustomValidity(""));
+    pincode.addEventListener("input", () => pincode.setCustomValidity(""));
   }
 
   const calculatorButton = document.getElementById("calcBtn");
