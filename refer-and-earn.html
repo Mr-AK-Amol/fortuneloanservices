@@ -48,7 +48,7 @@ const wa=window.open('https://wa.me/919028346900?text='+encodeURIComponent(messa
 if(wa) wa.opener=null;
 status.textContent='Submitting referral details to email… WhatsApp opens with your filled fields; tap Send in WhatsApp to send the message.';
 try{
-const response=await fetch('https://formsubmit.co/ajax/loanservicesfortune@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+const response=await fetch('https://formsubmit.co/ajax/amolkinikar98@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
 const result=await response.json().catch(()=>({}));
 if(!response.ok||result.success===false||result.success==='false') throw new Error(result.message||'Email submission failed');
 status.textContent='Email submission accepted. WhatsApp is prepared; tap Send in WhatsApp. First-time FormSubmit email verification may be required.';
