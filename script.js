@@ -622,6 +622,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetInquiryForNewApplication = () => {
     if (inquiryForm.classList.contains("is-submitted")) {
       inquiryForm.classList.remove("is-submitted");
+      inquiryForm.querySelectorAll(".consent-field").forEach(field => field.style.removeProperty("display"));
       inquiryForm.reset();
       const status = document.getElementById("inquiryStatus");
       if (status) {
@@ -840,18 +841,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const whatsappOpened = openWhatsApp(message, status);
     if (whatsappOpened) {
-      // Keep the existing thank-you view; update the email line when FormSubmit responds.
+      // Show the thank-you view without exposing email delivery diagnostics to the applicant.
       inquiryForm.classList.add("is-submitted");
-      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Loan Partner!</p><p id="inquiryEmailStatus" role="status" aria-live="polite">Sending a copy of your inquiry to email…</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
+      inquiryForm.querySelectorAll(".consent-field").forEach(field => field.style.setProperty("display", "none", "important"));
+      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Loan Partner!</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
       status.setAttribute("role", "status");
       status.setAttribute("aria-live", "assertive");
-      emailDelivery.then(() => {
-        const emailStatus = document.getElementById("inquiryEmailStatus");
-        if (emailStatus) emailStatus.textContent = "FormSubmit accepted the email request. Delivery to the inbox is not guaranteed; please check Spam/All Mail if it does not arrive.";
-      }).catch(error => {
+      emailDelivery.catch(error => {
+        // Keep delivery diagnostics in the console; do not show a failure line in the thank-you message.
         console.error("FormSubmit email delivery failed:", error);
-        const emailStatus = document.getElementById("inquiryEmailStatus");
-        if (emailStatus) emailStatus.textContent = "Email could not be confirmed. Please check the FormSubmit setup and try again.";
       });
       document.getElementById("inquiryApplyAgain")?.addEventListener("click", () => {
         resetInquiryForNewApplication();

@@ -3357,3 +3357,21 @@ h1 span{
     max-height: 455px !important;
   }
 }
+
+
+/* FINAL REQUESTED FIXES: clearer inquiry logo and hide consent after successful submission */
+.inquiry-logo-wrap{width:180px;height:88px}
+.inquiry-logo-wrap img{width:180px;height:88px;object-fit:contain;object-position:left center}
+#inquiryForm.is-submitted .consent-field{display:none !important}
+@media(max-width:800px){.inquiry-logo-wrap{width:158px;height:78px}.inquiry-logo-wrap img{width:158px;height:78px}}
+@media(max-width:480px){.inquiry-logo-wrap{width:158px;height:78px}.inquiry-logo-wrap img{width:158px;height:78px}}
+
+
+/* FINAL USER REQUESTS: slightly clearer animated lender logos and clean submitted form state. */
+.hero-bank-streams{opacity:.56!important}
+.hero-bank-streams::after{background:linear-gradient(90deg,rgba(4,19,45,.88) 0%,rgba(4,19,45,.68) 24%,rgba(4,19,45,.28) 47%,rgba(4,19,45,.04) 75%,rgba(4,19,45,.08) 100%),linear-gradient(180deg,rgba(4,19,45,.12) 0%,transparent 18%,transparent 82%,rgba(4,19,45,.16) 100%)!important}
+.bank-stream-card{background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.11))!important;border-color:rgba(210,230,255,.32)!important}
+.bank-stream-name{color:rgba(245,249,255,.96)!important}
+#inquiryForm.is-submitted .consent-field{display:none!important;visibility:hidden!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important}
+@media(max-width:800px){.hero-bank-streams{opacity:.38!important}.hero-bank-streams::after{background:linear-gradient(180deg,rgba(4,19,45,.04),rgba(4,19,45,.01) 35%,rgba(4,19,45,.08))!important}}
+@media(max-width:480px){.hero-bank-streams{opacity:.32!important}.bank-stream-card{background:rgba(255,255,255,.19)!important;border-color:rgba(210,230,255,.30)!important}}
