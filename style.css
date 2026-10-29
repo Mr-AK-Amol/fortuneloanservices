@@ -3321,3 +3321,39 @@ h1 span{
   .footer-social-icons .footer-social-icon { width:42px!important; height:42px!important; flex-basis:42px!important; }
   .floating-apply-now { padding:9px 11px!important; font-size:11px!important; }
 }
+
+
+/* Final mobile refinements from latest screenshots: remove redundant calculator CTA,
+   reduce unused space in embedded Diwali hero, and size footer logo card to artwork. */
+.footer-logo-link {
+  display: inline-flex !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  padding: 5px 7px !important;
+  box-sizing: border-box !important;
+  align-self: flex-start !important;
+}
+.footer-logo-link img, .footer-brand img {
+  width: 155px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: 68px !important;
+  object-fit: contain !important;
+}
+@media (max-width: 600px) {
+  .footer-logo-link { padding: 4px 6px !important; border-radius: 10px !important; }
+  .footer-logo-link img, .footer-brand img { width: 138px !important; max-height: 62px !important; }
+  .hero-slides { min-height: 0 !important; height: auto !important; }
+  .hero-slide.diwali-hero-slide, .diwali-hero-frame {
+    height: 490px !important;
+    min-height: 490px !important;
+    max-height: 490px !important;
+  }
+}
+@media (max-width: 420px) {
+  .hero-slide.diwali-hero-slide, .diwali-hero-frame {
+    height: 455px !important;
+    min-height: 455px !important;
+    max-height: 455px !important;
+  }
+}

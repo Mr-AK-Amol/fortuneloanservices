@@ -461,6 +461,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Homepage-only loan inquiry popup: opens compact; expand only when name field is clicked.
   const inquiryModal = document.getElementById("inquiryModal");
   const inquiryForm = document.getElementById("inquiryForm");
+  const dateOfBirthInput = document.getElementById("inqDateOfBirth");
+  if (dateOfBirthInput) dateOfBirthInput.max = new Date().toISOString().slice(0, 10);
   // Show only the applicant's selected income-source section and relevant conditional fields.
   const incomeSourceSelect = document.getElementById("inqIncomeSource");
   const businessFields = document.getElementById("businessFields");
@@ -747,6 +749,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lines = [
       "*FORTUNE LOAN SERVICES - NEW INQUIRY*", "",
       `*NAME:* *${value("inqName")}*`,
+      `Date of Birth: ${value("inqDateOfBirth")}`,
       `Contact Number: ${value("inqContact")}`,
       `Email: ${value("inqEmail")}`,
       `City: ${value("inqCity")}`,
@@ -844,7 +847,7 @@ document.addEventListener("DOMContentLoaded", () => {
       status.setAttribute("aria-live", "assertive");
       emailDelivery.then(() => {
         const emailStatus = document.getElementById("inquiryEmailStatus");
-        if (emailStatus) emailStatus.textContent = "Email copy submitted successfully. If this is the first submission, verify loanservicesfortune@gmail.com using the FormSubmit activation email.";
+        if (emailStatus) emailStatus.textContent = "FormSubmit accepted the email request. Delivery to the inbox is not guaranteed; please check Spam/All Mail if it does not arrive.";
       }).catch(error => {
         console.error("FormSubmit email delivery failed:", error);
         const emailStatus = document.getElementById("inquiryEmailStatus");
@@ -857,7 +860,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       emailDelivery.then(() => {
-        status.textContent = "Email copy submitted successfully. If this is the first submission, verify loanservicesfortune@gmail.com using the FormSubmit activation email.";
+        status.textContent = "FormSubmit accepted the email request. Delivery to the inbox is not guaranteed; please check Spam/All Mail if it does not arrive.";
       }).catch(error => {
         console.error("FormSubmit email delivery failed:", error);
         status.textContent = "Your browser blocked WhatsApp and the email could not be confirmed. Please check FormSubmit setup and retry.";
@@ -904,7 +907,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(emailPayload)
       }).then(async response => { const result = await response.json().catch(() => ({})); if (!response.ok || result.success === false || result.success === "false") throw new Error(result.message || "Email submission failed"); return result; });
       const opened = openWhatsApp(message, status);
-      emailDelivery.then(() => { status.textContent = opened ? "WhatsApp is ready to send. Email submission was also accepted; first-time FormSubmit verification may be required." : "Email submission was accepted. WhatsApp was blocked by your browser; use the WhatsApp link if shown."; }).catch(error => { console.error("Partner registration email failed:", error); status.textContent = opened ? "WhatsApp is ready to send, but email could not be confirmed. Check FormSubmit setup and retry." : "Email could not be confirmed and WhatsApp was blocked. Please retry."; });
+      emailDelivery.then(() => { status.textContent = opened ? "WhatsApp is ready to send. FormSubmit accepted the email request; please check Spam/All Mail if the email does not arrive." : "FormSubmit accepted the email request. WhatsApp was blocked by your browser; use the prepared WhatsApp link if shown."; }).catch(error => { console.error("Partner registration email failed:", error); status.textContent = opened ? "WhatsApp is ready to send, but email could not be confirmed. Check FormSubmit setup and retry." : "Email could not be confirmed and WhatsApp was blocked. Please retry."; });
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
     pincode.addEventListener("input", () => pincode.setCustomValidity(""));
@@ -959,7 +962,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (range && input) range.addEventListener("input", () => { input.value = range.value; calculateEmi(); });
     });
     [amountInput,rateInput,yearsInput].forEach(input => input.addEventListener("input", calculateEmi));
-    if (calculatorButton) calculatorButton.addEventListener("click", calculateEmi);
     calculateEmi();
   }
 
