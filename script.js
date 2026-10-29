@@ -851,7 +851,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }).catch(error => {
         console.error("FormSubmit email delivery failed:", error);
         const emailStatus = document.getElementById("inquiryEmailStatus");
-        if (emailStatus) emailStatus.textContent = "Email could not be confirmed. Please check the FormSubmit setup and try again.";
+        emailStatus?.remove();
       });
       document.getElementById("inquiryApplyAgain")?.addEventListener("click", () => {
         resetInquiryForNewApplication();
