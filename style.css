@@ -3236,3 +3236,88 @@ h1 span{
   .expert-modal-brand img { width: 66px !important; height: 56px !important; }
   .preloader img { width: 250px !important; max-width: 72vw !important; max-height: 165px !important; }
 }
+
+/* MOBILE FRAUD TICKER FIX: keep the alert on one line and scroll horizontally */
+.fraud-alert-ticker{
+  display:block!important; width:100%!important; max-width:100%!important;
+  overflow:hidden!important; white-space:nowrap!important; box-sizing:border-box!important;
+  min-height:0!important; height:auto!important;
+}
+.fraud-alert-track{
+  display:flex!important; flex-flow:row nowrap!important; align-items:center!important;
+  width:max-content!important; max-width:none!important; white-space:nowrap!important;
+  animation:fraudAlertScroll 38s linear infinite!important;
+}
+.fraud-alert-track span{
+  display:block!important; flex:0 0 auto!important; white-space:nowrap!important;
+  width:max-content!important; max-width:none!important; line-height:1.35!important;
+}
+@media(max-width:600px){
+  .fraud-alert-ticker{font-size:11px!important; padding:9px 0!important; line-height:1.25!important;}
+  .fraud-alert-track span{white-space:nowrap!important; overflow:visible!important;}
+}
+
+/* MOBILE RESPONSIVE PATCH — keep existing desktop layout and functionality intact */
+@media (max-width: 760px) {
+  html, body { width:100%; max-width:100%; overflow-x:hidden!important; }
+  body { -webkit-text-size-adjust:100%; }
+  *, *::before, *::after { box-sizing:border-box; }
+  img, video, iframe, canvas, svg { max-width:100%; }
+  img { height:auto; }
+  .container { width:calc(100% - 28px)!important; max-width:100%!important; }
+  main, section, header, footer, .hero-slides, .hero-slide { max-width:100%; }
+  .hero-slides { min-height:0!important; }
+  .hero-slide { min-width:0!important; overflow:hidden; }
+  .hero-content, .hero-visual, .hero-copy, .hero-text, .hero-inner { min-width:0; max-width:100%; }
+  h1, h2, h3, p, a, button, label, input, select, textarea { overflow-wrap:anywhere; }
+  input, select, textarea, button { max-width:100%; }
+  .form-grid, .refer-grid, .contact-info-grid, .contact-grid, .loan-grid, .cards-grid { grid-template-columns:minmax(0,1fr)!important; }
+  .form-field, .refer-field, .conditional-form-section { min-width:0!important; }
+  .form-field input, .form-field select, .form-field textarea,
+  .refer-field input, .refer-field select, .refer-field textarea { width:100%!important; min-width:0!important; }
+  .navbar { max-width:100%; }
+  .brand, .brand-logo { flex:0 1 auto; min-width:0; }
+  .menu-toggle { flex:0 0 auto; }
+  .floating-apply-now { right:12px!important; bottom:12px!important; max-width:calc(100vw - 24px)!important; padding:10px 13px!important; font-size:12px!important; z-index:950!important; }
+  .footer-main { grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important; gap:22px 14px!important; }
+  .footer-brand-column { grid-column:1/-1!important; min-width:0; }
+  .professional-footer .footer-social-links.footer-social-icons { grid-column:1/-1!important; justify-self:center!important; align-self:center!important; display:flex!important; flex-direction:row!important; flex-wrap:wrap!important; justify-content:center!important; align-items:center!important; gap:12px!important; width:100%!important; margin:4px 0 8px!important; }
+  .footer-social-icons .footer-social-icon { width:46px!important; height:46px!important; flex:0 0 46px!important; display:inline-grid!important; }
+  .footer-social-icons .footer-social-icon svg { width:23px!important; height:23px!important; }
+  .footer-addresses, .footer-disclaimer, .footer-bottom { width:100%; max-width:100%; }
+  .footer-address-card { min-width:0; }
+  .footer-address-heading h3 { overflow-wrap:anywhere; }
+  .footer-bottom-inner { display:flex; flex-direction:column; align-items:flex-start; }
+  .footer-legal-links { display:flex; flex-wrap:wrap; gap:12px; }
+}
+
+/* Fraud alert ticker: always one line, fixed compact height, horizontal marquee */
+.fraud-alert-ticker {
+  display:block!important; position:relative!important; width:100%!important; max-width:100%!important;
+  height:42px!important; min-height:42px!important; max-height:42px!important;
+  padding:0!important; margin:0!important; overflow:hidden!important; white-space:nowrap!important;
+  line-height:42px!important; box-sizing:border-box!important;
+}
+.fraud-alert-ticker .fraud-alert-track {
+  display:flex!important; flex-direction:row!important; flex-wrap:nowrap!important; align-items:center!important;
+  width:max-content!important; min-width:max-content!important; max-width:none!important;
+  height:42px!important; white-space:nowrap!important; line-height:42px!important;
+  animation:fraudAlertScroll 38s linear infinite!important; will-change:transform;
+}
+.fraud-alert-ticker .fraud-alert-track > span {
+  display:block!important; flex:0 0 auto!important; width:max-content!important; min-width:max-content!important; max-width:none!important;
+  height:42px!important; padding:0 72px 0 0!important; margin:0!important;
+  white-space:nowrap!important; overflow:visible!important; line-height:42px!important;
+}
+@media (max-width:760px) {
+  .fraud-alert-ticker { height:38px!important; min-height:38px!important; max-height:38px!important; font-size:11px!important; line-height:38px!important; }
+  .fraud-alert-ticker .fraud-alert-track { height:38px!important; line-height:38px!important; }
+  .fraud-alert-ticker .fraud-alert-track > span { height:38px!important; line-height:38px!important; padding-right:48px!important; }
+  .professional-footer .footer-social-links.footer-social-icons { flex-direction:row!important; }
+}
+@media (max-width:380px) {
+  .container { width:calc(100% - 22px)!important; }
+  .footer-main { grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important; gap:18px 10px!important; }
+  .footer-social-icons .footer-social-icon { width:42px!important; height:42px!important; flex-basis:42px!important; }
+  .floating-apply-now { padding:9px 11px!important; font-size:11px!important; }
+}
