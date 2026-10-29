@@ -492,7 +492,7 @@ body.modal-open{overflow:hidden}
 .faq-grid p{color:#6d7b90;font-size:12px;line-height:1.7;padding-top:12px}
 .footer-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:18px;font-size:12px;color:#8ea0b8}
 .page-hero{position:relative;isolation:isolate;overflow:hidden;padding:92px 0 76px;background:linear-gradient(135deg,#03132e,#08295a);color:#fff}
-.page-hero::before{position:absolute;z-index:0;inset:24px 5% 24px auto;width:min(30vw,380px);border-radius:30px;background:rgba(29,83,145,.34) url("assets/fortune-logo.png") no-repeat center/contain;opacity:.92;content:"";pointer-events:none;border:1px solid rgba(205,231,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 18px 45px rgba(0,0,0,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.page-hero::before{position:absolute;z-index:0;inset:24px 5% 24px auto;width:min(30vw,380px);border-radius:30px;background:rgba(29,83,145,.34) url("assets/fortune-logo.svg") no-repeat center/contain;opacity:.92;content:"";pointer-events:none;border:1px solid rgba(205,231,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 18px 45px rgba(0,0,0,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .page-hero>.container{position:relative;z-index:1}.page-hero>.container>*{max-width:min(760px,62%)}
 .page-hero h1{font-size:clamp(40px,5vw,64px);margin-bottom:18px}
 .page-hero p{max-width:750px;color:#c5d4ea;line-height:1.8}
@@ -3000,7 +3000,7 @@ h1 span{
 
 /* Terms page hero: balanced spacing and premium glass logo treatment */
 .page-hero{padding:118px 0 68px;min-height:330px;display:flex;align-items:center}
-.page-hero::before{background:url("assets/fortune-logo.png") no-repeat center/contain;opacity:.30;filter:brightness(1.55) saturate(1.22);width:min(29vw,330px);left:auto;right:max(5%,calc((100vw - 1280px)/2));top:50%;bottom:auto;height:245px;transform:translateY(-50%);border:1px solid rgba(255,255,255,.23);border-radius:28px;padding:18px;box-sizing:border-box;background-color:rgba(255,255,255,.075);box-shadow:0 18px 48px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.28);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.page-hero::before{background:url("assets/fortune-logo.svg") no-repeat center/contain;opacity:.30;filter:brightness(1.55) saturate(1.22);width:min(29vw,330px);left:auto;right:max(5%,calc((100vw - 1280px)/2));top:50%;bottom:auto;height:245px;transform:translateY(-50%);border:1px solid rgba(255,255,255,.23);border-radius:28px;padding:18px;box-sizing:border-box;background-color:rgba(255,255,255,.075);box-shadow:0 18px 48px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.28);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .page-hero>.container{width:100%}
 .page-hero h1{max-width:760px;line-height:1.08;margin-bottom:16px}
 .page-hero p{max-width:700px;font-size:16px}
@@ -3138,3 +3138,13 @@ h1 span{
   background: #050505 !important;
 }
 #home .hero-bottom-wave { display: none !important; }
+
+/* Requested refinements: accessible footer social icons and crisp partner logos */
+.footer-social-icons{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.footer-social-icon{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:12px;border:1px solid rgba(191,211,239,.3);background:#fff;color:#102b54;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.footer-social-icon:hover{transform:translateY(-3px);border-color:#ffbd35;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.footer-social-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.footer-social-icon svg .solid,.footer-social-icon svg .fill{fill:currentColor;stroke:none}
+.partner-logo-card,.logo-image-wrap{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.logo-image-wrap img{filter:none!important;opacity:1!important;image-rendering:auto}
+.partner-logo-card img{filter:none!important;opacity:1!important;transform:none}
