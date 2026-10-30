@@ -564,9 +564,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const inquiryOverlay = document.querySelector("[data-close-inquiry]");
   const whatsappNumber = "919028346900";
   // Submit email through our same-origin Vercel API. The server forwards the
-  // request to FormSubmit, avoiding browser CORS/preflight failures.
-  const submitFormSubmitEmail = async (payload) => {
-    const response = await fetch("/api/formsubmit", {
+  // request to Resend, avoiding browser CORS/preflight failures.
+  const submitResendEmail = async (payload) => {
+    const response = await fetch("/api/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify(payload)
@@ -838,7 +838,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = lines.join("\n");
     status.classList.add("inquiry-confirmation");
 
-    // Send the same submitted inquiry to FormSubmit as well as preparing WhatsApp.
+    // Send the same submitted inquiry to Resend as well as preparing WhatsApp.
     // Only fields in the currently visible form path are emailed, so hidden conditional
     // fields from the other employment path are not accidentally included.
     const emailPayload = {
@@ -851,7 +851,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     emailPayload.assignedEmployee = assignedEmployee;
     emailPayload.inquiryMessage = message;
-    const emailDelivery = submitFormSubmitEmail(emailPayload);
+    const emailDelivery = submitResendEmail(emailPayload);
 
     const whatsappOpened = openWhatsApp(message, status);
     if (whatsappOpened) {
@@ -863,9 +863,9 @@ document.addEventListener("DOMContentLoaded", () => {
       status.setAttribute("aria-live", "assertive");
       emailDelivery.then(() => {
         const emailStatus = document.getElementById("inquiryEmailStatus");
-        if (emailStatus) emailStatus.textContent = "✉️ Email request accepted by FormSubmit.";
+        if (emailStatus) emailStatus.textContent = "✉️ Email request accepted by Resend.";
       }).catch(error => {
-        console.error("FormSubmit email delivery failed:", error);
+        console.error("Resend email delivery failed:", error);
         const emailStatus = document.getElementById("inquiryEmailStatus");
         if (emailStatus) emailStatus.textContent = "⚠️ Email could not be submitted. Please contact us directly or try again.";
       });
@@ -876,9 +876,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       emailDelivery.then(() => {
-        appendEmailStatus(status, "Email request accepted by FormSubmit. Use the prepared WhatsApp link above if the popup was blocked.");
+        appendEmailStatus(status, "Email request accepted by Resend. Use the prepared WhatsApp link above if the popup was blocked.");
       }).catch(error => {
-        console.error("FormSubmit email delivery failed:", error);
+        console.error("Resend email delivery failed:", error);
         appendEmailStatus(status, "Email submission failed. Please retry or contact us directly.", true);
       });
     }
@@ -906,9 +906,9 @@ document.addEventListener("DOMContentLoaded", () => {
         message: document.getElementById("cfMessage").value.trim()
       };
       const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${contactData.name}\nEmail: ${contactData.email}\nMobile: ${contactData.mobile}\nLoan Type: ${contactData.loanType}\nRequired Amount: ${contactData.requiredAmount}\nCIBIL Score: ${contactData.cibilScore}\nMonthly Income Range: ${contactData.monthlyIncomeRange}\nEmployment / Business Type: ${contactData.employmentOrBusinessType}\nMessage: ${contactData.message}`;
-      const emailDelivery = submitFormSubmitEmail({ _subject: `Fortune Loan Services - Contact Enquiry - ${contactData.name}`, _template: "table", ...contactData });
+      const emailDelivery = submitResendEmail({ _subject: `Fortune Loan Services - Contact Enquiry - ${contactData.name}`, _template: "table", ...contactData });
       const opened = openWhatsApp(message, status);
-      emailDelivery.then(() => { appendEmailStatus(status, opened ? "Email request accepted by FormSubmit. WhatsApp is ready for you to send." : "Email request accepted by FormSubmit. Use the prepared WhatsApp link above."); }).catch(error => { console.error("Contact enquiry email failed:", error); appendEmailStatus(status, opened ? "Email submission failed. WhatsApp is ready for you to send; please contact us about the email." : "Email submission failed. Use the prepared WhatsApp link above or retry.", true); });
+      emailDelivery.then(() => { appendEmailStatus(status, opened ? "Email request accepted by Resend. WhatsApp is ready for you to send." : "Email request accepted by Resend. Use the prepared WhatsApp link above."); }).catch(error => { console.error("Contact enquiry email failed:", error); appendEmailStatus(status, opened ? "Email submission failed. WhatsApp is ready for you to send; please contact us about the email." : "Email submission failed. Use the prepared WhatsApp link above or retry.", true); });
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
   }
@@ -932,9 +932,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = "*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\n" + entries.map(item => `*${item.label}:* ${item.value}`).join("\n");
       const emailPayload = { _subject: "New Fortune Loan Services - Partner Registration", _template: "table" };
       entries.forEach(item => { emailPayload[item.label] = item.value; });
-      const emailDelivery = submitFormSubmitEmail(emailPayload);
+      const emailDelivery = submitResendEmail(emailPayload);
       const opened = openWhatsApp(message, status);
-      emailDelivery.then(() => { appendEmailStatus(status, opened ? "FormSubmit accepted the email request. WhatsApp is ready for you to send." : "FormSubmit accepted the email request. Use the prepared WhatsApp link above."); }).catch(error => { console.error("Partner registration email failed:", error); appendEmailStatus(status, opened ? "Email submission failed. WhatsApp is ready for you to send; please retry the email later." : "Email submission failed. Use the prepared WhatsApp link above or retry.", true); });
+      emailDelivery.then(() => { appendEmailStatus(status, opened ? "Resend accepted the email request. WhatsApp is ready for you to send." : "Resend accepted the email request. Use the prepared WhatsApp link above."); }).catch(error => { console.error("Partner registration email failed:", error); appendEmailStatus(status, opened ? "Email submission failed. WhatsApp is ready for you to send; please retry the email later." : "Email submission failed. Use the prepared WhatsApp link above or retry.", true); });
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
     pincode.addEventListener("input", () => pincode.setCustomValidity(""));

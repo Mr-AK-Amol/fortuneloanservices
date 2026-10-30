@@ -48,10 +48,10 @@ const wa=window.open('https://wa.me/919028346900?text='+encodeURIComponent(messa
 if(wa) wa.opener=null;
 status.textContent='Submitting referral details to email… WhatsApp opens with your filled fields; tap Send in WhatsApp to send the message.';
 try{
-const response=await fetch('/api/formsubmit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+const response=await fetch('/api/send-email',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
 const result=await response.json().catch(()=>({}));
 if(!response.ok||result.success!==true) throw new Error(result.message||'Email submission failed');
-status.textContent='FormSubmit accepted the email request. WhatsApp is prepared; tap Send in WhatsApp.';
+status.textContent='Resend accepted the email request. WhatsApp is prepared; tap Send in WhatsApp.';
 }catch(err){console.error('Referral email failed:',err);status.textContent='WhatsApp is prepared; tap Send to send it. Email submission failed; please retry or contact us directly.';}
 });
 </script>
