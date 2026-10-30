@@ -563,6 +563,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const inquiryClose = document.getElementById("inquiryClose");
   const inquiryOverlay = document.querySelector("[data-close-inquiry]");
   const whatsappNumber = "919028346900";
+  // Submit email through our same-origin Vercel API. The server forwards the
+  // request to FormSubmit, avoiding browser CORS/preflight failures.
+  const submitFormSubmitEmail = async (payload) => {
+    const response = await fetch("/api/formsubmit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success !== true) {
+      throw new Error(result.message || `Email request failed (HTTP ${response.status}).`);
+    }
+    return result;
+  };
+
+  const appendEmailStatus = (status, message, failed = false) => {
+    const note = document.createElement("span");
+    note.className = failed ? "email-delivery-note email-delivery-failed" : "email-delivery-note";
+    note.style.display = "block";
+    note.style.marginTop = "8px";
+    note.textContent = message;
+    status.appendChild(note);
+  };
+
   const openWhatsApp = (message, status) => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     const popup = window.open(url, "_blank");
@@ -827,29 +851,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     emailPayload.assignedEmployee = assignedEmployee;
     emailPayload.inquiryMessage = message;
-    const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify(emailPayload)
-    }).then(async response => {
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok || result.success === "false" || result.success === false) {
-        throw new Error(result.message || "FormSubmit could not accept the inquiry.");
-      }
-      return result;
-    });
+    const emailDelivery = submitFormSubmitEmail(emailPayload);
 
     const whatsappOpened = openWhatsApp(message, status);
     if (whatsappOpened) {
       // Show the thank-you view without exposing email delivery diagnostics to the applicant.
       inquiryForm.classList.add("is-submitted");
       inquiryForm.querySelectorAll(".consent-field").forEach(field => field.style.setProperty("display", "none", "important"));
-      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Loan Partner!</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
+      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Loan Partner!</p><p id="inquiryEmailStatus" role="status" aria-live="polite">✉️ Sending email copy…</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
       status.setAttribute("role", "status");
       status.setAttribute("aria-live", "assertive");
-      emailDelivery.catch(error => {
-        // Keep delivery diagnostics in the console; do not show a failure line in the thank-you message.
+      emailDelivery.then(() => {
+        const emailStatus = document.getElementById("inquiryEmailStatus");
+        if (emailStatus) emailStatus.textContent = "✉️ Email request accepted by FormSubmit.";
+      }).catch(error => {
         console.error("FormSubmit email delivery failed:", error);
+        const emailStatus = document.getElementById("inquiryEmailStatus");
+        if (emailStatus) emailStatus.textContent = "⚠️ Email could not be submitted. Please contact us directly or try again.";
       });
       document.getElementById("inquiryApplyAgain")?.addEventListener("click", () => {
         resetInquiryForNewApplication();
@@ -858,10 +876,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       emailDelivery.then(() => {
-        status.textContent = "FormSubmit accepted the email request. Delivery to the inbox is not guaranteed; please check Spam/All Mail if it does not arrive.";
+        appendEmailStatus(status, "Email request accepted by FormSubmit. Use the prepared WhatsApp link above if the popup was blocked.");
       }).catch(error => {
         console.error("FormSubmit email delivery failed:", error);
-        status.textContent = "Your browser blocked WhatsApp and the email could not be confirmed. Please check FormSubmit setup and retry.";
+        appendEmailStatus(status, "Email submission failed. Please retry or contact us directly.", true);
       });
     }
   });
@@ -876,8 +894,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const digits = mobile.value.replace(/\D/g, "");
       mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
       if (!contactForm.reportValidity()) return;
-      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nCIBIL Score: ${document.getElementById("cfCibil")?.value || "Not provided (optional)"}\nMonthly Income Range: ${document.getElementById("cfIncomeRange")?.value || "Not provided (optional)"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
-      openWhatsApp(message, status);
+      const contactData = {
+        name: `${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}`.trim(),
+        email: document.getElementById("cfEmail").value.trim(),
+        mobile: digits,
+        loanType: document.getElementById("cfLoanType")?.value || "Not specified",
+        requiredAmount: document.getElementById("cfAmount")?.value || "Not specified",
+        cibilScore: document.getElementById("cfCibil")?.value || "Not provided (optional)",
+        monthlyIncomeRange: document.getElementById("cfIncomeRange")?.value || "Not provided (optional)",
+        employmentOrBusinessType: document.getElementById("cfSubject").value.trim() || "Not specified",
+        message: document.getElementById("cfMessage").value.trim()
+      };
+      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${contactData.name}\nEmail: ${contactData.email}\nMobile: ${contactData.mobile}\nLoan Type: ${contactData.loanType}\nRequired Amount: ${contactData.requiredAmount}\nCIBIL Score: ${contactData.cibilScore}\nMonthly Income Range: ${contactData.monthlyIncomeRange}\nEmployment / Business Type: ${contactData.employmentOrBusinessType}\nMessage: ${contactData.message}`;
+      const emailDelivery = submitFormSubmitEmail({ _subject: `Fortune Loan Services - Contact Enquiry - ${contactData.name}`, _template: "table", ...contactData });
+      const opened = openWhatsApp(message, status);
+      emailDelivery.then(() => { appendEmailStatus(status, opened ? "Email request accepted by FormSubmit. WhatsApp is ready for you to send." : "Email request accepted by FormSubmit. Use the prepared WhatsApp link above."); }).catch(error => { console.error("Contact enquiry email failed:", error); appendEmailStatus(status, opened ? "Email submission failed. WhatsApp is ready for you to send; please contact us about the email." : "Email submission failed. Use the prepared WhatsApp link above or retry.", true); });
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
   }
@@ -901,11 +932,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = "*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\n" + entries.map(item => `*${item.label}:* ${item.value}`).join("\n");
       const emailPayload = { _subject: "New Fortune Loan Services - Partner Registration", _template: "table" };
       entries.forEach(item => { emailPayload[item.label] = item.value; });
-      const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
-        method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(emailPayload)
-      }).then(async response => { const result = await response.json().catch(() => ({})); if (!response.ok || result.success === false || result.success === "false") throw new Error(result.message || "Email submission failed"); return result; });
+      const emailDelivery = submitFormSubmitEmail(emailPayload);
       const opened = openWhatsApp(message, status);
-      emailDelivery.then(() => { status.textContent = opened ? "WhatsApp is ready to send. FormSubmit accepted the email request; please check Spam/All Mail if the email does not arrive." : "FormSubmit accepted the email request. WhatsApp was blocked by your browser; use the prepared WhatsApp link if shown."; }).catch(error => { console.error("Partner registration email failed:", error); status.textContent = opened ? "WhatsApp is ready to send, but email could not be confirmed. Check FormSubmit setup and retry." : "Email could not be confirmed and WhatsApp was blocked. Please retry."; });
+      emailDelivery.then(() => { appendEmailStatus(status, opened ? "FormSubmit accepted the email request. WhatsApp is ready for you to send." : "FormSubmit accepted the email request. Use the prepared WhatsApp link above."); }).catch(error => { console.error("Partner registration email failed:", error); appendEmailStatus(status, opened ? "Email submission failed. WhatsApp is ready for you to send; please retry the email later." : "Email submission failed. Use the prepared WhatsApp link above or retry.", true); });
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
     pincode.addEventListener("input", () => pincode.setCustomValidity(""));
