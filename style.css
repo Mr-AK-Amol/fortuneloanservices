@@ -3375,3 +3375,11 @@ h1 span{
 #inquiryForm.is-submitted .consent-field{display:none!important;visibility:hidden!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important}
 @media(max-width:800px){.hero-bank-streams{opacity:.38!important}.hero-bank-streams::after{background:linear-gradient(180deg,rgba(4,19,45,.04),rgba(4,19,45,.01) 35%,rgba(4,19,45,.08))!important}}
 @media(max-width:480px){.hero-bank-streams{opacity:.32!important}.bank-stream-card{background:rgba(255,255,255,.19)!important;border-color:rgba(210,230,255,.30)!important}}
+
+
+/* Requested EMI amount-in-words and premium calculator heading */
+.amount-in-words{display:block;margin-top:7px;color:#718096;font-size:12px;font-weight:600;line-height:1.45;letter-spacing:.01em}
+.calc-result .result-words{color:#c6d8f2;font-size:12px;font-weight:600;margin:5px 0 2px}
+.calc-result>.section-kicker{display:inline-block;color:#ffd166!important;font-family:"Plus Jakarta Sans",Inter,sans-serif;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;text-shadow:0 2px 12px rgba(255,189,53,.28);margin-bottom:8px}
+.footer-button-outline{border:1px solid rgba(255,189,53,.65);color:#071b37!important;background:linear-gradient(115deg,#ffd166,#ff9f1c)!important;box-shadow:0 7px 18px rgba(255,159,28,.2)}
+.footer-button-outline:hover{border-color:#fff1c2;background:linear-gradient(115deg,#ffe29a,#ffad33)!important;transform:translateY(-2px)}
