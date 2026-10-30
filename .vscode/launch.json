@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\MR AK\\Desktop\\New folder\\FINAL WEBSITE WITHOUT OFFER\\FINAL WEBSITE\\index.html"
+            "file": "${workspaceFolder}\\index.html"
         }
     ]
 }
