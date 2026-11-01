@@ -743,7 +743,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // SAKSHI BHOKARE
       "Himachal Pradesh": "SAKSHI BHOKARE", "Goa": "SAKSHI BHOKARE", "Chandigarh": "SAKSHI BHOKARE", "Arunachal Pradesh": "SAKSHI BHOKARE", "Dadra and Nagar Haveli and Daman and Diu": "SAKSHI BHOKARE"
     };
-    const assignedEmployee = stateEmployeeMap[value("inqState")] || "AMOL KINIKAR";
+    const assignedEmployee = stateEmployeeMap[value("inqState")] || "Not assigned – state mapping required";
     const lines = [
       "*FORTUNE LOAN SERVICES - NEW INQUIRY*", "",
       `*NAME:* *${value("inqName")}*`,
@@ -752,13 +752,14 @@ document.addEventListener("DOMContentLoaded", () => {
       `City: ${value("inqCity")}`,
       `Residence PIN Code: ${value("inqPin")}`,
       `State / UT: ${value("inqState")}`,
+      `Language Preferred: ${value("inqPreferredLanguage")}`,
       `Reference 1 Name: ${value("inqRef1Name")}`,
       `Reference 1 Contact Number: ${value("inqRef1Contact")}`,
       `Reference 1 Relationship: ${value("inqRef1Relation")}`,
       `Reference 2 Name: ${value("inqRef2Name")}`,
       `Reference 2 Contact Number: ${value("inqRef2Contact")}`,
       `Reference 2 Relationship: ${value("inqRef2Relation")}`,
-      `Assigned Loan Expert: ${assignedEmployee}`,
+      `Assigned Loan Expert (State-wise): ${assignedEmployee}`,
       // Never place full Aadhaar/PAN identifiers in a WhatsApp URL. The applicant can share these securely later if required.
       `Aadhaar Number: ${value("inqAadhaar")}`,
       `PAN Number: ${value("inqPan").toUpperCase()}`,
@@ -829,7 +830,8 @@ document.addEventListener("DOMContentLoaded", () => {
         emailPayload[field.name] = fieldValue;
       }
     });
-    emailPayload.assignedEmployee = assignedEmployee;
+    emailPayload["Assigned Loan Expert (State-wise)"] = assignedEmployee;
+    emailPayload["Language Preferred"] = value("inqPreferredLanguage");
     emailPayload.inquiryMessage = message;
     const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
       method: "POST",
@@ -847,7 +849,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (whatsappOpened) {
       // Keep the existing thank-you view; update the email line when FormSubmit responds.
       inquiryForm.classList.add("is-submitted");
-      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Loan Partner!</p><p id="inquiryEmailStatus" role="status" aria-live="polite">Sending a copy of your inquiry to email…</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
+      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Financial Partner!</p><p id="inquiryEmailStatus" role="status" aria-live="polite">Sending a copy of your inquiry to email…</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
       status.setAttribute("role", "status");
       status.setAttribute("aria-live", "assertive");
       emailDelivery.then(() => {
