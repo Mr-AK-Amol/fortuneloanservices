@@ -461,6 +461,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Homepage-only loan inquiry popup: opens compact; expand only when name field is clicked.
   const inquiryModal = document.getElementById("inquiryModal");
   const inquiryForm = document.getElementById("inquiryForm");
+  const dateOfBirthInput = document.getElementById("inqDateOfBirth");
+  if (dateOfBirthInput) {
+    const today = new Date();
+    dateOfBirthInput.max = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+  }
   // Show only the applicant's selected income-source section and relevant conditional fields.
   const incomeSourceSelect = document.getElementById("inqIncomeSource");
   const businessFields = document.getElementById("businessFields");
@@ -750,6 +755,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `Contact Number: ${value("inqContact")}`,
       `Email: ${value("inqEmail")}`,
       `City: ${value("inqCity")}`,
+      `Date of Birth: ${value("inqDateOfBirth")}`,
       `Residence PIN Code: ${value("inqPin")}`,
       `State / UT: ${value("inqState")}`,
       `Language Preferred: ${value("inqPreferredLanguage")}`,
@@ -823,10 +829,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if ((field.type === "checkbox" || field.type === "radio") && !field.checked) return;
       const fieldValue = field.value.trim();
       if (!fieldValue) return;
-      if (Object.prototype.hasOwnProperty.call(emailPayload, field.name)) {
-        emailPayload[field.name] = `${emailPayload[field.name]}, ${fieldValue}`;
+      const fieldName = field.name === "dateOfBirth" ? "Date of Birth" : field.name;
+      if (Object.prototype.hasOwnProperty.call(emailPayload, fieldName)) {
+        emailPayload[fieldName] = `${emailPayload[fieldName]}, ${fieldValue}`;
       } else {
-        emailPayload[field.name] = fieldValue;
+        emailPayload[fieldName] = fieldValue;
       }
     });
     emailPayload["Assigned Loan Expert (State-wise)"] = assignedEmployee;
