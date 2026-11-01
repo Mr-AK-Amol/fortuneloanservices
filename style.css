@@ -3060,6 +3060,16 @@ h1 span{
 .bank-account-options{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:6px}
 .bank-account-options label{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:650;color:#30415d;cursor:pointer}
 .bank-account-options input{width:17px;height:17px;accent-color:#e98222;flex:0 0 auto}
+/* Digital business profiles — highlighted multi-select field */
+.digital-business-accounts{border:1px solid #f0c58f;background:linear-gradient(135deg,#fffaf3 0%,#fff 100%);border-radius:14px;padding:15px 17px 17px;box-shadow:0 5px 16px rgba(185,112,35,.07)}
+.digital-business-accounts legend{padding:0 8px;color:#9a4d0c;font-size:12px;font-weight:750;letter-spacing:.1px}
+.digital-business-accounts .digital-account-options{gap:11px 12px;margin-top:8px}
+.digital-business-accounts .digital-account-options label{padding:8px 10px;border:1px solid #ead8c4;border-radius:9px;background:#fff;min-height:34px;box-sizing:border-box;font-size:11px;font-weight:600;transition:border-color .18s ease,background .18s ease}
+.digital-business-accounts .digital-account-options label:has(input:checked){border-color:#e98222;background:#fff3e5;color:#87430b}
+.digital-business-accounts .digital-account-options label:hover{border-color:#e9a45e}
+.digital-business-accounts .digital-account-options input{width:17px;height:17px;accent-color:#e98222}
+@media(max-width:700px){.digital-business-accounts .digital-account-options{grid-template-columns:1fr 1fr;gap:9px}.digital-business-accounts .digital-account-options label{padding:9px 10px;font-size:12px}}
+
 /* Loan expert contact popup */
 .expert-modal-card{text-align:left!important;padding:22px!important}
 .expert-modal-header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px;padding-bottom:15px;border-bottom:1px solid #e8edf5}
@@ -3321,65 +3331,3 @@ h1 span{
   .footer-social-icons .footer-social-icon { width:42px!important; height:42px!important; flex-basis:42px!important; }
   .floating-apply-now { padding:9px 11px!important; font-size:11px!important; }
 }
-
-
-/* Final mobile refinements from latest screenshots: remove redundant calculator CTA,
-   reduce unused space in embedded Diwali hero, and size footer logo card to artwork. */
-.footer-logo-link {
-  display: inline-flex !important;
-  width: fit-content !important;
-  max-width: 100% !important;
-  padding: 5px 7px !important;
-  box-sizing: border-box !important;
-  align-self: flex-start !important;
-}
-.footer-logo-link img, .footer-brand img {
-  width: 155px !important;
-  max-width: 100% !important;
-  height: auto !important;
-  max-height: 68px !important;
-  object-fit: contain !important;
-}
-@media (max-width: 600px) {
-  .footer-logo-link { padding: 4px 6px !important; border-radius: 10px !important; }
-  .footer-logo-link img, .footer-brand img { width: 138px !important; max-height: 62px !important; }
-  .hero-slides { min-height: 0 !important; height: auto !important; }
-  .hero-slide.diwali-hero-slide, .diwali-hero-frame {
-    height: 490px !important;
-    min-height: 490px !important;
-    max-height: 490px !important;
-  }
-}
-@media (max-width: 420px) {
-  .hero-slide.diwali-hero-slide, .diwali-hero-frame {
-    height: 455px !important;
-    min-height: 455px !important;
-    max-height: 455px !important;
-  }
-}
-
-
-/* FINAL REQUESTED FIXES: clearer inquiry logo and hide consent after successful submission */
-.inquiry-logo-wrap{width:180px;height:88px}
-.inquiry-logo-wrap img{width:180px;height:88px;object-fit:contain;object-position:left center}
-#inquiryForm.is-submitted .consent-field{display:none !important}
-@media(max-width:800px){.inquiry-logo-wrap{width:158px;height:78px}.inquiry-logo-wrap img{width:158px;height:78px}}
-@media(max-width:480px){.inquiry-logo-wrap{width:158px;height:78px}.inquiry-logo-wrap img{width:158px;height:78px}}
-
-
-/* FINAL USER REQUESTS: slightly clearer animated lender logos and clean submitted form state. */
-.hero-bank-streams{opacity:.56!important}
-.hero-bank-streams::after{background:linear-gradient(90deg,rgba(4,19,45,.88) 0%,rgba(4,19,45,.68) 24%,rgba(4,19,45,.28) 47%,rgba(4,19,45,.04) 75%,rgba(4,19,45,.08) 100%),linear-gradient(180deg,rgba(4,19,45,.12) 0%,transparent 18%,transparent 82%,rgba(4,19,45,.16) 100%)!important}
-.bank-stream-card{background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.11))!important;border-color:rgba(210,230,255,.32)!important}
-.bank-stream-name{color:rgba(245,249,255,.96)!important}
-#inquiryForm.is-submitted .consent-field{display:none!important;visibility:hidden!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important}
-@media(max-width:800px){.hero-bank-streams{opacity:.38!important}.hero-bank-streams::after{background:linear-gradient(180deg,rgba(4,19,45,.04),rgba(4,19,45,.01) 35%,rgba(4,19,45,.08))!important}}
-@media(max-width:480px){.hero-bank-streams{opacity:.32!important}.bank-stream-card{background:rgba(255,255,255,.19)!important;border-color:rgba(210,230,255,.30)!important}}
-
-
-/* Requested EMI amount-in-words and premium calculator heading */
-.amount-in-words{display:block;margin-top:7px;color:#718096;font-size:12px;font-weight:600;line-height:1.45;letter-spacing:.01em}
-.calc-result .result-words{color:#c6d8f2;font-size:12px;font-weight:600;margin:5px 0 2px}
-.calc-result>.section-kicker{display:inline-block;color:#ffd166!important;font-family:"Plus Jakarta Sans",Inter,sans-serif;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;text-shadow:0 2px 12px rgba(255,189,53,.28);margin-bottom:8px}
-.footer-button-outline{border:1px solid rgba(255,189,53,.65);color:#071b37!important;background:linear-gradient(115deg,#ffd166,#ff9f1c)!important;box-shadow:0 7px 18px rgba(255,159,28,.2)}
-.footer-button-outline:hover{border-color:#fff1c2;background:linear-gradient(115deg,#ffe29a,#ffad33)!important;transform:translateY(-2px)}

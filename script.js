@@ -461,8 +461,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Homepage-only loan inquiry popup: opens compact; expand only when name field is clicked.
   const inquiryModal = document.getElementById("inquiryModal");
   const inquiryForm = document.getElementById("inquiryForm");
-  const dateOfBirthInput = document.getElementById("inqDateOfBirth");
-  if (dateOfBirthInput) dateOfBirthInput.max = new Date().toISOString().slice(0, 10);
   // Show only the applicant's selected income-source section and relevant conditional fields.
   const incomeSourceSelect = document.getElementById("inqIncomeSource");
   const businessFields = document.getElementById("businessFields");
@@ -563,30 +561,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const inquiryClose = document.getElementById("inquiryClose");
   const inquiryOverlay = document.querySelector("[data-close-inquiry]");
   const whatsappNumber = "919028346900";
-  // Submit email through our same-origin Vercel API. The server forwards the
-  // request to Resend, avoiding browser CORS/preflight failures.
-  const submitResendEmail = async (payload) => {
-    const response = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok || result.success !== true) {
-      throw new Error(result.message || `Email request failed (HTTP ${response.status}).`);
-    }
-    return result;
-  };
-
-  const appendEmailStatus = (status, message, failed = false) => {
-    const note = document.createElement("span");
-    note.className = failed ? "email-delivery-note email-delivery-failed" : "email-delivery-note";
-    note.style.display = "block";
-    note.style.marginTop = "8px";
-    note.textContent = message;
-    status.appendChild(note);
-  };
-
   const openWhatsApp = (message, status) => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     const popup = window.open(url, "_blank");
@@ -646,7 +620,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetInquiryForNewApplication = () => {
     if (inquiryForm.classList.contains("is-submitted")) {
       inquiryForm.classList.remove("is-submitted");
-      inquiryForm.querySelectorAll(".consent-field").forEach(field => field.style.removeProperty("display"));
       inquiryForm.reset();
       const status = document.getElementById("inquiryStatus");
       if (status) {
@@ -773,72 +746,72 @@ document.addEventListener("DOMContentLoaded", () => {
     const assignedEmployee = stateEmployeeMap[value("inqState")] || "AMOL KINIKAR";
     const lines = [
       "*FORTUNE LOAN SERVICES - NEW INQUIRY*", "",
-      `*NAME:* ${value("inqName")}`,
-      `*Date of Birth:* ${value("inqDateOfBirth")}`,
-      `*Contact Number:* ${value("inqContact")}`,
-      `*Email:* ${value("inqEmail")}`,
-      `*City:* ${value("inqCity")}`,
-      `*Residence PIN Code:* ${value("inqPin")}`,
-      `*State / UT:* ${value("inqState")}`,
-      `*Reference 1 Name:* ${value("inqRef1Name")}`,
-      `*Reference 1 Contact Number:* ${value("inqRef1Contact")}`,
-      `*Reference 1 Relationship:* ${value("inqRef1Relation")}`,
-      `*Reference 2 Name:* ${value("inqRef2Name")}`,
-      `*Reference 2 Contact Number:* ${value("inqRef2Contact")}`,
-      `*Reference 2 Relationship:* ${value("inqRef2Relation")}`,
-      `*Assigned Loan Expert:* ${assignedEmployee}`,
+      `*NAME:* *${value("inqName")}*`,
+      `Contact Number: ${value("inqContact")}`,
+      `Email: ${value("inqEmail")}`,
+      `City: ${value("inqCity")}`,
+      `Residence PIN Code: ${value("inqPin")}`,
+      `State / UT: ${value("inqState")}`,
+      `Reference 1 Name: ${value("inqRef1Name")}`,
+      `Reference 1 Contact Number: ${value("inqRef1Contact")}`,
+      `Reference 1 Relationship: ${value("inqRef1Relation")}`,
+      `Reference 2 Name: ${value("inqRef2Name")}`,
+      `Reference 2 Contact Number: ${value("inqRef2Contact")}`,
+      `Reference 2 Relationship: ${value("inqRef2Relation")}`,
+      `Assigned Loan Expert: ${assignedEmployee}`,
       // Never place full Aadhaar/PAN identifiers in a WhatsApp URL. The applicant can share these securely later if required.
-      `*Aadhaar Number:* ${value("inqAadhaar")}`,
-      `*PAN Number:* ${value("inqPan").toUpperCase()}`,
-      `*CIBIL Score:* ${value("inqCibil")}`,
-      `*Required Loan Amount:* ${formatAmount("inqAmount")}`,
-      `*Type of Loan:* ${value("inqLoanType") === "Other" ? value("inqLoanTypeOther") : value("inqLoanType")}`,
-      `*Purpose of Loan:* ${value("inqPurpose")}`,
-      `*Income Source:* ${value("inqIncomeSource")}`,
-      `*Interested in Referral Program:* ${value("inqReferralInterest")}`
+      `Aadhaar Number: ${value("inqAadhaar")}`,
+      `PAN Number: ${value("inqPan").toUpperCase()}`,
+      `CIBIL Score: ${value("inqCibil")}`,
+      `Required Loan Amount: ${formatAmount("inqAmount")}`,
+      `Type of Loan: ${value("inqLoanType") === "Other" ? value("inqLoanTypeOther") : value("inqLoanType")}`,
+      `Purpose of Loan: ${value("inqPurpose")}`,
+      `Income Source: ${value("inqIncomeSource")}`,
+      `Interested in Referral Program: ${value("inqReferralInterest")}`
     ];
     if (value("inqIncomeSource") === "Business Owner / Self Employed") {
       lines.push("", "*BUSINESS / SELF-EMPLOYED DETAILS*",
-        `*Business / Company Name:* ${value("inqBusinessName")}`,
-        `*Nature of Business:* ${value("inqBusinessNature")}`,
-        `*Business Constitution:* ${value("inqBusinessConstitution")}`,
-        `*Business Address:* ${value("inqBusinessAddress")}`,
-        `*Business City:* ${value("inqBusinessCity")}`,
-        `*Business PIN Code:* ${value("inqBusinessPin")}`,
-        `*Business Vintage:* ${value("inqBusinessVintage")}`,
-        `*GST Registration:* ${value("inqGstRegistered")}`,
-        `*GST Number:* ${value("inqGstRegistered") === "Yes" ? value("inqGstNumber") : "Not applicable"}`,
-        `*Udyam / MSME Registration:* ${value("inqUdyamRegistered")}`,
-        `*Udyam Number:* ${value("inqUdyamRegistered") === "Yes" ? value("inqUdyamNumber") : "Not applicable"}`,
-        `*Trade Licence:* ${value("inqTradeLicence")}`,
-        ...(value("inqTradeLicence") === "Yes" ? [`*Trade Licence Number:* ${value("inqTradeLicenceNumber")}`] : []),
-        `*Average Monthly Business Income / Profit:* ${formatAmount("inqBusinessIncome")}`,
-        `*Existing Loan:* ${value("inqBusinessExistingLoan")}`,
-        `*Bank A/c Type:* ${Array.from(inquiryForm.querySelectorAll('input[name="businessBankAccountType"]:checked')).map(input => input.value).join(", ") || "Not selected"}`);
-      if (value("inqBusinessExistingLoan") === "Yes") lines.push(`*Existing Loan Amount:* ${formatAmount("inqBusinessExistingLoanAmount")}`, `*Existing Monthly EMI:* ${formatAmount("inqBusinessExistingEmi")}`, `*Any EMI bounced in last 3 months:* ${value("inqBusinessExistingEmiBounced")}`, `*Recently applied for any loan:* ${value("inqBusinessExistingEmiRecentApply")}`);
-      if (/medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`*Drug / Pharmacy Licence Available:* ${value("inqDrugLicence")}`); if(value("inqDrugLicence")==="Yes") lines.push(`*Drug / Pharmacy Licence Number:* ${value("inqDrugLicenceNumber")}`); }
-      if (/food|medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`*FSSAI Licence Available:* ${value("inqFssai")}`); if(value("inqFssai")==="Yes") lines.push(`*FSSAI Licence Number:* ${value("inqFssaiNumber")}`); }
+        `Business / Company Name: ${value("inqBusinessName")}`,
+        `Nature of Business: ${value("inqBusinessNature")}`,
+        `Business Constitution: ${value("inqBusinessConstitution")}`,
+        `Business Address: ${value("inqBusinessAddress")}`,
+        `Business City: ${value("inqBusinessCity")}`,
+        `Business PIN Code: ${value("inqBusinessPin")}`,
+        `Business Vintage: ${value("inqBusinessVintage")}`,
+        `GST Registration: ${value("inqGstRegistered")}`,
+        `GST Number: ${value("inqGstRegistered") === "Yes" ? value("inqGstNumber") : "Not applicable"}`,
+        `Udyam / MSME Registration: ${value("inqUdyamRegistered")}`,
+        `Udyam Number: ${value("inqUdyamRegistered") === "Yes" ? value("inqUdyamNumber") : "Not applicable"}`,
+        `Trade Licence: ${value("inqTradeLicence")}`,
+        ...(value("inqTradeLicence") === "Yes" ? [`Trade Licence Number: ${value("inqTradeLicenceNumber")}`] : []),
+        `Average Monthly Business Income / Profit: ${formatAmount("inqBusinessIncome")}`,
+        `Existing Loan: ${value("inqBusinessExistingLoan")}`,
+        `Bank A/c Type: ${Array.from(inquiryForm.querySelectorAll('input[name="businessBankAccountType"]:checked')).map(input => input.value).join(", ") || "Not selected"}`,
+        `Digital Business Accounts: ${Array.from(inquiryForm.querySelectorAll('input[name="digitalBusinessAccounts"]:checked')).map(input => input.value).join(", ") || "None selected"}`);
+      if (value("inqBusinessExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqBusinessExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqBusinessExistingEmi")}`, `Any EMI bounced in last 3 months: ${value("inqBusinessExistingEmiBounced")}`, `Recently applied for any loan: ${value("inqBusinessExistingEmiRecentApply")}`);
+      if (/medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`Drug / Pharmacy Licence Available: ${value("inqDrugLicence")}`); if(value("inqDrugLicence")==="Yes") lines.push(`Drug / Pharmacy Licence Number: ${value("inqDrugLicenceNumber")}`); }
+      if (/food|medical|pharmacy|drug|pharmaceutical/i.test(value("inqBusinessNature"))) { lines.push(`FSSAI Licence Available: ${value("inqFssai")}`); if(value("inqFssai")==="Yes") lines.push(`FSSAI Licence Number: ${value("inqFssaiNumber")}`); }
     } else if (value("inqIncomeSource") === "Salaried Person") {
       lines.push("", "*SALARIED PERSON DETAILS*",
-        `*Employment Type:* ${value("inqEmploymentType")}`,
-        `*Company / Employer Name:* ${value("inqEmployerName")}`,
-        `*Job Designation:* ${value("inqJobDesignation")}`,
-        `*Work Experience:* ${value("inqWorkExperience")}`,
-        `*Office City:* ${value("inqOfficeCity")}`,
-        ...(value("inqOfficePin") !== "Not provided" ? [`*Office PIN Code:* ${value("inqOfficePin")}`] : []),
-        ...(value("inqOfficialEmail") !== "Not provided" ? [`*Official Email ID:* ${value("inqOfficialEmail")}`] : []),
-        `*Monthly In-Hand Salary:* ${formatAmount("inqMonthlySalary")}`,
-        `*Salary Credit Mode:* ${value("inqSalaryCreditMode")}`,
-        ...(["Bank Transfer", "UPI"].includes(value("inqSalaryCreditMode")) ? [`*Salary Account Bank Name:* ${value("inqSalaryCreditedBankName")}`] : []),
-        `*Salary Account Statement Available:* ${value("inqSalaryStatement")}`,
-        `*Salary / Payment Slip Available:* ${value("inqSalaryPaymentSlipAvailable")}`,
-        `*Existing Loan:* ${value("inqSalaryExistingLoan")}`);
-      if (value("inqSalaryExistingLoan") === "Yes") lines.push(`*Existing Loan Amount:* ${formatAmount("inqSalaryExistingLoanAmount")}`, `*Existing Monthly EMI:* ${formatAmount("inqSalaryExistingEmi")}`, `*Any EMI bounced in last 3 months:* ${value("inqSalaryExistingEmiBounced")}`, `*Recently applied for any loan:* ${value("inqSalaryExistingEmiRecentApply")}`);
+        `Employment Type: ${value("inqEmploymentType")}`,
+        `Company / Employer Name: ${value("inqEmployerName")}`,
+        `Job Designation: ${value("inqJobDesignation")}`,
+        `Work Experience: ${value("inqWorkExperience")}`,
+        `Office City: ${value("inqOfficeCity")}`,
+        ...(value("inqOfficePin") !== "Not provided" ? [`Office PIN Code: ${value("inqOfficePin")}`] : []),
+        ...(value("inqOfficialEmail") !== "Not provided" ? [`Official Email ID: ${value("inqOfficialEmail")}`] : []),
+        `Monthly In-Hand Salary: ${formatAmount("inqMonthlySalary")}`,
+        `Salary Credit Mode: ${value("inqSalaryCreditMode")}`,
+        ...(["Bank Transfer", "UPI"].includes(value("inqSalaryCreditMode")) ? [`Salary Account Bank Name: ${value("inqSalaryCreditedBankName")}`] : []),
+        `Salary Account Statement Available: ${value("inqSalaryStatement")}`,
+        `Salary / Payment Slip Available: ${value("inqSalaryPaymentSlipAvailable")}`,
+        `Existing Loan: ${value("inqSalaryExistingLoan")}`);
+      if (value("inqSalaryExistingLoan") === "Yes") lines.push(`Existing Loan Amount: ${formatAmount("inqSalaryExistingLoanAmount")}`, `Existing Monthly EMI: ${formatAmount("inqSalaryExistingEmi")}`, `Any EMI bounced in last 3 months: ${value("inqSalaryExistingEmiBounced")}`, `Recently applied for any loan: ${value("inqSalaryExistingEmiRecentApply")}`);
     }
     const message = lines.join("\n");
     status.classList.add("inquiry-confirmation");
 
-    // Send the same submitted inquiry to Resend as well as preparing WhatsApp.
+    // Send the same submitted inquiry to FormSubmit as well as preparing WhatsApp.
     // Only fields in the currently visible form path are emailed, so hidden conditional
     // fields from the other employment path are not accidentally included.
     const emailPayload = {
@@ -847,27 +820,43 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     activeFields.forEach(field => {
       if (!field.name || field.disabled || field.closest("[hidden]")) return;
-      emailPayload[field.name] = field.value.trim();
+      if ((field.type === "checkbox" || field.type === "radio") && !field.checked) return;
+      const fieldValue = field.value.trim();
+      if (!fieldValue) return;
+      if (Object.prototype.hasOwnProperty.call(emailPayload, field.name)) {
+        emailPayload[field.name] = `${emailPayload[field.name]}, ${fieldValue}`;
+      } else {
+        emailPayload[field.name] = fieldValue;
+      }
     });
     emailPayload.assignedEmployee = assignedEmployee;
     emailPayload.inquiryMessage = message;
-    const emailDelivery = submitResendEmail(emailPayload);
+    const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(emailPayload)
+    }).then(async response => {
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.success === "false" || result.success === false) {
+        throw new Error(result.message || "FormSubmit could not accept the inquiry.");
+      }
+      return result;
+    });
 
     const whatsappOpened = openWhatsApp(message, status);
     if (whatsappOpened) {
-      // Show the thank-you view without exposing email delivery diagnostics to the applicant.
+      // Keep the existing thank-you view; update the email line when FormSubmit responds.
       inquiryForm.classList.add("is-submitted");
-      inquiryForm.querySelectorAll(".consent-field").forEach(field => field.style.setProperty("display", "none", "important"));
-      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Loan Partner!</p><p id="inquiryEmailStatus" role="status" aria-live="polite">✉️ Sending email copy…</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
+      status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Loan Partner!</p><p id="inquiryEmailStatus" role="status" aria-live="polite">Sending a copy of your inquiry to email…</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
       status.setAttribute("role", "status");
       status.setAttribute("aria-live", "assertive");
       emailDelivery.then(() => {
         const emailStatus = document.getElementById("inquiryEmailStatus");
-        if (emailStatus) emailStatus.textContent = "✉️ Email request accepted by Resend.";
+        if (emailStatus) emailStatus.textContent = "Email copy submitted successfully. If this is the first submission, verify loanservicesfortune@gmail.com using the FormSubmit activation email.";
       }).catch(error => {
-        console.error("Resend email delivery failed:", error);
+        console.error("FormSubmit email delivery failed:", error);
         const emailStatus = document.getElementById("inquiryEmailStatus");
-        if (emailStatus) emailStatus.textContent = "⚠️ Email could not be submitted. Please contact us directly or try again.";
+        if (emailStatus) emailStatus.textContent = "Email could not be confirmed. Please check the FormSubmit setup and try again.";
       });
       document.getElementById("inquiryApplyAgain")?.addEventListener("click", () => {
         resetInquiryForNewApplication();
@@ -876,10 +865,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       emailDelivery.then(() => {
-        appendEmailStatus(status, "Email request accepted by Resend. Use the prepared WhatsApp link above if the popup was blocked.");
+        status.textContent = "Email copy submitted successfully. If this is the first submission, verify loanservicesfortune@gmail.com using the FormSubmit activation email.";
       }).catch(error => {
-        console.error("Resend email delivery failed:", error);
-        appendEmailStatus(status, "Email submission failed. Please retry or contact us directly.", true);
+        console.error("FormSubmit email delivery failed:", error);
+        status.textContent = "Your browser blocked WhatsApp and the email could not be confirmed. Please check FormSubmit setup and retry.";
       });
     }
   });
@@ -894,21 +883,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const digits = mobile.value.replace(/\D/g, "");
       mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
       if (!contactForm.reportValidity()) return;
-      const contactData = {
-        name: `${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}`.trim(),
-        email: document.getElementById("cfEmail").value.trim(),
-        mobile: digits,
-        loanType: document.getElementById("cfLoanType")?.value || "Not specified",
-        requiredAmount: document.getElementById("cfAmount")?.value || "Not specified",
-        cibilScore: document.getElementById("cfCibil")?.value || "Not provided (optional)",
-        monthlyIncomeRange: document.getElementById("cfIncomeRange")?.value || "Not provided (optional)",
-        employmentOrBusinessType: document.getElementById("cfSubject").value.trim() || "Not specified",
-        message: document.getElementById("cfMessage").value.trim()
-      };
-      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${contactData.name}\nEmail: ${contactData.email}\nMobile: ${contactData.mobile}\nLoan Type: ${contactData.loanType}\nRequired Amount: ${contactData.requiredAmount}\nCIBIL Score: ${contactData.cibilScore}\nMonthly Income Range: ${contactData.monthlyIncomeRange}\nEmployment / Business Type: ${contactData.employmentOrBusinessType}\nMessage: ${contactData.message}`;
-      const emailDelivery = submitResendEmail({ _subject: `Fortune Loan Services - Contact Enquiry - ${contactData.name}`, _template: "table", ...contactData });
-      const opened = openWhatsApp(message, status);
-      emailDelivery.then(() => { appendEmailStatus(status, opened ? "Email request accepted by Resend. WhatsApp is ready for you to send." : "Email request accepted by Resend. Use the prepared WhatsApp link above."); }).catch(error => { console.error("Contact enquiry email failed:", error); appendEmailStatus(status, opened ? "Email submission failed. WhatsApp is ready for you to send; please contact us about the email." : "Email submission failed. Use the prepared WhatsApp link above or retry.", true); });
+      const message = `*FORTUNE LOAN SERVICES - CONTACT ENQUIRY*\n\nName: ${document.getElementById("cfFirst").value.trim()} ${document.getElementById("cfLast").value.trim()}\nEmail: ${document.getElementById("cfEmail").value.trim()}\nMobile: ${digits}\nLoan Type: ${document.getElementById("cfLoanType")?.value || "Not specified"}\nRequired Amount: ${document.getElementById("cfAmount")?.value || "Not specified"}\nCIBIL Score: ${document.getElementById("cfCibil")?.value || "Not provided (optional)"}\nMonthly Income Range: ${document.getElementById("cfIncomeRange")?.value || "Not provided (optional)"}\nEmployment / Business Type: ${document.getElementById("cfSubject").value.trim() || "Not specified"}\nMessage: ${document.getElementById("cfMessage").value.trim()}`;
+      openWhatsApp(message, status);
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
   }
@@ -918,12 +894,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobile = document.getElementById("pfMobile");
     const pincode = document.getElementById("pfPin");
     const status = document.getElementById("partnerFormStatus");
+    let partnerSubmitting = false;
     partnerForm.addEventListener("submit", event => {
       event.preventDefault();
       const digits = mobile.value.replace(/\D/g, "");
       mobile.setCustomValidity(/^[6-9]\d{9}$/.test(digits) ? "" : "Enter a valid 10-digit Indian mobile number.");
       pincode.setCustomValidity(/^\d{6}$/.test(pincode.value.trim()) ? "" : "Enter a valid 6-digit pincode.");
-      if (!partnerForm.reportValidity()) return;
+      if (!partnerForm.reportValidity() || partnerSubmitting) return;
+      partnerSubmitting = true;
+      const submitButton = partnerForm.querySelector('button[type="submit"]');
+      if (submitButton) { submitButton.disabled = true; submitButton.textContent = "Submitting…"; }
       const fields = [...partnerForm.querySelectorAll("input, select, textarea")].filter(el => el.name && el.type !== "submit" && el.type !== "button");
       const entries = fields.map(el => {
         const label = partnerForm.querySelector(`label[for="${el.id}"]`);
@@ -932,9 +912,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = "*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\n" + entries.map(item => `*${item.label}:* ${item.value}`).join("\n");
       const emailPayload = { _subject: "New Fortune Loan Services - Partner Registration", _template: "table" };
       entries.forEach(item => { emailPayload[item.label] = item.value; });
-      const emailDelivery = submitResendEmail(emailPayload);
+      const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
+        method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(emailPayload)
+      }).then(async response => { const result = await response.json().catch(() => ({})); if (!response.ok || result.success === false || result.success === "false") throw new Error(result.message || "Email submission failed"); return result; });
       const opened = openWhatsApp(message, status);
-      emailDelivery.then(() => { appendEmailStatus(status, opened ? "Resend accepted the email request. WhatsApp is ready for you to send." : "Resend accepted the email request. Use the prepared WhatsApp link above."); }).catch(error => { console.error("Partner registration email failed:", error); appendEmailStatus(status, opened ? "Email submission failed. WhatsApp is ready for you to send; please retry the email later." : "Email submission failed. Use the prepared WhatsApp link above or retry.", true); });
+      emailDelivery.then(() => { status.textContent = opened ? "WhatsApp is ready to send. Email submission was also accepted; first-time FormSubmit verification may be required." : "Email submission was accepted. WhatsApp was blocked by your browser; use the WhatsApp link if shown."; }).catch(error => { console.error("Partner registration email failed:", error); status.textContent = opened ? "WhatsApp is ready to send, but email could not be confirmed. Check FormSubmit setup and retry." : "Email could not be confirmed and WhatsApp was blocked. Please retry."; }).finally(() => { partnerSubmitting = false; if (submitButton) { submitButton.disabled = false; submitButton.textContent = "Register as Loan Partner ↗"; } });
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
     pincode.addEventListener("input", () => pincode.setCustomValidity(""));
@@ -989,6 +971,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (range && input) range.addEventListener("input", () => { input.value = range.value; calculateEmi(); });
     });
     [amountInput,rateInput,yearsInput].forEach(input => input.addEventListener("input", calculateEmi));
+    if (calculatorButton) calculatorButton.addEventListener("click", calculateEmi);
     calculateEmi();
   }
 
