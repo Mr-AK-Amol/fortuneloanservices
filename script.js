@@ -812,9 +812,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = lines.join("\n");
     status.classList.add("inquiry-confirmation");
 
-    // Send the same submitted inquiry to FormSubmit as well as preparing WhatsApp.
-    // Only fields in the currently visible form path are emailed, so hidden conditional
-    // fields from the other employment path are not accidentally included.
+    // Send the same submitted inquiry through the existing Resend server endpoint
+    // as well as preparing WhatsApp. Only fields in the active form path are emailed.
     const emailPayload = {
       _subject: `New Fortune Loan Services Inquiry - ${value("inqName")}`,
       _template: "table"
@@ -833,32 +832,32 @@ document.addEventListener("DOMContentLoaded", () => {
     emailPayload["Assigned Loan Expert (State-wise)"] = assignedEmployee;
     emailPayload["Language Preferred"] = value("inqPreferredLanguage");
     emailPayload.inquiryMessage = message;
-    const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
+    const emailDelivery = fetch("/api/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify(emailPayload)
     }).then(async response => {
       const result = await response.json().catch(() => ({}));
       if (!response.ok || result.success === "false" || result.success === false) {
-        throw new Error(result.message || "FormSubmit could not accept the inquiry.");
+        throw new Error(result.message || "Resend could not accept the inquiry.");
       }
       return result;
     });
 
     const whatsappOpened = openWhatsApp(message, status);
     if (whatsappOpened) {
-      // Keep the existing thank-you view; update the email line when FormSubmit responds.
+      // Keep the existing thank-you view; update the email line when Resend responds.
       inquiryForm.classList.add("is-submitted");
       status.innerHTML = '<div class="inquiry-thankyou-icon" aria-hidden="true">✓</div><h2 class="inquiry-thankyou-title">🎉 Thank You for Your Submission!</h2><h3 class="inquiry-thankyou-lead">✅ Your Inquiry Has Been Submitted Successfully!</h3><p>Our team will review your details and contact you soon to discuss suitable loan options tailored to your needs.</p><p>🤝 Thank you for choosing Fortune Loan Services – Your Trusted Financial Partner!</p><p id="inquiryEmailStatus" role="status" aria-live="polite">Sending a copy of your inquiry to email…</p><button type="button" class="inquiry-submit inquiry-apply-again" id="inquiryApplyAgain"><span>Apply Now — Start a New Application</span><strong>↗</strong></button>';
       status.setAttribute("role", "status");
       status.setAttribute("aria-live", "assertive");
       emailDelivery.then(() => {
         const emailStatus = document.getElementById("inquiryEmailStatus");
-        if (emailStatus) emailStatus.textContent = "Email copy submitted successfully. If this is the first submission, verify loanservicesfortune@gmail.com using the FormSubmit activation email.";
+        if (emailStatus) emailStatus.textContent = "Email copy was accepted by Resend.";
       }).catch(error => {
-        console.error("FormSubmit email delivery failed:", error);
+        console.error("Resend email delivery failed:", error);
         const emailStatus = document.getElementById("inquiryEmailStatus");
-        if (emailStatus) emailStatus.textContent = "Email could not be confirmed. Please check the FormSubmit setup and try again.";
+        if (emailStatus) emailStatus.textContent = "Email could not be confirmed. Please check the Resend setup and try again.";
       });
       document.getElementById("inquiryApplyAgain")?.addEventListener("click", () => {
         resetInquiryForNewApplication();
@@ -867,10 +866,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       emailDelivery.then(() => {
-        status.textContent = "Email copy submitted successfully. If this is the first submission, verify loanservicesfortune@gmail.com using the FormSubmit activation email.";
+        status.textContent = "Email copy was accepted by Resend.";
       }).catch(error => {
-        console.error("FormSubmit email delivery failed:", error);
-        status.textContent = "Your browser blocked WhatsApp and the email could not be confirmed. Please check FormSubmit setup and retry.";
+        console.error("Resend email delivery failed:", error);
+        status.textContent = "Your browser blocked WhatsApp and the email could not be confirmed. Please check Resend setup and retry.";
       });
     }
   });
@@ -914,11 +913,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = "*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\n" + entries.map(item => `*${item.label}:* ${item.value}`).join("\n");
       const emailPayload = { _subject: "New Fortune Loan Services - Partner Registration", _template: "table" };
       entries.forEach(item => { emailPayload[item.label] = item.value; });
-      const emailDelivery = fetch("https://formsubmit.co/ajax/loanservicesfortune@gmail.com", {
+      const emailDelivery = fetch("/api/send-email", {
         method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(emailPayload)
       }).then(async response => { const result = await response.json().catch(() => ({})); if (!response.ok || result.success === false || result.success === "false") throw new Error(result.message || "Email submission failed"); return result; });
       const opened = openWhatsApp(message, status);
-      emailDelivery.then(() => { status.textContent = opened ? "WhatsApp is ready to send. Email submission was also accepted; first-time FormSubmit verification may be required." : "Email submission was accepted. WhatsApp was blocked by your browser; use the WhatsApp link if shown."; }).catch(error => { console.error("Partner registration email failed:", error); status.textContent = opened ? "WhatsApp is ready to send, but email could not be confirmed. Check FormSubmit setup and retry." : "Email could not be confirmed and WhatsApp was blocked. Please retry."; }).finally(() => { partnerSubmitting = false; if (submitButton) { submitButton.disabled = false; submitButton.textContent = "Register as Loan Partner ↗"; } });
+      emailDelivery.then(() => { status.textContent = opened ? "WhatsApp is ready to send. Email submission was also accepted by Resend." : "Email submission was accepted. WhatsApp was blocked by your browser; use the WhatsApp link if shown."; }).catch(error => { console.error("Partner registration email failed:", error); status.textContent = opened ? "WhatsApp is ready to send, but email could not be confirmed. Check Resend setup and retry." : "Email could not be confirmed and WhatsApp was blocked. Please retry."; }).finally(() => { partnerSubmitting = false; if (submitButton) { submitButton.disabled = false; submitButton.textContent = "Register as Loan Partner ↗"; } });
     });
     mobile.addEventListener("input", () => mobile.setCustomValidity(""));
     pincode.addEventListener("input", () => pincode.setCustomValidity(""));

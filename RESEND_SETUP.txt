@@ -1,22 +1,20 @@
 # Fortune Loan Services — Resend Email Integration
 
-## What changed
-- Replaced the previous FormSubmit proxy with a Vercel serverless endpoint at `/api/send-email`.
-- Website email submissions are sent through Resend to `loanservicesfortune@gmail.com`.
-- Sender is `Fortune Loan Services <notifications@fortuneloan.services>`.
-- Existing form fields, validation, conditional form logic, WhatsApp message preparation, page design, and asset references are preserved.
-- The `assets/` directory is intentionally not included in this ZIP. Keep your existing `assets/` folder beside these files when deploying.
+## Email integration
+- Website enquiry, partner registration, and referral submissions use the Vercel serverless endpoint `/api/send-email`.
+- The endpoint sends email through Resend to `loanservicesfortune@gmail.com`.
+- Sender: `Fortune Loan Services <notifications@fortuneloan.services>`.
+- The API key is read only on the server from `RESEND_API_KEY`.
+- Form fields, validation, conditional sections, WhatsApp message content, and existing page behaviour are retained.
 
-## Vercel setup
-1. In Resend, make sure `fortuneloan.services` is verified for sending.
-2. Create a new Resend API key. Do not put it in website JavaScript or commit it to GitHub.
-3. In Vercel, open the project → Settings → Environment Variables.
-4. Add `RESEND_API_KEY` with the new secret API key. Select Production (and Preview if required).
-5. Redeploy the project.
+## Vercel configuration
+1. Verify `fortuneloan.services` in your Resend account.
+2. Create a Resend API key. Never put it in frontend JavaScript or commit it to GitHub.
+3. In Vercel → Project → Settings → Environment Variables, add `RESEND_API_KEY`.
+4. Enable it for Production (and Preview if needed), then redeploy.
+5. Test the loan inquiry, partner registration, and referral forms. Check the Resend activity log and recipient inbox.
 
 ## Important
-- The API key is read only by `api/send-email.js` on the server.
-- The recipient address is fixed server-side as `loanservicesfortune@gmail.com`.
-- A successful API response means Resend accepted the message; it does not guarantee inbox placement.
-- Test each existing form after deployment. Confirm both the email receipt and WhatsApp flow.
-- Do not delete or rename your existing `assets/` directory. This ZIP omits it by request, while keeping all original asset paths in the HTML/CSS.
+- A successful response means Resend accepted the email request; it does not guarantee inbox placement.
+- WhatsApp remains click-to-send: the form opens WhatsApp with the filled message and the user must tap Send.
+- This delivery ZIP intentionally excludes `assets/`. Keep the existing `assets/` folder in your deployed project/repository; HTML and CSS still reference those files.
