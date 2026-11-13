@@ -1,0 +1,69 @@
+{
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us.html",
+      "destination": "/about-us",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/emi-calculator.html",
+      "destination": "/emi-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/join-us.html",
+      "destination": "/join-us",
+      "permanent": true
+    },
+    {
+      "source": "/refer-and-earn.html",
+      "destination": "/refer-and-earn",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-services.html",
+      "destination": "/terms-of-services",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about-us.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/emi-calculator",
+      "destination": "/emi-calculator.html"
+    },
+    {
+      "source": "/join-us",
+      "destination": "/join-us.html"
+    },
+    {
+      "source": "/refer-and-earn",
+      "destination": "/refer-and-earn.html"
+    },
+    {
+      "source": "/terms-of-services",
+      "destination": "/terms-of-services.html"
+    }
+  ]
+}
