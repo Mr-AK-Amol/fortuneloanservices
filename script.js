@@ -230,6 +230,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroDots = Array.from(document.querySelectorAll("[data-hero-go]"));
     const navratriHero = heroCarousel.querySelector(".navratri-hero");
     const cityCards = Array.from(heroCarousel.querySelectorAll(".city-preview-card"));
+    const cityPrevButton = heroCarousel.querySelector("[data-city-prev]");
+    const cityNextButton = heroCarousel.querySelector("[data-city-next]");
     let cityRotationTimer = null;
     let activeCityIndex = 0;
     const showCity = index => {
@@ -400,8 +402,8 @@ document.addEventListener("DOMContentLoaded", () => {
       window.clearTimeout(heroRotationTimer);
       if (heroSlides.length < 2) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      // Requested rhythm: Hero 1 = 10 seconds, Hero 2 city network = 54 seconds, Hero 3 Diwali = 6 seconds.
-      const dwellTimes = [10000, 54000, 10000];
+      // Preserve the existing hero timing for the two remaining slides.
+      const dwellTimes = [10000, 54000];
       const dwellTime = dwellTimes[activeSlideIndex] ?? 10000;
       heroRotationTimer = window.setTimeout(() => {
         showSlide(activeSlideIndex + 1);
@@ -437,6 +439,13 @@ document.addEventListener("DOMContentLoaded", () => {
       dot.addEventListener("click", () => {
         showSlide(Number(dot.dataset.heroGo));
       });
+    });
+    // Manual navigation changes the active city only; the 3-second interval continues.
+    cityPrevButton?.addEventListener("click", () => {
+      if (activeSlideIndex === 1) showCity(activeCityIndex - 1);
+    });
+    cityNextButton?.addEventListener("click", () => {
+      if (activeSlideIndex === 1) showCity(activeCityIndex + 1);
     });
     scheduleHeroRotation();
   }
@@ -603,15 +612,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("modal-open");
     if (previousFocus instanceof HTMLElement) previousFocus.focus();
   };
-  // Allow the isolated Diwali hero iframe to open the existing inquiry form.
-  window.addEventListener("message", event => {
-    if (event.origin !== window.location.origin) return;
-    if (event.data && event.data.type === "fortune-diwali-apply") {
-      resetInquiryForNewApplication();
-      openInquiry();
-    }
-  });
-
   // Keep the existing homepage popup as the single loan application form.
   // A direct hash link opens it immediately; normal homepage visits retain the original auto-open.
   const isHomePage = window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/");
@@ -774,7 +774,8 @@ document.addEventListener("DOMContentLoaded", () => {
       `Type of Loan: ${value("inqLoanType") === "Other" ? value("inqLoanTypeOther") : value("inqLoanType")}`,
       `Purpose of Loan: ${value("inqPurpose")}`,
       `Income Source: ${value("inqIncomeSource")}`,
-      `Interested in Referral Program: ${value("inqReferralInterest")}`
+      `Interested in Referral Program: ${value("inqReferralInterest")}`,
+      `Consent & Data Privacy: ${document.getElementById("inqPrivacyConsent")?.checked ? "Agreed" : "Not agreed"}`
     ];
     if (value("inqIncomeSource") === "Business Owner / Self Employed") {
       lines.push("", "*BUSINESS / SELF-EMPLOYED DETAILS*",
@@ -915,7 +916,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const fields = [...partnerForm.querySelectorAll("input, select, textarea")].filter(el => el.name && el.type !== "submit" && el.type !== "button");
       const entries = fields.map(el => {
         const label = partnerForm.querySelector(`label[for="${el.id}"]`);
-        return { name: el.name, label: (label?.innerText || el.name).replace(/\s*\*\s*$/, "").trim(), value: el.value.trim() };
+        return { name: el.name, label: el.name === "privacyConsent" ? "Partner Registration Consent & Declaration" : (label?.innerText || el.name).replace(/\s*\*\s*$/, "").trim(), value: el.value.trim() };
       }).filter(item => item.value);
       const message = "*FORTUNE LOAN SERVICES - PARTNER REGISTRATION*\n\n" + entries.map(item => `*${item.label}:* ${item.value}`).join("\n");
       const emailPayload = { _subject: "New Fortune Loan Services - Partner Registration", _template: "table" };

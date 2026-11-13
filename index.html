@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="#071d49" name="theme-color"/>
 <meta content="Fortune Loan Services — financial advisory and loan facilitation for individuals and businesses across India." name="description"/>
-<title>Fortune Loan Services | Trusted Financial Partner</title>
+<title>Fortune Loan Services | Your Trusted Financial Partner</title>
 <link rel="canonical" href="https://fortuneloan.services/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fortune Loan Services | Your Trusted Financial Partner">
@@ -149,7 +149,13 @@
 <label class="form-field existing-salary-loan" hidden=""><span>Recently applied for any loan? <b>*</b></span><select data-required-when-visible="" id="inqSalaryExistingEmiRecentApply" name="salaryExistingEmiRecentApply"><option value="">Select</option><option>Yes</option><option>No</option></select></label>
 </div></section>
 </div>
-<div class="form-field full consent-field" style="grid-column:1/-1;margin:16px 0 12px;padding:12px 14px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(255,255,255,.04)"><label for="inqPrivacyConsent" style="display:flex;align-items:flex-start;gap:10px;line-height:1.55"><input id="inqPrivacyConsent" name="privacyConsent" type="checkbox" value="Agreed" required style="width:18px;min-width:18px;height:18px;margin-top:3px"><span><strong>Consent &amp; Data Privacy *</strong><br>I agree to the collection and use of the information I provide to process this request. After successful loan disbursement, my submitted data will be deleted from Fortune Loan Services’ records, except where retention is required by applicable law or a lending partner.</span></label></div>
+<div class="form-field full consent-field">
+  <input class="consent-checkbox-input" id="inqPrivacyConsent" name="privacyConsent" type="checkbox" value="Agreed" required>
+  <label class="consent-checkbox-label" for="inqPrivacyConsent">
+    <span class="consent-checkbox-ui" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg><span class="consent-checkbox-shine"></span></span>
+    <span class="consent-copy"><strong>Consent &amp; Data Privacy *</strong><br>I hereby consent to the collection, processing and use of the information provided by me for evaluating and processing my loan inquiry or application. I understand that my information may be shared with relevant lending partners for processing purposes and retained or deleted in accordance with applicable legal and regulatory requirements. I agree to receive service-related updates and communications about my inquiry or application from Fortune Loan Services through SMS, Email, WhatsApp or RCS. Promotional communications are optional and are not a condition of submitting this inquiry.</span>
+  </label>
+</div>
     <button class="inquiry-submit" type="submit"><span>Submit Inquiry</span><strong>↗</strong></button>
 <p class="form-note">Share your details below, and our team will contact you to discuss suitable loan options.</p>
 <p aria-live="polite" class="form-note" id="inquiryStatus" role="status"></p>
@@ -178,7 +184,7 @@
 <div aria-hidden="true" class="hero-bank-streams" id="heroBankStreams"></div>
 <div class="hero-particles" id="particles"></div>
 <div aria-live="off" class="hero-slides" id="heroSlides">
-<div aria-hidden="false" aria-label="1 of 3: Main hero" aria-roledescription="slide" class="hero-slide is-active" data-hero-slide="" role="group">
+<div aria-hidden="false" aria-label="1 of 2: Main hero" aria-roledescription="slide" class="hero-slide is-active" data-hero-slide="" role="group">
 <div class="container hero-content">
 <div class="hero-copy reveal">
 <div class="eyebrow"><span class="pulse-dot"></span> CLEAR GUIDANCE  |  SMARTER CHOICES</div>
@@ -218,8 +224,10 @@
 </div>
 </div>
 </div>
-<div aria-hidden="true" aria-label="2 of 3: City network" aria-roledescription="slide" class="hero-slide city-network-slide" data-hero-slide role="group">
-<div class="city-hero-inner"><div class="city-hero-heading"><span>FORTUNE LOAN SERVICES</span><h2>Your Trusted <em>Financial Partner</em></h2><p>Helping customers across India explore suitable loan solutions with trusted guidance.</p></div><div class="city-card-grid" aria-label="Upcoming Fortune Loan Services city locations">
+<div aria-hidden="true" aria-label="2 of 2: City network" aria-roledescription="slide" class="hero-slide city-network-slide" data-hero-slide role="group">
+<div class="city-hero-inner"><div class="city-hero-heading"><span>FORTUNE LOAN SERVICES</span><h2>Your Trusted <em>Financial Partner</em></h2><p>Helping customers across India explore suitable loan solutions with trusted guidance.</p></div><div class="city-slider-controls" aria-label="City slide navigation">
+<button type="button" class="city-slider-arrow city-slider-prev" data-city-prev aria-label="Previous city" title="Previous city"><span aria-hidden="true">←</span></button>
+<div class="city-card-grid" aria-label="Upcoming Fortune Loan Services city locations">
 <article class="city-preview-card"><img loading="eager" decoding="async" alt="Mumbai city" src="assets/mumbai.png"><div><h3>Mumbai</h3><p>Mumbai, India</p><span>❔ Coming Soon · Stay Updated</span></div></article>
 <article class="city-preview-card"><img loading="eager" decoding="async" alt="New Delhi city" src="assets/New Delhi.png"><div><h3>New Delhi</h3><p>New Delhi, India</p><span>❔ Coming Soon · Stay Updated</span></div></article>
 <article class="city-preview-card"><img loading="eager" decoding="async" alt="Bengaluru city" src="assets/Bengaluru.png"><div><h3>Bengaluru</h3><p>Bengaluru, India</p><span>❔ Coming Soon · Stay Updated</span></div></article>
@@ -238,17 +246,13 @@
 <article class="city-preview-card"><img loading="eager" decoding="async" alt="Goa city" src="assets/Goa.png"><div><h3>Goa</h3><p>Goa, India</p><span>❔ Coming Soon · Stay Updated</span></div></article>
 <article class="city-preview-card"><img loading="eager" decoding="async" alt="Pune city" src="assets/pune.png"><div><h3>Pune</h3><p>Pune, India</p><span>❔ Coming Soon · Stay Updated</span></div></article>
 <article class="city-preview-card"><img loading="eager" decoding="async" alt="Surat city" src="assets/Surat.png" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#f4e7d2,#dce9f6)';this.parentElement.dataset.imageFallback='Surat city image unavailable';"><div><h3>Surat</h3><p>Surat, India</p><span>❔ Coming Soon · Stay Updated</span></div></article>
-</div><div class="city-stage-label">PAN-INDIA EXPANSION • 18 CITIES • STAY UPDATED</div></div>
+</div><button type="button" class="city-slider-arrow city-slider-next" data-city-next aria-label="Next city" title="Next city"><span aria-hidden="true">→</span></button></div><div class="city-stage-label">PAN-INDIA EXPANSION • 18 CITIES • STAY UPDATED</div></div>
 </div>
 
-<div aria-hidden="true" aria-label="3 of 3: Diwali Dhamaka offer" aria-roledescription="slide" class="hero-slide diwali-hero-slide" data-hero-slide role="group">
-<iframe class="diwali-hero-frame" src="assets/diwali-hero/index.html" title="Fortune Loan Services Diwali Dhamaka offer with animated fireworks" loading="eager" allow="autoplay" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-</div>
 
 <nav class="hero-pagination" aria-label="Choose homepage hero slide">
 <button type="button" class="hero-dot is-active" data-hero-go="0" aria-label="Show Hero 1" aria-pressed="true"></button>
 <button type="button" class="hero-dot" data-hero-go="1" aria-label="Show Hero 2" aria-pressed="false"></button>
-<button type="button" class="hero-dot" data-hero-go="2" aria-label="Show Hero 3: Diwali Dhamaka" aria-pressed="false"></button>
 </nav>
 <div class="hero-bottom-wave"></div>
 </div></section>
