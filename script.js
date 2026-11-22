@@ -227,7 +227,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroCarousel = document.getElementById("heroSlides");
   if (heroCarousel) {
     const heroSlides = Array.from(heroCarousel.querySelectorAll("[data-hero-slide]"));
-    const heroDots = Array.from(document.querySelectorAll("[data-hero-go]"));
+    const heroSection = heroCarousel.closest(".hero");
+    const heroPrev = heroSection?.querySelector("[data-hero-prev]");
+    const heroNext = heroSection?.querySelector("[data-hero-next]");
     const navratriHero = heroCarousel.querySelector(".navratri-hero");
     const cityCards = Array.from(heroCarousel.querySelectorAll(".city-preview-card"));
     const cityPrevButton = heroCarousel.querySelector("[data-city-prev]");
@@ -402,9 +404,8 @@ document.addEventListener("DOMContentLoaded", () => {
       window.clearTimeout(heroRotationTimer);
       if (heroSlides.length < 2) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      // Preserve the existing hero timing for the two remaining slides.
-      const dwellTimes = [10000, 54000];
-      const dwellTime = dwellTimes[activeSlideIndex] ?? 10000;
+      // Swap automatically between hero slides every 15 seconds.
+      const dwellTime = 15000;
       heroRotationTimer = window.setTimeout(() => {
         showSlide(activeSlideIndex + 1);
       }, dwellTime);
@@ -424,21 +425,19 @@ document.addEventListener("DOMContentLoaded", () => {
         slide.setAttribute("aria-hidden", String(!isActive));
         slide.inert = !isActive;
       });
-      heroDots.forEach((dot, dotIndex) => {
-        const isActive = dotIndex === activeSlideIndex;
-        dot.classList.toggle("is-active", isActive);
-        dot.setAttribute("aria-pressed", String(isActive));
-      });
       if (activeSlideIndex === 1 && navratriHero) {
         startNavratriAnimation();
       }
+      if (heroSection) heroSection.classList.toggle("is-city-slide", activeSlideIndex === 1);
       scheduleHeroRotation();
     };
 
-    heroDots.forEach(dot => {
-      dot.addEventListener("click", () => {
-        showSlide(Number(dot.dataset.heroGo));
-      });
+    if (heroPrev) heroPrev.addEventListener("click", () => showSlide(activeSlideIndex - 1));
+    if (heroNext) heroNext.addEventListener("click", () => showSlide(activeSlideIndex + 1));
+    heroSection?.addEventListener("click", event => {
+      if (!(event.target instanceof Element) || event.target.closest("a, button, input, select, textarea, [role='button'], .hero-carousel-controls")) return;
+      const bounds = heroSection.getBoundingClientRect();
+      showSlide(event.clientX < bounds.left + bounds.width / 2 ? activeSlideIndex - 1 : activeSlideIndex + 1);
     });
     // Manual navigation changes the active city only; the 3-second interval continues.
     cityPrevButton?.addEventListener("click", () => {
@@ -467,7 +466,116 @@ document.addEventListener("DOMContentLoaded", () => {
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 
-  // Homepage-only loan inquiry popup: opens compact; expand only when name field is clicked.
+  const quickModal = document.getElementById("quickInquiryModal");
+  const quickForm = document.getElementById("quickInquiryForm");
+  if (quickModal && quickForm) {
+    const quickCard = quickModal.querySelector(".quick-inquiry-card");
+    const quickStatus = document.getElementById("quickInquiryStatus");
+    const quickEmailStatus = document.getElementById("quickInquiryEmailStatus");
+    const quickSubmit = quickForm.querySelector('button[type="submit"]');
+    let previousFocus = null;
+    let quickSubmitting = false;
+    const quickFocusableSelector = "a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex='-1'])";
+    const openQuickInquiry = () => {
+      previousFocus = document.activeElement;
+      quickModal.classList.add("is-open");
+      quickModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("quick-inquiry-open");
+      quickModal.querySelector('input[name="fullName"]')?.focus();
+    };
+    const closeQuickInquiry = () => {
+      quickModal.classList.remove("is-open");
+      quickModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("quick-inquiry-open");
+      if (previousFocus instanceof HTMLElement) previousFocus.focus();
+    };
+    quickModal.querySelector(".quick-inquiry-close")?.addEventListener("click", closeQuickInquiry);
+    quickModal.querySelector("[data-close-quick]")?.addEventListener("click", closeQuickInquiry);
+    document.addEventListener("keydown", event => {
+      if (!quickModal.classList.contains("is-open")) return;
+      if (event.key === "Escape") {
+        closeQuickInquiry();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusable = Array.from(quickModal.querySelectorAll(quickFocusableSelector))
+        .filter(element => element.getClientRects().length);
+      if (!focusable.length) {
+        event.preventDefault();
+        quickCard?.focus();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+    window.setTimeout(openQuickInquiry, preloader ? 1400 : 0);
+    quickForm.addEventListener("submit", event => {
+      event.preventDefault();
+      if (quickSubmitting || !quickForm.reportValidity()) return;
+      quickSubmitting = true;
+      if (quickSubmit) quickSubmit.disabled = true;
+      quickStatus.textContent = "";
+      quickEmailStatus.textContent = "";
+
+      const data = new FormData(quickForm);
+      const value = name => String(data.get(name) || "").trim();
+      const message = [
+        "Hello Fortune Loan Services!",
+        "",
+        "Quick Loan Inquiry",
+        `Name: ${value("fullName")}`,
+        `Mobile: ${value("mobile")}`,
+        `City: ${value("city")}`,
+        `Loan Type: ${value("loanType")}`,
+        `Required Amount: ₹${value("loanAmount")}`,
+        `Employment: ${value("employmentType")}`
+      ].join("\n");
+      const emailPayload = {
+        _subject: `New Fortune Loan Services Quick Inquiry - ${value("fullName")}`,
+        "Full Name": value("fullName"),
+        "Mobile Number": value("mobile"),
+        City: value("city"),
+        "Loan Type": value("loanType"),
+        "Required Loan Amount": `₹${value("loanAmount")}`,
+        "Employment Type": value("employmentType"),
+        Consent: "Agreed"
+      };
+      const emailDelivery = fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(emailPayload)
+      }).then(async response => {
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || result.success === false || result.success === "false") {
+          throw new Error(result.message || "Email could not be submitted.");
+        }
+        return result;
+      });
+
+      const whatsappOpened = openWhatsApp(message, quickStatus);
+      emailDelivery.then(() => {
+        quickEmailStatus.textContent = "Email copy was accepted by our email service.";
+      }).catch(error => {
+        console.error("Quick inquiry email delivery failed:", error);
+        quickEmailStatus.textContent = "Email could not be confirmed. Please try again or contact us directly.";
+      }).finally(() => {
+        quickSubmitting = false;
+        if (quickSubmit) quickSubmit.disabled = false;
+      });
+      if (whatsappOpened) {
+        quickStatus.textContent = "WhatsApp opened with your inquiry ready. Review it and choose whether to send.";
+      }
+    });
+  }
+
+  // Full loan application form behavior for the standalone application page.
   const inquiryModal = document.getElementById("inquiryModal");
   const inquiryForm = document.getElementById("inquiryForm");
   const dateOfBirthInput = document.getElementById("inqDateOfBirth");
@@ -595,7 +703,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return false;
   };
 
-  if(inquiryModal && inquiryForm && inquiryClose && inquiryOverlay){
+  if(inquiryModal && inquiryForm){
   let previousFocus = null;
   const focusableSelector = "a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex='-1'])";
   const openInquiry = () => {
@@ -612,16 +720,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("modal-open");
     if (previousFocus instanceof HTMLElement) previousFocus.focus();
   };
-  // Keep the existing homepage popup as the single loan application form.
-  // A direct hash link opens it immediately; normal homepage visits retain the original auto-open.
-  const isHomePage = window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/");
-  if (isHomePage) {
-    if (window.location.hash === "#open-loan-form") {
-      setTimeout(openInquiry, 120);
-    } else {
-      setTimeout(openInquiry, 900);
-    }
-  }
+  // The full application form is now on application.html; it never auto-opens on the homepage.
   const resetInquiryForNewApplication = () => {
     if (inquiryForm.classList.contains("is-submitted")) {
       inquiryForm.classList.remove("is-submitted");
@@ -648,14 +747,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const inquiryBox = inquiryModal.querySelector(".inquiry-box");
   const nameInput = document.getElementById("inqName");
-  const expandInquiry = () => { inquiryBox?.classList.remove("is-compact"); };
-  nameInput?.addEventListener("focus", expandInquiry);
-  nameInput?.addEventListener("click", expandInquiry);
 
-  inquiryClose.addEventListener("click", closeInquiry);
-  inquiryOverlay.addEventListener("click", closeInquiry);
+
+  inquiryClose?.addEventListener("click", closeInquiry);
+  inquiryOverlay?.addEventListener("click", closeInquiry);
   document.addEventListener("keydown", (e) => {
-    if (!inquiryModal.classList.contains("show")) return;
+    if (document.body.classList.contains("application-page") || !inquiryModal.classList.contains("show")) return;
     if (e.key === "Escape") {
       closeInquiry();
       return;
@@ -767,8 +864,8 @@ document.addEventListener("DOMContentLoaded", () => {
       `Reference 2 Relationship: ${value("inqRef2Relation")}`,
       `Assigned Loan Expert (State-wise): ${assignedEmployee}`,
       // Never place full Aadhaar/PAN identifiers in a WhatsApp URL. The applicant can share these securely later if required.
-      `Aadhaar Number: ${value("inqAadhaar")}`,
-      `PAN Number: ${value("inqPan").toUpperCase()}`,
+      "Aadhaar Number: Provided securely with application",
+      "PAN Number: Provided securely with application",
       `CIBIL Score: ${value("inqCibil")}`,
       `Required Loan Amount: ${formatAmount("inqAmount")}`,
       `Type of Loan: ${value("inqLoanType") === "Other" ? value("inqLoanTypeOther") : value("inqLoanType")}`,
@@ -984,8 +1081,6 @@ document.addEventListener("DOMContentLoaded", () => {
     calculateEmi();
   }
 
-});
-
 // Monthly income is selected from optional dropdowns on both enquiry forms.
 [ ["inqIncomeMin","inqIncomeMax","incomeMinLabel","incomeMaxLabel"], ["cfIncomeMin","cfIncomeMax","cfIncomeMinLabel","cfIncomeMaxLabel"] ].forEach(([minId,maxId,minLabel,maxLabel])=>{const min=document.getElementById(minId),max=document.getElementById(maxId),ml=document.getElementById(minLabel),xl=document.getElementById(maxLabel);if(!min||!max||!ml||!xl)return;const fmt=n=>Number(n).toLocaleString("en-IN");const update=(changed)=>{if(Number(min.value)>Number(max.value)){if(changed===min)max.value=min.value;else min.value=max.value;}ml.textContent=fmt(min.value);xl.textContent=fmt(max.value);};min.addEventListener("input",()=>update(min));max.addEventListener("input",()=>update(max));update();});
 
@@ -997,5 +1092,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeExpert = () => { expertModal.classList.remove("show"); expertModal.setAttribute("aria-hidden", "true"); document.body.classList.remove("expert-modal-open"); };
     document.querySelectorAll("[data-open-expert]").forEach(button => button.addEventListener("click", openExpert));
     expertModal.querySelectorAll("[data-close-expert]").forEach(button => button.addEventListener("click", closeExpert));
-    document.addEventListener("keydown", event => { if (event.key === "Escape" && expertModal.classList.contains("show")) closeExpert(); });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && expertModal.classList.contains("show")) closeExpert();
+    });
   }
+});

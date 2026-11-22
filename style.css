@@ -2789,7 +2789,7 @@ h1 span{
 @media(max-width:700px){.process-line::before{top:25px;bottom:25px;left:27px;right:auto;width:4px;height:auto}.process-line::after{top:25px;bottom:auto;left:27px;right:auto;width:4px;height:calc(100% - 50px);transform:scaleY(0);transform-origin:top;animation:processGreenProgressVertical 8s linear infinite}.process-step .process-icon{animation-duration:8s!important}}
 @media(prefers-reduced-motion:reduce){.fraud-alert-track{animation:none!important;transform:none!important}.process-line::after,.process-step .process-icon{animation:none!important}.process-line::after{transform:scaleX(1);background:#16a34a}.process-step .process-icon{border-color:#16a34a!important}}
 
-/* Stage 2 city preview slide */
+/* Stage 2 city preview and festive Diwali hero slides */
 .city-network-slide{background:#fff!important;color:#102348!important;overflow:hidden;padding:34px 0 26px;}
 .city-hero-inner{width:min(1200px,94%);margin:auto;}
 .city-hero-heading{text-align:center;margin:0 auto 18px;}
@@ -2804,10 +2804,13 @@ h1 span{
 .city-preview-card>div{padding:12px 16px 14px}.city-preview-card h3{font-size:1.25rem;line-height:1.15;margin:0 0 5px;color:#11244a}.city-preview-card p{font-size:.85rem;color:#778197;margin:0 0 8px}.city-preview-card span{font-size:.72rem;font-weight:800;color:#bd7b18;letter-spacing:.02em;}
 .city-stage-label{text-align:center;margin-top:15px;color:#bd7b18;font-size:.75rem;font-weight:900;letter-spacing:.12em;}
 @keyframes cityCardShow{0%,5.1%{opacity:1;transform:translateY(0) scale(1);visibility:visible}5.55%,100%{opacity:0;transform:translateY(-12px) scale(.97);visibility:hidden}}
+.diwali-hero-slide{overflow:hidden;min-height:460px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:radial-gradient(circle at 50% 25%,#8b1e49 0,#3c104e 45%,#090f35 100%)!important;}
+.diwali-content{position:relative;z-index:2;padding:55px 20px;max-width:800px}.diwali-kicker{font-weight:800;letter-spacing:.16em;color:#ffd77c;font-size:.78rem}.diwali-content h2{font-size:clamp(2.2rem,5vw,4.6rem);line-height:1.08;margin:18px 0;color:#fff}.diwali-content h2 em{font-style:normal;background:linear-gradient(90deg,#ffe8a3,#ffad37,#fff0bd);-webkit-background-clip:text;background-clip:text;color:transparent}.diwali-content p{max-width:600px;margin:0 auto 24px;color:#ffe9ef;font-size:1.05rem}.diwali-content .btn-primary{background:linear-gradient(110deg,#f7b733,#ff6b35);border:0;color:#31112b}.diya-row{font-size:1.65rem;margin-top:22px;animation:diyaGlow 2s ease-in-out infinite alternate}.diwali-sparkles{position:absolute;inset:8% 0 auto;font-size:2rem;color:#ffd36b;letter-spacing:1.5rem;opacity:.7;animation:sparkleBlink 2s infinite alternate}.firework{position:absolute;font-size:5rem;color:#ffd36b;text-shadow:0 0 18px #ff7c2b;animation:fireworkBurst 2.4s ease-in-out infinite}.fw-one{left:10%;top:20%}.fw-two{right:12%;top:25%;animation-delay:.7s;color:#ff8cc6}.fw-three{right:23%;bottom:13%;animation-delay:1.2s;color:#9fe9ff}@keyframes sparkleBlink{from{opacity:.25;transform:scale(.9)}to{opacity:1;transform:scale(1.08)}}@keyframes fireworkBurst{0%,100%{opacity:.2;transform:scale(.45) rotate(0)}45%{opacity:1;transform:scale(1.2) rotate(25deg)}}@keyframes diyaGlow{from{filter:drop-shadow(0 0 2px #ffbd52)}to{filter:drop-shadow(0 0 14px #ffbd52)}}
 @media(max-width:900px){.city-card-grid{width:min(390px,100%);height:250px}.city-preview-card img{height:130px;flex-basis:130px}}
-@media(max-width:560px){.city-network-slide{padding:24px 0}.city-card-grid{width:min(340px,100%);height:235px;margin-top:16px}.city-preview-card img{height:120px;flex-basis:120px}.city-preview-card>div{padding:10px 13px}.city-preview-card h3{font-size:1.05rem}.city-preview-card p{font-size:.76rem}.city-preview-card span{font-size:.67rem}.city-hero-heading p{font-size:.85rem;padding:0 8px}.city-stage-label{font-size:.62rem;letter-spacing:.07em}}
+@media(max-width:560px){.city-network-slide{padding:24px 0}.city-card-grid{width:min(340px,100%);height:235px;margin-top:16px}.city-preview-card img{height:120px;flex-basis:120px}.city-preview-card>div{padding:10px 13px}.city-preview-card h3{font-size:1.05rem}.city-preview-card p{font-size:.76rem}.city-preview-card span{font-size:.67rem}.city-hero-heading p{font-size:.85rem;padding:0 8px}.city-stage-label{font-size:.62rem;letter-spacing:.07em}.diwali-hero-slide{min-height:430px}.firework{font-size:3rem}.diwali-sparkles{font-size:1.2rem;letter-spacing:.5rem}}
 
 /* Removed extra decorative sparkle dots; keep only the original fireworks animation. */
+.diwali-hero-slide::before,.diwali-hero-slide::after{content:none!important;display:none!important;}
 .hero-bottom-wave{display:none!important;}
 
 
@@ -2833,6 +2836,7 @@ h1 span{
 .diwali-cta-row .btn-diwali-outline{color:#fff!important;background:rgba(255,255,255,.09);border:1px solid rgba(255,221,155,.7);backdrop-filter:blur(5px)}
 .diwali-cta-row .btn-diwali-outline:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
 .diwali-terms-note{display:block;max-width:680px;margin:10px auto 0;color:#ffe9d0;font-size:11px;line-height:1.65}
+.diwali-content h2{max-width:850px;margin-left:auto;margin-right:auto}
 @media(max-width:600px){.diwali-cta-row{gap:8px;padding:0 8px}.diwali-cta-row .btn{min-height:42px;padding:10px 14px;font-size:12px;flex:1 1 42%}.diwali-terms-note{padding:0 12px;font-size:10px}}
 
 .contact-quick-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:8px}.contact-quick-links .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:10px 14px;font-size:12px;min-height:38px}
@@ -3100,6 +3104,51 @@ h1 span{
  .process-animated .process-step .process-icon{animation:none!important}
 }
 
+/* Hero 3: isolated Diwali canvas so its original CSS/JS cannot affect the website */
+.hero-slide.diwali-hero-slide {
+  display:flex;
+  align-items:stretch;
+  min-width:0;
+  min-height:790px;
+  padding:0;
+  overflow:hidden;
+  background:#080713;
+  isolation:isolate;
+}
+.diwali-hero-frame {
+  display:block;
+  flex:1 1 auto;
+  width:100%;
+  min-width:0;
+  height:790px;
+  min-height:790px;
+  border:0;
+  background:#080713;
+}
+@media(max-width:760px) {
+  .hero-slide.diwali-hero-slide,
+  .diwali-hero-frame {
+    min-height:700px;
+    height:700px;
+  }
+}
+@media(max-width:420px) {
+  .hero-slide.diwali-hero-slide,
+  .diwali-hero-frame {
+    min-height:650px;
+    height:650px;
+  }
+}
+
+
+/* Hero 3 final cleanup: keep the area behind the Diwali iframe black and remove the extra colored band. */
+#home:has(.diwali-hero-slide.is-active),
+#home:has(.diwali-hero-slide.is-active) .hero-slides,
+#home:has(.diwali-hero-slide.is-active) .diwali-hero-slide {
+  background: #050505 !important;
+}
+#home .hero-bottom-wave { display: none !important; }
+
 /* Requested refinements: accessible footer social icons and crisp partner logos */
 .footer-social-icons{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .footer-social-icon{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:12px;border:1px solid rgba(191,211,239,.3);background:#fff;color:#102b54;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
@@ -3283,137 +3332,443 @@ h1 span{
   .floating-apply-now { padding:9px 11px!important; font-size:11px!important; }
 }
 
-/* Unified accessible consent checkbox used across all website forms */
-.consent-field {
-  grid-column: 1 / -1;
-  margin: 12px 0 16px;
-  padding: 14px 16px;
-  border: 1px solid rgba(52, 199, 89, .24);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, .06);
+
+/* Approved reference color update: warm cream / beige hero palette only.
+   Existing content, layout, assets, and animation declarations remain unchanged. */
+.hero{
+  background:
+    radial-gradient(ellipse at 84% 42%,rgba(255,190,92,.30),transparent 34%),
+    radial-gradient(ellipse at 9% 91%,rgba(231,135,42,.15),transparent 29%),
+    linear-gradient(120deg,#fff8ee 0%,#f9ead7 52%,#f3d5b2 100%)!important;
 }
-.consent-checkbox-input {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  min-height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-  opacity: 0 !important;
+.hero::before{background:linear-gradient(90deg,rgba(255,249,239,.18),transparent 60%)!important}
+.hero-grid{
+  opacity:.22!important;
+  background-image:linear-gradient(rgba(125,75,32,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(125,75,32,.055) 1px,transparent 1px)!important;
 }
-.consent-checkbox-label {
-  display: flex !important;
-  align-items: flex-start !important;
-  gap: 11px !important;
-  margin: 0 !important;
-  cursor: pointer;
-  line-height: 1.6 !important;
-  color: inherit;
-  font-size: inherit;
-  font-weight: 400 !important;
+.orb-1{background:rgba(255,177,69,.20)!important}
+.orb-2{background:rgba(207,112,31,.13)!important}
+.hero-copy{color:#171717!important}
+.eyebrow{background:rgba(255,255,255,.82)!important;border-color:rgba(198,130,55,.22)!important;color:#1c2432!important;box-shadow:0 8px 24px rgba(100,58,20,.10)!important}
+.pulse-dot{background:#22a45a!important;box-shadow:0 0 0 6px rgba(34,164,90,.12)!important}
+h1 span{background:linear-gradient(100deg,#8d430b 0%,#c77a13 52%,#e99c24 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+.hero-text{color:#333b43!important}
+.btn-primary{background:linear-gradient(120deg,#8f470d,#c98217 58%,#f4b73f)!important;color:#fff!important;box-shadow:0 12px 32px rgba(161,91,20,.22)!important}
+.btn-primary:hover{box-shadow:0 18px 40px rgba(161,91,20,.30)!important}
+.btn-ghost{border-color:rgba(111,62,20,.28)!important;background:rgba(255,255,255,.72)!important;color:#172033!important}
+.btn-ghost:hover{background:#fff!important}
+.trust-row{border-color:rgba(125,75,32,.20)!important}
+.trust-row>div{border-color:rgba(125,75,32,.18)!important}
+.trust-row strong{color:#171717!important}
+.trust-row span,.disclaimer{color:#5f5b56!important}
+.hero-visual::before{background:radial-gradient(circle,rgba(255,190,92,.28),rgba(255,190,92,.08) 48%,transparent 72%)!important}
+.visual-orbit{border-color:rgba(157,105,50,.18)!important}
+.orbit-one{border-color:rgba(204,133,35,.38)!important}
+.orbit-two{border-color:rgba(157,105,50,.24)!important}
+.orbit-three{border-color:rgba(204,133,35,.16)!important}
+.visual-core{
+  background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(255,250,241,.94))!important;
+  border-color:rgba(172,112,45,.22)!important;
+  box-shadow:0 35px 100px rgba(104,64,27,.16),inset 0 1px rgba(255,255,255,.95)!important;
+  color:#171717!important;
 }
-.consent-checkbox-ui {
-  position: relative;
-  display: inline-flex;
-  flex: 0 0 22px;
-  width: 22px;
-  height: 22px;
-  margin-top: 2px;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 1px solid #cbd2d9;
-  border-radius: 6px;
-  background: linear-gradient(145deg, #fff, #e9edf1);
-  box-shadow: inset 0 1px 2px rgba(18, 34, 52, .08);
-  transition: transform .2s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+.core-topline{color:#a45b12!important}
+.core-live-dot{background:#e97814!important;box-shadow:0 0 0 5px rgba(233,120,20,.12)!important}
+.core-title,.core-steps{color:#171717!important}
+.core-title span{color:#c77a13!important}
+.core-divider{background:linear-gradient(90deg,rgba(198,130,55,.65),rgba(125,75,32,.08))!important}
+.step-number{color:#6f350a!important;background:rgba(255,205,117,.35)!important;border-color:rgba(198,130,55,.25)!important}
+.core-steps i{color:#b36b19!important}
+.core-arrow{background:linear-gradient(135deg,#c98217,#f4b73f)!important;color:#fff!important}
+.visual-float{background:rgba(255,255,255,.96)!important;border-color:rgba(172,112,45,.16)!important;color:#171717!important;box-shadow:0 16px 42px rgba(104,64,27,.13)!important}
+.visual-float small{color:#68615a!important}
+.float-check{background:rgba(34,164,90,.12)!important;color:#23834b!important}
+.float-spark{background:rgba(233,120,20,.13)!important;color:#b36b19!important}
+.hero-bank-streams{opacity:.18!important}
+.hero-bank-streams::after{
+  background:linear-gradient(90deg,rgba(255,248,238,.88),rgba(255,248,238,.32) 50%,rgba(255,248,238,.10)),linear-gradient(180deg,rgba(255,248,238,.45),transparent 20%,transparent 78%,rgba(255,248,238,.48))!important;
 }
-.consent-checkbox-ui svg {
-  position: relative;
-  z-index: 2;
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: #fff;
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 0;
-  transform: scale(.35) rotate(-12deg);
-  transition: opacity .18s ease, transform .25s cubic-bezier(.2,.8,.2,1.25);
+.bank-stream-card{background:rgba(255,255,255,.72)!important;border-color:rgba(172,112,45,.15)!important;box-shadow:0 12px 30px rgba(104,64,27,.07)!important}
+.bank-stream-name{color:#5f5142!important}
+.hero-bottom-wave{background:#f7f5f0!important}
+
+
+/* Approved follow-up: improve text and animated lender-logo visibility.
+   Preserve the existing beige/gold theme, content, layout, and animations. */
+.hero-text{color:#3f352b!important;text-shadow:0 1px 0 rgba(255,255,255,.22)!important}
+.core-topline{color:#a6530b!important}
+.core-title{color:#171717!important}
+.core-title span{color:#b96c0c!important}
+.core-steps{color:#211a14!important}
+.core-steps small{color:#55483b!important}
+.step-number{color:#713b0b!important;background:rgba(255,205,117,.62)!important;border-color:rgba(172,99,20,.28)!important}
+.core-steps i{color:#a85b0c!important}
+.visual-float{color:#171717!important;background:rgba(255,255,255,.98)!important;border-color:rgba(151,89,24,.24)!important}
+.visual-float small{color:#50463b!important}
+.bank-stream-name{color:#5b3b1c!important;text-shadow:0 1px 2px rgba(255,255,255,.9)!important}
+.hero-bank-streams{opacity:.48!important}
+.hero-bank-streams::after{
+  background:linear-gradient(90deg,rgba(255,248,238,.25),rgba(255,248,238,.08) 50%,rgba(255,248,238,.04)),
+             linear-gradient(180deg,rgba(255,248,238,.10),transparent 20%,transparent 78%,rgba(255,248,238,.12))!important;
 }
-.consent-checkbox-shine {
-  position: absolute;
-  z-index: 1;
-  top: -35%;
-  left: -75%;
-  width: 45%;
-  height: 170%;
-  opacity: 0;
-  pointer-events: none;
-  transform: skewX(-22deg);
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.72), transparent);
+.bank-stream-card{background:rgba(255,255,255,.66)!important;border-color:rgba(150,94,38,.22)!important;box-shadow:0 10px 26px rgba(104,64,27,.10)!important}
+.bank-stream-logo{background:rgba(255,255,255,.98)!important;box-shadow:0 2px 8px rgba(78,46,15,.12)!important}
+@media(max-width:760px){.hero-bank-streams{opacity:.28!important}}
+
+
+/* Approved refinement: retain the warm beige hero theme and use the navigation navy for hero typography. */
+.hero-copy,
+.hero-copy h1,
+.hero-copy h1 span,
+.hero-text,
+.trust-row strong,
+.trust-row span,
+.disclaimer,
+.core-title,
+.core-steps,
+.core-steps small,
+.visual-float,
+.visual-float small,
+.bank-stream-name {
+  color: #051220 !important;
+  -webkit-text-fill-color: #051220 !important;
 }
-.consent-checkbox-input:checked + .consent-checkbox-label .consent-checkbox-ui {
-  border-color: #2db54d;
-  background: linear-gradient(145deg, #34c759, #2db54d);
-  box-shadow: 0 3px 9px rgba(45, 181, 77, .24), inset 0 1px 0 rgba(255,255,255,.2);
+.hero-copy h1 span {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
 }
-.consent-checkbox-input:checked + .consent-checkbox-label .consent-checkbox-ui svg {
-  opacity: 1;
-  transform: scale(1) rotate(0);
+.core-topline { color: #051220 !important; }
+
+/* Approved heading color update: exact requested navy #092C58. */
+.hero-copy h1,
+.hero-copy h1 span {
+  color: #092c58 !important;
+  -webkit-text-fill-color: #092c58 !important;
 }
-.consent-checkbox-input:checked + .consent-checkbox-label .consent-checkbox-shine {
-  animation: consent-checkbox-shine .75s ease-out 1;
-}
-.consent-checkbox-label:hover .consent-checkbox-ui {
-  transform: scale(1.06);
-  box-shadow: 0 3px 10px rgba(45, 181, 77, .16);
-}
-.consent-checkbox-input:focus-visible + .consent-checkbox-label .consent-checkbox-ui {
-  outline: 3px solid rgba(52, 199, 89, .32);
+
+/* User-approved refinements: compact carousel, side arrows, consistent white-backed logo */
+.brand.brand-logo{display:flex!important;align-items:center;justify-content:center;background:#fff!important;border-radius:12px!important;padding:5px 10px!important;box-shadow:0 5px 18px rgba(0,0,0,.12)!important;overflow:hidden}
+.brand.brand-logo img{object-fit:contain!important}
+.refer-top>a:first-child{background:#fff!important}
+.hero{min-height:0!important}
+.hero-slides{min-height:0!important}
+.hero-slide{min-height:0!important}
+.hero-content{min-height:650px!important;padding-top:58px!important;padding-bottom:48px!important}
+.hero-visual{height:490px!important}
+.city-network-slide{min-height:0!important;padding:28px 0 24px!important}
+.hero-carousel-controls{position:absolute!important;inset:50% 20px auto!important;left:20px!important;right:20px!important;bottom:auto!important;display:flex!important;justify-content:space-between!important;gap:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;transform:translateY(-50%)!important;pointer-events:none}
+.hero-carousel-arrow{pointer-events:auto;display:grid;place-items:center;width:46px;height:46px;border:1px solid rgba(255,255,255,.58);border-radius:50%;background:rgba(9,44,88,.84);color:#fff;font-size:25px;line-height:1;cursor:pointer;box-shadow:0 5px 18px rgba(0,0,0,.2);transition:transform .2s ease,background .2s ease}
+.hero-carousel-arrow:hover{transform:scale(1.08);background:#092C58}
+.hero-carousel-arrow:focus-visible{outline:3px solid #f4b642;outline-offset:3px}
+.hero.is-city-slide .hero-bank-streams{display:none!important}
+@media(max-width:800px){.hero-content{min-height:0!important;padding:90px 0 54px!important}.hero-visual{height:340px!important}.hero-carousel-controls{left:10px!important;right:10px!important}.hero-carousel-arrow{width:38px;height:38px;font-size:21px}}
+@media(max-width:560px){.hero-content{padding:82px 0 40px!important}.hero-visual{height:285px!important}.hero-carousel-controls{left:8px!important;right:8px!important}.hero-carousel-arrow{width:34px;height:34px;font-size:19px}.city-network-slide{padding:20px 0!important}}
+
+/* Keep the square logo artwork cleanly inside the circular loader. */
+.preloader>img{width:min(200px,70vw)!important;height:auto!important;max-width:70vw!important;max-height:none!important;background:transparent!important;border-radius:0!important;padding:0!important;box-sizing:border-box!important;}
+.page-hero::before{background-color:#fff!important;}
+
+
+/* ===== Responsive quality pass: all pages and common components ===== */
+:root { color-scheme: light; }
+*, *::before, *::after { box-sizing: border-box; }
+html { width: 100%; max-width: 100%; -webkit-text-size-adjust: 100%; }
+body { width: 100%; max-width: 100%; margin-inline: auto; overflow-x: clip; }
+img, video, iframe, canvas, svg { max-width: 100%; }
+img, video { height: auto; }
+button, input, select, textarea { max-width: 100%; font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a, button, input, select, textarea { touch-action: manipulation; }
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid rgba(9, 44, 88, .42);
   outline-offset: 3px;
 }
-.consent-copy { min-width: 0; }
-.consent-copy strong { display: inline-block; margin-bottom: 3px; font-weight: 800; }
-@keyframes consent-checkbox-shine {
-  0% { left: -75%; opacity: 0; }
-  20% { opacity: 1; }
-  100% { left: 140%; opacity: 0; }
+:where(h1, h2, h3, h4, p, li, label, a, button) { overflow-wrap: anywhere; }
+.container { min-width: 0; }
+main, section, article, aside, header, footer, nav, form, fieldset { min-width: 0; }
+.grid, [class*="grid"], .form-grid, .hero-content, .split, .calc-wrap {
+  min-width: 0;
+}
+.form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.form-grid > *, .form-field, .form-group, .form-row, .field-group { min-width: 0; }
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+select, textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+textarea { resize: vertical; }
+input[type="checkbox"], input[type="radio"] { flex: 0 0 auto; }
+label { min-width: 0; word-break: normal; overflow-wrap: break-word; }
+.checkbox-group, .checkbox-row, .consent-row, .consent-label,
+.form-check, .form-checkbox, .option-row, .radio-option {
+  min-width: 0;
+}
+.checkbox-group label, .checkbox-row label, .consent-row label,
+.consent-label, .form-check label, .form-checkbox label,
+.option-row label, .radio-option label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  max-width: 100%;
+  line-height: 1.5;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.checkbox-group input[type="checkbox"], .checkbox-row input[type="checkbox"],
+.consent-row input[type="checkbox"], .consent-label input[type="checkbox"],
+.form-check input[type="checkbox"], .form-checkbox input[type="checkbox"],
+.option-row input[type="checkbox"], .radio-option input[type="radio"] {
+  margin: .2em 0 0;
+}
+table { max-width: 100%; }
+pre, code { overflow-wrap: anywhere; }
+button, .btn, [role="button"] { white-space: normal; }
+.brand, .brand-logo, .footer-logo-link { flex-shrink: 0; }
+.brand img, .brand-logo img, .footer-logo-link img {
+  display: block; max-width: 100%; object-fit: contain;
+  background: #fff; border-radius: 8px; padding: 4px;
+}
+.page-hero, .hero, .hero-content, .hero-copy, .hero-visual { min-width: 0; }
+.hero-carousel-controls { pointer-events: none; }
+.hero-carousel-arrow { pointer-events: auto; }
+@media (max-width: 800px) {
+  .container { width: min(calc(100% - 32px), 680px); }
+  .navbar { width: 100%; max-width: 100%; min-width: 0; }
+  .hero-content { grid-template-columns: minmax(0, 1fr); }
+  .hero-copy, .hero-visual { width: 100%; min-width: 0; }
+  .nav-links.open { display: flex; }
+  .nav-links a { max-width: 100%; white-space: normal; }
+  .form-grid { grid-template-columns: minmax(0, 1fr); }
+  .form-field.full { grid-column: auto; }
+  .calc-wrap { grid-template-columns: minmax(0, 1fr); }
+  .hero-carousel-controls { left: 10px; right: 10px; }
 }
 @media (max-width: 600px) {
-  .consent-field { padding: 12px; margin: 10px 0 14px; }
-  .consent-checkbox-label { gap: 9px !important; font-size: 13px; }
-  .consent-checkbox-ui { flex-basis: 21px; width: 21px; height: 21px; }
+  .container { width: min(calc(100% - 28px), 520px); }
+  .section, section { scroll-margin-top: 84px; }
+  .form-grid { gap: 14px; }
+  .form-field label, .form-group label, .field-group label {
+    display: block; max-width: 100%; line-height: 1.45;
+    white-space: normal; word-break: normal; overflow-wrap: break-word;
+  }
+  .digital-business-accounts .digital-account-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .digital-business-accounts .digital-account-options label {
+    display: flex; align-items: flex-start; gap: 8px; min-width: 0;
+    white-space: normal; word-break: normal; overflow-wrap: break-word;
+  }
+  .digital-business-accounts .digital-account-options input {
+    flex: 0 0 auto; margin-top: .2em;
+  }
+  .hero-carousel-arrow { width: 38px; height: 38px; }
+  .footer-main, .footer-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .container { width: min(calc(100% - 24px), 380px); }
+  h1 { font-size: clamp(1.9rem, 8.5vw, 2.65rem); letter-spacing: -.035em; }
+  .page-hero h1 { font-size: clamp(1.85rem, 8vw, 2.5rem); }
+  .hero-carousel-controls { left: 7px; right: 7px; }
+  .hero-carousel-arrow { width: 34px; height: 34px; }
+  .digital-business-accounts .digital-account-options { grid-template-columns: minmax(0, 1fr); }
+  .btn, button.btn { max-width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .consent-checkbox-ui,
-  .consent-checkbox-ui svg { transition: none !important; }
-  .consent-checkbox-input:checked + .consent-checkbox-label .consent-checkbox-shine { animation: none !important; }
-  .consent-checkbox-label:hover .consent-checkbox-ui { transform: none; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
 
-/* Keep the shared consent label readable inside the referral form. */
-.refer-field .consent-checkbox-label { display:flex !important; align-items:flex-start !important; gap:11px !important; margin:0 !important; color:#30415d; font-size:13px; font-weight:400 !important; line-height:1.6 !important; }
-.refer-field .consent-copy strong { color:#0a2855; font-size:13px; }
 
 
-/* Step 2: Manual navigation controls for the 18-city hero carousel. */
-.city-slider-controls{position:relative;width:min(1080px,100%);margin:20px auto 0;display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.2vw,28px)}
-.city-slider-controls .city-card-grid{flex:1 1 auto;min-width:0;margin:0 auto!important}
-.city-slider-arrow{position:relative;z-index:5;flex:0 0 clamp(40px,4.2vw,52px);width:clamp(40px,4.2vw,52px);height:clamp(40px,4.2vw,52px);display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(196,151,69,.55);border-radius:50%;background:linear-gradient(145deg,#fff 0%,#f4f7fb 100%);color:#142b52;box-shadow:0 8px 22px rgba(12,32,67,.14);cursor:pointer;transition:transform .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease,border-color .22s ease;-webkit-tap-highlight-color:transparent}
-.city-slider-arrow span{display:block;font-size:clamp(1.45rem,2.2vw,1.9rem);line-height:1;font-weight:500;transform:translateY(-1px)}
-.city-slider-arrow:hover{transform:translateY(-2px) scale(1.06);color:#fff;border-color:#c9953e;background:linear-gradient(135deg,#173665,#c9953e);box-shadow:0 12px 28px rgba(12,32,67,.22)}
-.city-slider-arrow:active{transform:scale(.96)}
-.city-slider-arrow:focus-visible{outline:3px solid rgba(52,199,89,.75);outline-offset:4px}
-@media(max-width:700px){.city-slider-controls{gap:8px;width:100%;margin-top:16px}.city-slider-arrow{flex-basis:38px;width:38px;height:38px}.city-slider-arrow span{font-size:1.35rem}}
-@media(max-width:420px){.city-slider-controls{gap:6px}.city-slider-arrow{flex-basis:34px;width:34px;height:34px}}
-@media(prefers-reduced-motion:reduce){.city-slider-arrow{transition:none}}
+/* Targeted mobile fix for business bank-account and digital-profile checkbox groups.
+   Scoped to the actual field classes in index.html so desktop styling stays intact. */
+.bank-account-types .bank-account-options {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: stretch;
+  gap: 10px 14px !important;
+  width: 100%;
+  min-width: 0;
+}
+.bank-account-types .bank-account-options > label {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word;
+  text-align: left !important;
+  line-height: 1.35;
+}
+.bank-account-types .bank-account-options > label > input[type="checkbox"] {
+  display: block;
+  flex: 0 0 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px;
+  margin: 0 !important;
+}
+.digital-business-accounts .digital-account-options {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: stretch;
+  gap: 10px !important;
+  width: 100%;
+  min-width: 0;
+}
+.digital-business-accounts .digital-account-options > label {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 9px !important;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 58px;
+  padding: 10px 12px !important;
+  box-sizing: border-box;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word;
+  text-align: left !important;
+  line-height: 1.35;
+  font-size: 13px !important;
+}
+.digital-business-accounts .digital-account-options > label > input[type="checkbox"] {
+  display: block;
+  flex: 0 0 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px;
+  margin: 0 !important;
+}
+.bank-account-types legend,
+.digital-business-accounts legend {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+@media (max-width: 420px) {
+  .bank-account-types,
+  .digital-business-accounts {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  .bank-account-types .bank-account-options,
+  .digital-business-accounts .digital-account-options {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+  .bank-account-types .bank-account-options > label,
+  .digital-business-accounts .digital-account-options > label {
+    min-height: 48px;
+    padding: 10px !important;
+  }
+}
 
-.city-slider-controls .city-card-grid{width:calc(100% - 132px)!important;max-width:900px!important}
-@media(max-width:700px){.city-slider-controls .city-card-grid{width:calc(100% - 92px)!important}}
-@media(max-width:420px){.city-slider-controls .city-card-grid{width:calc(100% - 80px)!important}}
+
+
+/* Responsive consent layout: keep the checkbox and copy in two controlled columns. */
+.consent-field {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+.consent-field > label,
+.consent-field .consent-checkbox-label {
+  display: grid !important;
+  grid-template-columns: 20px minmax(0, 1fr) !important;
+  align-items: start !important;
+  justify-content: initial !important;
+  column-gap: 12px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  text-align: left !important;
+}
+.consent-field > label > input[type="checkbox"],
+.consent-field .consent-checkbox-label > .consent-checkbox-ui {
+  grid-column: 1;
+  justify-self: start;
+  align-self: start;
+  margin: 3px 0 0 !important;
+  flex: none !important;
+}
+.consent-field > label > span,
+.consent-field .consent-copy {
+  grid-column: 2;
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  line-height: 1.55;
+  text-align: left !important;
+}
+#inquiryForm .consent-field,
+#referForm .consent-field {
+  grid-column: 1 / -1 !important;
+}
+#inquiryForm .inquiry-submit,
+#referForm .refer-submit {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  #inquiryForm, #referForm,
+  #inquiryForm .form-grid, #referForm .refer-grid {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  #inquiryForm .consent-field,
+  #referForm .consent-field {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 12px !important;
+  }
+  #inquiryForm .consent-field > label,
+  #referForm .consent-field > label {
+    grid-template-columns: 20px minmax(0, 1fr) !important;
+    column-gap: 10px !important;
+    font-size: 13px;
+  }
+}
+
+/* Click-to-open Quick Loan Inquiry modal and standalone application page */
+.quick-inquiry-modal{position:fixed;inset:0;z-index:3000;display:none;place-items:center;padding:24px;background:rgba(7,20,39,.48)}.quick-inquiry-modal.is-open{display:grid}.quick-inquiry-overlay{position:absolute;inset:0;background:rgba(7,20,39,.55);backdrop-filter:blur(5px)}.quick-inquiry-card{position:relative;z-index:1;width:min(680px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:#fff;border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:clamp(22px,4vw,38px);box-shadow:0 24px 80px rgba(7,20,39,.28);color:#10284c}.quick-inquiry-close{position:absolute;right:15px;top:12px;width:42px;height:42px;border:0;border-radius:50%;background:#f0f3f8;color:#10284c;font-size:28px;cursor:pointer}.quick-inquiry-logo{display:block;width:min(190px,55%);height:auto;object-fit:contain;margin:0 auto 18px}.quick-inquiry-card .section-kicker{text-align:center}.quick-inquiry-card h2{text-align:center;font-size:clamp(25px,4vw,36px);margin:8px 0;color:#10284c}.quick-inquiry-intro{text-align:center;color:#65748b;margin:0 auto 24px;max-width:490px;line-height:1.6}.quick-inquiry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.quick-inquiry-grid label{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:700;color:#30425d;min-width:0}.quick-inquiry-grid input,.quick-inquiry-grid select{width:100%;min-width:0;height:48px;border:1px solid #dce3ed;border-radius:10px;background:#f8faff;padding:0 12px;color:#10284c;font:inherit;font-size:14px}.quick-inquiry-grid input:focus,.quick-inquiry-grid select:focus{outline:3px solid rgba(241,90,36,.15);border-color:#f15a24}.quick-inquiry-consent{display:flex;align-items:flex-start;gap:10px;margin:18px 0;color:#52627a;font-size:12px;line-height:1.55}.quick-inquiry-consent input{margin-top:3px;flex:0 0 17px;accent-color:#f15a24}.quick-inquiry-submit{width:100%;min-height:50px;border:0;border-radius:10px;background:linear-gradient(110deg,#ffb21c,#f15a24);color:white;font-weight:800;font-size:15px;display:flex;justify-content:center;align-items:center;gap:10px;cursor:pointer}.quick-inquiry-status{min-height:18px;margin:12px 0 0;color:#315d40;font-size:13px;text-align:center}.quick-inquiry-open{overflow:hidden}.application-page-modal .inquiry-box{position:relative;transform:none!important}.application-page-modal .inquiry-form{max-width:100%}@media(max-width:600px){.quick-inquiry-modal{padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));align-items:start;overflow:auto}.quick-inquiry-card{max-height:calc(100dvh - max(24px,env(safe-area-inset-top)) - max(12px,env(safe-area-inset-bottom)));padding:22px 16px 18px;border-radius:18px}.quick-inquiry-grid{grid-template-columns:1fr;gap:12px}.quick-inquiry-logo{width:150px;margin-bottom:12px}.quick-inquiry-intro{font-size:13px;margin-bottom:18px}.quick-inquiry-close{right:10px;top:10px;width:36px;height:36px}}
+/* Mobile fixed-header clearance: prevent the first hero content from sitting under navigation. */
+@media(max-width:767px){.hero-content{padding-top:clamp(126px,30vw,156px)!important}.hero-content .hero-copy{scroll-margin-top:100px}}
+
+.application-page{padding:0!important}
+.application-page .application-top{display:none!important}
+.application-page .site-header{position:relative!important;background:#071b3a}
+.application-page .application-page-modal{padding:clamp(14px,3vw,36px)!important}
+.application-page .application-page-modal .inquiry-box{margin:0 auto}
+
+.hero-carousel-arrow{opacity:0!important}
+.hero-carousel-arrow:focus-visible{opacity:1!important}

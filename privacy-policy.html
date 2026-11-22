@@ -12,16 +12,16 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: #07162f;
-      color: #eaf1ff;
+      color: #f5f7fb;
       line-height: 1.75;
     }
     header {
       padding: 25px 7%;
       background: #06112a;
-      border-bottom: 3px solid #f39a22;
+      border-bottom: 3px solid #f15a24;
     }
     header a {
-      color: #ffad32;
+      color: #ffb21c;
       text-decoration: none;
       font-weight: bold;
     }
@@ -33,14 +33,14 @@
       border: 1px solid #294263;
       border-radius: 15px;
     }
-    h1, h2 { color: #ffad32; }
+    h1, h2 { color: #ffb21c; }
     h1 { font-size: 32px; }
     h2 {
       font-size: 20px;
       margin-top: 30px;
     }
     p, li { color: #d5e2f7; }
-    a { color: #ffbd55; }
+    a { color: #ffb21c; }
     .date { color: #a9bddb; font-size: 14px; }
     footer {
       text-align: center;
@@ -52,7 +52,7 @@
       display: inline-block;
       margin-top: 25px;
       padding: 11px 22px;
-      background: #f39a22;
+      background: #f15a24;
       color: #07162f;
       text-decoration: none;
       border-radius: 7px;
@@ -63,8 +63,17 @@
       h1 { font-size: 26px; }
     }
   </style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header class="site-header scrolled" id="header">
+  <nav class="navbar container">
+    <a aria-label="Fortune Loan Services home" class="brand brand-logo" href="index.html"><img alt="Fortune Loan Services logo" src="assets/fortune-logo.svg"></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="about-us.html">About</a><a href="index.html#loans">Loan Solutions</a><a href="index.html#partners">Partners</a><a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta refer-cta" href="refer-and-earn.html">Refer and Earn</a><a class="nav-contact-cta" href="contact.html">Contact Us</a></div>
+  </nav>
+</header>
+
 <header>
   <a href="https://www.fortuneloan.services">
     FORTUNE LOAN SERVICES
@@ -170,5 +179,6 @@
 <footer>
   © 2026 Fortune Loan Services. All Rights Reserved.
 </footer>
+<script src="script.js"></script>
 </body>
 </html>

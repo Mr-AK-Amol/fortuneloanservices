@@ -18,13 +18,13 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #f4f7fc;
+      background: #f5f7fb;
       color: #263449;
       line-height: 1.7;
     }
 
     header {
-      background: linear-gradient(120deg, #071d49, #174da5);
+      background: linear-gradient(120deg, #10284c, #164b83);
       color: white;
       text-align: center;
       padding: 55px 20px;
@@ -36,7 +36,7 @@
     }
 
     header p {
-      color: #e4edff;
+      color: #dce3ed;
     }
 
     .container {
@@ -49,7 +49,7 @@
     }
 
     h2 {
-      color: #123d83;
+      color: #164b83;
       margin: 25px 0 10px;
       font-size: 21px;
     }
@@ -64,23 +64,23 @@
     }
 
     .notice {
-      background: #eef5ff;
-      border-left: 4px solid #174da5;
+      background: #f5f7fb;
+      border-left: 4px solid #164b83;
       padding: 18px;
       margin: 20px 0;
       border-radius: 5px;
     }
 
     .contact {
-      background: #fff5e9;
-      border-left: 4px solid #ed8b22;
+      background: #fff;
+      border-left: 4px solid #f15a24;
       padding: 20px;
       margin-top: 25px;
       border-radius: 5px;
     }
 
     a {
-      color: #174da5;
+      color: #164b83;
       text-decoration: none;
       font-weight: bold;
     }
@@ -92,7 +92,7 @@
     footer {
       text-align: center;
       padding: 25px;
-      background: #071d49;
+      background: #10284c;
       color: white;
       font-size: 13px;
     }
@@ -108,9 +108,18 @@
       }
     }
   </style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<header class="site-header scrolled" id="header">
+  <nav class="navbar container">
+    <a aria-label="Fortune Loan Services home" class="brand brand-logo" href="index.html"><img alt="Fortune Loan Services logo" src="assets/fortune-logo.svg"></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="about-us.html">About</a><a href="index.html#loans">Loan Solutions</a><a href="index.html#partners">Partners</a><a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta refer-cta" href="refer-and-earn.html">Refer and Earn</a><a class="nav-contact-cta" href="contact.html">Contact Us</a></div>
+  </nav>
+</header>
+
 
 <header>
   <h1>Data Deletion Instructions</h1>
@@ -219,5 +228,6 @@
   © 2026 Fortune Loan Services. All Rights Reserved.
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
