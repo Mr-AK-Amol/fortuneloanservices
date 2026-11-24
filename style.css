@@ -3772,3 +3772,28 @@ button, .btn, [role="button"] { white-space: normal; }
 
 .hero-carousel-arrow{opacity:0!important}
 .hero-carousel-arrow:focus-visible{opacity:1!important}
+
+/* Refined navigation and footer */
+.site-header{border-bottom:1px solid rgba(255,255,255,.08)}
+.navbar{min-height:82px}
+.nav-links{gap:clamp(12px,1.55vw,25px);font-size:13px}
+.nav-links>a{white-space:nowrap}
+.nav-links>a:not(.nav-cta):focus-visible,.footer a:focus-visible{outline:2px solid var(--orange);outline-offset:5px;border-radius:4px}
+.nav-links>a:not(.nav-cta)::after{border-radius:99px}
+.nav-cta,.nav-contact-cta{transition:transform .25s,box-shadow .25s,background .25s}
+.nav-cta:hover,.nav-contact-cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(200,164,93,.32)}
+.footer.professional-footer{position:relative;overflow:hidden;background:linear-gradient(135deg,#07152c 0%,#10294a 58%,#07152c 100%);color:#eaf0f8;border-top:1px solid rgba(200,164,93,.35)}
+.footer.professional-footer:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 85% 0%,rgba(200,164,93,.12),transparent 35%)}
+.footer-main{position:relative;z-index:1;gap:clamp(24px,4vw,56px);padding-top:64px;padding-bottom:48px}
+.footer-column h3{color:#e4c47c;font-size:13px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:20px}
+.footer-column a{display:block;width:fit-content;color:#c8d3e2;font-size:14px;line-height:1.55;margin:0 0 13px;transition:color .2s,transform .2s}
+.footer-column a:hover{color:#fff;transform:translateX(4px)}
+.footer-tagline{color:#e4c47c;font-weight:700}
+.footer-intro{color:#bdc9d9;line-height:1.8}
+.footer-button{border-radius:999px;transition:transform .2s,background .2s,border-color .2s}
+.footer-button:hover{transform:translateY(-2px)}
+.footer-bottom,.footer-bottom a{color:#aebbd0}
+.footer-social-icon{transition:transform .2s,background .2s}
+.footer-social-icon:hover{transform:translateY(-3px)}
+@media(max-width:900px){.nav-links{gap:16px;font-size:12px}.navbar{gap:16px}}
+@media(max-width:760px){.navbar{height:72px}.nav-links{gap:0}.nav-links>a{white-space:normal}.footer-main{padding-top:44px;padding-bottom:32px}}
