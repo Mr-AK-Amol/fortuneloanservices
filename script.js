@@ -533,6 +533,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `Name: ${value("fullName")}`,
         `Mobile: ${value("mobile")}`,
         `City: ${value("city")}`,
+        `PIN Code: ${value("pincode")}`,
         `Loan Type: ${value("loanType")}`,
         `Required Amount: ₹${value("loanAmount")}`,
         `Employment: ${value("employmentType")}`
@@ -542,6 +543,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Full Name": value("fullName"),
         "Mobile Number": value("mobile"),
         City: value("city"),
+        "PIN Code": value("pincode"),
         "Loan Type": value("loanType"),
         "Required Loan Amount": `₹${value("loanAmount")}`,
         "Employment Type": value("employmentType"),
