@@ -3797,3 +3797,70 @@ button, .btn, [role="button"] { white-space: normal; }
 .footer-social-icon:hover{transform:translateY(-3px)}
 @media(max-width:900px){.nav-links{gap:16px;font-size:12px}.navbar{gap:16px}}
 @media(max-width:760px){.navbar{height:72px}.nav-links{gap:0}.nav-links>a{white-space:normal}.footer-main{padding-top:44px;padding-bottom:32px}}
+
+
+/* Clean hero layout: reserve navigation clearance and keep city content in its own flow. */
+#home.hero{position:relative;overflow:hidden;isolation:isolate;padding-top:0!important}
+#home .hero-slides{min-height:0!important;align-items:stretch}
+#home .hero-slide{box-sizing:border-box;min-height:clamp(700px,calc(100svh - 82px),900px);overflow:hidden}
+#home .hero-slide:first-child .hero-content{box-sizing:border-box;min-height:0!important;padding-top:clamp(142px,14vh,178px)!important;padding-bottom:92px!important;align-items:center}
+#home .hero-copy,#home .hero-visual{min-width:0;max-width:100%}
+#home .hero-copy{padding-top:20px!important;padding-bottom:20px!important}
+#home .hero-visual{height:clamp(420px,48vw,570px)!important}
+#home .city-network-slide{display:flex;align-items:center;justify-content:center;padding:clamp(132px,14vh,170px) 0 82px!important}
+#home .city-hero-inner{box-sizing:border-box;width:min(1120px,calc(100% - 112px));margin:0 auto;min-width:0}
+#home .city-hero-heading{max-width:780px;margin:0 auto 24px;padding:0 12px}
+#home .city-hero-heading h2{line-height:1.15;overflow-wrap:anywhere}
+#home .city-hero-heading p{line-height:1.65;max-width:680px;margin:0 auto}
+#home .city-card-grid{width:min(900px,100%)!important;height:clamp(340px,38vw,440px)!important;margin:22px auto 0!important}
+#home .city-preview-card{box-sizing:border-box;width:100%;max-width:100%}
+#home .city-preview-card img{width:100%;height:clamp(190px,22vw,260px)!important;flex-basis:clamp(190px,22vw,260px)!important;object-fit:cover}
+#home .city-stage-label{line-height:1.5;margin:18px auto 0;padding:0 10px}
+#home .hero-carousel-controls{z-index:20;top:50%;left:16px!important;right:16px!important;bottom:auto!important;transform:translateY(-50%)!important}
+#home .hero-carousel-arrow{opacity:.9!important}
+#home .hero-carousel-arrow:hover{opacity:1!important}
+@media(max-width:780px){
+ #home .hero-slide{min-height:0;}
+ #home .hero-slide:first-child .hero-content{padding:clamp(140px,30vw,170px) 0 76px!important;gap:12px}
+ #home .hero-copy{padding:10px 0!important}
+ #home .hero-visual{height:clamp(300px,82vw,440px)!important;margin:8px 0 0!important}
+ #home .city-network-slide{padding:clamp(124px,28vw,155px) 0 72px!important}
+ #home .city-hero-inner{width:calc(100% - 72px)}
+ #home .city-card-grid{width:100%!important;height:clamp(330px,92vw,410px)!important}
+ #home .city-preview-card img{height:clamp(175px,48vw,220px)!important;flex-basis:clamp(175px,48vw,220px)!important}
+ #home .hero-carousel-controls{left:8px!important;right:8px!important}
+ #home .hero-carousel-arrow{width:34px;height:34px;font-size:19px}
+}
+@media(max-width:480px){
+ #home .hero-slide:first-child .hero-content{padding-top:138px!important;padding-bottom:64px!important}
+ #home .hero-visual{height:300px!important}
+ #home .city-hero-inner{width:calc(100% - 60px)}
+ #home .city-hero-heading{margin-bottom:18px;padding:0 4px}
+ #home .city-hero-heading h2{font-size:clamp(1.45rem,7vw,1.9rem)}
+ #home .city-card-grid{height:clamp(300px,90vw,360px)!important}
+ #home .city-preview-card img{height:clamp(160px,48vw,195px)!important;flex-basis:clamp(160px,48vw,195px)!important}
+ #home .city-preview-card>div{padding:10px 12px}
+ #home .city-stage-label{font-size:.6rem;letter-spacing:.05em}
+}
+
+
+/* Shared consent controls: consistent spacing, readable copy, and accessible checkbox sizing across every form. */
+.shared-consent-label{display:flex!important;align-items:flex-start!important;gap:10px!important;line-height:1.55!important;color:#52627a;font-size:12px;margin:16px 0;cursor:pointer;min-width:0}
+.shared-consent-label input[type="checkbox"]{flex:0 0 18px;width:18px;min-width:18px;height:18px;margin:3px 0 0;accent-color:#f15a24;cursor:pointer}
+.shared-consent-label > span:last-child{min-width:0;overflow-wrap:anywhere}
+.shared-consent-label:focus-within{outline:2px solid rgba(241,90,36,.35);outline-offset:3px;border-radius:4px}
+@media(max-width:600px){.shared-consent-label{font-size:12px;gap:9px!important;line-height:1.6!important}}
+
+
+/* FINAL FOOTER FIX: keep social icons in their own row so they never overlap address cards. */
+@media (min-width:1000px){
+  .professional-footer .footer-main{position:relative;min-height:0!important;padding-top:38px!important;padding-bottom:26px!important;grid-template-columns:minmax(230px,1.25fr) minmax(130px,.72fr) minmax(145px,.8fr)!important;gap:clamp(22px,2.2vw,34px)!important;}
+  .professional-footer .footer-social-links{grid-column:1!important;justify-self:start!important;align-self:start!important;display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;gap:10px!important;margin:18px 0 0!important;max-width:100%!important;}
+  .professional-footer .footer-addresses{position:relative!important;inset:auto!important;width:auto!important;max-width:none!important;margin:0 auto!important;padding:0 0 26px!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important;}
+  .professional-footer .footer-address-card{min-width:0!important;min-height:0!important;}
+  .professional-footer .footer-disclaimer{margin-top:0!important;}
+}
+@media (max-width:999px){
+  .professional-footer .footer-social-links{position:static!important;grid-column:1/-1!important;justify-self:center!important;align-self:center!important;display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;justify-content:center!important;align-items:center!important;gap:12px!important;width:100%!important;margin:18px 0 0!important;}
+  .professional-footer .footer-addresses{position:relative!important;inset:auto!important;width:auto!important;max-width:none!important;margin:22px auto 0!important;display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))!important;gap:16px!important;}
+}

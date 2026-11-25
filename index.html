@@ -41,14 +41,13 @@
     <form id="quickInquiryForm">
       <div class="quick-inquiry-grid">
         <label>Full Name *<input name="fullName" autocomplete="name" required placeholder="Enter your full name"></label>
-        <label>Mobile Number *<input name="mobile" type="tel" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" required placeholder="10-digit mobile number"></label>
+        <label>Primary Mobile Number *<input name="mobile" type="tel" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" required placeholder="10-digit mobile number"></label>
         <label>City / Location *<input name="city" required autocomplete="address-level2" placeholder="Your city"></label>
         <label>PIN Code *<input name="pincode" type="tel" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required autocomplete="postal-code" placeholder="6-digit PIN code"></label>
-        <label>Loan Type *<select name="loanType" required><option value="">Select loan type</option><option>Personal Loan</option><option>Business Loan</option><option>Home Loan</option><option>Loan Against Property</option><option>Loan Against Property (Commercial)</option><option>Education Loan</option><option>Vehicle Loan</option><option>Gold Loan</option><option>Other Loan</option></select></label>
-        <label>Required Loan Amount (₹) *<input name="loanAmount" type="number" min="1" required placeholder="Enter amount"></label>
+<label for="loanType">Loan Type *<select name="loanType" id="loanType" required><option value="">Select loan type</option><option value="Home Loan">🏠 Home Loan</option><option value="Balance Transfer">🔄 Balance Transfer</option><option value="Top-Up Home Loan">⬆️ Top-Up Home Loan</option><option value="Mortgage Loan">🏘️ Mortgage Loan</option><option value="Salaried Personal Loan">👔 Salaried Personal Loan</option><option value="Business Loan">🏢 Business Loan</option><option value="Working Capital Loan">📈 Working Capital Loan</option><option value="MSME Loan">🏭 MSME Loan</option><option value="Vehicle & Car Loan">🚗 Vehicle & Car Loan</option><option value="Commercial Vehicle Loan">🚚 Commercial Vehicle Loan</option><option value="Project Finance">🏗️ Project Finance</option><option value="Industrial Property Loan">🏬 Industrial Property Loan</option><option value="Loan Against Property">🏘️ Loan Against Property</option><option value="Machinery Loan">⚙️ Machinery Loan</option><option value="Equipment Finance">🛠️ Equipment Finance</option><option value="Startup Loan">🚀 Startup Loan</option><option value="Agriculture Loan">🌾 Agriculture Loan</option><option value="Solar Loan">☀️ Solar Loan</option><option value="Doctor Loan">👨‍⚕️ Doctor Loan</option><option value="Professional Loan">💼 Professional Loan</option><option value="Construction Loan">🏗️ Construction Loan</option><option value="Equity Funding">🤝 Equity Funding</option><option value="CC / OD Loan">💼 CC / OD Loan</option></select></label>        <label>Required Loan Amount (₹) *<input name="loanAmount" type="number" min="1" required placeholder="Enter amount"></label>
         <label>Employment Type *<select name="employmentType" required><option value="">Select employment type</option><option>Salaried</option><option>Self-Employed</option><option>Business Owner</option><option>Other</option></select></label>
       </div>
-      <label class="quick-inquiry-consent"><input type="checkbox" name="consent" value="Agreed" required><span>I agree to be contacted by Fortune Loan Services regarding my loan inquiry, including receiving calls and messages for further processing of my loan application. I understand that loan approval is subject to eligibility criteria and lender terms.</span></label>
+      <label class="quick-inquiry-consent shared-consent-label"><input type="checkbox" name="consent" value="Agreed" required><span>I agree to be contacted by Fortune Loan Services regarding my loan inquiry, including receiving calls and messages for further processing of my loan application. I understand that loan approval is subject to eligibility criteria and lender terms.</span></label>
       <button class="quick-inquiry-submit" type="submit">Submit Loan Inquiry <span>↗</span></button>
       <p class="quick-inquiry-status" id="quickInquiryStatus" aria-live="polite" role="status"></p>
       <p class="quick-inquiry-status" id="quickInquiryEmailStatus" aria-live="polite" role="status"></p>
@@ -66,7 +65,7 @@
 <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="menuToggle">
 <span></span><span></span><span></span>
 </button>
-<div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="about-us.html">About</a><a href="#loans">Loan Solutions</a><a href="#partners">Partners</a><a href="emi-calculator.html">EMI Calculator</a><a href="join-us.html">Join Us</a><a class="nav-cta refer-cta" href="refer-and-earn.html">Refer and Earn</a><a class="nav-contact-cta" href="contact.html">Contact Us</a></div>
+<div class="nav-links" id="navLinks"><a href="/">Home</a><a href="/about-us">About</a><a href="#loans">Loan Solutions</a><a href="#partners">Partners</a><a href="/emi-calculator">EMI Calculator</a><a href="/join-us">Join Us</a><a class="nav-cta refer-cta" href="/refer-and-earn">Refer and Earn</a><a class="nav-contact-cta" href="/contact">Contact Us</a></div>
 </nav>
 <div aria-label="Fraud alert" class="fraud-alert-ticker" role="status"><div class="fraud-alert-track"><span>🚨 FRAUD ALERT: Never pay anyone in the name of Fortune Loan Services without admin confirmation. 📞 +91 90283 46900 | 📧 official.aaminkhan@gmail.com / legal@fortuneloan.services</span><span aria-hidden="true">🚨 FRAUD ALERT: Never pay anyone in the name of Fortune Loan Services without admin confirmation. 📞 +91 90283 46900 | 📧 official.aaminkhan@gmail.com / legal@fortuneloan.services</span></div></div></header>
 <main>
@@ -1011,31 +1010,31 @@
 <footer class="footer professional-footer" id="site-footer">
 <div class="container footer-main">
 <div class="footer-brand-column">
-<a aria-label="Fortune Loan Services home" class="footer-logo-link" href="index.html">
+<a aria-label="Fortune Loan Services home" class="footer-logo-link" href="/">
 <img alt="Fortune Loan Services" src="assets/fortune-logo.svg"/>
 </a>
 <p class="footer-tagline">Your Trusted Financial Partner</p>
 <p class="footer-intro">Guidance to help individuals, professionals and businesses explore suitable lending options through banks and NBFCs.</p>
 <div class="footer-cta-row">
-<a class="footer-button footer-button-outline" href="emi-calculator.html">EMI Calculator</a>
+<a class="footer-button footer-button-outline" href="/emi-calculator">EMI Calculator</a>
         <button class="footer-button footer-button-outline" type="button" data-open-expert>Talk with our Loan Expert</button>
 </div>
 </div>
 <div class="footer-column">
 <h3>Explore</h3>
-<a href="index.html#about">About Fortune</a>
-<a href="index.html#loans">Loan Solutions</a>
-<a href="index.html#partners">Partner Network</a>
-<a href="index.html#process">How It Works</a>
-<a href="join-us.html">Join Our Network</a>
+<a href="/#about">About Fortune</a>
+<a href="/#loans">Loan Solutions</a>
+<a href="/#partners">Partner Network</a>
+<a href="/#process">How It Works</a>
+<a href="/join-us">Join Our Network</a>
 </div>
 <div class="footer-column">
 <h3>Quick Links</h3>
-<a href="privacy-policy.html">Privacy Policy</a>
-<a href="emi-calculator.html">EMI Calculator</a>
-<a href="terms-of-services.html">Terms of Service</a>
-<a href="application.html">Apply Now</a>
-<a href="index.html#loans">Explore Loan Options</a>
+<a href="/privacy-policy">Privacy Policy</a>
+<a href="/emi-calculator">EMI Calculator</a>
+<a href="/terms-of-services">Terms of Service</a>
+<a href="/application">Apply Now</a>
+<a href="/#loans">Explore Loan Options</a>
 </div>
 <div aria-label="Follow us on social media" class="footer-social-links footer-social-icons">
 <a aria-label="Instagram" title="Instagram" href="https://www.instagram.com/official.fortuneloanservices/?hl=en" rel="noopener noreferrer" target="_blank" class="footer-social-icon instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" class="fill"/></svg></a>
@@ -1045,9 +1044,14 @@
 </div>
 <div class="container footer-addresses">
 <div class="footer-address-card">
-<div class="footer-address-heading"><span aria-hidden="true" class="footer-address-icon">⌖</span><div><span class="footer-eyebrow">CORPORATE OFFICE</span><h3>Vadodara, Gujarat</h3></div></div>
-<p>Incuspaze, 3rd Floor, 1965, Gorwa, Alembic City, Alembic Road, Vadodara, Gujarat – 390003.</p>
-<a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Incuspaze%2C%203rd%20Floor%2C%201965%2C%20Gorwa%2C%20Alembic%20City%2C%20Alembic%20Road%2C%20Vadodara%2C%20Gujarat%20390003" rel="noopener noreferrer" target="_blank">Get directions <span aria-hidden="true">↗</span></a>
+<div class="footer-address-heading"><span aria-hidden="true" class="footer-address-icon">⌖</span><div><span class="footer-eyebrow">HEAD / CORPORATE ADDRESS</span><h3>Mumbai, Maharashtra</h3></div></div>
+<p>27, Dalal St, Kala Ghoda, Fort, Mumbai, Maharashtra 400001</p>
+<a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=27%2C%20Dalal%20St%2C%20Kala%20Ghoda%2C%20Fort%2C%20Mumbai%2C%20Maharashtra%20400001" rel="noopener noreferrer" target="_blank">Get directions <span aria-hidden="true">↗</span></a>
+</div>
+<div class="footer-address-card">
+<div class="footer-address-heading"><span aria-hidden="true" class="footer-address-icon">⌖</span><div><span class="footer-eyebrow">REGISTERED OFFICE ADDRESS</span><h3>Baner, Pune, Maharashtra</h3></div></div>
+<p>Baner, Pune, Maharashtra 411045</p>
+<a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Baner%2C%20Pune%2C%20Maharashtra%20411045" rel="noopener noreferrer" target="_blank">Get directions <span aria-hidden="true">↗</span></a>
 </div>
 </div>
 <div class="container footer-disclaimer">
@@ -1057,7 +1061,7 @@
 <div class="footer-bottom">
 <div class="container footer-bottom-inner">
 <span>© 2026 Fortune Loan Services. All Rights Reserved. | Empowering Your Financial Dreams, One Loan at a Time. 💙</span>
-<div class="footer-legal-links"><a href="terms-of-services.html">Terms of Service</a><a href="index.html#home">Back to Home ↑</a></div>
+<div class="footer-legal-links"><a href="/terms-of-services">Terms of Service</a><a href="/#home">Back to Home ↑</a></div>
 </div>
 </div>
 </footer>
@@ -1075,6 +1079,6 @@
 </div>
 <button aria-label="Back to top" class="back-top" id="backTop">↑</button>
 <script src="script.js"></script>
-<a aria-label="Open loan application form" class="floating-apply-now" href="application.html" id="floatingApplyNow"><span aria-hidden="true" class="floating-apply-icon">↗</span><span>Apply Now</span></a>
+<a aria-label="Open loan application form" class="floating-apply-now" href="/application" id="floatingApplyNow"><span aria-hidden="true" class="floating-apply-icon">↗</span><span>Apply Now</span></a>
 </body>
 </html>
