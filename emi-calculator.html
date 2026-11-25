@@ -6,17 +6,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 </head><body><div class="progress-bar" id="progressBar"></div>
 <header class="site-header scrolled" id="header">
- <div class="container navbar">
-  <a class="brand brand-logo" href="/"><img src="assets/fortune-logo.svg" alt="Fortune Loan Services"></a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-  <nav class="navbar container">
+ <nav class="navbar container">
 <a aria-label="Fortune Loan Services home" class="brand brand-logo" href="/#home"><img alt="Fortune Loan Services logo" src="assets/fortune-logo.svg"/></a>
 <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="menuToggle">
 <span></span><span></span><span></span>
 </button>
 <div class="nav-links" id="navLinks"><a href="/">Home</a><a href="/about-us">About</a><a href="/#loans">Loan Solutions</a><a href="/#partners">Partners</a><a href="/emi-calculator">EMI Calculator</a><a href="/join-us">Join Us</a><a class="nav-cta refer-cta" href="/refer-and-earn">Refer and Earn</a><a class="nav-contact-cta" href="/contact">Contact Us</a></div>
 </nav>
- </div>
 </header><div class="fraud-alert-ticker" role="status" aria-label="Fraud alert"><div class="fraud-alert-track"><span>🚨 FRAUD ALERT: Never pay anyone in the name of Fortune Loan Services without admin confirmation. 📞 +91 90283 46900 | 📧 official.aaminkhan@gmail.com / legal@fortuneloan.services</span><span aria-hidden="true">🚨 FRAUD ALERT: Never pay anyone in the name of Fortune Loan Services without admin confirmation. 📞 +91 90283 46900 | 📧 official.aaminkhan@gmail.com / legal@fortuneloan.services</span></div></div>
 <main><section class="page-hero"><div class="container"><span class="section-kicker">FORTUNE LOAN SERVICES</span><h1>Calculate Your Loan EMI</h1><p>Use the Fortune Loan Services EMI calculator to estimate monthly EMI, total interest and repayment.</p></div></section><section class="content-section"><div class="container"><div class="section-title center"><span class="section-kicker">FINANCIAL TOOL</span><h2>EMI <span>Calculator</span></h2><p>Calculate an indicative monthly EMI, total interest and repayment. Actual lender terms may differ.</p></div>
 <div class="calc-wrap" style="margin-top:40px"><div class="form-card"><div class="form-field"><label for="loanAmount">Loan Amount (₹)</label><input id="loanAmount" name="loanAmount" type="number" min="1000" max="100000000" step="1000" value="800000" required></div><div class="form-field" style="margin-top:15px"><label for="interestRate">Interest Rate (% p.a.)</label><input id="interestRate" name="interestRate" type="number" min="0" max="36" step="0.1" value="9.5" required><small class="form-note">Indicative annual rate; actual rates vary by lender.</small></div><div class="form-field" style="margin-top:15px"><label for="loanYears">Loan Tenure (Years)</label><input id="loanYears" name="loanYears" type="number" min="1" max="40" step="1" value="5" required></div><p id="calculatorError" class="form-note" role="alert" aria-live="polite"></p><button class="btn btn-ghost" style="margin-top:20px;width:100%;justify-content:center" id="calcBtn" type="button">Refresh Estimate</button></div>

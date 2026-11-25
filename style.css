@@ -3893,3 +3893,7 @@ MIT License, Copyright (c) vinodjangid07, vinodjangid07 (Vinod Jangid), PapaUiis
 @keyframes social-slide-in-top{0%{transform:translateY(-50px);opacity:0}100%{transform:translateY(0);opacity:1}}
 @media(max-width:420px){.professional-footer .footer-main .footer-social-links.footer-social-icons{padding:12px;gap:12px}}
 @media(prefers-reduced-motion:reduce){.professional-footer .footer-social-icons .footer-social-icon,.professional-footer .footer-social-icons .footer-social-icon svg{animation:none!important;transition:none!important}}
+
+@media(max-width:800px){
+  .site-header .nav-links{z-index:60}
+}
