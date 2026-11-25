@@ -3864,3 +3864,32 @@ button, .btn, [role="button"] { white-space: normal; }
   .professional-footer .footer-social-links{position:static!important;grid-column:1/-1!important;justify-self:center!important;align-self:center!important;display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;justify-content:center!important;align-items:center!important;gap:12px!important;width:100%!important;margin:18px 0 0!important;}
   .professional-footer .footer-addresses{position:relative!important;inset:auto!important;width:auto!important;max-width:none!important;margin:22px auto 0!important;display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))!important;gap:16px!important;}
 }
+
+
+/* Footer social icons: monochrome at rest, brand-color hover and reflection */
+.professional-footer .footer-social-links.footer-social-icons{display:flex;align-items:center;justify-content:flex-end;gap:18px;flex-wrap:wrap}
+.footer-social-icons .footer-social-icon{position:relative;display:inline-grid;place-items:center;width:42px;height:48px;flex:0 0 42px;border:0;border-radius:0;background:transparent;color:#f4f7fc;box-shadow:none;transition:color .25s ease,transform .3s cubic-bezier(.2,.8,.2,1);-webkit-box-reflect:below 1px linear-gradient(transparent,rgba(255,255,255,.18));}
+.footer-social-icons .footer-social-icon svg{width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:inherit}
+.footer-social-icons .footer-social-icon svg .solid,.footer-social-icons .footer-social-icon svg .fill{fill:currentColor;stroke:none}
+.footer-social-icons .footer-social-icon:hover,.footer-social-icons .footer-social-icon:focus-visible{transform:translateY(-7px);box-shadow:none;outline:2px solid currentColor;outline-offset:5px}
+.footer-social-icons .footer-social-icon.whatsapp:hover{color:#25d366}.footer-social-icons .footer-social-icon.instagram:hover{color:#f00073}.footer-social-icons .footer-social-icon.facebook:hover{color:#1877f2}.footer-social-icons .footer-social-icon.linkedin:hover{color:#0a66c2}.footer-social-icons .footer-social-icon.x:hover{color:#b9c7da}
+@media(max-width:800px){.professional-footer .footer-social-links.footer-social-icons{justify-content:center;gap:16px}}
+@media(prefers-reduced-motion:reduce){.footer-social-icons .footer-social-icon,.footer-social-icons .footer-social-icon svg{transition:none}}
+
+/* From Uiverse.io by PapaUiiss404 - https://uiverse.io/PapaUiiss404/honest-ape-75
+MIT License, Copyright (c) vinodjangid07, vinodjangid07 (Vinod Jangid), PapaUiiss404 (Mulis Sahrain) */
+.professional-footer .footer-main .footer-social-links.footer-social-icons{grid-column:1/-1!important;justify-self:center!important;align-self:center!important;width:fit-content!important;max-width:100%!important;height:fit-content;box-sizing:border-box;display:flex!important;flex-wrap:wrap;justify-content:center!important;align-items:center!important;margin:20px 0 0!important;padding:25px;background-color:rgb(238,238,238)!important;gap:20px;box-shadow:0 0 20px rgba(0,0,0,.055)!important}
+.professional-footer .footer-social-icons .footer-social-icon{width:52px!important;height:52px!important;flex:0 0 52px!important;display:flex!important;align-items:center;justify-content:center;overflow:hidden;border:0!important;border-radius:50%!important;background-color:rgb(44,44,44)!important;color:#fff!important;box-shadow:none!important;-webkit-box-reflect:unset!important;transition:transform .3s ease,background-color .3s ease}
+.professional-footer .footer-social-icons .footer-social-icon svg{width:17px!important;height:auto!important;max-height:24px;fill:#fff!important;stroke:none!important;transition:transform .3s ease,opacity .3s ease}
+.professional-footer .footer-social-icons .footer-social-icon svg path{fill:#fff!important;stroke:none!important}
+.professional-footer .footer-social-icons .footer-social-icon.instagram:hover{background-color:#d62976!important}
+.professional-footer .footer-social-icons .footer-social-icon.x:hover{background-color:#00acee!important}
+.professional-footer .footer-social-icons .footer-social-icon.linkedin:hover{background-color:#0072b1!important}
+.professional-footer .footer-social-icons .footer-social-icon.whatsapp:hover{background-color:#128c7e!important}
+.professional-footer .footer-social-icons .footer-social-icon.facebook:hover{background-color:#1877f2!important}
+.professional-footer .footer-social-icons .footer-social-icon:active{transform:scale(.9);transition-duration:.3s}
+.professional-footer .footer-social-icons .footer-social-icon:hover svg{animation:social-slide-in-top .3s both}
+.professional-footer .footer-social-icons .footer-social-icon:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@keyframes social-slide-in-top{0%{transform:translateY(-50px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@media(max-width:420px){.professional-footer .footer-main .footer-social-links.footer-social-icons{padding:12px;gap:12px}}
+@media(prefers-reduced-motion:reduce){.professional-footer .footer-social-icons .footer-social-icon,.professional-footer .footer-social-icons .footer-social-icon svg{animation:none!important;transition:none!important}}
