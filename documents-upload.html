@@ -1,72 +1,41 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Documents Upload | Fortune Loan Services</title><meta name="description" content="Join the Fortune Loan Services partner network with access to multiple banks and NBFC partnerships and partner support.">
-<link rel="canonical" href="https://fortuneloanservices-r7s5.vercel.app/join-us"><meta property="og:type" content="website"><meta property="og:title" content="Join Us | Fortune Loan Services"><meta property="og:description" content="Explore becoming a Fortune Loan Services network partner."><meta property="og:url" content="https://fortuneloanservices-r7s5.vercel.app/join-us"><meta property="og:image" content="https://fortuneloanservices-r7s5.vercel.app/assets/FAVICON.png">
-<link rel="icon" href="assets/FAVICON.png?v=3" type="image/png" sizes="512x512"><link rel="apple-touch-icon" href="assets/FAVICON.png?v=3"><link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#092c58">
+<meta name="description" content="Securely submit your required loan documents to Fortune Loan Services.">
+<title>Documents Upload | Fortune Loan Services</title>
+<link rel="icon" type="image/png" href="assets/FAVICON.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
+.documents-upload-page{background:#f8f5ed;min-height:100vh}
+.documents-upload-main{width:100%;max-width:1440px;margin:0 auto;padding:clamp(12px,2vw,24px) 16px clamp(24px,4vw,48px)}
+.documents-upload-card{background:#fff;border:1px solid #e8dfce;border-radius:16px;padding:0;overflow:hidden;box-shadow:0 18px 50px #092c5812}
+.documents-upload-frame{display:block;width:100%;height:clamp(1100px,150vh,1800px);border:0;background:#fff}
 
-:root{--navy:#092c58;--gold:#c89b3c;--cream:#f8f5ed;--ink:#203047;--muted:#687789;--line:#e4e8ee;--red:#b42318;--green:#18794e}
-*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-header{background:var(--navy);color:#fff;padding:22px max(20px,calc((100% - 1050px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{font-weight:800;letter-spacing:.02em;font-size:1.1rem}.tagline{color:#e8d39f;font-size:.85rem}
-main{max-width:1050px;margin:32px auto;padding:0 18px 48px}.intro{margin-bottom:22px}.intro h1{margin:0;color:var(--navy);font-size:clamp(1.6rem,4vw,2.25rem)}.intro p{margin:8px 0;color:var(--muted)}
-.steps{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.step{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:.9rem}.step b{color:var(--gold);margin-right:6px}
-.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:clamp(18px,3vw,28px);margin:16px 0;box-shadow:0 8px 24px #092c580a}.panel h2{margin:0 0 5px;color:var(--navy);font-size:1.25rem}.hint{margin:0 0 18px;color:var(--muted);font-size:.92rem}
-.category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.category{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:16px;cursor:pointer}.category:has(input:checked){border-color:var(--gold);background:#fffaf0;box-shadow:0 0 0 2px #c89b3c22}.category input{margin-top:5px;accent-color:var(--navy)}.category strong{display:block;color:var(--navy)}.category small{color:var(--muted)}
-.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end}.field{min-width:0}label{display:block;font-weight:650;font-size:.92rem;margin-bottom:7px}input:not([type=radio]):not([type=checkbox]),select{width:100%;min-height:46px;border:1px solid #cbd3de;border-radius:9px;padding:10px 12px;background:#fff;color:var(--ink);font:inherit}input:focus,select:focus,button:focus-visible{outline:3px solid #c89b3c55;outline-offset:2px}
-button{border:0;border-radius:9px;padding:12px 18px;min-height:46px;font:inherit;font-weight:700;cursor:pointer;transition:transform .15s,background .15s}button:hover{transform:translateY(-1px)}.primary{background:var(--navy);color:#fff}.primary:hover{background:#123e76}.secondary{background:#f0f2f5;color:var(--navy);border:1px solid var(--line)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.message{display:none;padding:11px 14px;border-radius:9px;margin:14px 0;font-size:.93rem}.message.show{display:block}.error{background:#fff1f0;color:var(--red);border:1px solid #ffd5d2}.success{background:#eefaf3;color:var(--green);border:1px solid #c6eed7}.status{color:var(--navy);font-weight:650;margin:12px 0}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.doc-group{margin:20px 0}.doc-group h3{font-size:1rem;color:var(--navy);border-bottom:1px solid var(--line);padding-bottom:8px}.doc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.doc{border:1px solid var(--line);border-radius:12px;padding:14px;min-width:0}.doc-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.doc-title{font-weight:700;color:var(--navy)}.badge{font-size:.72rem;border-radius:99px;padding:3px 8px;white-space:nowrap}.required{background:#fff1e8;color:#9a4d00}.optional{background:#eef2f7;color:#536273}.doc p{font-size:.84rem;color:var(--muted);margin:8px 0}.doc input[type=file]{width:100%;font-size:.85rem}.file-meta{font-size:.82rem;margin-top:7px;overflow-wrap:anywhere}.fineprint{font-size:.84rem;color:var(--muted);margin-top:10px}.consent{display:flex;gap:10px;align-items:flex-start;margin:20px 0}.consent input{margin-top:5px;accent-color:var(--navy)}.hidden{display:none!important}footer{text-align:center;color:var(--muted);font-size:.82rem;padding:20px}
-@media(max-width:650px){header{align-items:flex-start;flex-direction:column}.category-grid,.contact-grid,.doc-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}.row button{width:100%}.steps{gap:7px}.step{font-size:.8rem;padding:7px 10px}}
-
-</style></head><body><div class="progress-bar" id="progressBar"></div>
-<header class="site-header scrolled" id="header">
- <nav class="navbar container">
-<a aria-label="Fortune Loan Services home" class="brand brand-logo" href="/#home"><img alt="Fortune Loan Services logo" src="assets/fortune-logo.svg"/></a>
+@media(max-width:640px){.documents-upload-main{padding:10px 8px 28px}.documents-upload-card{border-radius:10px}.documents-upload-frame{height:1700px}}
+</style>
+</head>
+<body class="documents-upload-page">
+<header class="site-header" id="header">
+<nav class="navbar container">
+<a aria-label="Fortune Loan Services home" class="brand brand-logo" href="/"><img alt="Fortune Loan Services logo" src="assets/fortune-logo.svg"/></a>
 <button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="menuToggle">
 <span></span><span></span><span></span>
 </button>
-<div class="nav-links" id="navLinks"><a href="/">Home</a><a href="/about-us">About</a><a href="/#loans">Loan Solutions</a><a href="/#partners">Partners</a><a href="/emi-calculator">EMI Calculator</a><a href="/join-us">Join Us</a><a href="/documents-upload">Documents Upload</a><a class="nav-cta refer-cta" href="/refer-and-earn">Refer and Earn</a><a class="nav-contact-cta" href="/contact">Contact Us</a></div>
+<div class="nav-links" id="navLinks"><a href="/">Home</a><a href="/about-us">About</a><a href="#loans">Loan Solutions</a><a href="#partners">Partners</a><a href="/emi-calculator">EMI Calculator</a><a href="/join-us">Join Us</a><a href="/document-upload" aria-current="page">Documents Upload</a><a class="nav-cta refer-cta" href="/refer-and-earn">Refer and Earn</a><a class="nav-contact-cta" href="/contact">Contact Us</a></div>
 </nav>
-</header><div class="fraud-alert-ticker" role="status" aria-label="Fraud alert"><div class="fraud-alert-track"><span>🚨 FRAUD ALERT: Never pay anyone in the name of Fortune Loan Services without admin confirmation. 📞 +91 90283 46900 | 📧 official.aaminkhan@gmail.com / legal@fortuneloan.services</span><span aria-hidden="true">🚨 FRAUD ALERT: Never pay anyone in the name of Fortune Loan Services without admin confirmation. 📞 +91 90283 46900 | 📧 official.aaminkhan@gmail.com / legal@fortuneloan.services</span></div></div>
-<main>
-  <section class="intro"><h1>Upload your loan documents</h1><p>Already submitted your loan application? Choose your applicant category and loan type to see the relevant document checklist.</p></section>
-  <div class="steps"><span class="step"><b>1</b> Category</span><span class="step"><b>2</b> Loan type</span><span class="step"><b>3</b> Contact</span><span class="step"><b>4</b> Documents</span></div>
-
-  <section class="panel">
-    <h2>1. Select applicant category</h2><p class="hint">Choose the option that best describes you.</p>
-    <div class="category-grid">
-      <label class="category"><input type="radio" name="category" value="salaried"><span><strong>Salaried Person</strong><small>Employed by a company or organization.</small></span></label>
-      <label class="category"><input type="radio" name="category" value="business"><span><strong>Business Owner / Self-Employed</strong><small>Business owners, professionals, and self-employed applicants.</small></span></label>
-    </div>
+<div aria-label="Fraud alert" class="fraud-alert-ticker" role="status"><div class="fraud-alert-track"><span>🚨 FRAUD ALERT: Never pay anyone in the name of Fortune Loan Services without admin confirmation. 📞 +91 90283 46900 | 📧 official.aaminkhan@gmail.com / business@fortuneloan.services</span><span aria-hidden="true">🚨 FRAUD ALERT: Never pay anyone in the name of Fortune Loan Services without admin confirmation. 📞 +91 90283 46900 | 📧 official.aaminkhan@gmail.com / legal@fortuneloan.services</span></div></div></header>
+<main class="documents-upload-main" aria-label="Documents Upload">
+  <section class="documents-upload-card" aria-label="Document upload form">
+    <iframe class="documents-upload-frame" title="Fortune Loan Services document upload form" src="https://script.google.com/macros/s/AKfycbxqEzPA1fbeHD9vuUgqtVrTEREApR3p7UFalWfemGbI6MK4ZL5WkN5Xa2lUDh5YvHWG/exec" loading="eager" allow="clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </section>
-
-  <section class="panel">
-    <h2>2. Select loan type</h2><p class="hint">Only loan types relevant to your category are shown.</p>
-    <div class="row"><div class="field"><label for="loanType">Loan type</label><select id="loanType" disabled><option value="">Select category first</option></select></div><button class="primary" id="showDocs">Show Documents</button></div>
-    <div id="filterMessage" class="message error" role="alert"></div><div id="filterStatus" class="status" aria-live="polite"></div>
-  </section>
-
-  <form id="uploadForm" class="hidden" novalidate>
-    <section class="panel">
-      <h2>3. Applicant contact details</h2><p class="hint">Enter only your name and contact number so we can match these documents to your existing application.</p>
-      <div class="contact-grid">
-        <div class="field"><label for="fullName">Full Name *</label><input id="fullName" name="fullName" autocomplete="name" required maxlength="100" placeholder="Enter full name"></div>
-        <div class="field"><label for="phone">Contact Number *</label><input id="phone" name="phone" inputmode="numeric" autocomplete="tel-national" maxlength="10" pattern="[0-9]{10}" required placeholder="10-digit mobile number"></div>
-      </div>
-      <div id="contactMessage" class="message error" role="alert"></div>
-    </section>
-    <section class="panel">
-      <h2>4. Upload Documents</h2><p class="hint">Checklist is indicative. Requirements may vary by lender and applicant profile; additional documents may be requested.</p>
-      <div id="checklist"></div>
-      <label class="consent"><input type="checkbox" id="consent" required><span>I confirm that the information and documents provided are accurate and consent to their processing for loan assistance.</span></label>
-      <div id="submitMessage" class="message" role="status"></div>
-      <div class="actions"><button class="primary" type="submit">Submit Documents</button><button class="secondary" type="button" id="reset">Reset</button></div>
-      <p class="fineprint">Demo only: files are checked in your browser and are not transmitted or stored. Connect a secure backend before using this form for real customer documents.</p>
-    </section>
-  </form>
-</main><footer class="footer professional-footer" id="site-footer">
+</main>
+<footer class="footer professional-footer" id="site-footer">
 <div class="container footer-main">
 <div class="footer-brand-column">
 <a aria-label="Fortune Loan Services home" class="footer-logo-link" href="/">
@@ -123,141 +92,7 @@ button{border:0;border-radius:9px;padding:12px 18px;min-height:46px;font:inherit
 <div class="footer-legal-links"><a href="/terms-of-services">Terms of Service</a><a href="/#home">Back to Home ↑</a></div>
 </div>
 </div>
-</footer><div class="expert-modal" id="expertModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="expertModalTitle"><button class="expert-modal-overlay" type="button" data-close-expert aria-label="Close expert popup"></button><div class="expert-modal-card" role="document"><div class="expert-modal-header"><div class="expert-modal-brand"><img src="assets/fortune-logo.svg" alt="Fortune Loan Services logo"><strong>Fortune Loan Services</strong></div><button type="button" class="expert-modal-close" data-close-expert aria-label="Close">×</button></div><p class="expert-eyebrow">TALK WITH OUR LOAN EXPERT</p><h2 id="expertModalTitle">Aamin Khan</h2><p class="expert-role">Founder &amp; Director</p><div class="expert-contact-details"><a href="tel:+919028346900">☎ +91 90283 46900</a><a href="mailto:official.aaminkhan@gmail.com">✉ official.aaminkhan@gmail.com</a></div><p class="expert-help">Get guidance on available loan options and the application process.</p></div></div>
-<script>
-
-const LOAN_TYPES = {
-  salaried: ["Home Loan","Balance Transfer","Top-Up Home Loan","Mortgage Loan","Salaried Personal Loan","Vehicle & Car Loan","Commercial Vehicle Loan","Industrial Property Loan","Loan Against Property","Professional Loan","Construction Loan","Equity Funding"],
-  business: ["Home Loan","Balance Transfer","Top-Up Home Loan","Mortgage Loan","Unsecured Business Loan","Working Capital Loan","MSME Loan","Vehicle & Car Loan","Commercial Vehicle Loan","Project Finance","Industrial Property Loan","Loan Against Property","Machinery Loan","Equipment Finance","Startup Loan","Agriculture Loan","Gold Loan","Doctor Loan","Professional Loan","Construction Loan","Equity Funding"]
-};
-
-// Illustrative examples. Extend this configuration for additional loan-specific requirements.
-const COMMON_ID = [{title:"Identity Proof",documents:[{name:"PAN Card",required:true},{name:"Aadhaar Card / other accepted identity and address proof",required:true},{name:"Passport-size Photograph",required:false}]}];
-const SALARIED_INCOME = [{title:"Income & Employment Proof",documents:[{name:"Latest 3 months' salary slips",required:true},{name:"Latest 6 months' bank statement showing salary credits",required:true},{name:"Form 16 / latest ITR, if available",required:false},{name:"Employment ID / appointment letter",required:false}]}];
-const BUSINESS_INCOME = [{title:"Business & Financial Documents",documents:[{name:"Business registration / constitution proof",required:true},{name:"Latest 2 years' ITR with computation",required:true},{name:"Latest 12 months' business bank statement",required:true},{name:"GST returns, if applicable",required:false},{name:"Audited financial statements / balance sheet, if available",required:false}]}];
-const EXISTING_LOAN = [{title:"Existing Loan Documents",documents:[{name:"Existing loan sanction letter / agreement, if applicable",required:false},{name:"Latest loan statement / repayment schedule, if applicable",required:false},{name:"Foreclosure / balance transfer letter, if applicable",required:false}]}];
-const PROPERTY = [{title:"Property Documents",documents:[{name:"Agreement to sell / allotment letter",required:true},{name:"Title deed / chain documents available",required:true},{name:"Approved building plan / layout approval, if applicable",required:false},{name:"Property tax receipt / latest utility bill, if available",required:false},{name:"Occupancy / completion certificate, if applicable",required:false}]}];
-const VEHICLE = [{title:"Vehicle Documents",documents:[{name:"Dealer quotation / proforma invoice",required:true},{name:"Vehicle registration certificate (for used vehicle)",required:false},{name:"Insurance / valuation / fitness papers (for used or commercial vehicle)",required:false}]}];
-const BUSINESS_PROOF = [{title:"Business & Financial Documents",documents:[{name:"Business registration / constitution proof",required:true},{name:"Udyam Registration, if available",required:false},{name:"GST registration and latest returns, if applicable",required:false},{name:"Business bank statement (6–12 months)",required:true},{name:"Latest ITR / financial statements, if available",required:false}]}];
-const PROJECT = [{title:"Project Documents",documents:[{name:"Detailed Project Report (DPR) / business plan",required:true},{name:"Project cost estimates and quotations",required:true},{name:"Projected cash flow / repayment plan",required:true},{name:"Land / site ownership or lease documents, if applicable",required:false},{name:"Required statutory approvals / licenses, if applicable",required:false}]}];
-const MACHINERY = [{title:"Machinery or Equipment Documents",documents:[{name:"Supplier quotation / proforma invoice",required:true},{name:"Technical specifications and installation estimate",required:true},{name:"Warranty / service details, if available",required:false},{name:"Existing machinery invoice / ownership proof, if applicable",required:false}]}];
-const AGRICULTURE = [{title:"Agriculture Documents",documents:[{name:"Land ownership / 7/12 extract / 8A or applicable land record",required:true},{name:"Crop / cultivation details or project estimate",required:true},{name:"Irrigation / equipment quotations, if applicable",required:false},{name:"Relevant agriculture permits / scheme papers, if applicable",required:false}]}];
-const PROFESSIONAL = [{title:"Professional Documents",documents:[{name:"Professional qualification / degree certificate",required:true},{name:"Professional registration / license, if applicable",required:false},{name:"Practice / clinic / office proof, if applicable",required:false}]}];
-const LOAN_EXTRA = {
-  "Balance Transfer":[{title:"Existing Loan Documents",documents:[{name:"Current lender sanction letter",required:true},{name:"Latest outstanding loan statement",required:true},{name:"Repayment track / loan account statement",required:true},{name:"Foreclosure letter, if available",required:false}]}],
-  "Top-Up Home Loan":[{title:"Existing Loan Documents",documents:[{name:"Current home loan statement",required:true},{name:"Existing sanction letter",required:true},{name:"Repayment track",required:false}]},...PROPERTY],
-  "Mortgage Loan":[...PROPERTY,{title:"Mortgage / Security Documents",documents:[{name:"Ownership and encumbrance-related papers available",required:true},{name:"Existing mortgage / loan details, if any",required:false}]}],
-  "Loan Against Property":[...PROPERTY,{title:"Mortgage / Security Documents",documents:[{name:"Property ownership and chain documents",required:true},{name:"Existing mortgage / loan details, if any",required:false}]}],
-  "Construction Loan":[...PROPERTY,{title:"Construction Documents",documents:[{name:"Construction estimate and stage-wise cost",required:true},{name:"Approved building plan / commencement approval, if applicable",required:true},{name:"Architect / contractor quotation, if applicable",required:false}]}],
-  "Unsecured Business Loan":[...BUSINESS_PROOF],
-  "Working Capital Loan":[...BUSINESS_PROOF,{title:"Working Capital Documents",documents:[{name:"Stock / inventory statement, if available",required:false},{name:"Debtors and creditors statement, if available",required:false},{name:"Working capital assessment / cash-flow estimate",required:true}]}],
-  "MSME Loan":[...BUSINESS_PROOF],
-  "Project Finance":[...PROJECT,...BUSINESS_PROOF],
-  "Industrial Property Loan":[...PROPERTY,...BUSINESS_PROOF],
-  "Machinery Loan":[...MACHINERY,...BUSINESS_PROOF],
-  "Equipment Finance":[...MACHINERY,...BUSINESS_PROOF],
-  "Startup Loan":[...PROJECT,{title:"Startup Documents",documents:[{name:"Founder profile / qualification proof",required:false},{name:"Incorporation / registration documents, if registered",required:false},{name:"Pitch deck / business model and projections",required:true}]}],
-  "Agriculture Loan":[...AGRICULTURE],
-  "Gold Loan":[{title:"Gold Loan Documents",documents:[{name:"Gold items for lender appraisal (physical verification)",required:true},{name:"Purchase invoice / ownership proof, if available",required:false}]}],
-  "Doctor Loan":[...PROFESSIONAL,{title:"Medical Practice Documents",documents:[{name:"Medical degree and applicable registration certificate",required:true},{name:"Clinic / hospital employment or practice proof",required:false}]}],
-  "Professional Loan":[...PROFESSIONAL],
-  "Equity Funding":[...BUSINESS_PROOF,{title:"Funding / Ownership Documents",documents:[{name:"Shareholding / cap table, if applicable",required:true},{name:"Business valuation / funding proposal, if available",required:false},{name:"Investor or company incorporation documents, if applicable",required:false}]}]
-};
-function makeChecklist(category, loan){
-  let groups=[...COMMON_ID];
-  if(category==="Salaried Person") groups.push(...SALARIED_INCOME);
-  else groups.push(...BUSINESS_INCOME);
-  if(LOAN_EXTRA[loan]) groups.push(...LOAN_EXTRA[loan]);
-  else if(["Home Loan"].includes(loan)) groups.push(...PROPERTY);
-  else if(["Vehicle & Car Loan","Commercial Vehicle Loan"].includes(loan)) groups.push(...VEHICLE);
-  else if(["Salaried Personal Loan"].includes(loan)) groups.push(...EXISTING_LOAN);
-  else if(["Balance Transfer","Top-Up Home Loan"].includes(loan)) groups.push(...EXISTING_LOAN);
-  else if(["Mortgage Loan","Loan Against Property","Construction Loan"].includes(loan)) groups.push(...PROPERTY);
-  else if(["Industrial Property Loan"].includes(loan)) groups.push(...PROPERTY);
-  else if(["Machinery Loan","Equipment Finance"].includes(loan)) groups.push(...MACHINERY);
-  else if(["Project Finance","Startup Loan"].includes(loan)) groups.push(...PROJECT);
-  else if(["Agriculture Loan"].includes(loan)) groups.push(...AGRICULTURE);
-  else if(["Doctor Loan","Professional Loan"].includes(loan)) groups.push(...PROFESSIONAL);
-  if(!["Balance Transfer","Top-Up Home Loan","Mortgage Loan","Loan Against Property","Construction Loan","Unsecured Business Loan","Working Capital Loan","MSME Loan","Project Finance","Industrial Property Loan","Machinery Loan","Equipment Finance","Startup Loan","Agriculture Loan","Gold Loan","Doctor Loan","Professional Loan","Equity Funding"].includes(loan)) groups.push(...EXISTING_LOAN);
-  return groups;
-}
-const categoryLabels={salaried:"Salaried Person",business:"Business Owner / Self-Employed"};
-const DOC_CONFIG = {};
-["salaried","business"].forEach(cat=>(LOAN_TYPES[cat]||[]).forEach(loan=>{ DOC_CONFIG[`${categoryLabels[cat]}|${loan}`]=makeChecklist(categoryLabels[cat],loan); }));
-const categoryInputs=[...document.querySelectorAll('input[name="category"]')];
-const loanSelect=document.getElementById("loanType"), form=document.getElementById("uploadForm");
-const filterMessage=document.getElementById("filterMessage"), filterStatus=document.getElementById("filterStatus");
-let appliedKey="";
-function showMessage(el,text,type="error"){el.textContent=text;el.className=`message show ${type}`;}
-function clearMessage(el){el.textContent="";el.className="message";}
-function clearApplied(){appliedKey="";form.classList.add("hidden");document.getElementById("checklist").innerHTML="";filterStatus.textContent="";clearMessage(document.getElementById("submitMessage"));}
-function selectedCategory(){return categoryInputs.find(x=>x.checked)?.value||"";}
-function populateLoans(){
-  const cat=selectedCategory(); clearApplied(); loanSelect.innerHTML="";
-  loanSelect.disabled=!cat;
-  loanSelect.add(new Option(cat?"Choose a loan type":"Select category first",""));
-  (LOAN_TYPES[cat]||[]).forEach(name=>loanSelect.add(new Option(name,name)));
-}
-categoryInputs.forEach(input=>input.addEventListener("change",populateLoans));
-loanSelect.addEventListener("change",()=>{clearApplied();clearMessage(filterMessage);});
-document.getElementById("showDocs").addEventListener("click",()=>{
-  clearMessage(filterMessage);clearApplied();
-  const cat=selectedCategory(), loan=loanSelect.value;
-  if(!cat){showMessage(filterMessage,"Please select an applicant category first.");return;}
-  if(!loan){showMessage(filterMessage,"Please choose a loan type first.");return;}
-  appliedKey=`${categoryLabels[cat]}|${loan}`;
-  form.classList.remove("hidden");
-  filterStatus.textContent=`Showing documents for: ${loan} — ${categoryLabels[cat]}.`;
-  renderChecklist(appliedKey);
-});
-function renderChecklist(key){
-  const target=document.getElementById("checklist");target.innerHTML="";
-  const groups=DOC_CONFIG[key];
-  if(!groups){target.innerHTML="";return;}
-  groups.forEach((group,gi)=>{
-    const section=document.createElement("section");section.className="doc-group";
-    const heading=document.createElement("h3");heading.textContent=group.title;section.appendChild(heading);
-    const grid=document.createElement("div");grid.className="doc-grid";
-    group.documents.forEach((doc,di)=>{
-      const id=`file-${gi}-${di}`,card=document.createElement("div");card.className="doc";
-      const top=document.createElement("div");top.className="doc-top";
-      const name=document.createElement("span");name.className="doc-title";name.textContent=doc.name;
-      const badge=document.createElement("span");badge.className=`badge ${doc.required?"required":"optional"}`;badge.textContent=doc.required?"Required":"Optional";
-      top.append(name,badge);
-      const hint=document.createElement("p");hint.textContent="Upload a clear, readable copy. PDF, JPG, JPEG or PNG · Max 10 MB.";
-      const input=document.createElement("input");input.type="file";input.id=id;input.name=id;input.accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png";input.dataset.required=String(doc.required);input.dataset.doc=doc.name;input.setAttribute("aria-label",`Upload ${doc.name}`);if(doc.required)input.required=true;
-      const meta=document.createElement("div");meta.className="file-meta";meta.id=`meta-${id}`;meta.setAttribute("aria-live","polite");
-      input.addEventListener("change",()=>validateFile(input,meta));
-      card.append(top,hint,input,meta);grid.appendChild(card);
-    });
-    section.appendChild(grid);target.appendChild(section);
-  });
-}
-function validateFile(input,meta){
-  meta.textContent="";input.setCustomValidity("");
-  const file=input.files[0];if(!file)return true;
-  const ext=file.name.split(".").pop().toLowerCase(),allowed=["pdf","jpg","jpeg","png"];
-  if(!allowed.includes(ext)||!["application/pdf","image/jpeg","image/png",""].includes(file.type)){input.value="";meta.textContent="Unsupported file type. Choose PDF, JPG, JPEG or PNG.";input.setCustomValidity("Unsupported file type.");return false;}
-  if(file.size>10*1024*1024){input.value="";meta.textContent="File exceeds the 10 MB limit. Please choose a smaller file.";input.setCustomValidity("File is larger than 10 MB.");return false;}
-  meta.textContent=`Selected: ${file.name} (${(file.size/1024/1024).toFixed(2)} MB)`;return true;
-}
-document.getElementById("phone").addEventListener("input",e=>{e.target.value=e.target.value.replace(/\D/g,"").slice(0,10);});
-form.addEventListener("submit",e=>{
-  e.preventDefault();clearMessage(document.getElementById("submitMessage"));clearMessage(document.getElementById("contactMessage"));
-  const contactMsg=document.getElementById("contactMessage"),name=document.getElementById("fullName").value.trim(),phone=document.getElementById("phone").value;
-  if(!name||!/^\d{10}$/.test(phone)){showMessage(contactMsg,!name?"Please enter your full name.":"Contact number must contain exactly 10 digits.");(!name?document.getElementById("fullName"):document.getElementById("phone")).focus();return;}
-  if(!document.getElementById("consent").checked){showMessage(document.getElementById("submitMessage"),"Please confirm the consent checkbox.");document.getElementById("consent").focus();return;}
-  const files=[...form.querySelectorAll('input[type="file"]')];let firstInvalid=null;
-  for(const input of files){const meta=document.getElementById(`meta-${input.id}`);if(input.files.length&&!validateFile(input,meta)){firstInvalid=firstInvalid||input;}else if(input.dataset.required==="true"&&!input.files.length){input.setCustomValidity("This document is required.");firstInvalid=firstInvalid||input;}else input.setCustomValidity("");}
-  if(firstInvalid){showMessage(document.getElementById("submitMessage"),firstInvalid.files.length?"Please correct the invalid file.":"Please upload all required documents.");firstInvalid.focus();return;}
-  showMessage(document.getElementById("submitMessage"),"Demo validation complete. No files were sent or saved. Connect a secure backend to receive documents.","success");
-});
-document.getElementById("reset").addEventListener("click",()=>{
-  form.reset();categoryInputs.forEach(x=>x.checked=false);populateLoans();loanSelect.innerHTML='<option value="">Select category first</option>';loanSelect.disabled=true;
-  document.getElementById("fullName").value="";document.getElementById("phone").value="";clearApplied();clearMessage(filterMessage);clearMessage(document.getElementById("contactMessage"));clearMessage(document.getElementById("submitMessage"));
-});
-
-</script>
+</footer>
 <script src="script.js"></script>
-<a class="floating-apply-now" id="floatingApplyNow" href="/#open-loan-form"  aria-label="Open loan application form"><span class="floating-apply-icon" aria-hidden="true">↗</span><span>Apply Now</span></a>
-</body></html>
+</body>
+</html>

@@ -3963,3 +3963,11 @@ MIT License, Copyright (c) vinodjangid07, vinodjangid07 (Vinod Jangid), PapaUiis
   outline:3px solid rgba(198,155,67,.3);
   outline-offset:3px;
 }
+
+/* Documents Upload navigation fit: preserve button order and prevent desktop nav crowding. */
+@media (min-width:761px){
+  .navbar{gap:clamp(10px,1.2vw,18px)}
+  .nav-links{gap:clamp(7px,0.95vw,14px);font-size:clamp(11px,.9vw,13px)}
+  .nav-links>a{white-space:nowrap}
+  .nav-links .nav-cta,.nav-links .nav-contact-cta{padding:10px 13px!important}
+}
