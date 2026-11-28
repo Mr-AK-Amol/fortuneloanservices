@@ -1181,7 +1181,4 @@ document.addEventListener("DOMContentLoaded", () => {
       if (submitButton) { submitButton.disabled = false; submitButton.textContent = originalButtonText; }
     }
   }, true);
-
-=======
->>>>>>> 60a31c5825fe02d8f15b53b3b2cf6cc71ea2913a
 });
