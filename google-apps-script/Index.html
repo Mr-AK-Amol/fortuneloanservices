@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root{font-family:Arial,sans-serif;color:#092c58;background:#f7f5f0}
+    *{box-sizing:border-box}body{margin:0;background:transparent}
+    .wrap{max-width:900px;margin:0 auto;padding:12px}
+    .panel{background:#fff;border:1px solid #eadfca;border-radius:18px;padding:clamp(18px,3vw,30px);box-shadow:0 12px 36px #092c5810}
+    h2{margin:0 0 8px;font-size:clamp(23px,4vw,32px)}p{color:#5c687b;line-height:1.55}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    label{display:block;font-weight:700;font-size:14px;color:#243b5a}
+    input,select,textarea{display:block;width:100%;margin-top:7px;padding:12px;border:1px solid #d5dce5;border-radius:10px;background:#fff;font:inherit;color:#172b49}
+    input[type=file]{padding:10px}
+    .wide{grid-column:1/-1}.hint{font-size:12px;font-weight:400;color:#68778d}
+    .checklist{background:#f8f7f3;border:1px solid #eee4d1;border-radius:12px;padding:14px;margin:16px 0}
+    .checklist h3{margin:0 0 8px;font-size:16px}.checklist ul{margin:0;padding-left:20px;color:#4d5d72;line-height:1.7}
+    button{border:0;border-radius:999px;padding:14px 22px;background:#c8a45d;color:#092c58;font-weight:800;font-size:15px;cursor:pointer}
+    button:disabled{opacity:.6;cursor:wait}.status{margin-top:14px;font-weight:700;line-height:1.5}
+    .privacy{font-size:12px}.hidden{display:none}
+    @media(max-width:620px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}}
+  </style>
+</head>
+<body><div class="wrap"><section class="panel">
+  <h2>Upload Required Documents</h2>
+  <p>Submit clear PDF, JPG, or PNG documents. Maximum 5 MB per file and 8 MB total. This checklist is indicative; the lender may request additional documents.</p>
+  <form id="uploadForm">
+    <div class="grid">
+      <label>Applicant full name *<input name="fullName" required maxlength="120" autocomplete="name"></label>
+      <label>Mobile number *<input name="mobile" required inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10-digit mobile number"></label>
+      <label>City / location *<input name="city" required maxlength="100"></label>
+      <label>Applicant category *<select name="category" required><option value="">Select category</option><option>Salaried</option><option>Self-employed / Business</option><option>Other</option></select></label>
+      <label class="wide">Loan type *<select name="loanType" id="loanType" required>
+        <option value="">Select loan type</option>
+        <option>Personal Loan — Salaried</option><option>Personal Loan — Self-employed</option><option>Business Loan</option><option>Working Capital / MSME Loan</option><option>Home Loan — New Purchase</option><option>Home Loan — Resale</option><option>Home Loan — Balance Transfer / Top-up</option><option>Loan Against Property / Mortgage</option><option>Vehicle / Car Loan</option><option>Commercial Vehicle Loan</option><option>Project Finance</option><option>Industrial Property Loan</option><option>Machinery / Equipment Finance</option><option>Startup Loan</option><option>Agriculture Loan</option><option>Solar Loan</option><option>Doctor / Professional Loan</option><option>Construction Loan</option><option>CC / OD Loan</option><option>Other Loan</option>
+      </select></label>
+    </div>
+    <div class="checklist"><h3>Indicative document checklist</h3><div id="checklistText"><p>Select your applicant category and loan type to view the relevant checklist.</p></div></div>
+    <label>Upload documents * <span class="hint">(Select multiple files; PDF, JPG, PNG only)</span><input id="files" name="files" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" multiple required></label>
+    <label style="margin-top:14px">Additional note (optional)<textarea name="note" rows="3" maxlength="1000" placeholder="Any details you want to share"></textarea></label>
+    <p class="privacy">By submitting, you confirm that you are authorized to share these documents for your loan inquiry. Please upload only the documents requested for your application. Access to uploaded files is restricted to the receiving Drive account.</p>
+    <button id="submitBtn" type="submit">Upload Documents</button><div class="status" id="status" role="status" aria-live="polite"></div>
+  </form>
+</section></div>
+<script>
+const form=document.getElementById('uploadForm'), filesInput=document.getElementById('files'), statusBox=document.getElementById('status'), submitBtn=document.getElementById('submitBtn');
+const general=['PAN card','Aadhaar / officially accepted identity proof','Recent passport-size photograph','Address proof','Bank statements for the recent 6 months','Existing loan / EMI details, if any'];
+const salaried=['Latest 3 months salary slips','Salary account bank statement for 6 months','Employee ID / employment proof','Form 16 or ITR, if available'];
+const business=['Business proof (Udyam / GST / Shop Act / licence, as applicable)','Business address proof','Business bank statements for 6–12 months','Latest ITR and financial statements, if available','Business profile / ownership proof'];
+const property=['Property agreement / sale deed or allotment letter','Property title chain / ownership papers','Approved plan and permissions, where applicable','Seller / builder details and payment schedule'];
+const checklist=document.getElementById('checklistText');
+function renderChecklist(){
+ const category=form.elements.category.value, loan=form.elements.loanType.value;
+ if(!category||!loan){checklist.innerHTML='<p>Select your applicant category and loan type to view the relevant checklist.</p>';return;}
+ let docs=[...general];
+ docs.push(category==='Salaried'?'Employment and income proof: '+salaried.join('; '):category==='Self-employed / Business'?'Business and income proof: '+business.join('; '):'Income source and supporting proof');
+ if(/Home Loan|Property|Mortgage|Construction|Industrial Property/i.test(loan)) docs.push(...property);
+ if(/Vehicle|Commercial Vehicle/i.test(loan)) docs.push('Vehicle quotation / proforma invoice','Vehicle registration / insurance details for resale, if applicable');
+ if(/Machinery|Equipment|Project|Working Capital|MSME|Business|Startup|CC \\/ OD/i.test(loan)) docs.push('Project report / business plan, if available','Quotation / invoices / working capital assessment, as applicable');
+ if(/Solar/i.test(loan)) docs.push('Solar system quotation and installation details','Property ownership / roof permission proof, as applicable');
+ if(/Agriculture/i.test(loan)) docs.push('Land ownership / 7-12 extract or lease proof, as applicable','Crop / farming income details, if available');
+ checklist.innerHTML='<ul>'+[...new Set(docs)].map(x=>'<li>'+escapeHtml(x)+'</li>').join('')+'</ul>';
+}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+form.elements.category.addEventListener('change',renderChecklist);form.elements.loanType.addEventListener('change',renderChecklist);
+function readFile(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve({name:file.name,mimeType:file.type,size:file.size,data:String(reader.result).split(',')[1]});reader.onerror=()=>reject(new Error('Could not read '+file.name));reader.readAsDataURL(file);});}
+form.addEventListener('submit',async e=>{
+ e.preventDefault();statusBox.textContent='';statusBox.style.color='#092c58';
+ const files=Array.from(filesInput.files||[]), total=files.reduce((n,f)=>n+f.size,0);
+ if(!files.length){statusBox.textContent='Select at least one document.';return;}
+ if(files.some(f=>!['application/pdf','image/jpeg','image/png'].includes(f.type))){statusBox.textContent='Only PDF, JPG, and PNG files are accepted.';return;}
+ if(files.some(f=>f.size>5*1024*1024)||total>8*1024*1024){statusBox.textContent='Each file must be 5 MB or less and the total must be 8 MB or less.';return;}
+ submitBtn.disabled=true;submitBtn.textContent='Uploading…';statusBox.textContent='Uploading your documents securely. Please keep this page open.';
+ try{
+  const payload={fullName:form.elements.fullName.value,mobile:form.elements.mobile.value,city:form.elements.city.value,category:form.elements.category.value,loanType:form.elements.loanType.value,note:form.elements.note.value,files:await Promise.all(files.map(readFile))};
+  google.script.run.withSuccessHandler(result=>{
+   submitBtn.disabled=false;submitBtn.textContent='Upload Documents';
+   statusBox.style.color=result&&result.success?'#176b3a':'#b42318';statusBox.textContent=result&&result.message?result.message:'Upload failed. Please try again.';
+   if(result&&result.success)form.reset();
+  }).withFailureHandler(error=>{
+   submitBtn.disabled=false;submitBtn.textContent='Upload Documents';statusBox.style.color='#b42318';statusBox.textContent=error&&error.message?error.message:'Upload failed. Please try again.';
+  }).uploadDocuments(payload);
+ }catch(err){submitBtn.disabled=false;submitBtn.textContent='Upload Documents';statusBox.style.color='#b42318';statusBox.textContent=err.message||'Could not read selected files.';}
+});
+</script></body></html>
