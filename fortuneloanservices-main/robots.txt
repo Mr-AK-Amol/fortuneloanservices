@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://fortuneloanservices-r7s5.vercel.app/sitemap.xml

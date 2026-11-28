@@ -536,6 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `PIN Code: ${value("pincode")}`,
         `Loan Type: ${value("loanType")}`,
         `Required Amount: ₹${value("loanAmount")}`,
+        `CIBIL Issue: ${value("cibilIssue")}`,
         `Employment: ${value("employmentType")}`
       ].join("\n");
       const emailPayload = {
@@ -546,6 +547,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "PIN Code": value("pincode"),
         "Loan Type": value("loanType"),
         "Required Loan Amount": `₹${value("loanAmount")}`,
+        "CIBIL Issue": value("cibilIssue"),
         "Employment Type": value("employmentType"),
         Consent: "Agreed"
       };
