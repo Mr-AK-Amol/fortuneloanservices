@@ -1098,6 +1098,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.key === "Escape" && expertModal.classList.contains("show")) closeExpert();
     });
   }
+<<<<<<< HEAD
 
   // Unified successful-submission flow for the four customer forms.
   // Capture phase prevents the legacy per-form handlers from submitting twice.
@@ -1183,4 +1184,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, true);
 
+=======
+>>>>>>> 60a31c5825fe02d8f15b53b3b2cf6cc71ea2913a
 });

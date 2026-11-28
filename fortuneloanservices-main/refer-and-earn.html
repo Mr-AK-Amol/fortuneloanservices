@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10284c"><title>Refer and Earn | Fortune Loan Services</title><link rel="icon" href="assets/FAVICON.png?v=3" type="image/png" sizes="512x512"><link rel="apple-touch-icon" href="assets/FAVICON.png?v=3"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><style>
+.refer-page{min-height:100vh;padding:125px 18px 70px;background:radial-gradient(circle at 8% 5%,#164b83 0,transparent 30%),linear-gradient(135deg,#10284c,#164b83);font-family:Inter,sans-serif}.refer-wrap{max-width:920px;margin:auto}.refer-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:26px;color:white}.refer-top>a:first-child{display:flex;align-items:center;justify-content:center;background:#fff;padding:10px 16px;border-radius:12px;box-shadow:0 6px 20px #0002;min-width:155px;min-height:82px}.refer-top img{width:125px;max-height:62px;object-fit:contain;display:block}.refer-top a{color:white;text-decoration:none;font-weight:700}.refer-card{background:#fff;border-radius:24px;padding:clamp(22px,4vw,42px);box-shadow:0 25px 80px #0005}.refer-card h1{margin:4px 0 10px;color:#10284c;font-size:clamp(28px,4vw,40px)}.refer-card .intro{color:#66758c;line-height:1.7;margin-bottom:28px}.refer-section{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#f15a24;font-weight:800;margin:26px 0 14px;padding-bottom:10px;border-bottom:1px solid #e5eaf2}.refer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.refer-field label{display:block;font-size:12px;font-weight:800;color:#30415d;margin-bottom:7px}.refer-field input,.refer-field select,.refer-field textarea{width:100%;min-height:46px;padding:11px 13px;border:1px solid #dce4ef;border-radius:11px;font:500 14px Inter,sans-serif;color:#10284c;background:#fff}.refer-field textarea{min-height:90px;resize:vertical}.refer-field.full{grid-column:1/-1}.refer-submit{margin-top:24px;width:100%;padding:16px;border:0;border-radius:12px;background:linear-gradient(135deg,#164b83,#164b83);color:white;font-weight:800;font-size:15px;cursor:pointer}.refer-note{font-size:12px;color:#68768b;line-height:1.6;margin-top:14px}@media(max-width:600px){.refer-grid{grid-template-columns:1fr}.refer-field.full{grid-column:auto}.refer-page{padding:105px 12px 45px}.refer-top>a:first-child{min-width:125px;min-height:68px;padding:8px 12px}.refer-top img{width:105px;max-height:52px}}
+
+.refer-nav-links{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:14px}.refer-nav-links a{font-size:13px}.refer-contact-footer{margin:28px auto 0;padding:18px 20px;border:1px solid #ffffff2b;border-radius:16px;color:#d9e8ff;text-align:center;line-height:1.8}.refer-contact-footer a{color:#fff;font-weight:800;text-decoration:none}.refer-contact-footer a:hover{text-decoration:underline}@media(max-width:600px){.refer-top{align-items:flex-start;flex-direction:column}.refer-nav-links{justify-content:flex-start;gap:12px}}
+</style></head><body><header class="site-header scrolled" id="header">
+  <nav class="navbar container">
+<a aria-label="Fortune Loan Services home" class="brand brand-logo" href="/#home"><img alt="Fortune Loan Services logo" src="assets/fortune-logo.svg"/></a>
+<button aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" id="menuToggle">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-links" id="navLinks"><a href="/">Home</a><a href="/about-us">About</a><a href="/#loans">Loan Solutions</a><a href="/#partners">Partners</a><a href="/emi-calculator">EMI Calculator</a><a href="/join-us">Join Us</a><a href="/documents-upload">Documents Upload</a><a class="nav-cta refer-cta" href="/refer-and-earn">Refer and Earn</a><a class="nav-contact-cta" href="/contact">Contact Us</a></div>
+</nav>
+</header><main class="refer-page"><div class="refer-wrap">
+<section class="refer-card"><div class="section-kicker">GROW TOGETHER</div><h1>Refer and Earn</h1><p class="intro">💸 <strong>Refer a Loan. Earn ₹1,500+ Per Referral!</strong><br>Know someone looking for a personal or business loan? Refer them to Fortune Loan Services and earn real cash rewards. 💰 Share their details with their permission, and our team will contact them to explore suitable loan options.<br><strong>🎁 Refer More. Earn More!</strong> Referral rewards are subject to eligibility, confirmation, and applicable terms and conditions.</p><form id="referForm">
+<h2 class="refer-section">Referrer details</h2>
+<div class="refer-grid">
+<div class="refer-field"><label for="refName">Referrer Name *</label><input id="refName" required autocomplete="name" placeholder="Enter your name"></div>
+<div class="refer-field"><label for="refMobile">Referrer Contact Number *</label><input id="refMobile" required inputmode="numeric" maxlength="10" placeholder="10-digit mobile"></div>
+</div>
+<h2 class="refer-section">Referred client's loan details</h2>
+<div class="refer-grid">
+<div class="refer-field"><label for="clientName">Referred Client Name *</label><input id="clientName" required autocomplete="name" placeholder="Client's full name"></div>
+<div class="refer-field"><label for="clientMobile">Referred Client Contact Number *</label><input id="clientMobile" required inputmode="numeric" maxlength="10" placeholder="10-digit mobile"></div>
+<div class="refer-field"><label for="clientEmail">Client Email Address (Optional)</label><input id="clientEmail" type="email" autocomplete="email" placeholder="client@example.com"></div>
+<div class="refer-field"><label for="clientCity">Client City *</label><input id="clientCity" required placeholder="Enter city or town"></div>
+<div class="refer-field"><label for="clientPin">Client PIN Code *</label><input id="clientPin" required inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="6-digit PIN code"></div>
+<div class="refer-field"><label for="loanType">Loan Type *</label><select id="loanType" required><option value="">Select loan type</option><option>🏠 Home Loan</option><option>🔄 Balance Transfer</option><option>⬆️ Top-Up Home Loan</option><option>🏘️ Mortgage Loan</option><option>👔 Salaried Personal Loan</option><option>🏢 Unsecured Business Loan</option><option>📈 Working Capital Loan</option><option>🏭 MSME Loan</option><option>🚗 Vehicle & Car Loan</option><option>🚚 Commercial Vehicle Loan</option><option>🏗️ Project Finance</option><option>🏢 Industrial Property Loan</option><option>🏘️ Loan Against Property</option><option>⚙️ Machinery Loan</option><option>🛠️ Equipment Finance</option><option>🚀 Startup Loan</option><option>🌾 Agriculture Loan</option><option>☀️ Solar Loan</option><option>👨‍⚕️ Doctor Loan</option><option>💼 Professional Loan</option><option>🏗️ Construction Loan</option><option>🤝 Equity Funding</option><option>💼 CC / OD Loan</option></select></div>
+<div class="refer-field"><label for="loanAmount">Required Loan Amount (₹) *</label><select id="loanAmount" required><option value="">Select amount</option><option>Below ₹1,00,000</option><option>₹1,00,000 – ₹5,00,000</option><option>₹5,00,000 – ₹10,00,000</option><option>₹10,00,000 – ₹25,00,000</option><option>₹25,00,000 – ₹50,00,000</option><option>Above ₹50,00,000</option></select></div>
+<div class="refer-field"><label for="loanPurpose">Purpose of Loan *</label><input id="loanPurpose" required placeholder="What is the loan for?"></div>
+<div class="refer-field"><label for="incomeRange">Monthly Income Range (Optional)</label><select id="incomeRange"><option value="">Prefer not to say</option><option>₹10,000 – ₹15,000</option><option>₹15,000 – ₹20,000</option><option>₹20,000 – ₹40,000</option><option>₹40,000 – ₹50,000</option><option>Above ₹50,000</option><option>Above ₹1,00,000</option></select></div>
+<div class="refer-field"><label for="cibilScore">CIBIL Score (Optional)</label><select id="cibilScore"><option value="">Not sure / Prefer not to say</option><option>Below 650</option><option>650 – 699</option><option>700 – 749</option><option>750 and above</option></select></div>
+<div class="refer-field"><label for="incomeSource">Income Source *</label><select id="incomeSource" required><option value="">Select income source</option><option>Salaried</option><option>Self-employed / Business</option><option>Professional</option><option>Agriculture</option><option>Other</option></select></div>
+<div class="refer-field full"><label><input id="clientConsent" type="checkbox" required style="width:auto;min-height:auto;margin-right:8px"> I confirm the referred client has given permission to share these details and be contacted about loan options. *</label></div>
+</div>
+<div class="refer-field full consent-field" style="margin:16px 0 12px;padding:12px 14px;border:1px solid rgba(20,35,60,.18);border-radius:10px;background:rgba(255,255,255,.72)"><label class="shared-consent-label" for="refPrivacyConsent"><input id="refPrivacyConsent" name="privacyConsent" type="checkbox" value="Agreed" required style="width:18px;min-width:18px;height:18px;margin-top:3px"> <span><strong>Consent &amp; Data Privacy *</strong><br>I agree to the collection and use of the information I provide to process this request. After successful loan disbursement, my submitted data will be deleted from Fortune Loan Services’ records, except where retention is required by applicable law or a lending partner.</span></label></div>
+    <button class="refer-submit" type="submit">Send Referral on WhatsApp ↗</button>
+<p class="refer-note" id="referStatus" role="status" aria-live="polite">Your filled referral details are also submitted to our email. WhatsApp opens with the message prepared; tap Send in WhatsApp. Please do not submit sensitive identity or banking documents here.</p>
+</form></section></div><footer class="footer professional-footer" id="site-footer">
+<div class="container footer-main">
+<div class="footer-brand-column">
+<a aria-label="Fortune Loan Services home" class="footer-logo-link" href="/">
+<img alt="Fortune Loan Services" src="assets/fortune-logo.svg"/>
+</a>
+<p class="footer-tagline">Your Trusted Financial Partner</p>
+<p class="footer-intro">Guidance to help individuals, professionals and businesses explore suitable lending options through banks and NBFCs.</p>
+<div class="footer-cta-row">
+<a class="footer-button footer-button-outline" href="/emi-calculator">EMI Calculator</a>
+        <button class="footer-button footer-button-outline" type="button" data-open-expert>Talk with our Loan Expert</button>
+</div>
+</div>
+<div class="footer-column">
+<h3>Explore</h3>
+<a href="/#about">About Fortune</a>
+<a href="/#loans">Loan Solutions</a>
+<a href="/#partners">Partner Network</a>
+<a href="/#process">How It Works</a>
+<a href="/join-us">Join Our Network</a>
+</div>
+<div class="footer-column">
+<h3>Quick Links</h3>
+<a href="/privacy-policy">Privacy Policy</a>
+<a href="/emi-calculator">EMI Calculator</a>
+<a href="/terms-of-services">Terms of Service</a>
+<a href="/application">Apply Now</a>
+<a href="/#loans">Explore Loan Options</a>
+</div>
+<div aria-label="Follow us on social media" class="footer-social-links footer-social-icons"><a aria-label="WhatsApp" title="WhatsApp" href="https://wa.me/919028346900" rel="noopener noreferrer" target="_blank" class="footer-social-icon whatsapp"><svg viewBox="0 0 16 16" class="socialSvg whatsappSvg" aria-hidden="true"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg></a>
+<a aria-label="Instagram" title="Instagram" href="https://www.instagram.com/official.fortuneloanservices/?hl=en" rel="noopener noreferrer" target="_blank" class="footer-social-icon instagram"><svg viewBox="0 0 16 16" class="socialSvg instagramSvg" aria-hidden="true"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></a>
+<a aria-label="Facebook" title="Facebook" href="https://www.facebook.com/profile.php?id=61591488407283" rel="noopener noreferrer" target="_blank" class="footer-social-icon facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="solid" d="M13.5 21v-8h2.8l.4-3.1h-3.2v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8z"/></svg></a>
+<a aria-label="LinkedIn" title="LinkedIn" href="https://www.linkedin.com/in/fortune-loan-services-461167452/" rel="noopener noreferrer" target="_blank" class="footer-social-icon linkedin"><svg viewBox="0 0 448 512" class="socialSvg linkdinSvg" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg></a>
+<a aria-label="X" title="X" href="https://x.com/fortuneloanser" rel="noopener noreferrer" target="_blank" class="footer-social-icon x"><svg viewBox="0 0 16 16" class="socialSvg twitterSvg" aria-hidden="true"><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/></svg></a></div>
+</div>
+<div class="container footer-addresses">
+<div class="footer-address-card">
+<div class="footer-address-heading"><span aria-hidden="true" class="footer-address-icon">⌖</span><div><span class="footer-eyebrow">HEAD / CORPORATE ADDRESS</span><h3>Mumbai, Maharashtra</h3></div></div>
+<p>27, Dalal St, Kala Ghoda, Fort, Mumbai, Maharashtra 400001</p>
+<a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=27%2C%20Dalal%20St%2C%20Kala%20Ghoda%2C%20Fort%2C%20Mumbai%2C%20Maharashtra%20400001" rel="noopener noreferrer" target="_blank">Get directions <span aria-hidden="true">↗</span></a>
+</div>
+<div class="footer-address-card">
+<div class="footer-address-heading"><span aria-hidden="true" class="footer-address-icon">⌖</span><div><span class="footer-eyebrow">REGISTERED OFFICE ADDRESS</span><h3>Baner, Pune, Maharashtra</h3></div></div>
+<p>Baner, Pune, Maharashtra 411045</p>
+<a class="footer-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Baner%2C%20Pune%2C%20Maharashtra%20411045" rel="noopener noreferrer" target="_blank">Get directions <span aria-hidden="true">↗</span></a>
+</div>
+</div>
+<div class="container footer-disclaimer">
+<strong>Important information</strong>
+<p>Fortune Loan Services facilitates loan assistance and connects applicants with potential lending options. Loan approval, interest rates, fees, eligibility and disbursement are determined by the respective lender and depend on its policies and the applicant’s profile. Partner logos and names are for informational purposes and do not imply guaranteed approval or endorsement.</p>
+</div>
+<div class="footer-bottom">
+<div class="container footer-bottom-inner">
+<span>© 2026 Fortune Loan Services. All Rights Reserved. | Empowering Your Financial Dreams, One Loan at a Time. 💙</span>
+<div class="footer-legal-links"><a href="/terms-of-services">Terms of Service</a><a href="/#home">Back to Home ↑</a></div>
+</div>
+</div>
+</footer></div></main><script>
+document.getElementById('referForm').addEventListener('submit', async function(e){
+e.preventDefault();
+const form=this;
+const val=id=>document.getElementById(id).value.trim();
+const phone=id=>val(id).replace(/\D/g,'');
+if(!/^[6-9]\d{9}$/.test(phone('refMobile'))){alert('Please enter a valid 10-digit referrer mobile number.');return}
+if(!/^[6-9]\d{9}$/.test(phone('clientMobile'))){alert('Please enter a valid 10-digit client mobile number.');return}
+if(!/^\d{6}$/.test(val('clientPin'))){alert('Please enter a valid 6-digit PIN code.');return}
+const fields=[...form.querySelectorAll('input,select,textarea')].filter(el=>el.id && el.type!=='checkbox' && el.type!=='submit');
+const entries=fields.map(el=>{const label=form.querySelector('label[for="'+el.id+'"]');return {label:(label?.innerText||el.id).replace(/\s*\*\s*$/,'').trim(),value:el.value.trim()}}).filter(x=>x.value);
+const consent=document.getElementById('clientConsent');
+if(consent.checked) entries.push({label:'Client permission to share details',value:'Yes'});
+const message='*FORTUNE LOAN SERVICES — REFERRAL*\n\n'+entries.map(x=>'*'+x.label+':* '+x.value).join('\n');
+const payload={_subject:'New Fortune Loan Services - Referral',_template:'table'};
+entries.forEach(x=>payload[x.label]=x.value);
+const status=document.getElementById('referStatus');
+const submitButton=form.querySelector('button[type="submit"]');
+if(submitButton.disabled) return;
+submitButton.disabled=true;
+submitButton.textContent='Submitting…';
+const wa=window.open('https://wa.me/919028346900?text='+encodeURIComponent(message),'_blank');
+if(wa) wa.opener=null;
+status.textContent='Submitting referral details to email… WhatsApp opens with your filled fields; tap Send in WhatsApp to send the message.';
+try{
+const response=await fetch('/api/send-email',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+const result=await response.json().catch(()=>({}));
+if(!response.ok||result.success===false||result.success==='false') throw new Error(result.message||'Email submission failed');
+status.textContent='Email request accepted by Resend. WhatsApp is prepared; tap Send in WhatsApp. Resend accepted the email request.';
+}catch(err){console.error('Referral email failed:',err);status.textContent='WhatsApp is prepared; tap Send to send it. Email could not be confirmed—check Resend setup and retry.';}finally{submitButton.disabled=false;submitButton.textContent='Send Referral on WhatsApp ↗';}
+});
+</script>
+<div class="expert-modal" id="expertModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="expertModalTitle"><button class="expert-modal-overlay" type="button" data-close-expert aria-label="Close expert popup"></button><div class="expert-modal-card" role="document"><div class="expert-modal-header"><div class="expert-modal-brand"><img src="assets/fortune-logo.svg" alt="Fortune Loan Services logo"><strong>Fortune Loan Services</strong></div><button type="button" class="expert-modal-close" data-close-expert aria-label="Close">×</button></div><p class="expert-eyebrow">TALK WITH OUR LOAN EXPERT</p><h2 id="expertModalTitle">Aamin Khan</h2><p class="expert-role">Founder &amp; Director</p><div class="expert-contact-details"><a href="tel:+919028346900">☎ +91 90283 46900</a><a href="mailto:official.aaminkhan@gmail.com">✉ official.aaminkhan@gmail.com</a></div><p class="expert-help">Get guidance on available loan options and the application process.</p></div></div>
+<script src="script.js"></script>
+<a class="floating-apply-now" id="floatingApplyNow" href="/#open-loan-form"  aria-label="Open loan application form"><span class="floating-apply-icon" aria-hidden="true">↗</span><span>Apply Now</span></a>
+</body></html>
